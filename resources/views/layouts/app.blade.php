@@ -23,7 +23,7 @@
     <div class="flex min-h-screen 2xl:max-w-7xl 2xl:mx-auto 2xl:border-x-2 2xl:border-indigo-50 ">
         <!-- Sidebar -->
         <aside class="bg-white w-1/5 py-10 pl-10  min-w-min   border-r border-indigo-900/20 hidden md:block ">
-            <div class=" font-bold text-2xl">Lozeq</div>
+            <div class=" font-bold text-2xl">{{Auth::user()->name}}</div>
 
             <!-- Menu -->
             <div class="mt-12 flex flex-col space-y-7 text-gray-500 font-medium" x-data="{ Master: false, Transaksi: false }">
