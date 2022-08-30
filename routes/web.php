@@ -2,6 +2,13 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Livewire\Admin\DashboardAdmin;
+use App\Http\Livewire\Admin\PageBarangKeluar;
+use App\Http\Livewire\Admin\PageBarangMasuk;
+use App\Http\Livewire\Admin\PageJenis;
+use App\Http\Livewire\Admin\PagelistBahanBaku;
+use App\Http\Livewire\Admin\PageSatuan;
+use App\Http\Livewire\Admin\PageStockBahanBaku;
+use App\Http\Livewire\Admin\PageTransaksiPesanan;
 use App\Http\Livewire\Customer\DashboardCustomer;
 use App\Http\Livewire\Supplier\DashboardSupplier;
 use Illuminate\Support\Facades\Route;
@@ -23,12 +30,23 @@ Route::get('/', function () {
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/dashboard', [UserController::class, 'cekUser'])->name('dashboard');
-});
 
-Route::middleware(['middleware' => 'auth'])->group(function () {
-    // AKses Admin
-    Route::group(['middleware' => 'role:Admin', 'prefix' => 'admin', 'as' => 'Admin.'], function () {
+      // AKses Admin
+      Route::group(['middleware' => 'role:Admin', 'prefix' => 'admin', 'as' => 'Admin.'], function () {
         Route::get('Dashboard', DashboardAdmin::class)->name('Dashboard-Admin');
+
+        Route::get('BarangKeluar', PageBarangKeluar::class)->name('Barang-Keluar');
+
+        Route::get('BarangMasuk', PageBarangMasuk::class)->name('Barang-Masuk');
+
+        Route::get('Stock/Bahan-Baku', PageStockBahanBaku::class)->name('Stock-Bahan-Baku');
+
+        Route::get('Pesanan', PageTransaksiPesanan::class)->name('Tr-Pesanan');
+        // Satuan Jenis Kelas Bahan Baku
+        Route::get('Satuan', PageSatuan::class)->name('Satuan');
+        Route::get('Jenis', PageJenis::class)->name('Jenis');
+        Route::get('BahanBaku', PagelistBahanBaku::class)->name('List-BahanBaku');
+
     });
     Route::group(['middleware' => 'role:Supplier', 'prefix' => 'Supplier', 'as' => 'Supplier.'], function () {
         Route::get('Dashboard', DashboardSupplier::class)->name('Dashboard-Supplier');
@@ -37,3 +55,4 @@ Route::middleware(['middleware' => 'auth'])->group(function () {
         Route::get('Dashboard', DashboardCustomer::class)->name('Dashboard-Admin');
     });
 });
+
