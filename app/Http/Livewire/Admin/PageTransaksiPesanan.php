@@ -2,12 +2,18 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\Pesanan;
 use Livewire\Component;
 
 class PageTransaksiPesanan extends Component
 {
+    public $row = 10, $search ='';
     public function render()
     {
-        return view('livewire.admin.page-transaksi-pesanan');
+        $pesanan = Pesanan::orderBy('id', 'desc')->paginate($this->row);
+        return view('livewire.admin.page-transaksi-pesanan', compact('pesanan'));
+    }
+    public function buatPesanan(){
+        return redirect()->route('Admin.Tr-Pesanan');
     }
 }
