@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class BarangMasuk extends Model
 {
     use HasFactory;
+    protected $table = 'barang_masuks';
+    protected $fillable = [
+        'kode', 'pesanan_id'
+    ];
+    protected $hidden = ['pesanan_id'];
+
+    public function pesanan(){
+        return $this->hasOne(Pesanan::class, 'id', 'pesanans');
+    }
 }
