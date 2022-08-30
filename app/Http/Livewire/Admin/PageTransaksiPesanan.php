@@ -14,6 +14,6 @@ class PageTransaksiPesanan extends Component
         return view('livewire.admin.page-transaksi-pesanan', compact('pesanan'));
     }
     public function buatPesanan(){
-        return redirect()->route('Admin.Tr-Pesanan');
+        return redirect()->route('Admin.Buat-Pesanan');
     }
 }

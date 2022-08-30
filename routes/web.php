@@ -4,6 +4,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Livewire\Admin\DashboardAdmin;
 use App\Http\Livewire\Admin\PageBarangKeluar;
 use App\Http\Livewire\Admin\PageBarangMasuk;
+use App\Http\Livewire\Admin\PageBuatPesanan;
 use App\Http\Livewire\Admin\PageJenis;
 use App\Http\Livewire\Admin\PagelistBahanBaku;
 use App\Http\Livewire\Admin\PageSatuan;
@@ -41,11 +42,16 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
         Route::get('Stock/Bahan-Baku', PageStockBahanBaku::class)->name('Stock-Bahan-Baku');
 
+        // Route Pesanan
         Route::get('Pesanan', PageTransaksiPesanan::class)->name('Tr-Pesanan');
+        Route::get('Buat/Pesanan', PageBuatPesanan::class)->name('Buat-Pesanan');
+
         // Satuan Jenis Kelas Bahan Baku
         Route::get('Satuan', PageSatuan::class)->name('Satuan');
         Route::get('Jenis', PageJenis::class)->name('Jenis');
         Route::get('BahanBaku', PagelistBahanBaku::class)->name('List-BahanBaku');
+
+        // End Admin Route
 
     });
     Route::group(['middleware' => 'role:Supplier', 'prefix' => 'Supplier', 'as' => 'Supplier.'], function () {
