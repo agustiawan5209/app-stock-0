@@ -16,136 +16,132 @@
         <!-- Styles -->
         @livewireStyles
     </head>
-    <body>
-        <nav class=" container mx-auto relative p-6 ">
-            <div class=" flex flex-row justify-between items-center">
-                <img src="img/logo.svg" alt="logo" class="items-center mt-2 " />
+    <body class="bg-white font-family-karla">
 
-                <!-- links -->
-                <div class=" space-x-4 md:flex hidden">
-                    <a href="#" class="hover:text-blue-600">Pricing</a>
-                    <a href="#" class="hover:text-blue-600">Product</a>
-                    <a href="#" class="hover:text-blue-600">About Us</a>
-                    <a href="#" class="hover:text-blue-600">Careers</a>
-                    <a href="#" class="hover:text-blue-600">Community</a>
+        <!-- Top Bar Nav -->
+        <nav class="w-full py-4 bg-blue-800 shadow">
+            <div class="w-full container mx-auto flex flex-wrap items-center justify-between">
+
+                <nav>
+                    <ul class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline">
+                        <li><a class="hover:text-gray-200 hover:underline px-4" href="#">Shop</a></li>
+                        <li><a class="hover:text-gray-200 hover:underline px-4" href="#">About</a></li>
+                    </ul>
+                </nav>
+
+                <div class="flex items-center text-lg no-underline text-white pr-6">
+                    <a class="" href="#">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a class="pl-6" href="#">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a class="pl-6" href="#">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a class="pl-6" href="#">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
                 </div>
-
-                <a href="{{route('login')}}" class=" bg-orange-600 rounded-full px-4 py-2 hover:bg-brightRedLight text-white hidden md:block">Get
-                    Started</a>
-
-                <button title="menu-btn" class=" md:hidden text-3xl menu-toggle-icon" id="menu-toggle-icon">
-                    <i class="ri-menu-3-line open-menu-icon" id="open-btn"></i>
-                    <i class="ri-close-line close-menu-icon " id="close-btn"></i>
-
-
-                    <!-- Mobile links -->
-                    <div class="mt-4 ">
-                        <div class="px-14 absolute font-bold text-lg flex flex-col right-7 border-2 border-black pt-4 pb-5 space-y-8 py-8 bg-white "
-                            id="Menu">
-                            <a href="#" class="hover:text-blue-600">Pricing</a>
-                            <a href="#" class="hover:text-blue-600">Product</a>
-                            <a href="#" class="hover:text-blue-600">About Us</a>
-                            <a href="#" class="hover:text-blue-600">Careers</a>
-                            <a href="#" class="hover:text-blue-600">Community</a>
-                        </div>
-                    </div>
-
-                </button>
-
-
-
-
-
             </div>
 
         </nav>
 
-        <main class="md:px-10">
-            {{$slot}}
-        </main>
+        <!-- Text Header -->
+        <header class="w-full container mx-auto">
+            <div class="flex flex-col items-center py-12">
+                <a class="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl" href="#">
+                    Minimal Blog
+                </a>
+                <p class="text-lg text-gray-600">
+                    Lorem Ipsum Dolor Sit Amet
+                </p>
+            </div>
+        </header>
+
+        <!-- Topic Nav -->
+        <nav class="w-full py-4 border-t border-b bg-gray-100" x-data="{ open: false }">
+            <div class="block sm:hidden">
+                <a
+                    href="#"
+                    class="block md:hidden text-base font-bold uppercase text-center flex justify-center items-center"
+                    @click="open = !open"
+                >
+                    Topics <i :class="open ? 'fa-chevron-down': 'fa-chevron-up'" class="fas ml-2"></i>
+                </a>
+            </div>
+            <div :class="open ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
+                <div class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 px-6 py-2">
+                    <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Technology</a>
+                    <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Automotive</a>
+                    <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Finance</a>
+                    <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Politics</a>
+                    <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Culture</a>
+                    <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Sports</a>
+                </div>
+            </div>
+        </nav>
 
 
-    <!-- Footer -->
-    <footer class="bg-gray-800">
-        <!-- Flex Container -->
-        <div
-            class="container p-6 flex flex-col-reverse justify-between px-6 py-10 mx-auto space-y-8 md:flex-row md:space-y-0">
-            <!-- Logo and social links container -->
+        <div class="container mx-auto flex flex-wrap py-6">
+
+          {{$slot}}
+        </div>
+
+        <footer class="w-full border-t bg-white pb-12">
             <div
-                class="flex flex-col-reverse items-center justify-between space-y-12 md:flex-col md:space-y-0 md:items-start">
-                <div class="mx-auto my-6 text-center text-white md:hidden">
-                    Copyright &copy; 2022, All Rights Reserved
-                </div>
-                <!-- Logo -->
-                <div>
-                    <img src="{{asset('img/logo-white.svg')}}" class="h-8" alt="" />
-                </div>
-                <!-- Social Links Container -->
-                <div class="flex justify-center space-x-4">
-                    <!-- Link 1 -->
-                    <a href="#">
-                        <img src="img/icon-facebook.svg" alt="" class="h-8" />
-                    </a>
-                    <!-- Link 2 -->
-                    <a href="#">
-                        <img src="img/icon-youtube.svg" alt="" class="h-8" />
-                    </a>
-                    <!-- Link 3 -->
-                    <a href="#">
-                        <img src="img/icon-twitter.svg" alt="" class="h-8" />
-                    </a>
-                    <!-- Link 4 -->
-                    <a href="#">
-                        <img src="img/icon-pinterest.svg" alt="" class="h-8" />
-                    </a>
-                    <!-- Link 5 -->
-                    <a href="#">
-                        <img src="img/icon-instagram.svg" alt="" class="h-8" />
-                    </a>
-                </div>
+                class="relative w-full flex items-center invisible md:visible md:pb-12"
+                x-data="getCarouselData()"
+            >
+                <button
+                    class="absolute bg-blue-800 hover:bg-blue-700 text-white text-2xl font-bold hover:shadow rounded-full w-16 h-16 ml-12"
+                    x-on:click="decrement()">
+                    &#8592;
+                </button>
+                <template x-for="image in images.slice(currentIndex, currentIndex + 6)" :key="images.indexOf(image)">
+                    <img class="w-1/6 hover:opacity-75" :src="image">
+                </template>
+                <button
+                    class="absolute right-0 bg-blue-800 hover:bg-blue-700 text-white text-2xl font-bold hover:shadow rounded-full w-16 h-16 mr-12"
+                    x-on:click="increment()">
+                    &#8594;
+                </button>
             </div>
-
-            <!-- List Container -->
-            <div class="flex flex-row mx-auto space-x-12 ">
-                <div class="flex flex-col space-y-4 text-white ">
-                    <a href="#" class="hover:text-red-500">Home</a>
-                    <a href="#" class="hover:text-red-500">Pricing</a>
-                    <a href="#" class="hover:text-red-500">Products</a>
-                    <a href="#" class="hover:text-red-500">About</a>
+            <div class="w-full container mx-auto flex flex-col items-center">
+                <div class="flex flex-col md:flex-row text-center md:text-left md:justify-between py-6">
+                    <a href="#" class="uppercase px-3">About Us</a>
+                    <a href="#" class="uppercase px-3">Privacy Policy</a>
+                    <a href="#" class="uppercase px-3">Terms & Conditions</a>
+                    <a href="#" class="uppercase px-3">Contact Us</a>
                 </div>
-
-                <div class="flex flex-col space-y-4 text-white ">
-                    <a href="#" class="hover:text-red-500">Careers</a>
-                    <a href="#" class="hover:text-red-500">Community</a>
-                    <a href="#" class="hover:text-red-500">Privacy Policy</a>
-                </div>
+                <div class="uppercase pb-6">&copy; myblog.com</div>
             </div>
-            <!-- Input Container -->
-            <div class="flex flex-col justify-between">
-                <form>
-                    <div class="flex space-x-3">
-                        <input type="text" class="flex-1 px-4 rounded-full focus:outline-none"
-                            placeholder="Updated in your inbox" />
-                        <button
-                            class="px-6 py-2 text-white rounded-full bg-red-500 hover:bg-brightRedLight focus:outline-none">
-                            Go
-                        </button>
-                    </div>
-                </form>
-                <div class="hidden text-white md:block">
-                    Copyright &copy; 2022, All Rights Reserved
-                </div>
+        </footer>
 
-            </div>
-
-
-
-
-    </footer>
-
-
-
-
+        <script>
+            function getCarouselData() {
+                return {
+                    currentIndex: 0,
+                    images: [
+                        'https://source.unsplash.com/collection/1346951/800x800?sig=1',
+                        'https://source.unsplash.com/collection/1346951/800x800?sig=2',
+                        'https://source.unsplash.com/collection/1346951/800x800?sig=3',
+                        'https://source.unsplash.com/collection/1346951/800x800?sig=4',
+                        'https://source.unsplash.com/collection/1346951/800x800?sig=5',
+                        'https://source.unsplash.com/collection/1346951/800x800?sig=6',
+                        'https://source.unsplash.com/collection/1346951/800x800?sig=7',
+                        'https://source.unsplash.com/collection/1346951/800x800?sig=8',
+                        'https://source.unsplash.com/collection/1346951/800x800?sig=9',
+                    ],
+                    increment() {
+                        this.currentIndex = this.currentIndex === this.images.length - 6 ? 0 : this.currentIndex + 1;
+                    },
+                    decrement() {
+                        this.currentIndex = this.currentIndex === this.images.length - 6 ? 0 : this.currentIndex - 1;
+                    },
+                }
+            }
+        </script>
 
         @stack('modals')
 

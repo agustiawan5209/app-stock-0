@@ -71,6 +71,10 @@
                             class=" active:border-none focus:border-0 active:ring-0  {{ request()->routeIs('Admin.List-BahanBaku') ? 'block px-4 py-2 border-b border-gray-200 w-full rounded-t-lg bg-blue-700 text-white cursor-pointer' : 'block px-4 py-2 border-b border-gray-200 w-full hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 cursor-pointer' }}">
                             Bahan Baku
                         </a>
+                        <a href="{{ route('Admin.Stock-Bahan-Baku') }}"
+                            class=" active:border-none focus:border-0 active:ring-0  {{ request()->routeIs('Admin.Stock-Bahan-Baku') ? 'block px-4 py-2 border-b border-gray-200 w-full rounded-t-lg bg-blue-700 text-white cursor-pointer' : 'block px-4 py-2 border-b border-gray-200 w-full hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 cursor-pointer' }}">
+                            Stock Bahan Baku
+                        </a>
                     </div>
                 </div>
                 <a class=" {{ request()->routeIs('Admin.Barang-Keluar') || request()->routeIs('Admin.Barang-Masuk') || request()->routeIs('Admin.Tr-Pesanan') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-indigo-700 pr-20' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-indigo-700 hover:font-semibold ' }} relative  box-content"
@@ -154,10 +158,10 @@
             </div><!-- /Menu -->
         </aside><!-- /Sidebar -->
 
-        <main class="bg-indigo-50/60 w-full py-10 px-3 sm:px-10">
+        <main class="bg-indigo-50/60 w-full ">
 
             <!-- Nav -->
-            <nav class="text-lg flex items-center justify-between content-center ">
+            <nav class="text-lg flex items-center justify-between content-center py-5 px-5 bg-white">
                 <div class=" font-semibold text-xl text-gray-800 flex space-x-4 items-center">
                     <a href="#">
                         <span class="md:hidden">
@@ -204,7 +208,7 @@
                 </div>
             </nav> <!-- /Nav -->
 
-            <section>
+            <section class="px-3">
                 {{ $slot }}
             </section>
         </main>
