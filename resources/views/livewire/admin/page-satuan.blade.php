@@ -115,8 +115,8 @@
                                 <div class="w-full md:w-1/3 px-3 pt-4 mx-2 border-t border-gray-400">
                                     <button
                                         class="appearance-none flex items-center justify-center w-full bg-blue-100 text-blue-700 shadow border border-blue-500 rounded-lg py-3 px-3 leading-tight hover:bg-blue-200 hover:text-blue-700 focus:outline-none"
-                                        type="button" wire:click="edit({{ $itemID }})">
-                                        Edit
+                                        type="button" wire:click="create">
+                                        Tambah
                                     </button>
                                 </div>
                             </div>
