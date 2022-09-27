@@ -6,7 +6,7 @@
     <div class="container mx-auto px-3 md:px-10">
         <x-jet-button wire:click='addModal()'>Tambah</x-jet-button>
         <div class="mt-6 overflow-x-auto">
-            <table id="table-auto" class="w-full table-auto">
+            <table  class=" table-datatable w-full table-auto">
                 {{ $slot }}
             </table>
         </div>
@@ -24,7 +24,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#table-auto').DataTable({
+        $('.table-auto').DataTable({
 
         });
     });
