@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Customer;
+use App\Models\Supplier;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -42,6 +45,14 @@ class DatabaseSeeder extends Seeder
             'password'=> bcrypt(12345678),
             'role_id'=> '3',
             ]
+        ]);
+        Customer::insert([
+            'customer'=> 'Customer 1',
+            'user_id'=> '3'
+        ]);
+        Supplier::insert([
+            'supplier'=> 'supplier 1',
+            'user_id'=> '2'
         ]);
     }
 }

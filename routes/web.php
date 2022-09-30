@@ -1,19 +1,21 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Admin\PageJenis;
+use App\Http\Livewire\Admin\PageSatuan;
 use App\Http\Controllers\UserController;
+use App\Http\Livewire\Admin\PageCustomer;
+use App\Http\Livewire\Admin\PageSupplier;
+use App\Http\Livewire\Transaksi\PageBank;
 use App\Http\Livewire\Admin\DashboardAdmin;
-use App\Http\Livewire\Admin\PageBarangKeluar;
 use App\Http\Livewire\Admin\PageBarangMasuk;
 use App\Http\Livewire\Admin\PageBuatPesanan;
-use App\Http\Livewire\Admin\PageJenis;
+use App\Http\Livewire\Admin\PageBarangKeluar;
 use App\Http\Livewire\Admin\PagelistBahanBaku;
-use App\Http\Livewire\Admin\PageSatuan;
 use App\Http\Livewire\Admin\PageStockBahanBaku;
 use App\Http\Livewire\Admin\PageTransaksiPesanan;
 use App\Http\Livewire\Customer\DashboardCustomer;
 use App\Http\Livewire\Supplier\DashboardSupplier;
-use App\Http\Livewire\Transaksi\PageBank;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +53,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::get('Satuan', PageSatuan::class)->name('Satuan');
         Route::get('Jenis', PageJenis::class)->name('Jenis');
         Route::get('BahanBaku', PagelistBahanBaku::class)->name('List-BahanBaku');
-
+        Route::get('Supplier', PageSupplier::class)->name('Supplier');
+        Route::get('Customer' ,PageCustomer::class)->name('Customer');
         // End Admin Route
 
     });

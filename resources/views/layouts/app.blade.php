@@ -10,7 +10,7 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-    <script src="{{asset('vendor/sweetalert/sweetalert.all.js')}}"></script>
+    <script src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -23,7 +23,7 @@
     <div class="flex min-h-screen 2xl:max-w-7xl 2xl:mx-auto 2xl:border-x-2 2xl:border-indigo-50 ">
         <!-- Sidebar -->
         <aside class="bg-white w-1/5 py-10 pl-10  min-w-min   border-r border-indigo-900/20 hidden md:block ">
-            <div class=" font-bold text-2xl">{{Auth::user()->name}}</div>
+            <div class=" font-bold text-2xl">{{ Auth::user()->name }}</div>
 
             <!-- Menu -->
             <div class="mt-12 flex flex-col space-y-7 text-gray-500 font-medium" x-data="{ Master: false, Transaksi: false }">
@@ -39,6 +39,17 @@
 
                     </svg>
                     <span>Dashboard</span>
+                </a>
+                <a class="  {{ request()->routeIs('Admin.Stock-Bahan-Baku') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-indigo-700 ' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-indigo-700 hover:font-semibold ' }} "
+                    href="{{ route('Admin.Stock-Bahan-Baku') }}">
+                    <svg class="h-5 w-5 {{ request()->routeIs('Admin.Stock-Bahan-Baku') ? 'stroke-indigo-700' : 'group-hover:stroke-indigo-700' }}"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+                        </path>
+
+                    </svg>
+                    <span>Stock Bahan Baku</span>
                 </a>
                 <a class=" {{ request()->routeIs('Admin.Satuan') || request()->routeIs('Admin.Jenis') || request()->routeIs('Admin.List-BahanBaku') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-indigo-700' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-indigo-700 hover:font-semibold ' }} relative  box-content"
                     href="#" x-on:click="Master = ! Master " x-on:click.outside="Master = false">
@@ -71,16 +82,20 @@
                             class=" active:border-none focus:border-0 active:ring-0  {{ request()->routeIs('Admin.List-BahanBaku') ? 'block px-4 py-2 border-b border-gray-200 w-full rounded-t-lg bg-blue-700 text-white cursor-pointer' : 'block px-4 py-2 border-b border-gray-200 w-full hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 cursor-pointer' }}">
                             Bahan Baku
                         </a>
-                        <a href="{{ route('Admin.Stock-Bahan-Baku') }}"
-                            class=" active:border-none focus:border-0 active:ring-0  {{ request()->routeIs('Admin.Stock-Bahan-Baku') ? 'block px-4 py-2 border-b border-gray-200 w-full rounded-t-lg bg-blue-700 text-white cursor-pointer' : 'block px-4 py-2 border-b border-gray-200 w-full hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 cursor-pointer' }}">
-                            Stock Bahan Baku
+                        <a href="{{ route('Admin.Supplier') }}"
+                            class=" active:border-none focus:border-0 active:ring-0  {{ request()->routeIs('Admin.Supplier') ? 'block px-4 py-2 border-b border-gray-200 w-full rounded-t-lg bg-blue-700 text-white cursor-pointer' : 'block px-4 py-2 border-b border-gray-200 w-full hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 cursor-pointer' }}">
+                            Data Supplier
+                        </a>
+                        <a href="{{ route('Admin.Customer') }}"
+                            class=" active:border-none focus:border-0 active:ring-0  {{ request()->routeIs('Admin.Customer') ? 'block px-4 py-2 border-b border-gray-200 w-full rounded-t-lg bg-blue-700 text-white cursor-pointer' : 'block px-4 py-2 border-b border-gray-200 w-full hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 cursor-pointer' }}">
+                            Data Customer
                         </a>
                     </div>
                 </div>
                 <a class=" {{ request()->routeIs('Admin.Barang-Keluar') || request()->routeIs('Admin.Barang-Masuk') || request()->routeIs('Admin.Tr-Pesanan') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-indigo-700 pr-20' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-indigo-700 hover:font-semibold ' }} relative  box-content"
                     href="#" x-on:click="Transaksi = ! Transaksi" x-on:click.outside="Transaksi = false">
-                    <svg class="h-5 w-5 {{ request()->routeIs('Admin.Barang-Keluar') || request()->routeIs('Admin.Barang-Masuk') || request()->routeIs('Admin.Tr-Pesanan+') ? 'stroke-indigo-700' : 'group-hover:stroke-indigo-700' }}" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="h-5 w-5 {{ request()->routeIs('Admin.Barang-Keluar') || request()->routeIs('Admin.Barang-Masuk') || request()->routeIs('Admin.Tr-Pesanan+') ? 'stroke-indigo-700' : 'group-hover:stroke-indigo-700' }}"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z">
                         </path>
@@ -130,7 +145,7 @@
                     <span>Pembelian</span>
                 </a>
                 <a class=" flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-indigo-700 hover:font-semibold "
-                    href="{{route('Page-Bank')}}">
+                    href="{{ route('Page-Bank') }}">
                     <svg class="h-5 w-5 group-hover:stroke-indigo-700" xmlns="http://www.w3.org/2000/svg"
                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -173,7 +188,7 @@
 
                         </span>
                     </a>
-                    <span>{{Auth::user()->name}}</span>
+                    <span>{{ Auth::user()->name }}</span>
                 </div>
 
                 <div class="flex space-x-5 md:space-x-10 text-gray-500 items-center content-center text-base ">
@@ -203,7 +218,7 @@
                     </a>
                     <a class href="#">
                         <img class="rounded-full w-10 h-10 border-2 border-indigo-200 hover:border-indigo-300"
-                            src="{{Auth::user()->profile_photo_url}}" alt srcset>
+                            src="{{ Auth::user()->profile_photo_url }}" alt srcset>
                     </a>
                 </div>
             </nav> <!-- /Nav -->

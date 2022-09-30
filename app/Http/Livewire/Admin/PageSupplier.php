@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\Supplier;
 use Livewire\Component;
 
 class PageSupplier extends Component
 {
     public function render()
     {
-        return view('livewire.admin.page-supplier');
+        $supplier = Supplier::all();
+        return view('livewire.admin.page-supplier', ['supplier'=> $supplier]);
     }
 }

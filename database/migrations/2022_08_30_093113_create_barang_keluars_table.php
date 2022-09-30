@@ -15,15 +15,13 @@ return new class extends Migration
     {
         Schema::create('barang_keluars', function (Blueprint $table) {
             $table->id();
-            $table->string('kode', 30);
-            $table->integer('jumlah');
-            $table->string('alamat',50);
-            $table->string('customer',50);
+            $table->string('kode_barang_keluar')->unique();
+            // $table->foreignId('produk_id');
+            $table->string('alamat_tujuan');
+            $table->string('customer');
             $table->date('tgl_keluar');
-            $table->date('sub_total');
-            // $table->date('status_id');
-            $table->foreignId('transaksi_id');
-
+            $table->integer('jumlah');
+            $table->integer('sub_total');
             $table->enum('status', ['1','2','3','4'])->comment('Belum DiVerifikasi, 2 = Diverifikasi, 3 = Dalam Pengiriman, 4 = Diteriman');
 
             $table->timestamps();
