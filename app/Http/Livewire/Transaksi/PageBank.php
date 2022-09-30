@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Transaksi;
 use App\Models\Bank;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PageBank extends Component
 {
@@ -13,7 +14,7 @@ class PageBank extends Component
     public $name_card, $number_rek, $metode;
     public function render()
     {
-        abort_if(Auth::user()->role_id == 111, 403);
+        // abort_if(Auth::user()->role_id == 111, 403);
         $this->payment = Bank::where('user_id', Auth::user()->id)->get();
         return view('livewire.transaksi.page-bank');
     }
@@ -32,7 +33,7 @@ class PageBank extends Component
         $Bank = Bank::where('user_id', Auth::user()->id)
             ->where('id', $id)
             ->delete();
-        session()->flash('message', 'Berhasil Di Hapus');
+        Alert::success('message', 'Berhasil Di Hapus');
         $this->itemDelete = false;
     }
     public function EditModal($id)
@@ -54,22 +55,24 @@ class PageBank extends Component
                 'metode' => $this->metode,
             ]);
         if ($Bank) {
-            session()->flash('message', 'Berhasil Di  Edit');
+            Alert::success('message', 'Berhasil Di  Edit');
         } else {
-            session()->flash('message', 'Gagal Di  Edit');
+            Alert::success('message', 'Gagal Di  Edit');
         }
         $this->itemEdit = false;
     }
-    public function CreateModal(){
+    public function addModal(){
+
         $this->name_card ="";
         $this->number_rek = "";
         $this->metode ="";
         $this->itemCreate = true;
     }
     public function create(){
+        // dd('1');
       $validate =  $this->validate([
-            'name_card'=> 'required',
-            'number_rek' => 'required',
+            'name_card'=> 'required|string',
+            'number_rek' => 'required|numeric',
             'metode'=>'required',
         ]);
         $arr=[
@@ -79,7 +82,7 @@ class PageBank extends Component
             'metode'=>$this->metode,
         ];
         Bank::create($arr);
-        session()->flash('message', 'Berhasil Di Tambah');
+        Alert::success('message', 'Berhasil Di Tambah');
         $this->itemCreate = false;
     }
     public function closeModal(){

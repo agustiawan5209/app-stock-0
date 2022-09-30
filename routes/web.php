@@ -12,6 +12,7 @@ use App\Http\Livewire\Admin\PageStockBahanBaku;
 use App\Http\Livewire\Admin\PageTransaksiPesanan;
 use App\Http\Livewire\Customer\DashboardCustomer;
 use App\Http\Livewire\Supplier\DashboardSupplier;
+use App\Http\Livewire\Transaksi\PageBank;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -60,5 +61,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::group(['middleware' => 'role:Customer', 'prefix' => 'Customer', 'as' => 'Customer.'], function () {
         Route::get('Dashboard', DashboardCustomer::class)->name('Dashboard-Admin');
     });
+    Route::get('Tabel-Bank', PageBank::class)->name('Page-Bank');
 });
 
