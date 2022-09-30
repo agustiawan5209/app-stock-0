@@ -72,7 +72,7 @@
                 <x-jet-danger-button wire:click="CloseModal" wire:loading.attr="disabled">
                     {{ __('Cancel') }}
                 </x-jet-danger-button>
-                <x-jet-button type="button" wire:click.prevent='submit'>
+                <x-jet-button type="button" wire:click.prevent='create'>
                     {{ __('Tambah Data') }}
                 </x-jet-button>
             </x-slot>

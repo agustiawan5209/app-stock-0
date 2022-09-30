@@ -56,8 +56,16 @@ class PageBarangKeluar extends Component
     }
 
     public function create(){
+        $this->validate([
+            'kode'=> 'required',
+            'jumlah'=> 'required',
+            'alamat'=>'required',
+            'customer'=> 'required',
+            'tgl_keluar'=> 'required',
+            'sub_total'=> 'required',
+        ]);
         $barangkeluar = new BarangKeluar();
-        $barangkeluar->kode = $this->kode;
+        $barangkeluar->kode_barang_keluar = $this->kode;
         $barangkeluar->jumlah = $this->jumlah;
         $barangkeluar->alamat = $this->alamat;
         $barangkeluar->tgl_keluar = $this->tgl_keluar;
