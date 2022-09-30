@@ -173,7 +173,7 @@
 
                         </span>
                     </a>
-                    <span>Invoices</span>
+                    <span>{{Auth::user()->name}}</span>
                 </div>
 
                 <div class="flex space-x-5 md:space-x-10 text-gray-500 items-center content-center text-base ">
