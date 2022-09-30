@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('produks', function (Blueprint $table) {
             $table->id();
+            $table->string('kode_stock_produk' ,20)->unique();
+            $table->date('tgl_stock_produk');
+            $table->integer('jumlah_stock_produk');
             $table->timestamps();
         });
     }

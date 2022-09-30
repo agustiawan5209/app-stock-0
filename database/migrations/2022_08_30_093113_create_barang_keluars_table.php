@@ -22,6 +22,10 @@ return new class extends Migration
             $table->date('tgl_keluar');
             $table->date('sub_total');
             // $table->date('status_id');
+            $table->foreignId('transaksi_id');
+
+            $table->enum('status', ['1','2','3','4'])->comment('Belum DiVerifikasi, 2 = Diverifikasi, 3 = Dalam Pengiriman, 4 = Diteriman');
+
             $table->timestamps();
         });
     }

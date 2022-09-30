@@ -22,7 +22,6 @@ return new class extends Migration
             $table->foreignId('transaksi_id');
             $table->bigInteger('sub_total');
             // $table->foreignId('status_id')->constrained('status');
-
             $table->timestamps();
         });
     }
