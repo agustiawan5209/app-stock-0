@@ -17,10 +17,10 @@
                 <tbody>
                     @foreach ($supplier as $item)
                         <tr>
-                            <td class=" border border-gray-100 ">{{ $loop->iteration }}</td>
-                            <td class=" border border-gray-100 ">{{ $item->supplier }}</td>
-                            <td class=" border border-gray-100 ">{{ $item->user->no_telpon }}</td>
-                            <td class=" border border-gray-100 " class="text-xs whitespace-pre-wrap w-48">{{ $item->user->alamat }}</td>
+                            <td class=" border border-gray-100 text-center ">{{ $loop->iteration }}</td>
+                            <td class=" border border-gray-100 text-center ">{{ $item->supplier }}</td>
+                            <td class=" border border-gray-100 text-center ">{{ $item->user->no_telpon }}</td>
+                            <td class=" border border-gray-100 text-center " class="text-xs whitespace-pre-wrap w-48">{{ $item->user->alamat }}</td>
                             {{-- <td>
                                 <ul class="flex justify-around">
                                    @include('components.action.delete', ['value' => $item->id])
