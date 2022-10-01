@@ -18,7 +18,7 @@ class PageTransaksiPesanan extends Component
      *  Pindah Ke Halaman Buat Pesanan
      * @return void
      */
-    public function buatPesanan(){
+    public function addModal(){
         return redirect()->route('Admin.Buat-Pesanan');
     }
 }
