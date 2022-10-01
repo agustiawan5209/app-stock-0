@@ -13,6 +13,10 @@ class BahanBaku extends Model
         'nama_bahan_baku',
     ];
     protected $hidden = [
-        'nama_bahan_baku',
+       'id',
     ];
+
+    public function bahanbakusupplier(){
+        return $this->hasMany(BahanBakuSupplier::class);
+    }
 }
