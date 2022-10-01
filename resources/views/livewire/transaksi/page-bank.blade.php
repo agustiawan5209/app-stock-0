@@ -253,7 +253,7 @@
                         @foreach ($payment as $payments)
                             <x-tr class="text-gray-700   ">
                                 <x-td class="px-4 py-3">
-                                    1
+                                    {{$loop->iteration}}
                                 </x-td>
                                 <x-td class="px-4 py-3 text-sm">
                                     {{ $payments->name_card }}
