@@ -68,7 +68,7 @@ class PageBahanBaku extends Component
         try {
             $bb = BahanBakuSupplier::create([
                 'gambar' => $name,
-                'bahan_baku_id' => $this->bahan_id,
+                'bahan_baku' => $this->bahan_id,
                 'isi' => $this->isi,
                 'satuan' => $this->satuan_id,
                 'harga' => $this->harga,
@@ -83,7 +83,7 @@ class PageBahanBaku extends Component
             }
         } catch (\Exception $th) {
             //throw $th;
-            Alert::success('message', '' . $th->getMessage() . '');
+            Alert::warning('message', '' . $th->getMessage() . '');
         }
         $this->CloseModal();
     }
@@ -108,7 +108,7 @@ class PageBahanBaku extends Component
         $bahan = BahanBakuSupplier::find($id);
         $this->ItemId = $bahan->id;
         $this->gambar = $bahan->gambar;
-        $this->bahan_id = $bahan->bahanbakus->nama_bahan_baku;
+        $this->bahan_id = $bahan->bahan_baku;
         $this->isi = $bahan->isi;
         $this->bahan_id = $bahan->bahan_baku_id;
         $this->satuan_id = $bahan->satuan;
@@ -140,7 +140,7 @@ class PageBahanBaku extends Component
         // dd($validate);
         BahanBakuSupplier::where('id', $id)->update([
             'gambar' => $name,
-            'bahan_baku_id' => $this->bahan_id,
+            'bahan_baku' => $this->bahan_id,
             'isi' => $this->isi,
             'satuan' => $this->satuan_id,
             'harga' => $this->harga,
