@@ -15,12 +15,17 @@ class PageBahanBaku extends Component
 {
     use WithFileUploads;
     public $modal = false,
-        $def,
+        $itemDelete = false,
         $defa,
         $Alert = true;
     public $gambar, $bahan, $Kode, $harga, $isi, $pcs, $getBahanAll, $satuan_id, $jumlah_stock;
     public $row = 10,
         $search = '';
+        public $optionPacking,
+        $optionAir,
+        $ItemId = false,
+        $PackingItem = false;
+    public $photo, $bahan_id, $bahan_baku_id;
     public function addModal()
     {
         $this->modal = true;
@@ -29,7 +34,17 @@ class PageBahanBaku extends Component
     {
         $this->AirItem = false;
         $this->PackingItem = false;
-        $this->Alert = false;
+        $this->itemDelete = false;
+        $this->modal = false;
+        $this->gambar = null;
+        $this->ItemId = null;
+        $this->kode = null;
+        $this->harga = null;
+        $this->bahan_baku_id = null;
+        $this->bahan_id = null;
+        $this->jumlah_stock = null;
+        $this->satuan_id = null;
+        $this->isi = null;
     }
 
     // Crud
@@ -63,42 +78,45 @@ class PageBahanBaku extends Component
             // dd([$arr, $defBahan]);
 
             if ($bb) {
-                Alert::success('message','Berhasil Ditambahkan');
+                Alert::success('message', 'Berhasil Ditambahkan');
             }
         } catch (\Exception $th) {
             //throw $th;
             Alert::success('message', '' . $th->getMessage() . '');
         }
-        $this->modal = false;
+        $this->CloseModal();
+
     }
 
+    public function deleteModal($id)
+    {
+        $this->itemDelete = false;
+        $this->ItemId = $id;
+
+    }
     public function delete($id)
     {
         BahanBakuSupplier::find($id)->delete();
-        Alert::success('message', $this->gambar ? 'Berhasil Di Hapus' : 'Berhasil Di Hapus');
+        Alert::success('message', 'Berhasil Di Hapus');
+        $this->CloseModal();
+
     }
-    public $optionPacking,
-        $optionAir,
-        $AirItem = false,
-        $PackingItem = false;
-    public $photo, $bahan_id, $bahan_baku_id;
-    public function Edit($id, $table)
+
+    public function editModal($id)
     {
         $bahan = BahanBakuSupplier::find($id);
         $this->ItemId = $bahan->id;
         $this->gambar = $bahan->gambar;
-        $this->bahan_id = $bahan->bahanbaku->nama_bahan_baku;
+        $this->bahan_id = $bahan->bahanbakus->nama_bahan_baku;
         $this->isi = $bahan->isi;
         $this->bahan_id = $bahan->bahan_baku_id;
         $this->satuan_id = $bahan->satuan;
         $this->harga = $bahan->harga;
         $this->jumlah_stock = $bahan->jumlah_stock;
-        $this->PackingItem = true;
-
         // dd($this->bahan);
-        $this->AirItem = true;
+        $this->modal = true;
     }
-    public function Update($id)
+    public function edit($id)
     {
         if ($this->photo == '') {
             $name = $this->gambar;
@@ -108,10 +126,10 @@ class PageBahanBaku extends Component
             $photo = $gambar->storeAs('upload', $name);
         }
 
-        // dd($this->optionPacking);
         $validate = $this->validate([
-            'bahan' => 'required',
-            'satuan' => 'required',
+            'satuan_id' => 'required',
+            'isi' => 'required',
+            'bahan_id' => 'required',
             'harga' => 'required',
             'jumlah_stock' => 'required',
         ]);
@@ -120,21 +138,20 @@ class PageBahanBaku extends Component
         // dd($validate);
         BahanBakuSupplier::where('id', $id)->update([
             'gambar' => $name,
-            'bahan_baku_id' => $this->bahan_baku_id,
+            'bahan_baku_id' => $this->bahan_id,
             'isi' => $this->isi,
-            'satuan' => $this->satuan,
+            'satuan' => $this->satuan_id,
             'harga' => $this->harga,
             'jumlah_stock' => $this->jumlah_stock,
         ]);
         Alert::success('message', 'Berhasil Di Edit');
-        $this->AirItem = false;
-        $this->PackingItem = false;
+        $this->CloseModal();
     }
 
     public function render()
     {
-        $bahan = "";
-        $bahanbaku =    BahanBakuSupplier::all();
+        $bahan = '';
+        $bahanbaku = BahanBakuSupplier::all();
         $bahan_baku = BahanBaku::all();
         $satuan = Satuan::all();
         return view('livewire.supplier.page-bahan-baku', compact('bahanbaku', 'bahan_baku', 'satuan'));
