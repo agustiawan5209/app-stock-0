@@ -1,4 +1,5 @@
 <div>
+    @include('sweetalert::alert')
     <div class="py-2 px-4 ">
         {{-- @if ($StockKurang != null)
                     @foreach ($StockKurang as $item)
@@ -40,7 +41,13 @@
                     <x-slot name='content'>
                         <div class="mb-4">
                             <x-jet-label for="gambar">Gambar</x-jet-label>
-                            <x-jet-input type='file' wire:model.defer='gambar' />
+                           @if ($ItemId == null)
+                             <x-jet-input type='file' wire:model.defer='gambar' />
+
+                           @else
+                           <x-jet-input type='file' wire:model.defer='photo' />
+                            <span class="text-gray-500 text-sm">kosongkan jika tidak di ubah</span>
+                             @endif
                         </div>
                         <div class="mb-4">
                             <x-jet-label for="bahan_id">Bahan Baku</x-jet-label>
@@ -70,12 +77,18 @@
                     </x-slot>
 
                     <x-slot name="footer">
-                        <x-jet-danger-button wire:click="$toggle('modal')" wire:loading.attr="disabled">
+                        <x-jet-danger-button wire:click="CloseModal" wire:loading.attr="disabled">
                             {{ __('Cancel') }}
                             </x-jet-button>
-                            <x-jet-button wire:click.prevent="create()" name="simpan" type="button">
-                                {{ __('Tambah Data') }}
+                            @if ($ItemId == null)
+                                <x-jet-button wire:click.prevent="create()" name="simpan" type="button">
+                                    {{ __('Tambah Data') }}
+                                </x-jet-button>
+                            @else
+                            <x-jet-button wire:click.prevent="edit({{$ItemId}})" name="simpan" type="button">
+                                {{ __('Edit Data') }}
                             </x-jet-button>
+                            @endif
                     </x-slot>
                 </form>
             </x-jet-dialog-modal>
@@ -134,8 +147,7 @@
                                             <x-td class="border border-gray-100 text-xs bg-white text-center">
                                                 {{ $item->jumlah_stock }}</x-td>
                                             <x-td class="border border-gray-100 text-xs bg-white text-center">
-
-
+                                                @include('items.td-action' ,['id'=> $item->id])
                                             </x-td>
                                         </x-tr>
                                     @endforeach
