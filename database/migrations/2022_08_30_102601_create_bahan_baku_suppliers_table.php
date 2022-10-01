@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('bahan_baku_suppliers', function (Blueprint $table) {
             $table->id();
             $table->string('gambar', 255)->nullable();
-            $table->foreignId('bawaan_id');
+            $table->foreignId('bahan_baku_id')->constrained('bahan_bakus');
             $table->string('isi')->nullable();
             $table->string('satuan');
             $table->integer('harga');
