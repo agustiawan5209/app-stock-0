@@ -103,8 +103,7 @@
             </x-jet-confirmation-modal>
         </div>
 
-        <div class=" container lg:px-4 md:px-2 sm:px1">
-            @if ($bahanbaku != null)
+        <div class=" container">
             <x-table
             class="stripe hover w-full whitespace-no-wrap mt-10 shadow-sm px-2 border-separate border-white"
             style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
@@ -156,40 +155,6 @@
             </tbody>
 
         </x-table>
-            @endif
-            <hr class="w-full h-16 bg-white stroke-1 stroke-current ">
-            {{-- @if ($bahanAir != null)
-            <div class="w-full h-auto px-2 py-2 bg-green-200 rounded-sm overflow-x-auto">
-                <h3 class="bg-white px-2 p-2 lg:px-4 lg:py-4 font-normal text-gray-600">Tabel Bahan Baku Produksi Air
-                </h3>
-                <table class="stripe hover w-full whitespace-no-wrap mt-10 shadow-sm px-2 border-collapse border-white"
-                    style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
-                    <thead
-                        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b   bg-gray-50">
-                        <tr>
-                            <th class="px-4 py-3">No</th>
-                            <th class="px-4 py-3">gambar</th>
-                            <th class="px-4 py-3">Bahan Baku</th>
-                            <th class="px-4 py-3">Satuan</th>
-                            <th class="px-4 py-3">Harga</th>
-                            <th class="px-4 py-3">Jumlah Stock</th>
-                            <th class="px-4 py-3">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @php
-                            $no = 1;
-                        @endphp
-
-                    </tbody>
-
-                </table>
-
-            </div>
-        @endif --}}
         </div>
     </div>
-</div>
-<!-- component -->
-
 </div>
