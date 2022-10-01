@@ -37,7 +37,12 @@
                 <x-jet-section-border />
 
                 <div class="mt-10 sm:mt-0">
-                    @livewire('profile.delete-user-form')
+                    @can('Manage-User')
+                        @livewire('profile.delete-user-form')
+                    @endcan
+                    @can('Manage-Supplier')
+                        @livewire('profile.delete-user-form')
+                    @endcan
                 </div>
             @endif
         </div>
