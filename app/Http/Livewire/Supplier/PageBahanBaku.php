@@ -9,6 +9,7 @@ use App\Models\BahanBakuSupplier;
 use App\Models\Satuan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PageBahanBaku extends Component
@@ -21,7 +22,7 @@ class PageBahanBaku extends Component
     public $gambar, $bahan, $Kode, $harga, $isi, $pcs, $getBahanAll, $satuan_id, $jumlah_stock;
     public $row = 10,
         $search = '';
-        public $optionPacking,
+    public $optionPacking,
         $optionAir,
         $ItemId = false,
         $PackingItem = false;
@@ -85,21 +86,21 @@ class PageBahanBaku extends Component
             Alert::success('message', '' . $th->getMessage() . '');
         }
         $this->CloseModal();
-
     }
 
     public function deleteModal($id)
     {
-        $this->itemDelete = false;
+        $this->itemDelete = true;
         $this->ItemId = $id;
-
+        $bahan = BahanBakuSupplier::find($id);
+        $this->gambar = $bahan->gambar;
     }
     public function delete($id)
     {
         BahanBakuSupplier::find($id)->delete();
+        Storage::disk('upload')->delete($this->gambar);
         Alert::success('message', 'Berhasil Di Hapus');
         $this->CloseModal();
-
     }
 
     public function editModal($id)
@@ -121,6 +122,8 @@ class PageBahanBaku extends Component
         if ($this->photo == '') {
             $name = $this->gambar;
         } else {
+            Storage::disk('upload')->delete($this->gambar);
+
             $gambar = $this->photo;
             $name = md5($gambar . microtime()) . '.' . $gambar->extension();
             $photo = $gambar->storeAs('upload', $name);
@@ -134,7 +137,6 @@ class PageBahanBaku extends Component
             'jumlah_stock' => 'required',
         ]);
         // dd($validate);
-        File::delete('upload' . $this->gambar);
         // dd($validate);
         BahanBakuSupplier::where('id', $id)->update([
             'gambar' => $name,

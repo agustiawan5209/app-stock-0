@@ -41,21 +41,20 @@
                     <x-slot name='content'>
                         <div class="mb-4">
                             <x-jet-label for="gambar">Gambar</x-jet-label>
-                           @if ($ItemId == null)
-                             <x-jet-input type='file' wire:model.defer='gambar' />
-
-                           @else
-                           <x-jet-input type='file' wire:model.defer='photo' />
-                            <span class="text-gray-500 text-sm">kosongkan jika tidak di ubah</span>
-                             @endif
+                            @if ($ItemId == null)
+                                <x-jet-input type='file' wire:model.defer='gambar' />
+                            @else
+                                <x-jet-input type='file' wire:model.defer='photo' />
+                                <span class="text-gray-500 text-sm">kosongkan jika tidak di ubah</span>
+                            @endif
                         </div>
                         <div class="mb-4">
                             <x-jet-label for="bahan_id">Bahan Baku</x-jet-label>
-                            <x-select wire:model.defer='bahan_id' >
+                            <x-select wire:model.defer='bahan_id'>
                                 <option value="">--Pilih Bahan Baku--</option>
-                               @foreach ($bahan_baku as $item)
-                                 <option value="{{$item->id}}">{{$item->nama_bahan_baku}}</option>
-                               @endforeach
+                                @foreach ($bahan_baku as $item)
+                                    <option value="{{ $item->id }}">{{ $item->nama_bahan_baku }}</option>
+                                @endforeach
                             </x-select>
                         </div>
                         <div class="mb-4">
@@ -79,27 +78,38 @@
                     <x-slot name="footer">
                         <x-jet-danger-button wire:click="CloseModal" wire:loading.attr="disabled">
                             {{ __('Cancel') }}
+                        </x-jet-danger-button>
+                        @if ($ItemId == null)
+                            <x-jet-button wire:click.prevent="create()" name="simpan" type="button">
+                                {{ __('Tambah Data') }}
                             </x-jet-button>
-                            @if ($ItemId == null)
-                                <x-jet-button wire:click.prevent="create()" name="simpan" type="button">
-                                    {{ __('Tambah Data') }}
-                                </x-jet-button>
-                            @else
-                            <x-jet-button wire:click.prevent="edit({{$ItemId}})" name="simpan" type="button">
+                        @else
+                            <x-jet-button wire:click.prevent="edit({{ $ItemId }})" name="simpan" type="button">
                                 {{ __('Edit Data') }}
                             </x-jet-button>
-                            @endif
+                        @endif
                     </x-slot>
                 </form>
             </x-jet-dialog-modal>
+            <x-jet-confirmation-modal wire:model='itemDelete'>
+                <x-slot name="title"></x-slot>
+                <x-slot name="content">
+                    Apakah Anda Yakin?
+                </x-slot>
+                <x-slot name="footer">
+                    <x-jet-danger-button wire:click="CloseModal" wire:loading.attr="disabled">
+                        {{ __('Cancel') }}
+                        </x-jet-button>
+                        <x-jet-button wire:click.prevent="delete({{$ItemId}})" name="simpan" type="button">
+                            {{ __('Hapus Data') }}
+                        </x-jet-button>
+                </x-slot>
+            </x-jet-confirmation-modal>
         </div>
-        {{-- @if ($AirItem)
-            @include('components.action.supplier.edit')
-        @endif --}}
 
         <div class=" container lg:px-4 md:px-2 sm:px1">
             @if ($bahanbaku != null)
-                <div class="w-full h-auto px-2 py-2 bg-blue-200 rounded-sm overflow-x-auto">
+                <div class="w-full h-auto px-2 py-2 bg-transparent rounded-sm overflow-x-auto">
                     <div class="w-full overflow-hidden">
                         <div class="w-full overflow-x-auto">
                             <x-table
@@ -130,8 +140,7 @@
                                                 {{ $no++ }}
                                             </x-td>
                                             <x-td class="border border-gray-100 text-xs bg-white text-center">
-                                                <img
-                                                    width="100" src="{{ asset('upload/' . $item->gambar) }}"
+                                                <img width="100" src="{{ asset('upload/' . $item->gambar) }}"
                                                     alt="Image Bahan Baku">
                                             </x-td>
                                             <x-td class="border border-gray-100 text-xs bg-white text-center">
@@ -147,7 +156,7 @@
                                             <x-td class="border border-gray-100 text-xs bg-white text-center">
                                                 {{ $item->jumlah_stock }}</x-td>
                                             <x-td class="border border-gray-100 text-xs bg-white text-center">
-                                                @include('items.td-action' ,['id'=> $item->id])
+                                                @include('items.td-action', ['id' => $item->id])
                                             </x-td>
                                         </x-tr>
                                     @endforeach
