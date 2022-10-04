@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\BahanBakuSupplier;
 use Illuminate\View\Component;
 
 class BahanBakuDetail extends Component
@@ -11,9 +12,10 @@ class BahanBakuDetail extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $id;
+    public function __construct($id)
     {
-        //
+        $this->id = $id;
     }
 
     /**
@@ -23,6 +25,7 @@ class BahanBakuDetail extends Component
      */
     public function render()
     {
-        return view('components.bahan-baku-detail');
+        $bahan = BahanBakuSupplier::find($this->id);
+        return view('components.bahan-baku-detail', compact('bahan'));
     }
 }

@@ -6,18 +6,20 @@
             <thead>
                 <x-tr>
                     <x-th>NO</x-th>
-                    <x-th>Nama Jenis</x-th>
-                    <x-th>Harga</x-th>
+                    <x-th>Kode</x-th>
+                    <x-th>jumlah</x-th>
+                    <x-th>Tanggal fermentasi</x-th>
                     <x-th></x-th>
                 </x-tr>
             </thead>
             <tbody>
-                @if ($jenis->count() > 0)
-                    @foreach ($jenis as $item)
+                @if ($produk->count() > 0)
+                    @foreach ($produk as $item)
                         <x-tr>
                             <x-td>{{ $loop->iteration }}</x-td>
-                            <x-td>{{ $item->nama_jenis }}</x-td>
-                            <x-td>Rp. {{ number_format($item->harga,0,2) }}</x-td>
+                            <x-td>{{ $item->kode }}</x-td>
+                            <x-td>{{ $item->jumlah_stock }}</x-td>
+                            <x-td>{{ $item->tgl_frementasi }}</x-td>
                             <x-td class="flex justify-center items-center px-2 py-0">
                                 <x-button type='button' wire:click='deleteModal({{ $item->id }})'
                                     class="bg-red-500 text-white">Delete</x-button>
@@ -44,7 +46,7 @@
             <x-slot name="content">
             </x-slot>
             <x-slot name="footer">
-                <x-jet-button type="button" wire:click="$toggle('itemDelete')">Tutup</x-jet-button>
+                <x-jet-button type="button" wire:click="closeModal">Tutup</x-jet-button>
                 <x-jet-danger-button type="button" wire:click="delete({{ $itemID }})">Hapus</x-jet-danger-button>
             </x-slot>
         </x-jet-confirmation-modal>
@@ -60,23 +62,30 @@
                             <div class="flex flex-wrap -mx-3 mb-6">
                                 <div class="w-full md:w-full px-3 mb-6">
                                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                        for='Password'>Nama Jenis</label>
+                                        for='Password'>Kode</label>
                                     <input
                                         class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
-                                        type='text' wire:model='nama_jenis' required>
+                                        type='text' wire:model='kode' required>
                                 </div>
                                 <div class="w-full md:w-full px-3 mb-6">
                                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                        for='Password'>Harga</label>
+                                        for='jumlah'>Jumlah Stock</label>
                                     <input
                                         class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
-                                        type='text' wire:model='harga' required>
+                                        type='text' wire:model='jumlah_stock' required>
+                                </div>
+                                <div class="w-full md:w-full px-3 mb-6">
+                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                        for='Password'>Tanggal fermentasi</label>
+                                    <input
+                                        class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
+                                        type='date' wire:model='tgl_frementasi' required>
                                 </div>
                                 <div class="flex items-center w-full mt-2">
                                     <div class="w-full md:w-1/3 px-3 pt-4 mx-2 border-t border-gray-400">
                                         <button
                                             class='appearance-none flex items-center justify-center w-full bg-red-500 text-white shadow border border-gray-500 rounded-lg py-3 px-3 leading-tight hover:bg-red-600 hover:text-white focus:outline-none'
-                                            type="button" wire:click="$toggle('itemEdit')">
+                                            type="button" wire:click="closeModal">
                                             Tutup
                                         </button>
                                     </div>
@@ -108,30 +117,38 @@
                         <div class="flex flex-wrap -mx-3 mb-6">
                             <div class="w-full md:w-full px-3 mb-6">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                    for='Password'>Nama Jenis</label>
+                                    for='Password'>Kode</label>
                                 <input
                                     class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
-                                    type='text' wire:model='nama_jenis' required>
+                                    type='text' wire:model='kode' required>
                             </div>
                             <div class="w-full md:w-full px-3 mb-6">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                    for='Password'>Harga</label>
+                                    for='jumlah'>Jumlah Stock</label>
                                 <input
                                     class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
-                                    type='text' wire:model='harga' required>
+                                    type='text' wire:model='jumlah_stock' required>
                             </div>
+                            <div class="w-full md:w-full px-3 mb-6">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                    for='Password'>Tanggal fermentasi</label>
+                                <input
+                                    class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
+                                    type='date' wire:model='tgl_frementasi' required>
+                            </div>
+
                             <div class="flex items-center w-full mt-2">
                                 <div class="w-full md:w-1/3 px-3 pt-4 mx-2 border-t border-gray-400">
                                     <button
                                         class='appearance-none flex items-center justify-center w-full bg-red-500 text-white shadow border border-gray-500 rounded-lg py-3 px-3 leading-tight hover:bg-red-600 hover:text-white focus:outline-none'
-                                        type="button" wire:click="$toggle('itemAdd')">
+                                        type="button" wire:click="closeModal">
                                         Tutup
                                     </button>
                                 </div>
                                 <div class="w-full md:w-1/3 px-3 pt-4 mx-2 border-t border-gray-400">
                                     <button
-                                        class="appearance-none flex items-center justify-center w-full bg-blue-500 text-white shadow border border-blue-500 rounded-lg py-3 px-3 leading-tight hover:bg-blue-600 hover:text-white focus:outline-none"
-                                        type="button" wire:click="create()">
+                                        class="appearance-none flex items-center justify-center w-full bg-blue-100 text-blue-700 shadow border border-blue-500 rounded-lg py-3 px-3 leading-tight hover:bg-blue-200 hover:text-blue-700 focus:outline-none"
+                                        type="button" wire:click="create">
                                         Tambah
                                     </button>
                                 </div>

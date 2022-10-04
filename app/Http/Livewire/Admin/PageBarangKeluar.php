@@ -103,7 +103,6 @@ class PageBarangKeluar extends Component
     public function delete($id){
         BarangKeluar::find($id)->delete();
         $this->CloseModal();
-
         Alert::success('info' , 'Berhasil Di Hapus');
     }
     public function CloseModal(){

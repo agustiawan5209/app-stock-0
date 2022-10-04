@@ -1,4 +1,4 @@
-@can ('Manage-Admin', User::class)
+@can('Manage-Admin', User::class)
     <a class="  {{ request()->routeIs('Admin.Dashboard-Admin') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-indigo-700 ' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-indigo-700 hover:font-semibold ' }} "
         href="{{ route('Admin.Dashboard-Admin') }}">
         <svg class="h-5 w-5 {{ request()->routeIs('Admin.Dashboard-Admin') ? 'stroke-indigo-700' : 'group-hover:stroke-indigo-700' }}"
@@ -21,32 +21,54 @@
         </svg>
         <span>Stock Bahan Baku</span>
     </a>
+    <a class=" {{ request()->routeIs('Admin.Produk') || request()->routeIs('Admin.Jenis') || request()->routeIs('Admin.Produk-Fermentasi') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-indigo-700' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-indigo-700 hover:font-semibold ' }} relative  box-content"
+        href="#" x-on:click="Produk = ! Produk " x-on:click.outside="Produk = false">
+        <svg class="h-5 w-5 {{ request()->routeIs('Admin.Produk') || request()->routeIs('Admin.Jenis') || request()->routeIs('Admin.Produk-Fermentasi') ? 'stroke-indigo-700' : 'group-hover:stroke-indigo-700' }}"
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16">
+            </path>
+            <span>Master Produk</span>
+        </svg>
+
+    </a>
+    <div class="-translate-x-5 m-0 !space-y-0" x-show="Produk" x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-50 -translate-x-32" x-transition:enter-end="opacity-100 -translate-x-5"
+        x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 translate-x-0"
+        x-transition:leave-end="opacity-50 -translate-x-32">
+        <div class="bg-white rounded-lg border border-gray-200 w-48 text-gray-900 text-sm font-medium mt-0 space-y-0">
+            <a href="{{ route('Admin.Produk') }}"
+                class=" active:border-none focus:border-0 active:ring-0  {{ request()->routeIs('Admin.Produk') ? 'block px-4 py-2 border-b border-gray-200 w-full rounded-t-lg bg-blue-700 text-white cursor-pointer' : 'block px-4 py-2 border-b border-gray-200 w-full hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 cursor-pointer' }}">
+                Produk Siap Jual
+            </a>
+
+            <a href="{{ route('Admin.Produk-Fermentasi') }}"
+                class=" active:border-none focus:border-0 active:ring-0  {{ request()->routeIs('Admin.Produk-Fermentasi') ? 'block px-4 py-2 border-b border-gray-200 w-full rounded-t-lg bg-blue-700 text-white cursor-pointer' : 'block px-4 py-2 border-b border-gray-200 w-full hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 cursor-pointer' }}">
+                Produk Tahap Fermentasi
+            </a>
+            <a href="{{ route('Admin.Jenis') }}"
+                class=" active:border-none focus:border-0 active:ring-0  {{ request()->routeIs('Admin.Jenis') ? 'block px-4 py-2 border-b border-gray-200 w-full rounded-t-lg bg-blue-700 text-white cursor-pointer' : 'block px-4 py-2 border-b border-gray-200 w-full hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 cursor-pointer' }}">
+                Jenis Produk
+            </a>
+        </div>
+    </div>
     <a class=" {{ request()->routeIs('Admin.Satuan') || request()->routeIs('Admin.Jenis') || request()->routeIs('Admin.List-BahanBaku') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-indigo-700' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-indigo-700 hover:font-semibold ' }} relative  box-content"
         href="#" x-on:click="Master = ! Master " x-on:click.outside="Master = false">
         <svg class="h-5 w-5 {{ request()->routeIs('Admin.Satuan') || request()->routeIs('Admin.Jenis') || request()->routeIs('Admin.List-BahanBaku') ? 'stroke-indigo-700' : 'group-hover:stroke-indigo-700' }}"
             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16">
+            </path>
             <span>Master Data</span>
         </svg>
 
     </a>
-    <div class="-translate-x-5 m-0 !space-y-0" x-show="Master"
-        x-transition:enter="transition ease-out duration-300"
-        x-transition:enter-start="opacity-50 -translate-x-32"
-        x-transition:enter-end="opacity-100 -translate-x-5"
-        x-transition:leave="transition ease-in duration-300"
-        x-transition:leave-start="opacity-100 translate-x-0"
+    <div class="-translate-x-5 m-0 !space-y-0" x-show="Master" x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-50 -translate-x-32" x-transition:enter-end="opacity-100 -translate-x-5"
+        x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 translate-x-0"
         x-transition:leave-end="opacity-50 -translate-x-32">
-        <div
-            class="bg-white rounded-lg border border-gray-200 w-48 text-gray-900 text-sm font-medium mt-0 space-y-0">
+        <div class="bg-white rounded-lg border border-gray-200 w-48 text-gray-900 text-sm font-medium mt-0 space-y-0">
             <a href="{{ route('Admin.Satuan') }}"
                 class=" active:border-none focus:border-0 active:ring-0  {{ request()->routeIs('Admin.Satuan') ? 'block px-4 py-2 border-b border-gray-200 w-full rounded-t-lg bg-blue-700 text-white cursor-pointer' : 'block px-4 py-2 border-b border-gray-200 w-full hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 cursor-pointer' }}">
                 Satuan
-            </a>
-            <a href="{{ route('Admin.Jenis') }}"
-                class=" active:border-none focus:border-0 active:ring-0  {{ request()->routeIs('Admin.Jenis') ? 'block px-4 py-2 border-b border-gray-200 w-full rounded-t-lg bg-blue-700 text-white cursor-pointer' : 'block px-4 py-2 border-b border-gray-200 w-full hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 cursor-pointer' }}">
-                Jenis
             </a>
             <a href="{{ route('Admin.List-BahanBaku') }}"
                 class=" active:border-none focus:border-0 active:ring-0  {{ request()->routeIs('Admin.List-BahanBaku') ? 'block px-4 py-2 border-b border-gray-200 w-full rounded-t-lg bg-blue-700 text-white cursor-pointer' : 'block px-4 py-2 border-b border-gray-200 w-full hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 cursor-pointer' }}">
@@ -71,12 +93,9 @@
             </path>
             <span>Transaksi</span>
         </svg>
-        <div class="-translate-x-5 m-0 !space-y-0" x-show="Transaksi"
-            x-transition:enter="transition ease-out duration-300"
-            x-transition:enter-start="opacity-50 -translate-x-32"
-            x-transition:enter-end="opacity-100 -translate-x-5"
-            x-transition:leave="transition ease-in duration-300"
-            x-transition:leave-start="opacity-100 translate-x-0"
+        <div class="-translate-x-5 m-0 !space-y-0" x-show="Transaksi" x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-50 -translate-x-32" x-transition:enter-end="opacity-100 -translate-x-5"
+            x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 translate-x-0"
             x-transition:leave-end="opacity-50 -translate-x-32">
             <div class="bg-white rounded-lg border border-gray-200 w-48 text-gray-900 text-sm font-medium">
                 <a href="{{ route('Admin.Barang-Keluar') }}"
@@ -105,39 +124,29 @@
         </svg>
         <span>Penjualan</span>
     </a>
-    <a class=" flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-indigo-700 hover:font-semibold "
-        href="#">
-        <svg class="h-5 w-5 group-hover:stroke-indigo-700" xmlns="http://www.w3.org/2000/svg" fill="none"
-            viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path>
-        </svg>
-        <span>Pembelian</span>
-    </a>
-
 @endcan
 
 @can('Manage-Supplier')
-<a class="  {{ request()->routeIs('Supplier.Dashboard-Supplier') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-indigo-700 ' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-indigo-700 hover:font-semibold ' }} "
-    href="{{ route('Supplier.Dashboard-Supplier') }}">
-    <svg class="h-5 w-5 {{ request()->routeIs('Supplier.Dashboard-Supplier') ? 'stroke-indigo-700' : 'group-hover:stroke-indigo-700' }}"
-        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
-        </path>
+    <a class="  {{ request()->routeIs('Supplier.Dashboard-Supplier') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-indigo-700 ' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-indigo-700 hover:font-semibold ' }} "
+        href="{{ route('Supplier.Dashboard-Supplier') }}">
+        <svg class="h-5 w-5 {{ request()->routeIs('Supplier.Dashboard-Supplier') ? 'stroke-indigo-700' : 'group-hover:stroke-indigo-700' }}"
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+            </path>
 
-    </svg>
-    <span>Dashboard</span>
-</a>
-<a class="  {{ request()->routeIs('Supplier.Bahan-Baku') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-indigo-700 ' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-indigo-700 hover:font-semibold ' }} "
-    href="{{ route('Supplier.Bahan-Baku') }}">
-    <svg class="h-5 w-5 {{ request()->routeIs('Supplier.Bahan-Baku') ? 'stroke-indigo-700' : 'group-hover:stroke-indigo-700' }}"
-        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
-        </path>
+        </svg>
+        <span>Dashboard</span>
+    </a>
+    <a class="  {{ request()->routeIs('Supplier.Bahan-Baku') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-indigo-700 ' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-indigo-700 hover:font-semibold ' }} "
+        href="{{ route('Supplier.Bahan-Baku') }}">
+        <svg class="h-5 w-5 {{ request()->routeIs('Supplier.Bahan-Baku') ? 'stroke-indigo-700' : 'group-hover:stroke-indigo-700' }}"
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+            </path>
 
-    </svg>
-    <span>Bahan Baku</span>
-</a>
+        </svg>
+        <span>Bahan Baku</span>
+    </a>
 @endcan

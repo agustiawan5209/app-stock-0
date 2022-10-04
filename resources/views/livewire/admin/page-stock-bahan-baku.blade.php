@@ -14,15 +14,6 @@
                     </x-select>
                 </div>
                 <div class="mb-4 w-full">
-                    <x-jet-label for="bahan_baku">Jenis</x-jet-label>
-                    <x-select wire:model='jenis_id' class="w-full">
-                        <option value="">--pilih--</option>
-                        @foreach ($jenis as $item)
-                            <option value="{{$item->id}}">{{$item->nama_jenis}}</option>
-                        @endforeach
-                    </x-select>
-                </div>
-                <div class="mb-4 w-full">
                     <x-jet-label for="bahan_baku">Satuan</x-jet-label>
                     <x-select wire:model="satuan_id" class="w-full">
                         <option value="">--pilih--</option>
@@ -51,15 +42,6 @@
                     </x-select>
                 </div>
                 <div class="mb-4 w-full">
-                    <x-jet-label for="bahan_baku">Jenis</x-jet-label>
-                    <x-select wire:model='jenis_id' class="w-full">
-                        <option value="">--pilih--</option>
-                        @foreach ($jenis as $item)
-                            <option value="{{$item->id}}">{{$item->nama_jenis}}</option>
-                        @endforeach
-                    </x-select>
-                </div>
-                <div class="mb-4 w-full">
                     <x-jet-label for="bahan_baku">Satuan</x-jet-label>
                     <x-select wire:model="satuan_id" class="w-full">
                         <option value="">--pilih--</option>
@@ -84,7 +66,6 @@
             <x-tr>
                 <x-th>NO</x-th>
                 <x-th>Nama Bahan Baku</x-th>
-                <x-th>Jenis</x-th>
                 <x-th>Satuan</x-th>
                 <x-th>Jumlah Stock</x-th>
                 <x-th>Aksi</x-th>
@@ -96,7 +77,6 @@
                     <x-tr>
                         <x-td>{{ $loop->iteration }}</x-td>
                         <x-td>{{ $item->bahanbaku->nama_bahan_baku }}</x-td>
-                        <x-td>{{ $item->jenis->nama_jenis }}</x-td>
                         <x-td>{{ $item->satuan->nama_satuan }}</x-td>
                         <x-td>{{ $item->stock }}</x-td>
                         <x-td class="flex justify-center items-center px-2 py-0">

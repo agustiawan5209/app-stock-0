@@ -27,7 +27,7 @@
                 <div class=" font-bold text-2xl">{{ Auth::user()->name }}</div>
 
                 <!-- Menu -->
-                <div class="mt-12 flex flex-col space-y-7 text-gray-500 font-medium" x-data="{ Master: false, Transaksi: false }">
+                <div class="mt-12 flex flex-col space-y-7 text-gray-500 font-medium" x-data="{ Master: false, Transaksi: false , Produk: false}">
 
 
                     @include('navigation-menu')

@@ -14,11 +14,11 @@ class PageStockBahanBaku extends Component
     public $bahan_baku_id, $satuan_id, $jenis_id, $stock;
     public function render()
     {
-        $stockbahanbaku = StockBahanBaku::with(['bahanbaku', 'jenis', 'satuan'])->get();
+        $stockbahanbaku = StockBahanBaku::with(['bahanbaku',  'satuan'])->get();
         $jenis = Jenis::all();
         $satuan = Satuan::all();
         $bahanbaku = BahanBaku::all();
-        return view('livewire.admin.page-stock-bahan-baku', compact('stockbahanbaku', 'bahanbaku', 'jenis', 'satuan'));
+        return view('livewire.admin.page-stock-bahan-baku', compact('stockbahanbaku', 'bahanbaku', 'satuan'));
     }
     public $itemAdd = false,
         $itemEdit = false,
@@ -33,7 +33,6 @@ class PageStockBahanBaku extends Component
         $this->itemID = 0;
         $this->bahan_baku_id = null;
         $this->satuan_id = null;
-        $this->jenis_id = null;
         $this->stock = null;
     }
     public function addModal()
@@ -44,7 +43,6 @@ class PageStockBahanBaku extends Component
     {
         $stock = StockBahanBaku::find($id);
         $this->bahan_baku_id = $stock->bahan_baku_id;
-        $this->jenis_id = $stock->jenis_id;
         $this->satuan_id = $stock->satuan_id;
         $this->stock = $stock->stock;
         $this->itemID = $id;
@@ -61,7 +59,6 @@ class PageStockBahanBaku extends Component
     {
         $valid = $this->validate([
             'bahan_baku_id' => 'required',
-            'jenis_id' => 'required',
             'satuan_id' => 'required',
             'stock' => ['required', 'integer'],
         ]);
@@ -73,7 +70,6 @@ class PageStockBahanBaku extends Component
     {
         $valid = $this->validate([
             'bahan_baku_id' => 'required',
-            'jenis_id' => 'required',
             'satuan_id' => 'required',
             'stock' => ['required', 'integer'],
         ]);

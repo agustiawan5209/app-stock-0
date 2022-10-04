@@ -12,6 +12,8 @@ use App\Http\Livewire\Admin\PageBarangMasuk;
 use App\Http\Livewire\Admin\PageBuatPesanan;
 use App\Http\Livewire\Admin\PageBarangKeluar;
 use App\Http\Livewire\Admin\PagelistBahanBaku;
+use App\Http\Livewire\Admin\PageProduk;
+use App\Http\Livewire\Admin\PageProdukFermentasi;
 use App\Http\Livewire\Admin\PageStockBahanBaku;
 use App\Http\Livewire\Admin\PageTransaksiPesanan;
 use App\Http\Livewire\Customer\DashboardCustomer;
@@ -56,6 +58,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::get('BahanBaku', PagelistBahanBaku::class)->name('List-BahanBaku');
         Route::get('Supplier', PageSupplier::class)->name('Supplier');
         Route::get('Customer' ,PageCustomer::class)->name('Customer');
+
+        // Produk
+        Route::get('Produk', PageProduk::class)->name('Produk');
+        Route::get('Produk-Fermentasi', PageProdukFermentasi::class)->name('Produk-Fermentasi');
         // End Admin Route
 
     });

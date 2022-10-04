@@ -8,7 +8,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class PageJenis extends Component
 {
-    public $nama_jenis, $itemAdd = false, $itemEdit = false, $itemDelete = false, $itemID;
+    public $nama_jenis, $harga, $itemAdd = false, $itemEdit = false, $itemDelete = false, $itemID;
     public function render()
     {
         $jenis = Jenis::all();
@@ -24,6 +24,7 @@ class PageJenis extends Component
         $satuan = Jenis::find($id);
         // dd($satuan);
         $this->nama_jenis = $satuan->nama_jenis;
+        $this->harga = $satuan->harga;
         $this->itemID = $satuan->id;
         $this->itemEdit = true;
     }
@@ -37,6 +38,7 @@ class PageJenis extends Component
     public function create(){
         Jenis::create([
             'nama_jenis' => $this->nama_jenis,
+            'harga' => $this->harga,
         ]);
         $this->itemAdd = false;
         Alert::info('Info', 'Berhasil Di Simpan');
@@ -45,6 +47,7 @@ class PageJenis extends Component
     public function edit($id){
         Jenis::where('id', $id)->update([
             'nama_jenis' => $this->nama_jenis,
+            'harga' => $this->harga,
         ]);
         $this->itemEdit = false;
         Alert::info('Info', 'Berhasil Di Update');
