@@ -39,7 +39,7 @@ class PageBarangKeluar extends Component
             ->paginate($this->row);
         }
         $customer_id = Customer::all();
-        return view('livewire.admin.page-barang-keluar', compact('barangkeluar', 'customer_id'));
+        return view('livewire.admin.page-barang-keluar', compact('barangkeluar', 'customer_id'))->layoutData(['page'=> 'Halaman Barang Keluar']);
     }
     public function addModal(){
         $this->itemAdd = true;

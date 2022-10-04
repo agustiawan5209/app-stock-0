@@ -18,7 +18,7 @@ class PageStockBahanBaku extends Component
         $jenis = Jenis::all();
         $satuan = Satuan::all();
         $bahanbaku = BahanBaku::all();
-        return view('livewire.admin.page-stock-bahan-baku', compact('stockbahanbaku', 'bahanbaku', 'satuan'));
+        return view('livewire.admin.page-stock-bahan-baku', compact('stockbahanbaku', 'bahanbaku', 'satuan'))->layoutData(['page'=> 'Halaman Stock Bahan Baku']);
     }
     public $itemAdd = false,
         $itemEdit = false,

@@ -22,7 +22,7 @@ class PageProduk extends Component
     {
         $produk = Produk::all();
         $jenis = Jenis::all();
-        return view('livewire.admin.page-produk' ,compact('produk', 'jenis'));
+        return view('livewire.admin.page-produk' ,compact('produk', 'jenis'))->layoutData(['page'=> 'Halaman Produk Siap Jual']);
     }
     // Modal
     public function closeModal()

@@ -13,7 +13,7 @@ class PagelistBahanBaku extends Component
     public function render()
     {
         $bahan = BahanBaku::all();
-        return view('livewire.admin.pagelist-bahan-baku', compact('bahan'));
+        return view('livewire.admin.pagelist-bahan-baku', compact('bahan'))->layoutData(['page'=> 'Halaman Bahan Baku']);
     }
     // Modal
     public function addModal(){

@@ -17,7 +17,7 @@ class PageBarangMasuk extends Component
             ->where('kode', 'like', '%'. $this->search . '%')
             ->paginate($this->row);
         }
-        return view('livewire.admin.page-barang-masuk', compact('barangmasuk'));
+        return view('livewire.admin.page-barang-masuk', compact('barangmasuk'))->layoutData(['page'=> 'Halaman Barang Masuk']);
     }
     public $itemAdd = false , $itemEdit = false, $itemDelete = false , $itemID;
 

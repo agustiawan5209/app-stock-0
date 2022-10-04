@@ -75,7 +75,7 @@
 
                         </span>
                     </a>
-                    <span>{{ Auth::user()->name }}</span>
+                    <span>{{$page}}</span>
                 </div>
 
                 <div class="flex space-x-5 md:space-x-10 text-gray-500 items-center content-center text-base ">

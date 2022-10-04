@@ -13,7 +13,7 @@ class PageBuatPesanan extends Component
         $bahanbaku = BahanBakuSupplier::paginate(10);
         return view('livewire.admin.page-buat-pesanan', [
             'bahanbaku'=> $bahanbaku,
-        ]);
+        ])->layoutData(['page'=> 'Halaman Buat Pesanan']);
     }
     public $itemAdd = false , $itemEdit = false, $itemDelete = false , $itemID;
 

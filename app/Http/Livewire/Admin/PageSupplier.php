@@ -10,6 +10,6 @@ class PageSupplier extends Component
     public function render()
     {
         $supplier = Supplier::all();
-        return view('livewire.admin.page-supplier', ['supplier'=> $supplier]);
+        return view('livewire.admin.page-supplier', ['supplier'=> $supplier])->layoutData(['page'=> 'Halaman Supplier']);
     }
 }

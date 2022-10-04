@@ -13,7 +13,7 @@ class PageSatuan extends Component
     {
         $satuan = Satuan::all();
         // dd($satuan);
-        return view('livewire.admin.page-satuan', compact('satuan'));
+        return view('livewire.admin.page-satuan', compact('satuan'))->layoutData(['page'=> 'Halaman Satuan']);
     }
 
     // Modal

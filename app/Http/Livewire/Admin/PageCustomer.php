@@ -10,6 +10,6 @@ class PageCustomer extends Component
     public function render()
     {
         $customer = Customer::all();
-        return view('livewire.admin.page-customer', compact('customer'));
+        return view('livewire.admin.page-customer', compact('customer'))->layoutData(['page'=> 'Halaman Customer']);
     }
 }

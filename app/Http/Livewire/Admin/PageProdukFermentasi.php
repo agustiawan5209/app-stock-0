@@ -19,7 +19,7 @@ class PageProdukFermentasi extends Component
     public function render()
     {
         $produk = ProdukFermentasi::all();
-        return view('livewire.admin.page-produk-fermentasi' ,compact('produk'));
+        return view('livewire.admin.page-produk-fermentasi' ,compact('produk'))->layoutData(['page'=> 'Halaman Produk Fermentasi']);
     }
     public function closeModal()
     {
