@@ -1,8 +1,5 @@
 <div class="container">
     <div class="mt-10 sm:mt-0">
-        <h4 class="mb-4 text-lg font-semibold text-gray-600   ">
-            {{ __('Metode Pembayaran') }}
-        </h4>
         @include('sweetalert::alert')
         @if ($itemEdit)
             <x-jet-dialog-modal wire:model="itemEdit">

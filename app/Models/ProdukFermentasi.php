@@ -10,6 +10,6 @@ class ProdukFermentasi extends Model
     use HasFactory;
     protected $table = 'produk_fermentasis';
     protected $fillable = [
-        'kode', 'jumlah_stock', 'status', 'tgl_frementasi'
+        'kode', 'jumlah_stock', 'status', 'tgl_frementasi', 'jumlah_hari'
     ];
 }

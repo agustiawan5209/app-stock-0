@@ -16,10 +16,36 @@
 
     <!-- Styles -->
     @livewireStyles
+    <style>
+        .loading{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            z-index:50;
+            background-color: #000;
+            opacity: 0.2;
+        }
+        .loading-icon{
+            background-color: #000;
+            border: 2px solid #ffff;
+            width: 200px;
+            height: 200px;
+            border-radius: 100px;
+            border-top: none;
+
+        }
+    </style>
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /> --}}
 </head>
 
 <body class="font-sans antialiased">
+    {{-- <div class="loading">
+        <div class="loading-icon animate-spin">
+        </div>
+    </div> --}}
     <div class="flex min-h-screen 2xl:max-w-7xl 2xl:mx-auto 2xl:border-x-2 2xl:border-indigo-50 ">
         <!-- Sidebar -->
 
@@ -120,6 +146,14 @@
     @stack('modals')
 
     @livewireScripts
+    <script>
+        $(document).ready(function () {
+            $('#loading').hide();
+            $("#loading").fadeOut(function(){
+                $('#loading').show()
+            }, 300);
+        });
+    </script>
 </body>
 
 </html>

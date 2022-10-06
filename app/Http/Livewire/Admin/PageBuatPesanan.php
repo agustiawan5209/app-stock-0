@@ -8,6 +8,9 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class PageBuatPesanan extends Component
 {
+    public $gambar, $bahan_baku, $satuan, $isi, $harga, $jumlah_stock, $supplier_id;
+
+    public $total, $sub_total;
     public function render()
     {
         $bahanbaku = BahanBakuSupplier::paginate(10);
@@ -17,10 +20,17 @@ class PageBuatPesanan extends Component
     }
     public $itemAdd = false , $itemEdit = false, $itemDelete = false , $itemID;
 
-    public function addModal(){
-        $this->itemAdd = true;
+    public function addModal($id){
 
-        Alert::success("Info", "Berhasil Di Tambah");
+        $this->itemAdd = true;
+        $bahanBaku = BahanBakuSupplier::find($id);
+        $this->gambar = $bahanBaku->gambar;
+        $this->bahan_baku = $bahanBaku->bahan_baku;
+        $this->satuan = $bahanBaku->satuan;
+        $this->isi = $bahanBaku->isi;
+        $this->harga = $bahanBaku->harga;
+        $this->jumlah_stock = $bahanBaku->jumlah_stock;
+        $this->supplier_id = $bahanBaku->supplier_id;
     }
     public function editModal($id){
         $this->itemID = $id;

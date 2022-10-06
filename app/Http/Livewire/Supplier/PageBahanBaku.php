@@ -156,6 +156,6 @@ class PageBahanBaku extends Component
         $bahanbaku = BahanBakuSupplier::all();
         $bahan_baku = BahanBaku::all();
         $satuan = Satuan::all();
-        return view('livewire.supplier.page-bahan-baku', compact('bahanbaku', 'bahan_baku', 'satuan'));
+        return view('livewire.supplier.page-bahan-baku', compact('bahanbaku', 'bahan_baku', 'satuan'))->layoutData(['page'=> 'Halaman Bahan Baku']);
     }
 }

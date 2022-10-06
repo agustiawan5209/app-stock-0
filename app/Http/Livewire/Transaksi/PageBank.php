@@ -16,7 +16,7 @@ class PageBank extends Component
     {
         // abort_if(Auth::user()->role_id == 111, 403);
         $this->payment = Bank::where('user_id', Auth::user()->id)->get();
-        return view('livewire.transaksi.page-bank');
+        return view('livewire.transaksi.page-bank')->layoutData(['page'=> 'Metode Pembayaran']);
     }
     public function deleteModal($id)
     {

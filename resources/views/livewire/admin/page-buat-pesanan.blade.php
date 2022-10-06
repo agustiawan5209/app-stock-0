@@ -16,7 +16,7 @@
             <div class="mt-10 grid lg:grid-cols-2 gap-x-8 gap-y-8 items-center">
                 @foreach ($bahanbaku as $item)
                     <div
-                        class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 sm:p-28 py-36 px-10 flex justify-center items-center">
+                        class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50  drop-shadow-sm shadow-inner sm:p-28 py-36 px-10 flex justify-center items-center">
                         <img class="group-hover:opacity-60 transition duration-500"
                             src="{{ asset('upload/' . $item->gambar) }}" alt="sofa-2" />
                         <div
@@ -38,20 +38,12 @@
                         </div>
                         <div
                             class="flex flex-col bottom-8 left-8 space-y-4 absolute opacity-0 group-hover:opacity-100 transition duration-500">
-                            <button>
-                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg1.svg"
-                                    alt="add">
+                            <button class="bg-gray-600 px-3 py-2 text-white rounded-md">
+                                Detail
 
                             </button>
-                            <button>
-                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg2.svg"
-                                    alt="view">
-
-                            </button>
-                            <button>
-                                <img class=""
-                                    src="https://tuk-cdn.s3.amazonaws.com/can-uploader/product-grid-2-svg3.svg"
-                                    alt="like">
+                            <button class="bg-gray-600 px-3 py-2 text-white rounded-md">
+                                Pesan
 
                             </button>
                         </div>
@@ -65,5 +57,5 @@
 
     </div>
     {{-- Detail Produk --}}
-    <x-bahan-baku-detail :id="1" />
+    {{-- <x-bahan-baku-detail :id="1" /> --}}
 </div>
