@@ -25,7 +25,7 @@ return new class extends Migration
 
               // Status Berfungsi Sebagai Pemberitahu Jika Produk Sudah Difermentasi
               $table->enum('status', ['1','2','3']);
-
+                $table->text('data');
               // Satuan Adalah  permililiter
 
             $table->timestamps();

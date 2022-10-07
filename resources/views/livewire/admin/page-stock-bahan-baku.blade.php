@@ -1,6 +1,7 @@
 <div>
     @include('sweetalert::alert')
-    <div><x-modal>
+    <div>
+        <x-modal>
         <x-slot name="modal_dialog">
             <div class=" w-full">
                 <x-jet-validation-errors />
@@ -26,7 +27,10 @@
                     <x-jet-label for="bahan_baku">Jumlah Stock</x-jet-label>
                     <x-jet-input wire:model="stock" type="number" class="w-full"/>
                 </div>
-
+                <div class="mb-4 w-full">
+                    <x-jet-label for="bahan_baku">Jumlah Penggunaan Dalam Satu Kali Produksi</x-jet-label>
+                    <x-jet-input wire:model="max" type="number" class="w-full"/>
+                </div>
             </div>
         </x-slot>
         <x-slot name="modal_edit">
@@ -54,6 +58,10 @@
                     <x-jet-label for="bahan_baku">Jumlah Stock</x-jet-label>
                     <x-jet-input wire:model="stock" type="number" class="w-full"/>
                 </div>
+                <div class="mb-4 w-full">
+                    <x-jet-label for="bahan_baku">Jumlah Penggunaan Dalam Satu Kali Produksi</x-jet-label>
+                    <x-jet-input wire:model="max" type="number" class="w-full"/>
+                </div>
                 @if ($itemID != null)
                 <x-jet-button type="button" wire:click="edit({{ $itemID }})">Edit</x-jet-button>
             @endif
@@ -68,6 +76,7 @@
                 <x-th>Nama Bahan Baku</x-th>
                 <x-th>Satuan</x-th>
                 <x-th>Jumlah Stock</x-th>
+                <x-th>Jumlah Penggunaan</x-th>
                 <x-th>Aksi</x-th>
             </x-tr>
         </thead>
@@ -79,6 +88,7 @@
                         <x-td>{{ $item->bahanbaku->nama_bahan_baku }}</x-td>
                         <x-td>{{ $item->satuan->nama_satuan }}</x-td>
                         <x-td>{{ $item->stock }}</x-td>
+                        <x-td>{{ $item->max }}</x-td>
                         <x-td class="flex justify-center items-center px-2 py-0">
                             <x-button type='button' wire:click='deleteModal({{ $item->id }})'
                                 class="bg-red-500 text-white">Delete</x-button>

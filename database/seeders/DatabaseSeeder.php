@@ -8,6 +8,7 @@ use App\Models\BahanBaku;
 use App\Models\Customer;
 use App\Models\Jenis;
 use App\Models\Satuan;
+use App\Models\StockBahanBaku;
 use App\Models\Supplier;
 use Illuminate\Database\Seeder;
 
@@ -68,6 +69,7 @@ class DatabaseSeeder extends Seeder
         Satuan::insert([
             ['nama_satuan'=> 'KG'],
             ['nama_satuan'=> 'Galon/ 5 Liter'],
+            ['nama_satuan'=> 'Gram'],
         ]);
         Jenis::insert([
             ['nama_jenis'=> '500ml', 'harga'=> '35000'],
@@ -76,5 +78,54 @@ class DatabaseSeeder extends Seeder
             ['nama_jenis'=> '1000ml x botol ungu (serat)', 'harga'=> '90000'],
             ['nama_jenis'=> '500ml x botol ungu (serat)', 'harga'=> '90000'],
         ]);
+       $stock_bahan_bakus = array(
+            array(
+                "id" => 1,
+                "bahan_baku_id" => 1,
+                "stock" => 20,
+                "satuan_id" => 1,
+                "max" => 8,
+                "created_at" => "2022-10-07 20:30:52",
+                "updated_at" => "2022-10-07 21:14:09",
+            ),
+            array(
+                "id" => 2,
+                "bahan_baku_id" => 2,
+                "stock" => 20,
+                "satuan_id" => 1,
+                "max" => 1,
+                "created_at" => "2022-10-07 20:32:30",
+                "updated_at" => "2022-10-07 21:14:09",
+            ),
+            array(
+                "id" => 3,
+                "bahan_baku_id" => 3,
+                "stock" => 20,
+                "satuan_id" => 2,
+                "max" => 5,
+                "created_at" => "2022-10-07 20:32:43",
+                "updated_at" => "2022-10-07 21:14:09",
+            ),
+            array(
+                "id" => 4,
+                "bahan_baku_id" => 4,
+                "stock" => 20,
+                "satuan_id" => 3,
+                "max" => 2,
+                "created_at" => "2022-10-07 20:32:51",
+                "updated_at" => "2022-10-07 21:14:09",
+            ),
+            array(
+                "id" => 5,
+                "bahan_baku_id" => 5,
+                "stock" => 20,
+                "satuan_id" => 3,
+                "max" => 3,
+                "created_at" => "2022-10-07 20:33:06",
+                "updated_at" => "2022-10-07 21:14:09",
+            ),
+        );
+
+        StockBahanBaku::insert($stock_bahan_bakus);
     }
 }

@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\FermentasiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Admin\PageJenis;
 use App\Http\Livewire\Admin\PageSatuan;
 use App\Http\Controllers\UserController;
+use App\Http\Livewire\Admin\CrudFermentasi;
 use App\Http\Livewire\Admin\PageCustomer;
 use App\Http\Livewire\Admin\PageSupplier;
 use App\Http\Livewire\Transaksi\PageBank;
@@ -62,6 +64,11 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         // Produk
         Route::get('Produk', PageProduk::class)->name('Produk');
         Route::get('Produk-Fermentasi', PageProdukFermentasi::class)->name('Produk-Fermentasi');
+        Route::get('Buat-Fermentasi', CrudFermentasi::class)->name('Crud-Fermentasi');
+        Route::post('create', [FermentasiController::class,'create'])->name('Fermentasi-Create');
+        // Route::controller(FermentasiController::class)->group( ['prefix'=> 'Produk'] ,function(){
+        // });
+
         // End Admin Route
 
     });

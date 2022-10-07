@@ -10,7 +10,7 @@ class StockBahanBaku extends Model
     use HasFactory;
     protected $table = 'stock_bahan_bakus';
     protected $fillable = [
-        'bahan_baku_id','stock', 'satuan_id', 'jenis_id'
+        'bahan_baku_id','stock', 'satuan_id', 'jenis_id', 'max'
     ];
     protected $hidden = [
         'bahan_baku_id', 'satuan_id', 'jenis_id'

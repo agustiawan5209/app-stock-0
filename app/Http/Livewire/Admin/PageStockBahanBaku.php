@@ -11,7 +11,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class PageStockBahanBaku extends Component
 {
-    public $bahan_baku_id, $satuan_id, $jenis_id, $stock;
+    public $bahan_baku_id, $satuan_id, $jenis_id, $stock ,$max;
     public function render()
     {
         $stockbahanbaku = StockBahanBaku::with(['bahanbaku',  'satuan'])->get();
@@ -34,6 +34,7 @@ class PageStockBahanBaku extends Component
         $this->bahan_baku_id = null;
         $this->satuan_id = null;
         $this->stock = null;
+        $this->max = null;
     }
     public function addModal()
     {
@@ -45,6 +46,7 @@ class PageStockBahanBaku extends Component
         $this->bahan_baku_id = $stock->bahan_baku_id;
         $this->satuan_id = $stock->satuan_id;
         $this->stock = $stock->stock;
+        $this->max = $stock->max;
         $this->itemID = $id;
 
         $this->itemEdit = true;
@@ -61,6 +63,7 @@ class PageStockBahanBaku extends Component
             'bahan_baku_id' => 'required',
             'satuan_id' => 'required',
             'stock' => ['required', 'integer'],
+            'max'=> 'required'
         ]);
         Alert::success('Info', 'Berhasil Di Tambah');
         StockBahanBaku::create($valid);
@@ -71,6 +74,7 @@ class PageStockBahanBaku extends Component
         $valid = $this->validate([
             'bahan_baku_id' => 'required',
             'satuan_id' => 'required',
+            'max'=> 'required',
             'stock' => ['required', 'integer'],
         ]);
         Alert::success('Info', 'Berhasil Di Edit');
