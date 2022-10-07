@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\Jenis;
 use App\Models\Produk;
+use App\Models\ProdukFermentasi;
 use Livewire\Component;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -18,11 +19,21 @@ class PageProduk extends Component
         $itemEdit = false,
         $itemDelete = false,
         $itemID;
+    public function getProduk(){
+        $produk = ProdukFermentasi::where('status', '=', '2')->get();
+        return $produk;
+    }
     public function render()
     {
         $produk = Produk::all();
         $jenis = Jenis::all();
-        return view('livewire.admin.page-produk' ,compact('produk', 'jenis'))->layoutData(['page'=> 'Halaman Produk Siap Jual']);
+        $fermentasi = $this->getProduk();
+        return view('livewire.admin.page-produk' ,compact('produk', 'jenis', 'fermentasi'))->layoutData(['page'=> 'Halaman Produk Siap Jual']);
+    }
+    public function getJumlah(){
+        $produk = ProdukFermentasi::find($this->kode);
+
+        $this->jumlah = $produk->jumlah_stock;
     }
     // Modal
     public function closeModal()

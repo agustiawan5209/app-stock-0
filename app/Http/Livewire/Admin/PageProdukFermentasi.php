@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\ProdukFermentasi;
+use Carbon\Carbon;
 use Livewire\Component;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -16,10 +17,39 @@ class PageProdukFermentasi extends Component
         $itemEdit = false,
         $itemDelete = false,
         $itemID;
-    public function render()
+
+    public function SelesaiFermentasi()
     {
         $produk = ProdukFermentasi::all();
-        return view('livewire.admin.page-produk-fermentasi' ,compact('produk'))->layoutData(['page'=> 'Halaman Produk Fermentasi']);
+        foreach($produk  as $produkfermentasi){
+            $hari = $this->hitungFermentasi($produkfermentasi->tgl_frementasi);
+            if($hari > "90"){
+                ProdukFermentasi::where('id', $produkfermentasi->id)->update([
+                    'status'=> '2',
+                ]);
+            }
+        }
+    }
+    public function kode()
+    {
+        $produk = ProdukFermentasi::latest()->first();
+        if ($produk == null) {
+            $kode = 'PF-001';
+        } else {
+            $huruf = 'PF-';
+            $kod = substr($produk->kode, 3, 3);
+            $kod++;
+            $kode = $huruf . sprintf('%03s', $kod);
+        }
+        $this->kode = $kode;
+    }
+    public function render()
+    {
+        $this->SelesaiFermentasi();
+        $date = ProdukFermentasi::latest()->first();
+        // dd($this->hitungFermentasi($date->tgl_frementasi));
+        $produk = ProdukFermentasi::all();
+        return view('livewire.admin.page-produk-fermentasi', compact('produk'))->layoutData(['page' => 'Halaman Produk Fermentasi']);
     }
     public function closeModal()
     {
@@ -33,6 +63,7 @@ class PageProdukFermentasi extends Component
     }
     public function addModal()
     {
+        $this->kode();
         // Alert::info('Info Title', 'Info Message');
         $this->itemAdd = true;
     }
@@ -82,5 +113,13 @@ class PageProdukFermentasi extends Component
         ProdukFermentasi::find($id)->delete();
         $this->itemDelete = false;
         Alert::warning('Pesan', 'Berhasil Dihapus');
+    }
+
+    public function hitungFermentasi($date)
+    {
+        $carbon = Carbon::now()->format('Y-m-d');
+        $second = Carbon::createFromDate($date);
+
+        return $second->diffInDays($carbon);
     }
 }

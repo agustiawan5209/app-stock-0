@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             // Kode fermentasi
             $table->string('kode' ,20)->unique();
+            $table->string('kode_fermentasi' ,20);
             // Waktu Fermentasi
             $table->string('jumlah');
             // Status Berfungsi Sebagai Pemberitahu Jika Produk Habis ATau Kadaluarsa

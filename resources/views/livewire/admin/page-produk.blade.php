@@ -65,9 +65,14 @@
                                 <div class="w-full md:w-full px-3 mb-6">
                                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                         for='Password'>Kode</label>
-                                    <input
+                                        <select
                                         class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
-                                        type='text' wire:model='kode' required>
+                                        wire:model='kode' required>
+                                        <option value="">----</option>
+                                        @foreach ($fermentasi as $item)
+                                                <option value="{{$item->id}}">{{$item->kode  }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="w-full md:w-full px-3 mb-6">
                                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -132,16 +137,21 @@
                             <div class="w-full md:w-full px-3 mb-6">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                     for='Password'>Kode</label>
-                                <input
+                                    <select
                                     class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
-                                    type='text' wire:model='kode' required>
+                                    wire:model='kode' wire:change='getJumlah()' required>
+                                    <option value="">----</option>
+                                    @foreach ($fermentasi as $item)
+                                            <option value="{{$item->id}}">{{$item->kode  }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="w-full md:w-full px-3 mb-6">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                     for='Password'>jumlah</label>
                                 <input
                                     class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
-                                    type='text' wire:model='jumlah' required>
+                                    type='text' wire:model='jumlah' readonly required>
                             </div>
                             <div class="w-full md:w-full px-3 mb-6">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"

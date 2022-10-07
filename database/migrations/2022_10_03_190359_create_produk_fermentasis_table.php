@@ -24,7 +24,7 @@ return new class extends Migration
               $table->string('jumlah_stock');
 
               // Status Berfungsi Sebagai Pemberitahu Jika Produk Sudah Difermentasi
-              $table->enum('status', ['1','2']);
+              $table->enum('status', ['1','2','3']);
 
               // Satuan Adalah  permililiter
 
