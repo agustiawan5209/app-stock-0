@@ -18,6 +18,16 @@ class PageProdukFermentasi extends Component
         $itemEdit = false,
         $itemDelete = false,
         $itemID;
+        public function closeModal()
+        {
+            $this->kode = null;
+            $this->jumlah_stock = null;
+            $this->status = null;
+            $this->tgl_frementasi = null;
+            $this->itemAdd = false;
+            $this->itemEdit = false;
+            $this->itemDelete = false;
+        }
 
     public function SelesaiFermentasi()
     {
@@ -50,6 +60,17 @@ class PageProdukFermentasi extends Component
     public function addModal()
     {
         return redirect()->route('Admin.Crud-Fermentasi');
+    }
+    public function editModal($id)
+    {
+        $satuan = ProdukFermentasi::find($id);
+        // dd($satuan);
+        $this->kode = $satuan->kode;
+        $this->jumlah_stock = $satuan->jumlah_stock;
+        $this->status = $satuan->status;
+        $this->tgl_frementasi = $satuan->tgl_frementasi;
+        $this->itemID = $satuan->id;
+        $this->itemEdit = true;
     }
 
 }

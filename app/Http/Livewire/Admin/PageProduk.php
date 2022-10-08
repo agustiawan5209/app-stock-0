@@ -11,6 +11,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 class PageProduk extends Component
 {
     public $kode,
+        $kode_fermentasi,
         $jumlah,
         $status = 1,
         $tgl_kadaluarsa,
@@ -19,7 +20,22 @@ class PageProduk extends Component
         $itemEdit = false,
         $itemDelete = false,
         $itemID;
-    public function getProduk(){
+
+    public function kode()
+    {
+        $produk = Produk::latest()->first();
+        if ($produk == null) {
+            $kode = 'KD-001';
+        } else {
+            $huruf = 'KD-';
+            $kod = substr($produk->kode, 3, 3);
+            $kod++;
+            $kode = $huruf . sprintf('%03s', $kod);
+        }
+        $this->kode = $kode;
+    }
+    public function getProduk()
+    {
         $produk = ProdukFermentasi::where('status', '=', '2')->get();
         return $produk;
     }
@@ -28,17 +44,20 @@ class PageProduk extends Component
         $produk = Produk::all();
         $jenis = Jenis::all();
         $fermentasi = $this->getProduk();
-        return view('livewire.admin.page-produk' ,compact('produk', 'jenis', 'fermentasi'))->layoutData(['page'=> 'Halaman Produk Siap Jual']);
+        return view('livewire.admin.page-produk', compact('produk', 'jenis', 'fermentasi'))->layoutData(['page' => 'Halaman Produk Siap Jual']);
     }
-    public function getJumlah(){
-        $produk = ProdukFermentasi::find($this->kode);
-
-        $this->jumlah = $produk->jumlah_stock;
+    public function getJumlah()
+    {
+        if ($this->kode_fermentasi != null) {
+            $produk = ProdukFermentasi::find($this->kode_fermentasi);
+            $this->jumlah = $produk->jumlah_stock;
+        }
     }
     // Modal
     public function closeModal()
     {
         $this->kode = null;
+        $this->kode_fermentasi = null;
         $this->jumlah = null;
         $this->status = null;
         $this->tgl_kadaluarsa = null;
@@ -49,6 +68,7 @@ class PageProduk extends Component
     }
     public function addModal()
     {
+        $this->kode();
         // Alert::info('Info Title', 'Info Message');
         $this->itemAdd = true;
     }
@@ -56,6 +76,7 @@ class PageProduk extends Component
     {
         $satuan = Produk::find($id);
         // dd($satuan);
+        $this->kode_fermentasi = $satuan->kode_fermentasi;
         $this->kode = $satuan->kode;
         $this->jumlah = $satuan->jumlah;
         $this->status = $satuan->status;
@@ -76,6 +97,7 @@ class PageProduk extends Component
     {
         Produk::create([
             'kode' => $this->kode,
+            'kode_fermentasi' => $this->kode_fermentasi,
             'jumlah' => $this->jumlah,
             'status' => '1',
             'tgl_kadaluarsa' => $this->tgl_kadaluarsa,

@@ -21,7 +21,7 @@
                             <x-td>{{ $item->kode }}</x-td>
                             <x-td>{{ $item->jumlah }}</x-td>
                             <x-td>{{ $item->tgl_kadaluarsa }}</x-td>
-                            <x-td>{{ $item->jenis_id }}</x-td>
+                            <x-td>{{ $item->jenis->nama_jenis }}</x-td>
                             <x-td class="flex justify-center items-center px-2 py-0">
                                 <x-button type='button' wire:click='deleteModal({{ $item->id }})'
                                     class="bg-red-500 text-white">Delete</x-button>
@@ -137,9 +137,16 @@
                             <div class="w-full md:w-full px-3 mb-6">
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                     for='Password'>Kode</label>
+                                    <input
+                                    class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
+                                    type='text' wire:model='kode' readonly required>
+                            </div>
+                            <div class="w-full md:w-full px-3 mb-6">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                    for='Password'>Kode Fermentasi</label>
                                     <select
                                     class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
-                                    wire:model='kode' wire:change='getJumlah()' required>
+                                    wire:model='kode_fermentasi' wire:change='getJumlah()' required>
                                     <option value="">----</option>
                                     @foreach ($fermentasi as $item)
                                             <option value="{{$item->id}}">{{$item->kode  }}</option>

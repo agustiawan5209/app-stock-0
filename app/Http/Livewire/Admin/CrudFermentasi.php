@@ -6,20 +6,24 @@ use Carbon\Carbon;
 use Livewire\Component;
 use App\Models\StockBahanBaku;
 use App\Models\ProdukFermentasi;
+use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class CrudFermentasi extends Component
 {
-
     public $kode,
-    $jumlah_stock,
-    $status = 1,
-    $tgl_frementasi,
-    $itemAdd = false,
-    $itemEdit = false,
-    $itemDelete = false,
-    $itemID;
+        $jumlah_stock,
+        $status = 1,
+        $tgl_frementasi,
+        $itemAdd = false,
+        $itemEdit = false,
+        $itemDelete = false,
+        $itemID;
 
+    public function mount(Request $request)
+    {
+
+    }
     public function kode()
     {
         $produk = ProdukFermentasi::latest()->first();
@@ -37,7 +41,7 @@ class CrudFermentasi extends Component
     {
         $this->kode();
         $stock = StockBahanBaku::all();
-        return view('livewire.admin.crud-fermentasi', compact('stock'))->layoutData(['page' => 'Halaman Produk Fermentasi']);;
+        return view('livewire.admin.crud-fermentasi', compact('stock'))->layoutData(['page' => 'Halaman Produk Fermentasi']);
     }
     public function closeModal()
     {

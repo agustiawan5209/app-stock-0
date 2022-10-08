@@ -1,7 +1,7 @@
 <div>
     <div class="mx-auto container px-6 xl:px-0 py-12">
         <div class="flex flex-col">
-            <div class="flex flex-col justify-center">
+            {{-- <div class="flex flex-col justify-center">
                 <div class="relative">
                     <img class="hidden sm:block w-full"
                         src="https://i.ibb.co/HxXSY0j/jason-wang-Nx-Awry-Abt-Iw-unsplash-1-1.png" alt="sofa" />
@@ -12,40 +12,29 @@
                         <p class="text-3xl sm:text-4xl font-semibold leading-9 text-white">Range Comfort Sofas</p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="mt-10 grid lg:grid-cols-2 gap-x-8 gap-y-8 items-center">
                 @foreach ($bahanbaku as $item)
-                    <div
-                        class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50  drop-shadow-sm shadow-inner sm:p-28 py-36 px-10 flex justify-center items-center">
-                        <img class="group-hover:opacity-60 transition duration-500"
-                            src="{{ asset('upload/' . $item->gambar) }}" alt="sofa-2" />
-                        <div
-                            class="absolute sm:top-8 top-4 left-4 sm:left-8 flex justify-start items-start flex-col space-y-2">
-                            <div>
-                                <p
-                                    class="group-hover:opacity-60 transition duration-500 text-xl leading-5 text-gray-600 dark:text-white">
-                                    {{ $item->bahan_baku }}</p>
+                    <div class="w-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                        <a href="#">
+                            <img class="px-3 py-2 border-gray-300 rounded-t-lg" src="{{asset('upload/'.$item->gambar)}}"
+                                alt="product image">
+                        </a>
+                        <div class="px-5 pb-5">
+                            <a href="#">
+                                <h5 class="text-xl font-semibold tracking-tight text-gray-900 underline">{{$item->bahan_baku}}</h5>
+                            </a>
+                            <div class="flex flex-col">
+                                <div class="py-1 font-bold">Isi: {{$item->isi}}</div>
+                                <div class="py-1 font-bold">Satuan: {{$item->satuan}}</div>
+                                <div class="py-1 font-bold">Jumlah Stok: {{number_format($item->jumlah_stock,0,2)}}</div>
                             </div>
-                            <div>
-                                <p
-                                    class="group-hover:opacity-60 transition duration-500 text-xl font-semibold leading-5 text-gray-800 dark:text-white">
-                                    Rp. {{ number_format($item->harga, 0, 2) }}</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-3xl font-bold text-gray-900">Rp. {{number_format($item->harga,0,2)}}</span>
+                                <a href="#"
+                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
+                                    to cart</a>
                             </div>
-                        </div>
-                        <div
-                            class="group-hover:opacity-60 transition duration-500 absolute bottom-8 right-8 flex justify-start items-start flex-row space-x-2">
-                            Jumlah Stock : {{ $item->jumlah_stock }}
-                        </div>
-                        <div
-                            class="flex flex-col bottom-8 left-8 space-y-4 absolute opacity-0 group-hover:opacity-100 transition duration-500">
-                            <button class="bg-gray-600 px-3 py-2 text-white rounded-md">
-                                Detail
-
-                            </button>
-                            <button class="bg-gray-600 px-3 py-2 text-white rounded-md">
-                                Pesan
-
-                            </button>
                         </div>
                     </div>
                 @endforeach

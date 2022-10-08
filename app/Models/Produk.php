@@ -12,4 +12,8 @@ class Produk extends Model
     protected $fillable = ['kode','kode_fermentasi','jumlah', 'status', 'tgl_kadaluarsa', 'jenis_id'];
 
     protected $guard = [];
+
+    public function jenis(){
+        return $this->hasOne(Jenis::class, 'id', 'jenis_id');
+    }
 }

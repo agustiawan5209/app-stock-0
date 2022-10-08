@@ -14,7 +14,7 @@ class FermentasiController extends Controller
         $id = $request->id;
         $max = $request->max;
         $stock = $request->stock;
-
+        $data = [];
         // Perhitungan Stock
         for ($i = 0; $i < count($request->id); $i++) {
             $stock = StockBahanBaku::find($id[$i]);
@@ -22,16 +22,18 @@ class FermentasiController extends Controller
             $stock->update([
                 'stock' => $stock->stock - $stock->max * $request->jumlah_stock,
             ]);
+            $data[] = $stock->stock - $stock->max * $request->jumlah_stock;
         }
+        // dd($data);
         $id = implode(',', $id);
         $max = implode(',', $max);
-        $stock = implode(',', $stock);
+        $stock = implode(',', $data);
         ProdukFermentasi::create([
             'kode' => $request->kode,
             'jumlah_stock' => $request->jumlah_stock,
             'status' => '1',
             'tgl_frementasi' => $request->tgl_frementasi,
-            'data'=> $id ."/". $max ."/".$stock,
+            'data' => $id . '/' . $max . '/' . $stock,
         ]);
         $this->itemAdd = false;
         Alert::info('Info', 'Berhasil Di Simpan');
