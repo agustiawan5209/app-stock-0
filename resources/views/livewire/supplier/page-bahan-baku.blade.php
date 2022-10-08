@@ -50,7 +50,7 @@
                         </div>
                         <div class="mb-4">
                             <x-jet-label for="bahan_id">Bahan Baku</x-jet-label>
-                            <x-jet-input wire:model.defer='bahan_id'  />
+                            <x-jet-input wire:model='bahan_id'  />
                         </div>
                         <div class="mb-4">
                             <x-jet-label for="isis">Satuan</x-jet-label>

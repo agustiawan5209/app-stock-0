@@ -110,15 +110,21 @@ class PageBahanBaku extends Component
         $this->gambar = $bahan->gambar;
         $this->bahan_id = $bahan->bahan_baku;
         $this->isi = $bahan->isi;
-        $this->bahan_id = $bahan->bahan_baku_id;
         $this->satuan_id = $bahan->satuan;
         $this->harga = $bahan->harga;
         $this->jumlah_stock = $bahan->jumlah_stock;
-        // dd($this->bahan);
+        // dd($bahan->bahan_baku);
         $this->modal = true;
     }
     public function edit($id)
     {
+        $validate = $this->validate([
+            'satuan_id' => 'required',
+            'isi' => 'required',
+            'bahan_id' => 'required',
+            'harga' => 'required',
+            'jumlah_stock' => 'required',
+        ]);
         if ($this->photo == '') {
             $name = $this->gambar;
         } else {
@@ -129,13 +135,7 @@ class PageBahanBaku extends Component
             $photo = $gambar->storeAs('upload', $name);
         }
 
-        $validate = $this->validate([
-            'satuan_id' => 'required',
-            'isi' => 'required',
-            'bahan_id' => 'required',
-            'harga' => 'required',
-            'jumlah_stock' => 'required',
-        ]);
+
         // dd($validate);
         // dd($validate);
         BahanBakuSupplier::where('id', $id)->update([
@@ -152,8 +152,7 @@ class PageBahanBaku extends Component
 
     public function render()
     {
-        $bahan = '';
-        $bahanbaku = BahanBakuSupplier::all();
+        $bahanbaku = BahanBakuSupplier::where('suppliers_id', '=', Auth::user()->supplier->id)->get();
         $bahan_baku = BahanBaku::all();
         $satuan = Satuan::all();
         return view('livewire.supplier.page-bahan-baku', compact('bahanbaku', 'bahan_baku', 'satuan'))->layoutData(['page'=> 'Halaman Bahan Baku']);

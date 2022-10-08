@@ -64,6 +64,6 @@ class User extends Authenticatable
         return $this->hasOne(RoleId::class, 'id', 'role_id');
     }
     public function supplier(){
-        return $this->hasOne(Supplier::class, 'user_id');
+        return $this->hasOne(Supplier::class, 'user_id','id');
     }
 }
