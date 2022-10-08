@@ -71,6 +71,7 @@ class PageProdukFermentasi extends Component
         $this->tgl_frementasi = $satuan->tgl_frementasi;
         $this->itemID = $satuan->id;
         $this->itemEdit = true;
+        return redirect()->route('Admin.Crud-Fermentasi', ['id'=> $satuan->id,'kode'=> $this->kode]);
     }
 
 }

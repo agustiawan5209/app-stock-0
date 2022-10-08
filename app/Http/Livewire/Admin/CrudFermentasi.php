@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\Produk;
 use Carbon\Carbon;
 use Livewire\Component;
 use App\Models\StockBahanBaku;
@@ -17,12 +18,12 @@ class CrudFermentasi extends Component
         $tgl_frementasi,
         $itemAdd = false,
         $itemEdit = false,
-        $itemDelete = false,
+        $item = null,
         $itemID;
 
     public function mount(Request $request)
     {
-
+        $this->item = $request->all();
     }
     public function kode()
     {
@@ -39,7 +40,16 @@ class CrudFermentasi extends Component
     }
     public function render()
     {
+        // dd($this->item);
         $this->kode();
+
+        if($this->item != null){
+            $this->itemEdit = true;
+            $fer = ProdukFermentasi::find($this->item['id']);
+            $this->tgl_frementasi = $fer->tgl_frementasi;
+            $this->kode = $fer->kode;
+            $this->jumlah_stock = $fer->jumlah_stock;
+        }
         $stock = StockBahanBaku::all();
         return view('livewire.admin.crud-fermentasi', compact('stock'))->layoutData(['page' => 'Halaman Produk Fermentasi']);
     }

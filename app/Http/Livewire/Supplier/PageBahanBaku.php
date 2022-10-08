@@ -135,7 +135,6 @@ class PageBahanBaku extends Component
             $photo = $gambar->storeAs('upload', $name);
         }
 
-
         // dd($validate);
         // dd($validate);
         BahanBakuSupplier::where('id', $id)->update([
@@ -155,6 +154,6 @@ class PageBahanBaku extends Component
         $bahanbaku = BahanBakuSupplier::where('suppliers_id', '=', Auth::user()->supplier->id)->get();
         $bahan_baku = BahanBaku::all();
         $satuan = Satuan::all();
-        return view('livewire.supplier.page-bahan-baku', compact('bahanbaku', 'bahan_baku', 'satuan'))->layoutData(['page'=> 'Halaman Bahan Baku']);
+        return view('livewire.supplier.page-bahan-baku', compact('bahanbaku', 'bahan_baku', 'satuan'))->layoutData(['page' => 'Halaman Bahan Baku']);
     }
 }

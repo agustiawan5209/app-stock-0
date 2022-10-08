@@ -10,21 +10,21 @@
                             for='Password'>Kode</label>
                         <input
                             class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
-                            type='text' name='kode' wire:model="kode" readonly required>
+                            type='text' name='kode'  wire:model="kode"  readonly required>
                     </div>
                     <div class="w-full md:w-full px-3 mb-6">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                             for='jumlah'>Jumlah Stock</label>
                         <input
                             class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
-                            type='text' name='jumlah_stock' required>
+                            type='text' name='jumlah_stock' wire:model="jumlah_stock" required>
                     </div>
                     <div class="w-full md:w-full px-3 mb-6">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                             for='Password'>Tanggal fermentasi</label>
                         <input
                             class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
-                            type='date' name='tgl_frementasi' required>
+                            type='date' name='tgl_frementasi' wire:model="tgl_frementasi" required>
                     </div>
                     <div class="flex items-center w-full mt-2">
                         <div class="w-full md:w-1/3 px-3 pt-4 mx-2 border-t border-gray-400">
