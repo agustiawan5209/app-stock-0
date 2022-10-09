@@ -146,14 +146,6 @@
     @stack('modals')
 
     @livewireScripts
-    <script>
-        $(document).ready(function () {
-            $('#loading').hide();
-            $("#loading").fadeOut(function(){
-                $('#loading').show()
-            }, 300);
-        });
-    </script>
 </body>
 
 </html>

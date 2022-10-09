@@ -19,7 +19,9 @@ class CrudFermentasi extends Component
         $itemAdd = false,
         $itemEdit = false,
         $item = null,
-        $itemID;
+        $itemID,
+        $loadingState = false,
+        $data = [];
 
     public function mount(Request $request)
     {
@@ -51,6 +53,7 @@ class CrudFermentasi extends Component
             $this->jumlah_stock = $fer->jumlah_stock;
         }
         $stock = StockBahanBaku::all();
+
         return view('livewire.admin.crud-fermentasi', compact('stock'))->layoutData(['page' => 'Halaman Produk Fermentasi']);
     }
     public function closeModal()
@@ -118,5 +121,20 @@ class CrudFermentasi extends Component
         $second = Carbon::createFromDate($date);
 
         return $second->diffInDays($carbon);
+    }
+    public function hitungJumlah()
+    {
+        $stock = StockBahanBaku::select('id')->get();
+        // dd();
+        foreach ($stock as $item => $key) {
+            $stock = StockBahanBaku::find($key->id);
+            $this->data[$item] = ($stock->max * $this->jumlah_stock);
+        }
+        $this->loadingState = true;
+
+        // dd($this->data);
+    }
+    public function loadingData(){
+
     }
 }

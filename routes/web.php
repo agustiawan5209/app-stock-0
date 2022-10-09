@@ -66,6 +66,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::get('Produk-Fermentasi', PageProdukFermentasi::class)->name('Produk-Fermentasi');
         Route::get('Buat-Fermentasi', CrudFermentasi::class)->name('Crud-Fermentasi');
         Route::post('create', [FermentasiController::class,'create'])->name('Fermentasi-Create');
+        Route::put('edit/{id}', [FermentasiController::class,'edit'])->name('Fermentasi-edit');
         // Route::controller(FermentasiController::class)->group( ['prefix'=> 'Produk'] ,function(){
         // });
 
