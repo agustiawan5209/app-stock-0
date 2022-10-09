@@ -18,13 +18,9 @@
                             <x-td>{{ $loop->iteration }}</x-td>
                             <x-td>{{ $item->nama_jenis }}</x-td>
                             <x-td>Rp. {{ number_format($item->harga,0,2) }}</x-td>
-                            <x-td class="flex justify-center items-center px-2 py-0">
-                                <x-button type='button' wire:click='deleteModal({{ $item->id }})'
-                                    class="bg-red-500 text-white">Delete</x-button>
-
-                                <x-button type='button' wire:click='editModal({{ $item->id }})'
-                                    class="bg-green-500 text-white">Edit</x-button>
-                            </x-td>
+                            <x-td>
+                                @include('items.td-action', ['id'=> $item->id])
+                             </x-td>
                         </x-tr>
                     @endforeach
                 @else

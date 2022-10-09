@@ -1,7 +1,7 @@
 @can('Manage-Admin', User::class)
-    <a class="  {{ request()->routeIs('Admin.Dashboard-Admin') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-indigo-700 ' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-indigo-700 hover:font-semibold ' }} "
+    <a class="  {{ request()->routeIs('Admin.Dashboard-Admin') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-primary ' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-primary hover:font-semibold ' }} "
         href="{{ route('Admin.Dashboard-Admin') }}">
-        <svg class="h-5 w-5 {{ request()->routeIs('Admin.Dashboard-Admin') ? 'stroke-indigo-700' : 'group-hover:stroke-indigo-700' }}"
+        <svg class="h-5 w-5 {{ request()->routeIs('Admin.Dashboard-Admin') ? 'stroke-primary' : 'group-hover:stroke-primary' }}"
             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
@@ -10,9 +10,9 @@
         </svg>
         <span>Dashboard</span>
     </a>
-    <a class="  {{ request()->routeIs('Admin.Stock-Bahan-Baku') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-indigo-700 ' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-indigo-700 hover:font-semibold ' }} "
+    <a class="  {{ request()->routeIs('Admin.Stock-Bahan-Baku') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-primary ' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-primary hover:font-semibold ' }} "
         href="{{ route('Admin.Stock-Bahan-Baku') }}">
-        <svg class="h-5 w-5 {{ request()->routeIs('Admin.Stock-Bahan-Baku') ? 'stroke-indigo-700' : 'group-hover:stroke-indigo-700' }}"
+        <svg class="h-5 w-5 {{ request()->routeIs('Admin.Stock-Bahan-Baku') ? 'stroke-primary' : 'group-hover:stroke-primary' }}"
             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
@@ -21,9 +21,9 @@
         </svg>
         <span>Stock Bahan Baku</span>
     </a>
-    <a class=" {{ request()->routeIs('Admin.Produk') || request()->routeIs('Admin.Jenis') || request()->routeIs('Admin.Produk-Fermentasi') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-indigo-700' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-indigo-700 hover:font-semibold ' }} relative  box-content"
+    <a class=" {{ request()->routeIs('Admin.Produk') || request()->routeIs('Admin.Jenis') || request()->routeIs('Admin.Produk-Fermentasi') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-primary' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-primary hover:font-semibold ' }} relative  box-content"
         href="#" x-on:click="Produk = ! Produk " x-on:click.outside="Produk = false">
-        <svg class="h-5 w-5 {{ request()->routeIs('Admin.Produk') || request()->routeIs('Admin.Jenis') || request()->routeIs('Admin.Produk-Fermentasi') ? 'stroke-indigo-700' : 'group-hover:stroke-indigo-700' }}"
+        <svg class="h-5 w-5 {{ request()->routeIs('Admin.Produk') || request()->routeIs('Admin.Jenis') || request()->routeIs('Admin.Produk-Fermentasi') ? 'stroke-primary' : 'group-hover:stroke-primary' }}"
             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16">
             </path>
@@ -51,9 +51,9 @@
             </a>
         </div>
     </div>
-    <a class=" {{ request()->routeIs('Admin.Satuan')  || request()->routeIs('Admin.List-BahanBaku') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-indigo-700' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-indigo-700 hover:font-semibold ' }} relative  box-content"
+    <a class=" {{ request()->routeIs('Admin.Satuan')  || request()->routeIs('Admin.List-BahanBaku') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-primary' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-primary hover:font-semibold ' }} relative  box-content"
         href="#" x-on:click="Master = ! Master " x-on:click.outside="Master = false">
-        <svg class="h-5 w-5 {{ request()->routeIs('Admin.Satuan') || request()->routeIs('Admin.List-BahanBaku') ? 'stroke-indigo-700' : 'group-hover:stroke-indigo-700' }}"
+        <svg class="h-5 w-5 {{ request()->routeIs('Admin.Satuan') || request()->routeIs('Admin.List-BahanBaku') ? 'stroke-primary' : 'group-hover:stroke-primary' }}"
             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16">
             </path>
@@ -84,9 +84,9 @@
             </a>
         </div>
     </div>
-    <a class=" {{ request()->routeIs('Admin.Barang-Keluar') || request()->routeIs('Admin.Barang-Masuk') || request()->routeIs('Admin.Tr-Pesanan') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-indigo-700 pr-20' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-indigo-700 hover:font-semibold ' }} relative  box-content"
+    <a class=" {{ request()->routeIs('Admin.Barang-Keluar') || request()->routeIs('Admin.Barang-Masuk') || request()->routeIs('Admin.Tr-Pesanan') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-primary pr-20' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-primary hover:font-semibold ' }} relative  box-content"
         href="#" x-on:click="Transaksi = ! Transaksi" x-on:click.outside="Transaksi = false">
-        <svg class="h-5 w-5 {{ request()->routeIs('Admin.Barang-Keluar') || request()->routeIs('Admin.Barang-Masuk') || request()->routeIs('Admin.Tr-Pesanan+') ? 'stroke-indigo-700' : 'group-hover:stroke-indigo-700' }}"
+        <svg class="h-5 w-5 {{ request()->routeIs('Admin.Barang-Keluar') || request()->routeIs('Admin.Barang-Masuk') || request()->routeIs('Admin.Tr-Pesanan+') ? 'stroke-primary' : 'group-hover:stroke-primary' }}"
             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z">
@@ -113,9 +113,9 @@
             </div>
         </div>
     </a>
-    <a class=" flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-indigo-700 hover:font-semibold "
+    <a class=" flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-primary hover:font-semibold "
         href="#">
-        <svg class="h-5 w-5 group-hover:stroke-indigo-700" xmlns="http://www.w3.org/2000/svg" fill="none"
+        <svg class="h-5 w-5 group-hover:stroke-primary" xmlns="http://www.w3.org/2000/svg" fill="none"
             viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2zM10 8.5a.5.5 0 11-1 0 .5.5 0 011 0zm5 5a.5.5 0 11-1 0 .5.5 0 011 0z">
@@ -127,9 +127,9 @@
 @endcan
 
 @can('Manage-Supplier')
-    <a class="  {{ request()->routeIs('Supplier.Dashboard-Supplier') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-indigo-700 ' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-indigo-700 hover:font-semibold ' }} "
+    <a class="  {{ request()->routeIs('Supplier.Dashboard-Supplier') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-primary ' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-primary hover:font-semibold ' }} "
         href="{{ route('Supplier.Dashboard-Supplier') }}">
-        <svg class="h-5 w-5 {{ request()->routeIs('Supplier.Dashboard-Supplier') ? 'stroke-indigo-700' : 'group-hover:stroke-indigo-700' }}"
+        <svg class="h-5 w-5 {{ request()->routeIs('Supplier.Dashboard-Supplier') ? 'stroke-primary' : 'group-hover:stroke-primary' }}"
             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
@@ -138,9 +138,9 @@
         </svg>
         <span>Dashboard</span>
     </a>
-    <a class="  {{ request()->routeIs('Supplier.Bahan-Baku') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-indigo-700 ' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-indigo-700 hover:font-semibold ' }} "
+    <a class="  {{ request()->routeIs('Supplier.Bahan-Baku') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-primary ' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-primary hover:font-semibold ' }} "
         href="{{ route('Supplier.Bahan-Baku') }}">
-        <svg class="h-5 w-5 {{ request()->routeIs('Supplier.Bahan-Baku') ? 'stroke-indigo-700' : 'group-hover:stroke-indigo-700' }}"
+        <svg class="h-5 w-5 {{ request()->routeIs('Supplier.Bahan-Baku') ? 'stroke-primary' : 'group-hover:stroke-primary' }}"
             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">

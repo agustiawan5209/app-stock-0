@@ -17,18 +17,19 @@
     <!-- Styles -->
     @livewireStyles
     <style>
-        .loading{
+        .loading {
             display: flex;
             justify-content: center;
             align-items: center;
             position: fixed;
             width: 100%;
             height: 100vh;
-            z-index:50;
+            z-index: 50;
             background-color: #000;
             opacity: 0.2;
         }
-        .loading-icon{
+
+        .loading-icon {
             background-color: #000;
             border: 2px solid #ffff;
             width: 200px;
@@ -46,69 +47,61 @@
         <div class="loading-icon animate-spin">
         </div>
     </div> --}}
-    <div class="flex min-h-screen 2xl:max-w-7xl 2xl:mx-auto 2xl:border-x-2 2xl:border-indigo-50 ">
+    <div class="flex min-h-screen 2xl:max-w-7xl 2xl:mx-auto 2xl:border-x-2 2xl:border-primary">
         <!-- Sidebar -->
 
-            <aside class="bg-white w-1/5 py-10 pl-10  min-w-min   border-r border-indigo-900/20 hidden md:block ">
-                <div class=" font-bold text-2xl">{{ Auth::user()->name }}</div>
+        <aside class="bg-neutral w-1/5 py-10 pl-10  min-w-min   border-r border-primary/20 hidden md:block ">
+            <div class=" font-bold text-2xl text-white">{{ Auth::user()->name }}</div>
 
-                <!-- Menu -->
-                <div class="mt-12 flex flex-col space-y-7 text-gray-500 font-medium" x-data="{ Master: false, Transaksi: false , Produk: false}">
-
-
-                    @include('navigation-menu')
-                    <a class=" flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-indigo-700 hover:font-semibold "
-                        href="{{ route('Page-Bank') }}">
-                        <svg class="h-5 w-5 group-hover:stroke-indigo-700" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z">
-                            </path>
-
-                        </svg>
-                        <span>Metode Pembayaran</span>
-                    </a>
-                    <a class=" flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-indigo-700 hover:font-semibold "
-                        href="#">
-                        <svg class="h-5 w-5 group-hover:stroke-indigo-700" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
-                            </path>
-
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                        <span>Pengaturan</span>
-                    </a>
+            <!-- Menu -->
+            <div class="mt-12 flex flex-col space-y-7 text-white font-medium" x-data="{ Master: false, Transaksi: false, Produk: false }">
 
 
-                </div><!-- /Menu -->
-            </aside><!-- /Sidebar -->
+                @include('navigation-menu')
+                <a class=" flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-primary hover:font-semibold "
+                    href="{{ route('Page-Bank') }}">
+                    <svg class="h-5 w-5 group-hover:stroke-primary" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z">
+                        </path>
 
-        <main class="bg-indigo-50/60 w-full ">
+                    </svg>
+                    <span>Metode Pembayaran</span>
+                </a>
+                <form action="{{route('logout')}}" action="POST" class=" flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-primary hover:font-semibold ">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                    <button type="submit">Logout</button>
+                </form>
+
+
+            </div><!-- /Menu -->
+        </aside><!-- /Sidebar -->
+
+        <main class="bg-primary60 w-full ">
 
             <!-- Nav -->
-            <nav class="text-lg flex items-center justify-between content-center py-5 px-5 bg-white">
-                <div class=" font-semibold text-xl text-gray-800 flex space-x-4 items-center">
+            <nav class="text-lg flex items-center justify-between content-center py-5 px-5 bg-primary">
+                <div class=" font-semibold text-xl text-white flex space-x-4 items-center">
                     <a href="#">
                         <span class="md:hidden">
-                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
+                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M4 6h16M4 12h16M4 18h7"></path>
                             </svg>
 
                         </span>
                     </a>
-                    <span>{{$page}}</span>
+                    <span>{{ $page }}</span>
                 </div>
 
-                <div class="flex space-x-5 md:space-x-10 text-gray-500 items-center content-center text-base ">
-                    <a class="flex items-center space-x-3 px-4 py-2 rounded-md  hover:bg-indigo-100" href="{{route('profile.show')}}">
+                <div class="flex space-x-5 md:space-x-10 text-white items-center content-center text-base ">
+                    <a class="flex items-center space-x-3 px-4 py-2 rounded-md  hover:bg-primary"
+                        href="{{ route('profile.show') }}">
                         <span>
-                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
+                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
                                 </path>
@@ -119,9 +112,9 @@
                         </span>
                         <span class="hidden sm:block">Setting</span>
                     </a>
-                    <a class="px-4 py-2 bg-indigo-100 rounded-md flex items-center space-x-2 text-indigo-500 hover:bg-indigo-200"
+                    <a class="px-4 py-2 bg-primary rounded-md flex items-center space-x-2 text-primary hover:bg-primary"
                         href="#">
-                        <svg class="h-5 w-5 fill-indigo-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                        <svg class="h-5 w-5 fill-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                             fill="currentColor">
                             <path fill-rule="evenodd"
                                 d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
@@ -130,7 +123,7 @@
                         <div class="hidden xs:block"><span class="hidden sm:inline-block">Create</span> New</div>
                     </a>
                     <a class href="#">
-                        <img class="rounded-full w-10 h-10 border-2 border-indigo-200 hover:border-indigo-300"
+                        <img class="rounded-full w-10 h-10 border-2 border-primary hover:border-primary"
                             src="{{ Auth::user()->profile_photo_url }}" alt srcset>
                     </a>
                 </div>
