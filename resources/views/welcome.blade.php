@@ -4,7 +4,7 @@
         <div class="hero-overlay bg-opacity-60"></div>
         <div class="hero-content text-center text-neutral-content">
           <div class="max-w-md">
-            <h1 class="mb-5 text-5xl font-bold">MARKISA MEGABUANA</h1>
+            <h1 class="mb-5 text-5xl font-bold" id="textTyp">MARKISA MEGABUANA</h1>
             <p class="mb-5 font-bold md:text-lg capitalize text-white shadow-sm"> produk minuman khas dari Kota Makassar yang sangat cocok dijadikan oleh-oleh atau bingkisan untuk sanak keluarga, teman dan para handai taulan.</p>
             <button class="btn btn-primary">Dapatkan Skrg</button>
           </div>
