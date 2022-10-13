@@ -32,7 +32,7 @@
             </div>
           </div>
      </div>
-     <div class="artboard artboard-horizontal phone-6">
+     {{-- <div class="artboard artboard-horizontal phone-6">
         <div class="card w-96 bg-primary text-primary-content">
             <div class="card-body">
               <h2 class="card-title">Card title!</h2>
@@ -42,6 +42,6 @@
               </div>
             </div>
           </div>
-     </div>
+     </div> --}}
 
 </x-guest-layout>
