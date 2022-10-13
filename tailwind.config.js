@@ -12,30 +12,34 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                sans: ['ui-monospace', ...defaultTheme.fontFamily.sans],
             },
-            colors: {
-                'blue-light': '#658BEC',
-                "primary": "#3ABFF8",
 
-                "secondary": "#828DF8",
-
-                "accent": "#F471B5",
-
-                "neutral": "#1D283A",
-
-                "base-100": "#0F1729",
-
-                "info": "#0CA6E9",
-
-                "success": "#2BD4BD",
-
-                "warning": "#F4C152",
-
-                "error": "#FB6F84",
-            }
         },
     },
+    daisyui: {
+        themes: [{
+            mytheme: {
 
-    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+                "primary": "#facc15",
+
+                "secondary": "#046ea3",
+
+                "accent": "#f9dd39",
+
+                "neutral": "#1E1727",
+
+                "base-100": "#f3f4f6",
+
+                "info": "#8EA4DC",
+
+                "success": "#0D6D4C",
+
+                "warning": "#EB8E14",
+
+                "error": "#F05682",
+            },
+        }, ],
+    },
+    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography'), require('daisyui')],
 };

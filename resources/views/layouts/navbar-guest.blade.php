@@ -1,56 +1,67 @@
-<nav class="w-full py-4 bg-blue-800 shadow">
-    <div class="w-full container mx-auto flex flex-wrap items-center justify-between">
-
-        <nav>
-            <ul class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline">
-                <li><a class="hover:text-gray-200 hover:underline px-4" href="{{route('login')}}">Masuk</a></li>
-                <li><a class="hover:text-gray-200 hover:underline px-4" href="{{route('register')}}">Daftar</a></li>
+<div class="navbar bg-base-100">
+    <div class="navbar-start">
+        <div class="dropdown">
+            <label tabindex="0" class="btn btn-ghost lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+                </svg>
+            </label>
+            <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                <li><a href="/">Home</a></li>
+                <li tabindex="0">
+                    <a class="justify-between">
+                        Tentang Kami
+                        <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24">
+                            <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+                        </svg>
+                    </a>
+                    <ul class="p-2">
+                        <li><a>Sejarah</a></li>
+                        <li><a>Contact</a></li>
+                    </ul>
+                </li>
+                <li><a>Produk MegaBuana</a></li>
             </ul>
-        </nav>
-
-        <div class="flex items-center text-lg no-underline text-white pr-6">
-            <a class="" href="#">
-                <i class="fab fa-facebook"></i>
-            </a>
-            <a class="pl-6" href="#">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a class="pl-6" href="#">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a class="pl-6" href="#">
-                <i class="fab fa-linkedin"></i>
-            </a>
         </div>
+        <a class="btn btn-ghost normal-case text-xl">UD.Mega Buana</a>
     </div>
-
-</nav>
-
-        <!-- Text Header -->
-        <header class="w-full container mx-auto">
-            <div class="flex flex-col items-center py-12">
-                <a class="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl font-serif" href="#">
-                   UD. Mega Buana
+    <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal p-0">
+            <li><a href="/"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                        </path>
+                    </svg>Home</a></li>
+            <li tabindex="0">
+                <a class="justify-between">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+                    </svg>
+                    Tentang Kami
+                    <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24">
+                        <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+                    </svg>
                 </a>
-            </div>
-        </header>
-
-        <!-- Topic Nav -->
-        <nav class="w-full py-4 border-t border-b bg-gray-100" x-data="{ open: false }">
-            <div class="block sm:hidden">
-                <a
-                    href="#"
-                    class="block md:hidden text-base font-bold uppercase text-center flex justify-center items-center"
-                    @click="open = !open"
-                >
-                    Topics <i :class="open ? 'fa-chevron-down': 'fa-chevron-up'" class="fas ml-2"></i>
-                </a>
-            </div>
-            <div :class="open ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
-                <div class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 px-6 py-2">
-                    <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Produk</a>
-                    <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Sejarah</a>
-                    <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Tentang Kami</a>
-                </div>
-            </div>
-        </nav>
+                <ul class="p-2 bg-base-100 text-black">
+                    <li><a>Sejarah</a></li>
+                    <li><a>Contact</a></li>
+                </ul>
+            </li>
+            <li><a><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                        </path>
+                    </svg>Produk MegaBuana</a></li>
+        </ul>
+    </div>
+    <div class="navbar-end">
+        <a class="btn">Get started</a>
+    </div>
+</div>

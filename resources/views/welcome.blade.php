@@ -1,91 +1,47 @@
 <x-guest-layout>
-  <!-- Posts Section -->
-  <section class="w-full md:w-2/3 flex flex-col items-center px-3">
-
-    <article class="flex flex-col shadow my-4">
-        <!-- Article Image -->
-        <a href="#" class="hover:opacity-75">
-            <img src="{{asset('img/markisa.jpg')}}">
-        </a>
-        <div class="bg-white flex flex-col justify-start p-6">
-            <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4">UD. Mega Buana</a>
-            <a href="#" class="pb-6">
-                UD. Mega Buana adalah perusahaan yang bergerak dalam industri pengolahan markisa. UD. Mega Buana pertama kali didirikan oleh Bapak IdrisHusain, SE. Nama UD. Mega Buana terdiri dari dua kata yaitu mega yang berarti besar dan buana yang berarti bumi</a>
-            {{-- <a href="#" class="uppercase text-gray-800 hover:text-black">Continue Reading <i class="fas fa-arrow-right"></i></a> --}}
+    {{-- Image by <a href="https://pixabay.com/users/silviarita-3142410/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2023602">Silvia</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2023602">Pixabay</a> --}}
+    <div class="hero min-h-screen" style="background-image: url({{asset('img/buah/pomegranate-g7262827a5_1920.jpg')}});" >
+        <div class="hero-overlay bg-opacity-60"></div>
+        <div class="hero-content text-center text-neutral-content">
+          <div class="max-w-md">
+            <h1 class="mb-5 text-5xl font-bold">MARKISA MEGABUANA</h1>
+            <p class="mb-5 font-bold md:text-lg capitalize text-white shadow-sm"> produk minuman khas dari Kota Makassar yang sangat cocok dijadikan oleh-oleh atau bingkisan untuk sanak keluarga, teman dan para handai taulan.</p>
+            <button class="btn btn-primary">Dapatkan Skrg</button>
+          </div>
         </div>
-    </article>
-
-    {{-- <article class="flex flex-col shadow my-4">
-        <!-- Article Image -->
-        <a href="#" class="hover:opacity-75">
-            <img src="https://source.unsplash.com/collection/1346951/1000x500?sig=2">
-        </a>
-        <div class="bg-white flex flex-col justify-start p-6">
-            <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4">Automotive, Finance</a>
-            <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</a>
-            <p href="#" class="text-sm pb-3">
-                By <a href="#" class="font-semibold hover:text-gray-800">David Grzyb</a>, Published on January 12th, 2020
-            </p>
-            <a href="#" class="pb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis porta dui. Ut eu iaculis massa. Sed ornare ligula lacus, quis iaculis dui porta volutpat. In sit amet posuere magna..</a>
-            <a href="#" class="uppercase text-gray-800 hover:text-black">Continue Reading <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </article>
-
-    <article class="flex flex-col shadow my-4">
-        <!-- Article Image -->
-        <a href="#" class="hover:opacity-75">
-            <img src="https://source.unsplash.com/collection/1346951/1000x500?sig=3">
-        </a>
-        <div class="bg-white flex flex-col justify-start p-6">
-            <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4">Sports</a>
-            <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</a>
-            <p href="#" class="text-sm pb-3">
-                By <a href="#" class="font-semibold hover:text-gray-800">David Grzyb</a>, Published on October 22nd, 2019
-            </p>
-            <a href="#" class="pb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis porta dui. Ut eu iaculis massa. Sed ornare ligula lacus, quis iaculis dui porta volutpat. In sit amet posuere magna..</a>
-            <a href="#" class="uppercase text-gray-800 hover:text-black">Continue Reading <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </article> --}}
-
-    <!-- Pagination -->
-    {{-- <div class="flex items-center py-8">
-        <a href="#" class="h-10 w-10 bg-blue-800 hover:bg-blue-600 font-semibold text-white text-sm flex items-center justify-center">1</a>
-        <a href="#" class="h-10 w-10 font-semibold text-gray-800 hover:bg-blue-600 hover:text-white text-sm flex items-center justify-center">2</a>
-        <a href="#" class="h-10 w-10 font-semibold text-gray-800 hover:text-gray-900 text-sm flex items-center justify-center ml-3">Next <i class="fas fa-arrow-right ml-2"></i></a>
-    </div> --}}
-
-</section>
-
-<!-- Sidebar Section -->
-<aside class="w-full md:w-1/3 flex flex-col items-center px-3">
-
-    <div class="w-full bg-white shadow flex flex-col my-4 p-6">
-        <p class="text-xl font-semibold pb-5">About Us</p>
-        <p class="pb-2">
-            Mega Buana Toko :
-            JL Walanda Maramis, No. 8-A, Manado, Sulawesi Utara, Indonesia <br>
-            Telepon Kami
-            Tel: 0431 868 125</p>
-    </div>
-
-    <div class="w-full bg-white shadow flex flex-col my-4 p-6">
-        <p class="text-xl font-semibold pb-5">Pesan Produk UD. Mega Buana</p>
-        <div class="grid grid-cols-3 gap-3">
-            <img class="hover:opacity-75" src="https://source.unsplash.com/1600x900/?passionfruit">
-            <img class="hover:opacity-75" src="https://source.unsplash.com/1600x900/?passionfruit">
-            <img class="hover:opacity-75" src="https://source.unsplash.com/1600x900/?passionfruit">
-            <img class="hover:opacity-75" src="https://source.unsplash.com/1600x900/?passionfruit">
-            <img class="hover:opacity-75" src="https://source.unsplash.com/1600x900/?passionfruit">
-            <img class="hover:opacity-75" src="https://source.unsplash.com/1600x900/?passionfruit">
-            <img class="hover:opacity-75" src="https://source.unsplash.com/1600x900/?passionfruit">
-            <img class="hover:opacity-75" src="https://source.unsplash.com/1600x900/?passionfruit">
-            <img class="hover:opacity-75" src="https://source.unsplash.com/1600x900/?passionfruit">
-        </div>
-        <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-6">
-            <i class="fab fa-instagram mr-2"></i> Lakukan Pemesanan
-        </a>
-    </div>
-
-</aside>
+      </div>
+     <div class="container px-3 md:px-5 mx-auto text-end flex justify-center items-center">
+        <div class="hero min-h-screen bg-base-200 w-1/2">
+            <div class="hero-content flex-col lg:flex-row-reverse">
+                {{-- Image by <a href="https://pixabay.com/users/adrianohermini-3005030/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1555468">Adriano Hermini</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1555468">Pixabay</a> --}}
+              <img src="{{asset('img/buah/passion-fruit-g123d090c6_1920.jpg')}}" class="max-w-xs rounded-lg shadow-2xl" />
+              <div>
+                <h1 class="text-5xl font-bold">Produk Terbaik</h1>
+                <p class="py-6">Diolah dari buah Markisa pilihan terbaik, Markisa Mega Buana merupakan satu dari sedikit produk buah markisa dari Makassar yang memberikan sensasi rasa markisa paling berkualitas, kental dan nikmat dikonsumsi kapan saja.</p>
+                <button class="btn btn-primary">Dapatkan Skrg</button>
+              </div>
+            </div>
+          </div>
+          <div class="card w-96 bg-primary text-primary-content text-end">
+            <div class="card-body">
+              <h2 class="card-title text-end">Telah Bertahan Lama</h2>
+              <p class="text-start">Sirup Markisa UD. Mega Buana Berdiri Sejak Tahun 1999 Di Kota Makassar</p>
+              <div class="card-actions justify-end">
+                <button class="btn">Beli Sekarang</button>
+              </div>
+            </div>
+          </div>
+     </div>
+     <div class="artboard artboard-horizontal phone-6">
+        <div class="card w-96 bg-primary text-primary-content">
+            <div class="card-body">
+              <h2 class="card-title">Card title!</h2>
+              <p>If a dog chews shoes whose shoes does he choose?</p>
+              <div class="card-actions justify-end">
+                <button class="btn">Beli Sekarang</button>
+              </div>
+            </div>
+          </div>
+     </div>
 
 </x-guest-layout>
