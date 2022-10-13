@@ -10,8 +10,7 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-    <link rel="stylesheet" href="{{asset('build/assets/app.829b7516.css')}}">
-    <script src="{{asset('build/assets/app.ab93cf8a.js')}}"></script>
+    @vite(['resources/css/app.css','resources/js/app.js'])
     <script src="{{asset('js/core.js')}}"></script>
 
     <!-- Styles -->
