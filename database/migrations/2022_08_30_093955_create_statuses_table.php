@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('status', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('pesanan_id')->constrained('pesanans')->onDelete('cascade');
             $table->string('status', 100);
             $table->string('ket', 100);
             $table->timestamps();

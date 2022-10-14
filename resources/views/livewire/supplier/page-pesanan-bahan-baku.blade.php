@@ -22,7 +22,7 @@
                  <x-td>{{$barangmasuks->pesanan->jumlah}}</x-td>
                  <x-td>Rp. {{number_format($barangmasuks->pesanan->sub_total, 0,2)}}</x-td>
                  <x-td>
-                    <button type="button" class="btn btn-accent">Belum Konfirmasi</button>
+                    <button type="button" class="btn btn-accent" wire:click='statusPesanan({{$barangmasuks->pesanan->id}})'>Belum Konfirmasi</button>
                  </x-td>
                  <x-td>
                     @include('items.td-action', ['id'=> $barangmasuks->id])
@@ -32,4 +32,11 @@
         </tbody>
 
     </x-table>
+    <x-jet-dialog-modal wire:model="itemStatus">
+        <x-slot name="title"></x-slot>
+        <x-slot name="content">
+           <x-statuspage :id="$itemID" />
+        </x-slot>
+        <x-slot name="footer"></x-slot>
+    </x-jet-dialog-modal>
 </div>

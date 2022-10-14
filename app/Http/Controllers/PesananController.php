@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StorePesananRequest;
 use App\Http\Requests\UpdatePesananRequest;
 use App\Models\BarangMasuk;
+use App\Models\Status;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PesananController extends Controller
@@ -54,6 +55,12 @@ class PesananController extends Controller
             'pesanan_id'=> $pesan->id,
             'status'=> 1,
             'supplier_id'=> $data['supplier_id'],
+        ]);
+        // Buat Status
+        $status = Status::create([
+            'pesanan_id'=> $pesan->id,
+            'status'=> '0',
+            'ket'=> 'Pembelian Bahan Baku',
         ]);
         Alert::success('Info', "Pemesanan berhasil mohon tunggu konfirmasi");
         return redirect()->route('Admin.Tr-Pesanan');
