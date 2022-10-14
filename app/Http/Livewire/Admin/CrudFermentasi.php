@@ -21,7 +21,10 @@ class CrudFermentasi extends Component
         $item = null,
         $itemID,
         $loadingState = false,
-        $data = [];
+        $data = [],
+        $gagal = false,
+        $dataError = [];
+
 
     public function mount(Request $request)
     {
@@ -45,7 +48,7 @@ class CrudFermentasi extends Component
         // dd($this->item);
         $this->kode();
 
-        if($this->item != null){
+        if ($this->item != null) {
             $this->itemEdit = true;
             $fer = ProdukFermentasi::find($this->item['id']);
             $this->tgl_frementasi = $fer->tgl_frementasi;
@@ -128,13 +131,21 @@ class CrudFermentasi extends Component
         // dd();
         foreach ($stock as $item => $key) {
             $stock = StockBahanBaku::find($key->id);
-            $this->data[$item] = ($stock->max * $this->jumlah_stock);
+            // Hitung Jumlah Pengunaan
+            $hasil = ($stock->max * $this->jumlah_stock);
+            if ($stock->stock < $hasil) {
+                $this->dataError[] = $stock->bahanbaku->nama_bahan_baku;
+                $this->gagal = true;
+                Alert::error('Gagal');
+            }
+            $this->data[$item] = $hasil;
         }
+        // dd(count($this->dataError));
         $this->loadingState = true;
 
         // dd($this->data);
     }
-    public function loadingData(){
-
+    public function loadingData()
+    {
     }
 }

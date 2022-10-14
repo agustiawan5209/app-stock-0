@@ -13,7 +13,7 @@ class BahanBakuSupplier extends Model
 
     public function supplier()
     {
-        return $this->belongsTo(Suppliers::class, 'suppliers_id');
+        return $this->belongsTo(Supplier::class, 'suppliers_id');
     }
     public function barang_masuk()
     {

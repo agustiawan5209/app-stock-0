@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ProdukFermentasi;
 use App\Models\StockBahanBaku;
+use Carbon\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class FermentasiController extends Controller
@@ -12,9 +13,9 @@ class FermentasiController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            'kode'=> ['required', 'string'],
-            'jumlah'=> ['required', 'integer'],
-            'tgl_frementasi'=> ['required', 'date'],
+            'kode' => ['required', 'string'],
+            'jumlah_stock' => ['required', 'integer'],
+            'tgl_frementasi' => ['required', 'date'],
         ]);
         $id = $request->id;
         $max = $request->max;
@@ -33,13 +34,23 @@ class FermentasiController extends Controller
         $id = implode(',', $id);
         $max = implode(',', $max);
         $stock = implode(',', $data);
-        ProdukFermentasi::create([
-            'kode' => $request->kode,
-            'jumlah_stock' => $request->jumlah_stock,
-            'status' => '1',
-            'tgl_frementasi' => $request->tgl_frementasi,
-            'data' => $id . '/' . $max . '/' . $stock,
-        ]);
+        $produk = ProdukFermentasi::whereDate('tgl_frementasi', Carbon::now()->format('Y-m-d'))->get();
+        if ($produk->count() > 0) {
+            foreach ($produk as $item) {
+                ProdukFermentasi::find($item->id)->update([
+                    'jumlah_stock' => $request->jumlah_stock + $item->jumlah_stock,
+                ]);
+            }
+        } else {
+            ProdukFermentasi::create([
+                'kode' => $request->kode,
+                'jumlah_stock' => $request->jumlah_stock,
+                'status' => '1',
+                'tgl_frementasi' => $request->tgl_frementasi,
+                'data' =>  $stock,
+            ]);
+        }
+
         $this->itemAdd = false;
         Alert::info('Info', 'Berhasil Di Simpan');
         return redirect()->route('Admin.Produk-Fermentasi');
@@ -48,9 +59,9 @@ class FermentasiController extends Controller
     public function edit($id, Request $request)
     {
         $this->validate($request, [
-            'kode'=> ['required', 'string'],
-            'jumlah'=> ['required', 'integer'],
-            'tgl_frementasi'=> ['required', 'date'],
+            'kode' => ['required', 'string'],
+            'jumlah' => ['required', 'integer'],
+            'tgl_frementasi' => ['required', 'date'],
         ]);
         return [$request->all(), $id];
         ProdukFermentasi::where('id', $id)->update([

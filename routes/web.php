@@ -13,6 +13,7 @@ use App\Http\Livewire\Admin\DashboardAdmin;
 use App\Http\Livewire\Admin\PageBarangMasuk;
 use App\Http\Livewire\Admin\PageBuatPesanan;
 use App\Http\Livewire\Admin\PageBarangKeluar;
+use App\Http\Livewire\Admin\PageCekout;
 use App\Http\Livewire\Admin\PagelistBahanBaku;
 use App\Http\Livewire\Admin\PageProduk;
 use App\Http\Livewire\Admin\PageProdukFermentasi;
@@ -53,6 +54,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         // Route Pesanan
         Route::get('Pesanan', PageTransaksiPesanan::class)->name('Tr-Pesanan');
         Route::get('Buat/Pesanan', PageBuatPesanan::class)->name('Buat-Pesanan');
+        Route::get('Buat/Cekout', PageCekout::class)->name('pesan-Cekout');
 
         // Satuan Jenis Kelas Bahan Baku
         Route::get('Satuan', PageSatuan::class)->name('Satuan');
