@@ -40,7 +40,25 @@
         <x-slot name="title"></x-slot>
         <x-slot name="content">
            <x-statuspage :id="$itemID" />
+           <form action="" class="w-full">
+            <label class="input-group input-group-vertical my-2">
+                <span class="bg-info font-semibold text-lg">Update Status</span>
+                <select wire:model='status' name="bukti" class="input input-bordered">
+                    <option value="">---</option>
+                    <option value="1">Konfirmasi</option>
+                    <option value="2">Pengiriman Barang</option>
+                    <option value="3">Barang Diterima</option>
+                    <option value="4">Barang Gagal Diterima</option>
+                </select>
+            </label>
+            <label class="input-group input-group-vertical my-2">
+                <span class="bg-info font-semibold text-lg">Keterangan</span>
+                <textarea class="textarea textarea-bordered h-40" wire:model="ket" id="ket" cols="10" rows="10"></textarea>
+            </label>
+        </form>
         </x-slot>
-        <x-slot name="footer"></x-slot>
+        <x-slot name="footer">
+            <button type="button" class="btn btn-info" wire:click="updateStatus({{$itemID}})">Simpan</button>
+        </x-slot>
     </x-jet-dialog-modal>
 </div>
