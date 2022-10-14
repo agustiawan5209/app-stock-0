@@ -24,7 +24,7 @@
                     <div class="px-5 pb-5">
                         <a href="#">
                             <h5 class="text-xl font-semibold tracking-tight text-gray-900 underline">
-                                {{$item->bahan_baku}}</h5>
+                                {{$item->bahanbaku->nama_bahan_baku}}</h5>
                         </a>
                         <div class="flex flex-col">
                             <div class="py-1 font-bold">Isi: {{$item->isi}}</div>
@@ -73,7 +73,8 @@
             </x-slot>
             <x-slot name="footer">
                 <button type="button" class="btn btn-error" wire:click="CloseModal">Batalkan</button>
-                <button type="button" class="btn btn-primary" wire:click="kirimCekout({{$itemID}})">Buat Pesanan</button>
+                <button type="button" class="btn btn-primary" wire:click="kirimCekout({{$itemID}})">Buat
+                    Pesanan</button>
             </x-slot>
         </x-jet-dialog-modal>
 

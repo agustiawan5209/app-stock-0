@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FermentasiController;
+use App\Http\Controllers\PesananController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Admin\PageJenis;
 use App\Http\Livewire\Admin\PageSatuan;
@@ -84,4 +85,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     });
     Route::get('Tabel-Bank', PageBank::class)->name('Page-Bank');
 });
+
+Route::post('receive', [PesananController::class, 'receive'])->name('Simpan-Pesanan');
 

@@ -15,12 +15,13 @@ class PageBuatPesanan extends Component
     {
         $bahanbaku = BahanBakuSupplier::latest()->paginate(10);
         return view('livewire.admin.page-buat-pesanan', [
-            'bahanbaku'=> $bahanbaku,
-        ])->layoutData(['page'=> 'Halaman Buat Pesanan']);
+            'bahanbaku' => $bahanbaku,
+        ])->layoutData(['page' => 'Halaman Buat Pesanan']);
     }
-    public $itemAdd = false , $itemEdit = false, $itemDelete = false , $itemID;
+    public $itemAdd = false, $itemEdit = false, $itemDelete = false, $itemID;
 
-    public function CloseModal(){
+    public function CloseModal()
+    {
 
         $this->itemEdit = false;
         $this->itemID = null;
@@ -29,34 +30,48 @@ class PageBuatPesanan extends Component
         $this->gambar = null;
         $this->bahan_baku = null;
         $this->satuan = null;
-        $this->isi =null;
+        $this->isi = null;
         $this->harga = null;
         $this->jumlah_stock = null;
         $this->supplier_id = null;
     }
-    public function addModal($id){
+    public function addModal($id)
+    {
 
         $this->itemAdd = true;
         $bahanBaku = BahanBakuSupplier::find($id);
         $this->itemID = $id;
         $this->gambar = $bahanBaku->gambar;
-        $this->bahan_baku = $bahanBaku->bahan_baku;
+        $this->bahan_baku = $bahanBaku->bahanbaku->nama_bahan_baku;
         $this->satuan = $bahanBaku->satuan;
         $this->isi = $bahanBaku->isi;
         $this->harga = $bahanBaku->harga;
         $this->jumlah_stock = $bahanBaku->jumlah_stock;
         $this->supplier_id = $bahanBaku->supplier->supplier;
     }
-    public function editModal($id){
+    public function editModal($id)
+    {
         $this->itemID = $id;
 
         Alert::success("Info", "Berhasil Di Edit");
         $this->itemEdit = true;
     }
-    public function kirimCekout($id){
+    public function kirimCekout($id)
+    {
         $this->itemID = $id;
+        $bahanBaku = BahanBakuSupplier::find($id);
+        session()->put('data', [
+            'itemID' => $id,
+            'gambar' => $bahanBaku->gambar,
+            'bahan_baku' => $bahanBaku->bahan_baku,
+            'satuan' => $bahanBaku->satuan,
+            'isi' => $bahanBaku->isi,
+            'harga' => $bahanBaku->harga,
+            'jumlah_stock' => $bahanBaku->jumlah_stock,
+            'supplier_id' => $bahanBaku->suppliers_id,
+            'user_id' => $bahanBaku->supplier->user_id,
 
+        ]);
         return redirect()->route('Admin.pesan-Cekout');
     }
-
 }

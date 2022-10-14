@@ -31,13 +31,13 @@ module.exports = {
 
                 "base-100": "#f3f4f6",
 
-                "info": "#8EA4DC",
+                "info": "#2563eb",
 
                 "success": "#0D6D4C",
 
                 "warning": "#EB8E14",
 
-                "error": "#F05682",
+                "error": "#dc2626",
             },
         }, ],
     },

@@ -19,4 +19,7 @@ class BahanBakuSupplier extends Model
     {
         return $this->hasOne(BarangMasuk::class, 'bahan');
     }
+    public function bahanbaku(){
+        return $this->hasOne(BahanBaku::class, 'id', 'bahan_baku');
+    }
 }

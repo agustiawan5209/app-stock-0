@@ -16,8 +16,7 @@ return new class extends Migration
         Schema::create('pesanans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('bahan_baku_id')->constrained('bahan_bakus');
-            $table->foreignId('satuan_id')->constrained('satuans');
-            $table->foreignId('jenis_id')->constrained('jenis');
+            $table->string('satuan_id');
             $table->integer('jumlah');
             $table->foreignId('transaksi_id');
             $table->bigInteger('sub_total');

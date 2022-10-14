@@ -50,7 +50,12 @@
                         </div>
                         <div class="mb-4">
                             <x-jet-label for="bahan_id">Bahan Baku</x-jet-label>
-                            <x-jet-input wire:model='bahan_id'  />
+                            <x-select wire:model="bahan_id">
+                                <option value="">-</option>
+                                @foreach ($bahan_baku as $item)
+                                    <option value="{{$item->id}}">{{$item->nama_bahan_baku}}</option>
+                                @endforeach
+                            </x-select>
                         </div>
                         <div class="mb-4">
                             <x-jet-label for="isis">Satuan</x-jet-label>
@@ -136,7 +141,7 @@
                                 alt="Image Bahan Baku">
                         </x-td>
                         <x-td class="border border-gray-100 text-xs bg-white text-center">
-                            {{ $item->bahan_baku }}</x-td>
+                            {{ $item->bahanbaku->nama_bahan_baku }}</x-td>
                         <x-td class="border border-gray-100 text-xs bg-white text-center">
                             {{ $item->isi }}
                         </x-td>
