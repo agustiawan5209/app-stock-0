@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('kode',50);
             $table->foreignId('pesanan_id');
             $table->enum('status', ['1','2','3','4'])->comment('Belum DiVerifikasi, 2 = Diverifikasi, 3 = Dalam Pengiriman, 4 = Diteriman');
-            $table->foreignId('supplier_id')->constrained('suppliers');
+            $table->foreignId('supplier_id');
             $table->timestamps();
         });
     }

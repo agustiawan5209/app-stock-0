@@ -15,6 +15,6 @@ class BarangMasuk extends Model
     protected $hidden = ['pesanan_id'];
 
     public function pesanan(){
-        return $this->hasOne(Pesanan::class, 'id', 'pesanans');
+        return $this->hasOne(Pesanan::class, 'id', 'pesanan_id');
     }
 }

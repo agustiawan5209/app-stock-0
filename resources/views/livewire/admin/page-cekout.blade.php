@@ -64,8 +64,8 @@
             class="flex-auto overflow-y-auto px-4 pt-12 pb-16 sm:px-6 sm:pt-16 lg:px-8 lg:pt-0 lg:pb-24">
             <div class=" mx-auto">
                 <div class=" bg-info">
-                    <div class="card-body">
-                        <div class="card-title">Jenis Pembayaran</div>
+                    <div class="-body">
+                        <div class="-title">Jenis Pembayaran</div>
                         @foreach ($bank as $bank)
                         <div tabindex="{{$bank->id}}"
                             class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box h-max">
