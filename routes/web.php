@@ -21,6 +21,7 @@ use App\Http\Livewire\Admin\PageProdukFermentasi;
 use App\Http\Livewire\Admin\PageStockBahanBaku;
 use App\Http\Livewire\Admin\PageTransaksiPesanan;
 use App\Http\Livewire\Customer\DashboardCustomer;
+use App\Http\Livewire\DetailPesanan;
 use App\Http\Livewire\Supplier\DashboardSupplier;
 use App\Http\Livewire\Supplier\PageBahanBaku;
 use App\Http\Livewire\Supplier\PagePesananBahanBaku;
@@ -86,6 +87,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::get('Dashboard', DashboardCustomer::class)->name('Dashboard-Admin');
     });
     Route::get('Tabel-Bank', PageBank::class)->name('Page-Bank');
+    Route::get('Detail/Pesanan/Bahan-Baku/{item}', DetailPesanan::class)->name('Detail-Pesanan-Bahan-baku');
+
 });
 
 Route::post('receive', [PesananController::class, 'receive'])->name('Simpan-Pesanan');

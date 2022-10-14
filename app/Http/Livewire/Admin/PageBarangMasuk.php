@@ -11,7 +11,8 @@ class PageBarangMasuk extends Component
     public $row = 10, $search ='';
     public function render()
     {
-        $barangmasuk = BarangMasuk::orderBy('id', 'desc')->paginate($this->row);
+        $barangmasuk = BarangMasuk::where('status', '=', 4)
+        ->orderBy('id', 'desc')->paginate($this->row);
         if($this->search != ''){
             $barangmasuk = BarangMasuk::orderBy('id', 'desc')
             ->where('kode', 'like', '%'. $this->search . '%')

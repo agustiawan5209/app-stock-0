@@ -18,4 +18,7 @@ class PagePesananBahanBaku extends Component
         $this->itemID = $id;
         $this->itemStatus = true;
     }
+    public function detailModal($id){
+        return redirect()->route('Detail-Pesanan-Bahan-baku', ['item'=> $id]);
+    }
 }
