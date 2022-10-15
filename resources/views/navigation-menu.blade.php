@@ -36,14 +36,11 @@
         x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 translate-x-0"
         x-transition:leave-end="opacity-50 -translate-x-32">
         <div class="bg-white rounded-lg border border-gray-200 w-48 text-gray-900 text-sm font-medium mt-0 space-y-0">
-            <a href="{{ route('Admin.Produk') }}"
-                class=" active:border-none focus:border-0 active:ring-0  {{ request()->routeIs('Admin.Produk') ? 'block px-4 py-2 border-b border-gray-200 w-full rounded-t-lg bg-blue-700 text-white cursor-pointer' : 'block px-4 py-2 border-b border-gray-200 w-full hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 cursor-pointer' }}">
-                Produk Siap Jual
-            </a>
+
 
             <a href="{{ route('Admin.Produk-Fermentasi') }}"
                 class=" active:border-none focus:border-0 active:ring-0  {{ request()->routeIs('Admin.Produk-Fermentasi') ? 'block px-4 py-2 border-b border-gray-200 w-full rounded-t-lg bg-blue-700 text-white cursor-pointer' : 'block px-4 py-2 border-b border-gray-200 w-full hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 cursor-pointer' }}">
-                Produk Tahap Fermentasi
+                Produk Tahap Jual
             </a>
             <a href="{{ route('Admin.Jenis') }}"
                 class=" active:border-none focus:border-0 active:ring-0  {{ request()->routeIs('Admin.Jenis') ? 'block px-4 py-2 border-b border-gray-200 w-full rounded-t-lg bg-blue-700 text-white cursor-pointer' : 'block px-4 py-2 border-b border-gray-200 w-full hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 cursor-pointer' }}">

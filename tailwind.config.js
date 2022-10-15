@@ -14,20 +14,22 @@ module.exports = {
             fontFamily: {
                 sans: ['ui-monospace', ...defaultTheme.fontFamily.sans],
             },
-
+            colors: {
+                "ungu": '#e11d48'
+            }
         },
     },
     daisyui: {
         themes: [{
             mytheme: {
 
-                "primary": "#facc15",
+                "primary": "#292524",
 
                 "secondary": "#046ea3",
 
-                "accent": "#f9dd39",
+                "accent": "#f59e0b",
 
-                "neutral": "#1E1727",
+                "neutral": "#881337",
 
                 "base-100": "#f3f4f6",
 

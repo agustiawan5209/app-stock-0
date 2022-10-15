@@ -50,7 +50,7 @@
     <div class="flex min-h-screen 2xl:max-w-7xl 2xl:mx-auto 2xl:border-x-2 2xl:border-primary">
         <!-- Sidebar -->
 
-        <aside class="bg-neutral w-1/5 py-10 pl-10  min-w-min   border-r border-primary/20 hidden md:block ">
+        <aside class="bg-gradient-to-b from-neutral to-yellow-800 w-1/5 py-10 pl-10  min-w-min   border-r border-primary/20 hidden md:block ">
             <div class=" font-bold text-2xl text-white">{{ Auth::user()->name }}</div>
 
             <!-- Menu -->
@@ -85,10 +85,10 @@
             </div><!-- /Menu -->
         </aside><!-- /Sidebar -->
 
-        <main class="bg-primary60 w-full ">
+        <main class="bg-primary0 w-full ">
 
             <!-- Nav -->
-            <nav class="text-lg flex items-center justify-between content-center py-5 px-5 bg-primary">
+            <nav class="text-lg flex items-center justify-between content-center py-5 px-5 bg-gradient-to-r from-neutral to-yellow-700">
                 <div class=" font-semibold text-xl text-white flex space-x-4 items-center">
                     <a href="#">
                         <span class="md:hidden">
@@ -118,16 +118,6 @@
                             </svg>
                         </span>
                         <span class="hidden sm:block">Setting</span>
-                    </a>
-                    <a class="px-4 py-2 bg-primary rounded-md flex items-center space-x-2 text-primary hover:bg-primary"
-                        href="#">
-                        <svg class="h-5 w-5 fill-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                            fill="currentColor">
-                            <path fill-rule="evenodd"
-                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                        <div class="hidden xs:block"><span class="hidden sm:inline-block">Create</span> New</div>
                     </a>
                     <a class href="#">
                         <img class="rounded-full w-10 h-10 border-2 border-primary hover:border-primary"
