@@ -5,7 +5,7 @@
         href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2023602">Pixabay</a>
     --}}
     <div class="hero min-h-screen"
-        style="background-image: url({{asset('img/buah/pomegranate-g7262827a5_1920.jpg')}});">
+        style="background-image: url({{asset('img/buah/pomegranate-g7262827a5_1920.jpg')}}); background-size:cover;">
         <div class="hero-overlay bg-opacity-60"></div>
         <div class="hero-content text-center text-neutral-content">
             <div class="max-w-md">
@@ -25,7 +25,7 @@
                     Hermini</a> from <a
                     href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1555468">Pixabay</a>
                 --}}
-                <img src="{{asset('img/buah/passion-fruit-g123d090c6_1920.jpg')}}"
+                <img src="{{asset('img/landing/landing (2).jpeg')}}"
                     class="max-w-xs rounded-lg shadow-2xl" />
                 <div>
                     <h1 class="text-5xl font-bold">Produk Terbaik</h1>
