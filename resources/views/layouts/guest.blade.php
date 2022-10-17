@@ -17,7 +17,7 @@
     @livewireStyles
 </head>
 
-<body class="bg-white font-family-karla">
+<body class="bg-white text-base">
     <!-- Pazly Blocks Come Here -->
     <section id="pazly-template-set" class="m-0 p-0 stretchToScreen bg-white">
         <header xmlns="http://www.w3.org/1999/xhtml" class="text-p-gray-700 body-font shadow">
