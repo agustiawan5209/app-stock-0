@@ -40,6 +40,9 @@ use App\Http\Livewire\Supplier\PagePesananBahanBaku;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/Sejarah', function () {
+    return view('sejarah');
+});
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/dashboard', [UserController::class, 'cekUser'])->name('dashboard');

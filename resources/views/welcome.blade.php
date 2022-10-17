@@ -1,51 +1,137 @@
 <x-guest-layout>
-    {{-- Image by <a
-        href="https://pixabay.com/users/silviarita-3142410/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2023602">Silvia</a>
-    from <a
-        href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2023602">Pixabay</a>
-    --}}
-    <div class="hero min-h-screen"
-        style="background-image: url({{asset('img/buah/pomegranate-g7262827a5_1920.jpg')}}); background-size:cover;">
-        <div class="hero-overlay bg-opacity-60"></div>
-        <div class="hero-content text-center text-neutral-content">
-            <div class="max-w-md">
-                <h1 class="mb-5 text-5xl font-bold" id="textTyp">MARKISA MEGABUANA</h1>
-                <p class="mb-5 font-bold md:text-lg capitalize text-white shadow-sm"> produk minuman khas dari Kota
-                    Makassar yang sangat cocok dijadikan oleh-oleh atau bingkisan untuk sanak keluarga, teman dan para
-                    handai taulan.</p>
-                <button class="btn btn-primary">Dapatkan Skrg</button>
+    <div class="hero min-h-screen bg-blueLight">
+        <div class="hero-content flex-col lg:flex-row-reverse max-w-5xl mx-auto">
+            <img src="{{asset('img/landing/landing (3).jpeg')}}" class="max-w-sm rounded-lg shadow-2xl" />
+            <div>
+                <h1 class="text-5xl font-bold">UD. Mega Buana</h1>
+                <p class="py-6">Markisa MEGA BUANA adalah produk minuman khas dari Kota Makassar yang sangat cocok dijadikan oleh-oleh atau bingkisan untuk sanak keluarga, teman dan para handai taulan.</p>
+                <button class="btn btn-primary">Get Started</button>
             </div>
         </div>
     </div>
-    <div class="container px-3 md:px-5 mx-auto text-end flex flex-col md:flex-row justify-center items-center">
-        <div class="hero min-h-screen bg-base-200 w-1/2">
-            <div class="hero-content flex-col lg:flex-row-reverse">
-                {{-- Image by <a
-                    href="https://pixabay.com/users/adrianohermini-3005030/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1555468">Adriano
-                    Hermini</a> from <a
-                    href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1555468">Pixabay</a>
-                --}}
-                <img src="{{asset('img/landing/landing (2).jpeg')}}"
-                    class="max-w-xs rounded-lg shadow-2xl" />
-                <div>
-                    <h1 class="text-5xl font-bold">Produk Terbaik</h1>
-                    <p class="py-6">Diolah dari buah Markisa pilihan terbaik, Markisa Mega Buana merupakan satu dari
-                        sedikit produk buah markisa dari Makassar yang memberikan sensasi rasa markisa paling
-                        berkualitas, kental dan nikmat dikonsumsi kapan saja.</p>
-                    <button class="btn btn-primary">Dapatkan Skrg</button>
-                </div>
+    {{-- <section xmlns="http://www.w3.org/1999/xhtml"
+        class="w-full bg-p-indigo-900 py-16 bg-white text-black shadow-lg">
+        <div class="container mx-auto flex flex-col-reverse md:flex-row justify-center">
+            <div class="w-10/12 md:w-6/12 px-4 md:px-12">
+                <h6 pazly-editable="innerHTML" class="text-4xl mb-3 font-semibold text-neutral">Join a community of
+                    25000+ members whi share your passion.</h6>
+                <p pazly-editable="innerHTML" class="mb-4 text-lg text-gray-700">Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat.</p>
+            </div>
+            <div class="w-full flex flex-col md:w-1/2 px-4 items-center justify-center">
+                <form pazly-editable="form" method="POST" action static-form
+                    class="flex flex-row justify-start w-full max-w-md rounded-lg overflow-hidden shadow-xl">
+                    <input class="input input-info w-full" placeholder="Email" name="email" type="text" />
+                    <button pazly-editable="innerHTML bg" target="_blank" class="btn btn-info">Send</i> </button>
+                </form>
+                <p pazly-editable="innerHTML" class="text-sm mt-2 text-p-gray-200 mb-8 max-w-md w-full">Keep in
+                    tough with us. Subscribe to our newsletter.</p>
             </div>
         </div>
-        <div class="card w-96 bg-primary text-primary-content text-end">
-            <div class="card-body">
-                <h2 class="card-title text-end">Telah Bertahan Lama</h2>
-                <p class="text-start">Sirup Markisa UD. Mega Buana Berdiri Sejak Tahun 1999 Di Kota Makassar</p>
-                <div class="card-actions justify-end">
-                    <button class="btn">Beli Sekarang</button>
+    </section> --}}
+
+<!-- Pazly Blocks Ends Here -->
+<section>
+    <div class="mx-auto max-w-screen-2xl px-4 py-8 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div class="bg-blue-600 p-8 md:p-12 lg:px-16 lg:py-24">
+                <div class="mx-auto max-w-xl text-center">
+                    <h2 class="text-sm font-bold text-white md:text-lg">
+                        Diolah dari buah Markisa pilihan terbaik, Markisa MEGA BUANA merupakan satu dari sedikit produk SARI markisa  yang memberikan sensasi rasa markisa paling berkualitas, kental dan nikmat dikonsumsi kapan saja.
+                    </h2>
+
+                    <p class="hidden text-white/90 sm:mt-4 sm:block">
+                        Pengembangan usaha dari UD. Mega berkaitan erat dengan minuman
+                        sehingga diperlukan juga izin resmi dari Departemen Kesehatan yang
+                        menyatakan bahwa produk Markisa tersebut dapat dikonsumsi oleh masyarakat,
+                        dengan nomor : HK.00.05.5.1640 pada tanggal 30 April 2003
+                    </p>
+
+                    <div class="mt-4 md:mt-8">
+                        <a href="#"
+                            class="inline-block rounded border border-white bg-white px-12 py-3 text-sm font-medium text-blue-500 transition hover:bg-transparent hover:text-white focus:outline-none focus:ring focus:ring-yellow-400">
+                            Get Started Today
+                        </a>
+                    </div>
                 </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-1 lg:grid-cols-2">
+                <img alt="Student" src="{{asset('img/landing/landing (2).jpeg')}}"
+                    class="h-40 w-full object-cover sm:h-56 md:h-full" />
+
+                <img alt="Student" src="{{asset('img/landing/landing (4).jpeg')}}"
+                    class="h-40 w-full object-cover sm:h-56 md:h-full" />
             </div>
         </div>
     </div>
+</section>
+
+<section xmlns="http://www.w3.org/1999/xhtml" class="w-full py-16 bg-p-truegray-800">
+    <div class="container mx-auto flex flex-col-reverse md:flex-row items-start justify-center">
+        <div class="w-10/12 md:w-6/12 px-4 md:px-12 shadow-xl">
+            <h6 pazly-editable="innerHTML"
+                class=" font-semibold whitespace-pre-line text-2xl text-p-white text-center md:text-left">
+                Visi</h6>
+            <p pazly-editable="innerHTML" class=" text-lg whitespace-pre-line text-p-white text-justify">
+                “Menjadi perusahaan yang mampu memberi manfaat dan peran terhadap kemajuan sektor industri usaha
+                kecil menengah (UKM) pada umumnya dan sektor periwisata pada khususnya yang bertujuan untuk
+                meningkatkan kesejahteraan para pelaku usaha industri sirup markisa dengan target mengeksport produk
+                sampai ke beberapa negara” </p>
+        </div>
+        <div class="w-10/12 md:w-6/12 px-4 pb-6 md:px-12 bg-blueLight text-white">
+            <h6 pazly-editable="innerHTML"
+                class="font-semibold whitespace-pre-line text-2xl text-p-white text-center md:text-left">
+                Misi</h6>
+            <ul type="1" class="list-decimal">
+                <li> Meningkatkan dan mempertahankan kualitas produk yang
+                    berkesinambungan </li>
+                <li>
+                    Meningkatkan potensi SDM yang terlibat pada perusahaan khususnya
+                    karyawan UD. Mega Buana
+                </li>
+                <li> Menjalin hubungan baik antara sesama kompetitor dan pasar sebagai mitra
+                    dagang yang saling memberi manfaat </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Pazly Scripts Start Here -->
+<section id="pazly-scripts-set" class="m-0 p-0 w-0 h-0">
+
+    <!-- Smooth scrolling -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        // handle links with @href started with '#' only
+    $(document).on('click', 'a[href^="#"]', function (e) {
+        // target element id
+        var id = $(this).attr('href');
+
+        // target element
+        var $id = $(id);
+        if ($id.length === 0) {
+            return;
+        }
+
+        // prevent standard hash navigation (avoid blinking in IE)
+        e.preventDefault();
+
+        // top position relative to the document
+        var pos = $id.offset().top;
+
+        // animated top scrolling
+        $('body, html').animate({
+            scrollTop: pos
+        });
+    });
+    </script>
+
+</section>
+
+
     <div class="w-full max-h-full block card">
         <div class="flex justify-center card-body items-center text-center ">
         <div class="text-center text-base md:text-2xl lg:text-3xl font-bold underline">Khasiat dan Manfaat Buah Markisa</div>

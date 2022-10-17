@@ -15,7 +15,8 @@ module.exports = {
                 sans: ['ui-monospace', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                "ungu": '#e11d48'
+                "ungu": '#e11d48',
+                'blueLight': "#1c6bed"
             }
         },
     },
