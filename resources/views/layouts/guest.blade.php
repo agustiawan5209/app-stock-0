@@ -32,9 +32,9 @@
                     <a href="#" class="mr-5 hover:text-p-gray-900 cursor-pointer">Contact</a>
                 </nav>
                 <div class="flex flex-row">
-                    <a pazly-editable="innerHTML href bg" target="_blank"
+                    <a href="{{route('login')}}"
                         class="bg-p-gray-200 hover:bg-p-gray-400 text-p-gray-800 ml-4 py-2 px-3 rounded-lg">Log In</a>
-                    <a pazly-editable="innerHTML href bg" target="_blank"
+                    <a href="{{route('register')}}"
                         class="bg-black hover:bg-p-gray-800 text-white ml-4 py-2 px-3 rounded-lg">Sign Up</a>
                 </div>
             </div>
