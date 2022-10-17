@@ -8,8 +8,8 @@
                     <x-th>NO</x-th>
                     <x-th>Kode</x-th>
                     <x-th>jumlah</x-th>
-                    <x-th>Tanggal fermentasi</x-th>
-                    <x-th>Jumlah Hari</x-th>
+                    <x-th>Tanggal Produk</x-th>
+                    <x-th>Hari Sebelum Expired</x-th>
                     <x-th>Status</x-th>
                     <x-th>Aksi</x-th>
                 </x-tr>

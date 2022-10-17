@@ -21,9 +21,9 @@ class ProdukFermentasi extends Model
     }
     public function getFermentasi($value){
         if($value == 1){
-            $string = 'Tahap Fermentasi';
+            $string = 'Belum Kadaluarsa ';
         }else if($value ==2){
-            $string ='Fermentasi Selesai';
+            $string =' Kadaluarsa';
         }else if($value ==3){
             $string ='Produk Siap Jual';
         }
