@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
     <script src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
     <!-- Scripts -->
-    @vite(['resources/js/app.js', 'resources/css/app.css'])
-
+    @vite(['resources/js/app.js'])
+    <link rel="stylesheet" href="{{asset('build/assets/app.829b7516.css')}}">
     <!-- Styles -->
     @livewireStyles
     <style>
