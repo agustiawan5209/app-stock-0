@@ -73,20 +73,20 @@
     </section>
 
     <section xmlns="http://www.w3.org/1999/xhtml" class="w-full py-16 bg-p-truegray-800">
-        <div class="container mx-auto flex flex-col-reverse md:flex-row items-start justify-center">
-            <div class="w-10/12 md:w-6/12 px-4 md:px-12 shadow-xl">
+        <div class="container mx-auto flex flex-col-reverse md:flex-row items-center justify-center">
+            <div class="w-10/12 md:w-6/12 h-64 px-4 pb-6 md:px-12 shadow-xl border">
                 <h6 pazly-editable="innerHTML"
-                    class=" font-semibold whitespace-pre-line text-2xl text-p-white text-center md:text-left">
+                    class=" font-semibold whitespace-pre-line text-2xl text-center md:text-left">
                     Visi</h6>
-                <p pazly-editable="innerHTML" class=" text-lg whitespace-pre-line text-p-white text-justify">
+                <p pazly-editable="innerHTML" class=" text-lg ">
                     “Menjadi perusahaan yang mampu memberi manfaat dan peran terhadap kemajuan sektor industri usaha
                     kecil menengah (UKM) pada umumnya dan sektor periwisata pada khususnya yang bertujuan untuk
                     meningkatkan kesejahteraan para pelaku usaha industri sirup markisa dengan target mengeksport produk
                     sampai ke beberapa negara” </p>
             </div>
-            <div class="w-10/12 md:w-6/12 px-4 pb-6 md:px-12 bg-blueLight text-white">
+            <div class="w-10/12 md:w-6/12 h-64 px-4 pb-6 md:px-12 bg-blueLight text-white">
                 <h6 pazly-editable="innerHTML"
-                    class="font-semibold whitespace-pre-line text-2xl text-p-white text-center md:text-left">
+                    class="font-semibold whitespace-pre-line text-2xl text-center md:text-left">
                     Misi</h6>
                 <ul type="1" class="list-decimal">
                     <li> Meningkatkan dan mempertahankan kualitas produk yang

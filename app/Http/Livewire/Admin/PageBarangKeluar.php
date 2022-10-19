@@ -21,7 +21,7 @@ class PageBarangKeluar extends Component
     {
         $query = BarangKeluar::max('id');
         if (empty($query)) {
-            $this->kode = 'KBK-01';
+            $this->kode = 'KBK-001';
         } else {
             $exp =  explode("-", $query);
             $str = 'KBK';

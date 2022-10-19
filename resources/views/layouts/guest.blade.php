@@ -10,8 +10,7 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-    @vite(['resources/js/app.js'])
-    <link rel="stylesheet" href="{{asset('build/assets/app.0daaa0bb.css')}}">
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
 
     <!-- Styles -->
     @livewireStyles
@@ -20,26 +19,26 @@
 <body class="bg-white text-base">
     <!-- Pazly Blocks Come Here -->
     <section id="pazly-template-set" class="m-0 p-0 stretchToScreen bg-white">
-        <header xmlns="http://www.w3.org/1999/xhtml" class="text-p-gray-700 body-font shadow">
+        <header xmlns="http://www.w3.org/1999/xhtml" class="text-p-gray-700 body-font shadow bg-gradient-to-t from-blueLight to-blue-200 fixed top-0 w-full z-50">
             <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-between">
                 <a pazly-editable="href"
                     class="flex title-font font-medium items-center px-2 text-p-gray-900 mb-4 md:mb-0">
                     <span pazly-editable="innerHTML child" class="ml-3 text-xl">UD. MegaBuana</span>
                 </a>
                 <nav class="flex flex-wrap items-center text-center justify-center pb-4 md:pb-0">
-                    <a href="{{ url('/')}}" class="mr-5 hover:text-p-gray-900 cursor-pointer">Home</a>
-                    <a href="{{ url('Sejarah')}}" class="mr-5 hover:text-p-gray-900 cursor-pointer">Sejarah</a>
-                    <a href="#" class="mr-5 hover:text-p-gray-900 cursor-pointer">Contact</a>
+                    <a href="{{ url('/')}}" class="mr-5 font-bold hover:text-white transition-all ease-in cursor-pointer">Home</a>
+                    <a href="{{ url('Sejarah')}}" class="mr-5 font-bold hover:text-white transition-all ease-in cursor-pointer">Sejarah</a>
+                    <a href="#" class="mr-5 font-bold hover:text-white transition-all ease-in cursor-pointer">Contact</a>
                 </nav>
                 <div class="flex flex-row">
                     <a href="{{route('login')}}"
-                        class="bg-p-gray-200 hover:bg-p-gray-400 text-p-gray-800 ml-4 py-2 px-3 rounded-lg">Log In</a>
+                        class="font-bold hover:bg-p-gray-400 text-p-gray-800 ml-4 py-2 px-3 rounded-lg">Masuk</a>
                     <a href="{{route('register')}}"
-                        class="bg-black hover:bg-p-gray-800 text-white ml-4 py-2 px-3 rounded-lg">Sign Up</a>
+                        class="bg-black hover:bg-p-gray-800 text-white ml-4 py-2 px-3 rounded-lg">Daftar</a>
                 </div>
             </div>
         </header>
-        <main>
+        <main class="mt-20">
             {{$slot}}
         </main>
 
