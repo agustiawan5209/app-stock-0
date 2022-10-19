@@ -17,6 +17,7 @@ class PageProdukFermentasi extends Component
         $itemAdd = false,
         $itemEdit = false,
         $itemDelete = false,
+        $jenis_id = false,
         $itemID;
         public function closeModal()
         {
@@ -27,6 +28,7 @@ class PageProdukFermentasi extends Component
             $this->itemAdd = false;
             $this->itemEdit = false;
             $this->itemDelete = false;
+            $this->jenis_id = false;
         }
 
     public function SelesaiFermentasi()

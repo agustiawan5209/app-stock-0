@@ -15,18 +15,18 @@ return new class extends Migration
     {
         Schema::create('produk_fermentasis', function (Blueprint $table) {
             $table->id();
-              // Kode fermentasi
-              $table->string('kode' ,20)->unique();
+            // Kode fermentasi
+            $table->string('kode', 20)->unique();
 
-              // Waktu Fermentasi
-              $table->date('tgl_frementasi')->nullable();
+            // Waktu Fermentasi
+            $table->date('tgl_frementasi')->nullable();
 
-              $table->string('jumlah_stock');
+            $table->string('jumlah_stock');
 
-              // Status Berfungsi Sebagai Pemberitahu Jika Produk Sudah Difermentasi
-              $table->enum('status', ['1','2','3']);
-                $table->text('data');
-              // Satuan Adalah  permililiter
+            // Status Berfungsi Sebagai Pemberitahu Jika Produk Sudah Difermentasi
+            $table->enum('status', ['1', '2', '3']);
+            $table->text('data');
+            // Satuan Adalah  permililiter
 
             $table->timestamps();
         });

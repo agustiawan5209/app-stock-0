@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\BarangKeluar;
 use App\Models\Customer;
+use App\Models\Jenis;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -11,7 +12,8 @@ use RealRashid\SweetAlert\Facades\Alert;
 class PageBarangKeluar extends Component
 {
     use WithFileUploads;
-    public $kode, $itemID,  $jumlah, $alamat, $customer, $tgl_keluar, $sub_total, $total_harga, $id_transaksi, $bukti_transaksi, $status, $ket,$harga_produk = 12800;
+    public $kode, $itemID,  $jumlah, $alamat, $customer, $tgl_keluar, $jenis_id, $sub_total, $total_harga, $id_transaksi, $bukti_transaksi, $status, $ket,$harga_produk = 10;
+
     public $itemAdd = false, $itemDelete = false, $itemEdit = false;
     public $row = 10, $search = '';
 
@@ -26,6 +28,10 @@ class PageBarangKeluar extends Component
             $this->kode = sprintf("%s-0%u", $str, $query + 1);
         }
     }
+    public function BuatHarga(){
+        $jenis = Jenis::find($this->jenis_id);
+        $this->harga_produk = $jenis->harga;
+    }
     public function render()
     {
         $barangkeluar = BarangKeluar::orderBy('id','desc')->paginate($this->row);
@@ -38,8 +44,9 @@ class PageBarangKeluar extends Component
             ->Orwhere('tgl_keluar', 'like', '%'. $this->search .'%')
             ->paginate($this->row);
         }
+        $jenis = Jenis::all();
         $customer_id = Customer::all();
-        return view('livewire.admin.page-barang-keluar', compact('barangkeluar', 'customer_id'))->layoutData(['page'=> 'Halaman Barang Keluar']);
+        return view('livewire.admin.page-barang-keluar', compact('barangkeluar', 'customer_id', 'jenis'))->layoutData(['page'=> 'Halaman Barang Keluar']);
     }
     public function addModal(){
         $this->itemAdd = true;
@@ -54,6 +61,7 @@ class PageBarangKeluar extends Component
         $this->tgl_keluar = $barangkeluar->tgl_keluar;
         $this->sub_total = "Rp.". number_format($barangkeluar->sub_total);
         $this->total_harga = $barangkeluar->sub_total;
+        $this->jenis_id = $barangkeluar->jenis_id;
         $this->itemAdd = true;
         $this->CloseModal();
     }
@@ -73,7 +81,8 @@ class PageBarangKeluar extends Component
             'jumlah'=> 'required',
             'alamat'=>'required',
             'customer'=> 'required',
-            'tgl_keluar'=> 'required',
+            'tgl_keluar'=> ['required', 'date'],
+            'jenis_id'=> 'required',
             'sub_total'=> 'required',
         ]);
         $barangkeluar = new BarangKeluar();
@@ -83,7 +92,9 @@ class PageBarangKeluar extends Component
         $barangkeluar->tgl_keluar = $this->tgl_keluar;
         $barangkeluar->customer = $this->customer;
         $barangkeluar->sub_total = $this->total_harga;
-        $barangkeluar->save();        $this->CloseModal();
+        $barangkeluar->jenis_id = $this->jenis_id;
+        $barangkeluar->save();
+        $this->CloseModal();
 
         Alert::success('info' , 'Berhasil Di Tambah');
     }
@@ -95,6 +106,7 @@ class PageBarangKeluar extends Component
             'customer'=> $this->customer,
             'tgl_keluar'=> $this->tgl_keluar,
             'sub_total'=> $this->total_harga,
+            'jenis_id'=> $this->jenis_id,
         ]);
         $this->CloseModal();
 
@@ -115,5 +127,6 @@ class PageBarangKeluar extends Component
         $this->tgl_keluar = null;
         $this->sub_total = null;
         $this->total_harga = null;
+        $this->jenis_id = null;
     }
 }

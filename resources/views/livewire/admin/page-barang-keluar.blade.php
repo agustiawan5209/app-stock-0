@@ -10,6 +10,18 @@
             </x-slot>
 
             <x-slot name="content">
+                <div class="w-full md:w-full px-3 mb-6">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                        for='Password'>Jenis</label>
+                    <select
+                        class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
+                        wire:model='jenis_id' required wire:change='BuatHarga'>
+                        <option value="">----</option>
+                        @foreach ($jenis as $item)
+                                <option value="{{$item->id}}">{{$item->nama_jenis . '/ Rp'.number_format( $item->harga,0,2)}}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div>
                     <x-jet-label for="" value="{{ __('Customer') }}" />
                     <select id="supplier"
