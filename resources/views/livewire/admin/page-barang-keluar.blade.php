@@ -170,14 +170,15 @@
                             <thead class="w-full whitespace-no-wrap">
                                 <x-tr
                                     class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b   bg-gray-300">
-                                    <x-th class="text-semibold p-2 text-center bg-white">No</x-th>
-                                    <x-th class="text-semibold p-2 text-center bg-white">Kode Barang Keluar</x-th>
-                                    <x-th class="text-semibold p-2 text-center bg-white">Alamat/Tujuan</x-th>
-                                    <x-th class="text-semibold p-2 text-center bg-white">Customer</x-th>
-                                    <x-th class="text-semibold p-2 text-center bg-white">Jumlah Pembelian</x-th>
-                                    <x-th class="text-semibold p-2 text-center bg-white">Sub Total</x-th>
-                                    <x-th class="text-semibold p-2 text-center bg-white">Transaksi </x-th>
-                                    <x-th class="text-semibold p-2 text-center bg-white">Action</x-th>
+                                    <x-th class="text-semibold p-0 text-center bg-white text-sm">No</x-th>
+                                    <x-th class="text-semibold p-0 text-center bg-white text-sm">Kode Barang Keluar</x-th>
+                                    <x-th class="text-semibold p-0 text-center bg-white text-sm">Alamat/Tujuan</x-th>
+                                    <x-th class="text-semibold p-0 text-center bg-white text-sm">Customer</x-th>
+                                    <x-th class="text-semibold p-0 text-center bg-white text-sm">Jenis</x-th>
+                                    <x-th class="text-semibold p-0 text-center bg-white text-sm">Jumlah Pembelian</x-th>
+                                    <x-th class="text-semibold p-0 text-center bg-white text-sm">Sub Total</x-th>
+                                    <x-th class="text-semibold p-0 text-center bg-white text-sm">Transaksi </x-th>
+                                    <x-th class="text-semibold p-0 text-center bg-white text-sm">Action</x-th>
                                 </x-tr>
                             </thead>
                             <tbody>
@@ -191,6 +192,8 @@
                                             {{ $item->alamat_tujuan }}</x-td>
                                         <x-td class=" border-2 border-gray-200 text-xs text-center ">
                                             {{ $item->customer }}</x-td>
+                                        <x-td class=" border-2 border-gray-200 text-xs text-center ">
+                                            {{ $item->jenis->nama_jenis }}</x-td>
                                         <x-td class=" border-2 border-gray-200 text-xs text-center ">{{ $item->jumlah }}
                                         </x-td>
                                         <x-td class=" border-2 border-gray-200 text-xs text-center ">

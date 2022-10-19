@@ -19,4 +19,7 @@ class BarangKeluar extends Model
     public function transaksi(){
         return $this->belongsTo(transaksi::class);
     }
+    public function jenis(){
+        return $this->hasOne(Jenis::class, 'id', 'jenis_id');
+    }
 }
