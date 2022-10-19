@@ -34,15 +34,15 @@ class PageBarangKeluar extends Component
     }
     public function render()
     {
-        $barangkeluar = BarangKeluar::orderBy('id','desc')->paginate($this->row);
+        $barangkeluar = BarangKeluar::with(['transaksi', 'jenis'])->orderBy('id','desc')->get();
         if($this->search != null){
-            $barangkeluar = BarangKeluar::orderBy('id','desc')
+            $barangkeluar = BarangKeluar::with(['transaksi', 'jenis'])->orderBy('id','desc')
             ->where('kode_barang_keluar', 'like', '%'. $this->search .'%')
             ->Orwhere('jumlah', 'like', '%'. $this->search .'%')
             ->Orwhere('alamat_tujuan', 'like', '%'. $this->search .'%')
             ->Orwhere('customer', 'like', '%'. $this->search .'%')
             ->Orwhere('tgl_keluar', 'like', '%'. $this->search .'%')
-            ->paginate($this->row);
+            ->get();
         }
         $jenis = Jenis::all();
         $customer_id = Customer::all();

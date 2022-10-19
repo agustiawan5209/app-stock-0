@@ -99,7 +99,7 @@
         </form>
     </x-jet-dialog-modal>
 
-    <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow">
+    <div id='recipients' class=" rounded shadow">
         @if ($itemDelete)
         <x-jet-confirmation-modal>
             <x-slot name="title"></x-slot>
@@ -213,13 +213,6 @@
 
             </div>
         </div>
-        <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
-            <nav aria-label="Table navigation">
-                <ul class="inline-flex items-center">
-                    {{ $barangkeluar->links() }}
-                </ul>
-            </nav>
-        </span>
 
     </div>
 </div>
