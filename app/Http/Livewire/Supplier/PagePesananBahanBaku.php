@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Supplier;
 use App\Models\Status;
 use Livewire\Component;
 use App\Models\BarangMasuk;
+use App\Models\StockBahanBaku;
 use Illuminate\Support\Facades\Auth;
 
 class PagePesananBahanBaku extends Component
@@ -28,6 +29,7 @@ class PagePesananBahanBaku extends Component
     public function updateStatus($id){
         $barang = BarangMasuk::find($id);
         // dd($this->status);
+        $this->createBarang($id,$this->status);
         $barang->update(['status'=> $this->status]);
         $status = Status::create([
             'pesanan_id'=> $barang->pesanan->id,
@@ -35,5 +37,14 @@ class PagePesananBahanBaku extends Component
             'ket'=> $this->ket,
         ]);
         $this->itemStatus = false;
+    }
+    public function createBarang($id, $status){
+        $barang = BarangMasuk::find($id);
+        if($status == 4){
+            $stock = StockBahanBaku::where('bahan_baku_id', '=', $barang->pesanan->bahanbaku->id)->first();
+            $stock->update([
+                'stock'=> $barang->pesanan->jumlah + $stock->stock,
+            ]);
+        }
     }
 }
