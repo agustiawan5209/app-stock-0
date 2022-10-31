@@ -12,9 +12,6 @@ class BarangKeluar extends Model
     protected $fillable = [
         'kode', 'jumlah', 'alamat', 'customer','tgl_keluar','sub_total','jenis_id'
     ];
-    protected $hidden = [
-        'kode','sub_total', 'tgl_keluar', 'jenis_id'
-    ];
 
     public function transaksi(){
         return $this->belongsTo(transaksi::class);

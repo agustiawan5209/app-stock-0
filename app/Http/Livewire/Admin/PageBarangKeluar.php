@@ -63,7 +63,7 @@ class PageBarangKeluar extends Component
         $this->total_harga = $barangkeluar->sub_total;
         $this->jenis_id = $barangkeluar->jenis_id;
         $this->itemAdd = true;
-        $this->CloseModal();
+        $this->itemEdit = true;
     }
     public function deleteModal($id){
         $barangkeluar = BarangKeluar::find($id);
@@ -94,7 +94,7 @@ class PageBarangKeluar extends Component
         $barangkeluar->sub_total = $this->total_harga;
         $barangkeluar->jenis_id = $this->jenis_id;
         $barangkeluar->save();
-        $this->CloseModal();
+        $this->closeModal();
 
         Alert::success('info' , 'Berhasil Di Tambah');
     }
@@ -108,16 +108,16 @@ class PageBarangKeluar extends Component
             'sub_total'=> $this->total_harga,
             'jenis_id'=> $this->jenis_id,
         ]);
-        $this->CloseModal();
+        $this->closeModal();
 
         Alert::success('info' , 'Berhasil Di Update');
     }
     public function delete($id){
         BarangKeluar::find($id)->delete();
-        $this->CloseModal();
+        $this->closeModal();
         Alert::success('info' , 'Berhasil Di Hapus');
     }
-    public function CloseModal(){
+    public function closeModal(){
         $this->itemDelete = false;
         $this->itemAdd = false;
         $this->itemEdit = false;

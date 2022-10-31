@@ -14,6 +14,10 @@
     <!-- Scripts -->
     @vite(['resources/js/app.js'])
     <link rel="stylesheet" href="{{asset('build/assets/app.0daaa0bb.css')}}">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <link href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" rel="stylesheet" />
     <!-- Styles -->
     @livewireStyles
     <style>
@@ -39,7 +43,8 @@
 
         }
     </style>
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /> --}}
+    {{--
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /> --}}
 </head>
 
 <body class="font-sans antialiased">
@@ -50,11 +55,13 @@
     <div class="flex min-h-screen 2xl:max-w-7xl 2xl:mx-auto 2xl:border-x-2 2xl:border-primary">
         <!-- Sidebar -->
 
-        <aside class="bg-gradient-to-b from-neutral to-yellow-800 w-1/5 py-10 pl-10  min-w-min   border-r border-primary/20 hidden md:block ">
+        <aside
+            class="bg-gradient-to-b from-neutral to-yellow-800 w-1/5 py-10 pl-10  min-w-min   border-r border-primary/20 hidden md:block ">
             <div class=" font-bold text-2xl text-white">{{ Auth::user()->name }}</div>
 
             <!-- Menu -->
-            <div class="mt-12 flex flex-col space-y-7 text-white font-medium" x-data="{ Master: false, Transaksi: false, Produk: false }">
+            <div class="mt-12 flex flex-col space-y-7 text-white font-medium"
+                x-data="{ Master: false, Transaksi: false, Produk: false }">
 
 
                 @include('navigation-menu')
@@ -88,7 +95,8 @@
         <main class="bg-primary0 w-full ">
 
             <!-- Nav -->
-            <nav class="text-lg flex items-center justify-between content-center py-5 px-5 bg-gradient-to-r from-neutral to-yellow-700">
+            <nav
+                class="text-lg flex items-center justify-between content-center py-5 px-5 bg-gradient-to-r from-neutral to-yellow-700">
                 <div class=" font-semibold text-xl text-white flex space-x-4 items-center">
                     <a href="#">
                         <span class="md:hidden">
@@ -133,9 +141,17 @@
 
     </div>
 
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
     @stack('modals')
 
     @livewireScripts
+    @yield('js')
 </body>
 
 </html>

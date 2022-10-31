@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FermentasiController;
 use App\Http\Controllers\PesananController;
+use App\Http\Controllers\TableController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Admin\PageJenis;
 use App\Http\Livewire\Admin\PageSatuan;
@@ -47,8 +48,8 @@ Route::get('/Sejarah', function () {
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/dashboard', [UserController::class, 'cekUser'])->name('dashboard');
 
-      // AKses Admin
-      Route::group(['middleware' => 'role:Admin', 'prefix' => 'admin', 'as' => 'Admin.'], function () {
+    // AKses Admin
+    Route::group(['middleware' => 'role:Admin', 'prefix' => 'admin', 'as' => 'Admin.'], function () {
         Route::get('Dashboard', DashboardAdmin::class)->name('Dashboard-Admin');
 
         Route::get('BarangKeluar', PageBarangKeluar::class)->name('Barang-Keluar');
@@ -67,14 +68,14 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::get('Jenis', PageJenis::class)->name('Jenis');
         Route::get('BahanBaku', PagelistBahanBaku::class)->name('List-BahanBaku');
         Route::get('Supplier', PageSupplier::class)->name('Supplier');
-        Route::get('Customer' ,PageCustomer::class)->name('Customer');
+        Route::get('Customer', PageCustomer::class)->name('Customer');
 
         // Produk
         Route::get('Produk', PageProduk::class)->name('Produk');
         Route::get('Produk-Fermentasi', PageProdukFermentasi::class)->name('Produk-Fermentasi');
         Route::get('Buat-Fermentasi', CrudFermentasi::class)->name('Crud-Fermentasi');
-        Route::post('create', [FermentasiController::class,'create'])->name('Fermentasi-Create');
-        Route::put('edit/{id}', [FermentasiController::class,'edit'])->name('Fermentasi-edit');
+        Route::post('create', [FermentasiController::class, 'create'])->name('Fermentasi-Create');
+        Route::put('edit/{id}', [FermentasiController::class, 'edit'])->name('Fermentasi-edit');
         // Route::controller(FermentasiController::class)->group( ['prefix'=> 'Produk'] ,function(){
         // });
 
@@ -91,8 +92,12 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     });
     Route::get('Tabel-Bank', PageBank::class)->name('Page-Bank');
     Route::get('Detail/Pesanan/Bahan-Baku/{item}', DetailPesanan::class)->name('Detail-Pesanan-Bahan-baku');
-
 });
 
 Route::post('receive', [PesananController::class, 'receive'])->name('Simpan-Pesanan');
 
+Route::group(['prefix'=> 'tabel', 'as'=> 'tabel.'], function(){
+    Route::controller(TableController::class)->group(function () {
+        Route::get('Barang-Keluar', 'barangkeluar')->name('barang-keluar');
+    });
+});

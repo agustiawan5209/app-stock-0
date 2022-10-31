@@ -13,8 +13,4 @@ class Jenis extends Model
         'nama_jenis',
         'harga',
     ];
-    protected $hidden = [
-        'nama_jenis',
-        'harga',
-    ];
 }
