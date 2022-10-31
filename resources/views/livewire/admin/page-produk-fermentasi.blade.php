@@ -20,7 +20,7 @@
                         <x-tr>
                             <x-td>{{ $loop->iteration }}</x-td>
                             <x-td>{{ $item->kode }}</x-td>
-                            <x-td>{{ $item->jumlah_stock }}</x-td>
+                            <x-td>{{ $item->jumlah_stock }} Liter</x-td>
                             @php
                                 $carbon = \Carbon\Carbon::now()->format('Y-m-d');
                                 $second = \Carbon\Carbon::createFromDate($item->tgl_frementasi);

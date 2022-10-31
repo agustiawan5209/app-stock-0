@@ -5,6 +5,8 @@ namespace App\Http\Livewire\Admin;
 use App\Models\BarangKeluar;
 use App\Models\Customer;
 use App\Models\Jenis;
+use App\Models\Produk;
+use App\Models\ProdukFermentasi;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -46,6 +48,7 @@ class PageBarangKeluar extends Component
         }
         $jenis = Jenis::all();
         $customer_id = Customer::all();
+
         return view('livewire.admin.page-barang-keluar', compact('barangkeluar', 'customer_id', 'jenis'))->layoutData(['page'=> 'Halaman Barang Keluar']);
     }
     public function addModal(){
@@ -85,6 +88,13 @@ class PageBarangKeluar extends Component
             'jenis_id'=> 'required',
             'sub_total'=> 'required',
         ]);
+        $produk = ProdukFermentasi::sum('jumlah_stock');
+        // dd($produk);
+       if($produk < $this->jumlah){
+        Alert::error('Maaf', 'Jumlah Produk Siap Jual Kurang');
+        $this->closeModal();
+
+       }else{
         $barangkeluar = new BarangKeluar();
         $barangkeluar->kode_barang_keluar = $this->kode;
         $barangkeluar->jumlah = $this->jumlah;
@@ -94,9 +104,10 @@ class PageBarangKeluar extends Component
         $barangkeluar->sub_total = $this->total_harga;
         $barangkeluar->jenis_id = $this->jenis_id;
         $barangkeluar->save();
-        $this->closeModal();
 
         Alert::success('info' , 'Berhasil Di Tambah');
+       }
+
     }
     public function edit($id){
         $barangkeluar = BarangKeluar::where('id', $id)->update([

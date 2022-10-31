@@ -3,10 +3,10 @@
         <div class="hero-content flex-col lg:flex-row-reverse max-w-5xl mx-auto">
             <img src="{{asset('img/landing/landing (3).jpeg')}}" class="max-w-sm rounded-lg shadow-2xl" />
             <div>
-                <h1 class="text-5xl font-bold">UD. Mega Buana</h1>
+                <h1 class="text-5xl font-bold">UD. <span class="text-white">Mega</span> Buana</h1>
                 <p class="py-6">Markisa MEGA BUANA adalah produk minuman khas dari Kota Makassar yang sangat cocok
                     dijadikan oleh-oleh atau bingkisan untuk sanak keluarga, teman dan para handai taulan.</p>
-                <button class="btn btn-primary">Get Started</button>
+                {{-- <button class="btn btn-primary">Get Started</button> --}}
             </div>
         </div>
     </div>

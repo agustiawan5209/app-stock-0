@@ -26,9 +26,9 @@
                     <span pazly-editable="innerHTML child" class="ml-3 text-xl">UD. MegaBuana</span>
                 </a>
                 <nav class="flex flex-wrap items-center text-center justify-center pb-4 md:pb-0">
-                    <a href="{{ url('/')}}" class="mr-5 font-bold hover:text-white transition-all ease-in cursor-pointer">Home</a>
-                    <a href="{{ url('Sejarah')}}" class="mr-5 font-bold hover:text-white transition-all ease-in cursor-pointer">Sejarah</a>
-                    <a href="#" class="mr-5 font-bold hover:text-white transition-all ease-in cursor-pointer">Contact</a>
+                    <a href="{{ url('/')}}" class="mr-5 text-base md:text-xl font-bold hover:text-white transition-all ease-in cursor-pointer">Home</a>
+                    <a href="{{ url('Sejarah')}}" class="mr-5 text-base md:text-xl font-bold hover:text-white transition-all ease-in cursor-pointer">Sejarah</a>
+                    <a href="#" class="mr-5 text-base md:text-xl font-bold hover:text-white transition-all ease-in cursor-pointer">Contact</a>
                 </nav>
                 <div class="flex flex-row">
                     <a href="{{route('login')}}"

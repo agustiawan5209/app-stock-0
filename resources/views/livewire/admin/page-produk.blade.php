@@ -19,7 +19,7 @@
                         <x-tr>
                             <x-td>{{ $loop->iteration }}</x-td>
                             <x-td>{{ $item->kode }}</x-td>
-                            <x-td>{{ $item->jumlah }}</x-td>
+                            <x-td>{{ $item->jumlah }} </x-td>
                             <x-td>{{ $item->tgl_kadaluarsa }}</x-td>
                             <x-td>{{ $item->jenis->nama_jenis }}</x-td>
                             <x-td>
