@@ -17,4 +17,25 @@ class BarangMasuk extends Model
     public function pesanan(){
         return $this->hasOne(Pesanan::class, 'id', 'pesanan_id');
     }
+    public function status($value){
+        switch ($value) {
+            case '1':
+                $msg = "Belum Dikonfirmasi";
+                break;
+            case '2':
+                $msg = "Telah Diverfikasi";
+                break;
+            case '3':
+                $msg = "Dalam pengiriman";
+                break;
+            case '4':
+                $msg = "Barang Diterima";
+                break;
+
+            default:
+                $msg = "Gagal";
+                break;
+        }
+        return $msg;
+    }
 }

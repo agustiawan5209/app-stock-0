@@ -22,4 +22,7 @@ class PageTransaksiPesanan extends Component
     public function addModal(){
         return redirect()->route('Admin.Buat-Pesanan');
     }
+    public function detailModal($id){
+        return redirect()->route('Detail-Pesanan-Bahan-baku', ['item'=> $id]);
+    }
 }

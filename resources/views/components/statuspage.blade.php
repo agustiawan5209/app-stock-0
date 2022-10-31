@@ -2,10 +2,10 @@
     <ul class="steps steps-vertical">
         @foreach ($pesanan as $status)
             <li class="step step-primary">
-                <div class="card bg-primary-focus">
-                    <div class="card-body">
-                        <div class="card-title">
-                            @switch($status->status)
+                <div class="card bg-info-content">
+                    <div class="card-body px-3 py-0 p-0">
+                        <div class="card-title text-sm p-0">
+                            <span class="font-bold">@switch($status->status)
                                 @case(0)
                                     Pembayaran Belum Di Konfirmasi
                                     @break
@@ -23,9 +23,9 @@
                                     @break
                                 @default
                                 Error
-                            @endswitch
+                            @endswitch</span>
                         </div>
-                        <p>{!! $status->ket !!}</p>
+                        <p>Ket : {!! $status->ket !!}</p>
                     </div>
                 </div>
             </li>

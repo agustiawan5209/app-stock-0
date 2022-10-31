@@ -17,7 +17,7 @@ class PesananController extends Controller
     public function receive(Request $request)
     {
         $this->validate($request, [
-            'bukti' => ['required', 'image', 'mimes:png,jpg'],
+            'bukti' => ['required', 'image'],
             'tgl' => ['required', 'date'],
             'jumlah' => ['required', 'integer'],
             'sub_total' => ['required', 'integer'],

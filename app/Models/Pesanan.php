@@ -18,4 +18,5 @@ class Pesanan extends Model
     public function bahanbaku(){
         return $this->hasOne(BahanBaku::class, 'id', 'bahan_baku_id');
     }
+
 }
