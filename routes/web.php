@@ -23,6 +23,7 @@ use App\Http\Livewire\Admin\PageStockBahanBaku;
 use App\Http\Livewire\Admin\PageTransaksiPesanan;
 use App\Http\Livewire\Customer\DashboardCustomer;
 use App\Http\Livewire\Customer\PagePesan;
+use App\Http\Livewire\Customer\PesanProduk;
 use App\Http\Livewire\DetailPesanan;
 use App\Http\Livewire\Supplier\DashboardSupplier;
 use App\Http\Livewire\Supplier\PageBahanBaku;
@@ -91,6 +92,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::group(['middleware' => 'role:Customer', 'prefix' => 'Customer', 'as' => 'Customer.'], function () {
         Route::get('Dashboard', DashboardCustomer::class)->name('Dashboard-Admin');
         Route::get('Pesanan', PagePesan::class)->name('Pesan-Customer');
+        Route::get('Pesan/Produk', PesanProduk::class)->name('Pesan-Produk');
     });
     Route::get('Tabel-Bank', PageBank::class)->name('Page-Bank');
     Route::get('Detail/Pesanan/Bahan-Baku/{item}', DetailPesanan::class)->name('Detail-Pesanan-Bahan-baku');
