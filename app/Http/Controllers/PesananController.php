@@ -66,6 +66,9 @@ class PesananController extends Controller
         return redirect()->route('Admin.Tr-Pesanan');
 
     }
+    public function receiveUser(Request $request){
+        return $request;
+    }
     public function transaksiKode()
     {
         $kode_transaksi = 'ID' . Str::random(15);

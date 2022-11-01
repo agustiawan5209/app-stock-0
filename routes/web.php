@@ -95,6 +95,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::get('Pesanan', PagePesan::class)->name('Pesan-Customer');
         Route::get('Pesan/Produk', PesanProduk::class)->name('Pesan-Produk');
         Route::get('CekOut/{item}', CheckOut::class)->name('Cekout');
+        Route::post('receive', [PesananController::class, 'receiveUser'])->name('Simpan-Pesanan');
     });
     Route::get('Tabel-Bank', PageBank::class)->name('Page-Bank');
     Route::get('Detail/Pesanan/Bahan-Baku/{item}', DetailPesanan::class)->name('Detail-Pesanan-Bahan-baku');
@@ -102,7 +103,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
 Route::post('receive', [PesananController::class, 'receive'])->name('Simpan-Pesanan');
 
-Route::group(['prefix'=> 'tabel', 'as'=> 'tabel.'], function(){
+Route::group(['prefix' => 'tabel', 'as' => 'tabel.'], function () {
     Route::controller(TableController::class)->group(function () {
         Route::get('Barang-Keluar', 'barangkeluar')->name('barang-keluar');
     });

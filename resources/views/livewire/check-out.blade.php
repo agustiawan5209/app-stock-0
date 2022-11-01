@@ -25,7 +25,7 @@
 
                 <!-- More products... -->
             </ul>
-            <form class="mt-6" action="{{route('Simpan-Pesanan', ['id'=> \Hash::make('123456')])}}" method="POST"
+            <form class="mt-6" action="{{route('Customer.Simpan-Pesanan', ['id'=> \Hash::make('123456')])}}" method="POST"
                 enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="data">
