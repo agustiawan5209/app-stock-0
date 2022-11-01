@@ -12,7 +12,9 @@ class PagePesan extends Component
     public function render()
     {
         $pesan = PesananUser::latest()->paginate($this->row);
-        return view('livewire.customer.page-pesan');
+        return view('livewire.customer.page-pesan', compact('pesan'))
+        ->layout('components.layout.customer')
+        ->layoutData(['page'=> 'Dashboard ']);
     }
 
 }

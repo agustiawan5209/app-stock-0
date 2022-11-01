@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="navbar bg-neutral text-white">
+    <div class="navbar bg-neutral text-white z-[1000]">
         <div class="navbar-start">
           <div class="dropdown">
             <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -29,10 +29,10 @@
                     <li><a href="{{route('Customer.Pesan-Customer')}}">Belum Diterima</a></li>
                   </ul>
                 </li>
-                <li><a>Produk</a></li>
+                <li><a href="{{route('Customer.Pesan-Produk')}}">Produk</a></li>
             </ul>
           </div>
-          <a class="btn btn-ghost normal-case text-xl">daisyUI</a>
+          <a class="btn btn-ghost normal-case text-xl">MegaBuan</a>
         </div>
         <div class="navbar-center hidden lg:flex">
           <ul class="menu menu-horizontal p-0 bg-neutral text-white">
@@ -47,14 +47,16 @@
                 <li><a href="{{route('Customer.Pesan-Customer')}}">Belum Diterima</a></li>
               </ul>
             </li>
-            <li><a>Produk</a></li>
+            <li><a href="{{route('Customer.Pesan-Produk')}}">Produk</a></li>
           </ul>
         </div>
         <div class="navbar-end">
           <a class="btn">Logout</a>
         </div>
       </div>
-
+      <main>
+        {{$slot}}
+      </main>
     @stack('modals')
 
     @livewireScripts
