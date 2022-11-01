@@ -1,6 +1,6 @@
 <x-guest-layout>
-    <div class="container px-10 md:px-52 text-base">
-        <h2 class=" text-2xl font-bold">Sejarah Singkat UD. Mega Buana</h2>
+    <div class="container px-10 md:px-52  text-base">
+        <h2 class=" text-2xl font-bold ">Sejarah Singkat UD. Mega Buana</h2>
         <div class="py-3 font-serif ">
             Beberapa daerah di Sulawesi Selatan tempat tumbuhnya markisa yaitu tempat pariwisata Malino di Kab. Gowa,
             Cikoro di Malakaji Kab. Gowa, Tana Toraja, dan Gunung Perak di Kec. Sinjai Barat, Kab. Sinjai.

@@ -10,36 +10,39 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-    @vite(['resources/js/app.js', 'resources/css/app.css'])
-
-    <!-- Styles -->
     @livewireStyles
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
+    <!-- Styles -->
 </head>
 
 <body class="bg-white text-base">
     <!-- Pazly Blocks Come Here -->
-    <section id="pazly-template-set" class="m-0 p-0 stretchToScreen bg-white">
-        <header xmlns="http://www.w3.org/1999/xhtml" class="text-p-gray-700 body-font shadow bg-gradient-to-t from-blueLight to-blue-200 fixed top-0 w-full z-50">
+    <section id="pazly-template-set " class="m-0 p-0 stretchToScreen bg-white">
+        <header xmlns="http://www.w3.org/1999/xhtml"
+            class="text-p-gray-700 body-font shadow bg-gradient-to-t from-blueLight to-blue-200 fixed top-0 w-full z-50 navbar-scroll">
             <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-between">
                 <a pazly-editable="href"
                     class="flex title-font font-medium items-center px-2 text-p-gray-900 mb-4 md:mb-0">
                     <span pazly-editable="innerHTML child" class="ml-3 text-xl">UD. MegaBuana</span>
                 </a>
                 <nav class="flex flex-wrap items-center text-center justify-center pb-4 md:pb-0">
-                    <a href="{{ url('/')}}" class="mr-5 text-base md:text-xl font-bold hover:text-white transition-all ease-in cursor-pointer">Home</a>
-                    <a href="{{ url('Sejarah')}}" class="mr-5 text-base md:text-xl font-bold hover:text-white transition-all ease-in cursor-pointer">Sejarah</a>
-                    <a href="#" class="mr-5 text-base md:text-xl font-bold hover:text-white transition-all ease-in cursor-pointer">Contact</a>
+                    <a href="{{ url('/') }}"
+                        class="mr-5 text-base md:text-xl font-bold hover:text-white transition-all ease-in cursor-pointer">Home</a>
+                    <a href="{{ url('Sejarah') }}"
+                        class="mr-5 text-base md:text-xl font-bold hover:text-white transition-all ease-in cursor-pointer">Sejarah</a>
+                    <a href="#"
+                        class="mr-5 text-base md:text-xl font-bold hover:text-white transition-all ease-in cursor-pointer">Contact</a>
                 </nav>
                 <div class="flex flex-row">
-                    <a href="{{route('login')}}"
+                    <a href="{{ route('login') }}"
                         class="font-bold hover:bg-p-gray-400 text-p-gray-800 ml-4 py-2 px-3 rounded-lg">Masuk</a>
-                    <a href="{{route('register')}}"
+                    <a href="{{ route('register') }}"
                         class="bg-black hover:bg-p-gray-800 text-white ml-4 py-2 px-3 rounded-lg">Daftar</a>
                 </div>
             </div>
         </header>
-        <main class="mt-20">
-            {{$slot}}
+        <main class="relative mt-20">
+            {{ $slot }}
         </main>
 
     </section>
@@ -66,22 +69,24 @@
 
     @livewireScripts
 
+    <script src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
     <script>
         var app = document.getElementById('textTyp');
 
-var typewriter = new Typewriter(app, {
-    loop: true
-});
+        var typewriter = new Typewriter(app, {
+            loop: true
+        });
 
-typewriter.typeString('Mega Buana!')
-    .pauseFor(2500)
-    .deleteAll()
-    .typeString('Produk Lokal Markisa Makassar')
-    .pauseFor(2500)
-    .deleteChars(8)
-    .typeString('<strong>Mega Buana!</strong>')
-    .pauseFor(2500)
-    .start();
+        typewriter.typeString('Mega Buana!')
+            .pauseFor(2500)
+            .deleteAll()
+            .typeString('Produk Lokal Markisa Makassar')
+            .pauseFor(2500)
+            .deleteChars(8)
+            .typeString('<strong>Mega Buana!</strong>')
+            .pauseFor(2500)
+            .start();
     </script>
 </body>
 
