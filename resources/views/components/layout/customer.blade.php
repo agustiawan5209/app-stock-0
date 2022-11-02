@@ -61,7 +61,7 @@
 
     @livewireScripts
 
-    <script src="{{asset('build/assets/app.ab93cf8a.js')}}"></script>
+    <script defer src="{{asset('build/assets/app.ab93cf8a.js')}}"></script>
     <script src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 </body>

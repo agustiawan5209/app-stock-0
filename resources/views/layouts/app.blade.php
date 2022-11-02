@@ -151,7 +151,7 @@
 
     @livewireScripts
     @yield('js')
-    <script src="{{asset('build/assets/app.ab93cf8a.js')}}"></script>
+    <script defer src="{{asset('build/assets/app.ab93cf8a.js')}}"></script>
 
 </body>
 
