@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Form Pembayaran</title>
     <link rel="stylesheet" href="{{asset('build/assets/app.821da831.css')}}">
-    <script src="{{asset('build/assets/app.ab93cf8a.js')}}"></script>
     @livewireStyles
 </head>
 <body>
@@ -18,5 +17,7 @@
       </div>
       @stack('modal')
       @livewireScripts
+    <script src="{{asset('build/assets/app.ab93cf8a.js')}}"></script>
+
 </body>
 </html>
