@@ -21,6 +21,9 @@
             {{ $modal_edit }}
         </x-slot>
         <x-slot name="footer">
+            @if ($itemEdit)
+                <x-jet-button type="button" wire:click="edit({{ $itemID }})">Edit</x-jet-button>
+            @endif
 
             <x-jet-danger-button type="button" wire:click="$toggle('itemEdit')">tutup</x-jet-danger-button>
         </x-slot>
@@ -35,9 +38,9 @@
                 {{ $modal_delete }}
             </x-slot>
             <x-slot name="footer">
-            {{-- @if ($itemID != null)
+                @if ($itemID != null)
                     <x-jet-button type="button" wire:click="delete({{ $itemID }})">Delete</x-jet-button>
-            @endif --}}
+                @endif
                 <x-jet-danger-button type="button" wire:click="$toggle('itemDelete')">tutup</x-jet-danger-button>
             </x-slot>
         </x-jet-confirmation-modal>

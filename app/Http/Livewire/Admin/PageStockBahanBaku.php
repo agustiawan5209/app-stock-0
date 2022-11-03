@@ -12,6 +12,10 @@ use RealRashid\SweetAlert\Facades\Alert;
 class PageStockBahanBaku extends Component
 {
     public $bahan_baku_id, $satuan_id, $jenis_id, $stock ,$max;
+    public $itemAdd = false,
+    $itemEdit = false,
+    $itemDelete = false,
+    $itemID = 0;
     public function render()
     {
         $stockbahanbaku = StockBahanBaku::with(['bahanbaku',  'satuan'])->get();
@@ -20,10 +24,7 @@ class PageStockBahanBaku extends Component
         $bahanbaku = BahanBaku::all();
         return view('livewire.admin.page-stock-bahan-baku', compact('stockbahanbaku', 'bahanbaku', 'satuan'))->layoutData(['page'=> 'Halaman Stock Bahan Baku']);
     }
-    public $itemAdd = false,
-        $itemEdit = false,
-        $itemDelete = false,
-        $itemID = 0;
+
 
     public function clear()
     {

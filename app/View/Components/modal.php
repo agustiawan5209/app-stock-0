@@ -11,9 +11,11 @@ class modal extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $itemEdit, $itemID;
+    public function __construct($itemEdit = false, $itemID = false)
     {
-        //
+        $this->itemEdit = $itemEdit;
+        $this->itemID = $itemID;
     }
 
     /**

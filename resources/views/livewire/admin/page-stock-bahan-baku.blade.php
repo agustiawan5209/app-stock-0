@@ -1,7 +1,7 @@
 <div>
     @include('sweetalert::alert')
     <div>
-        <x-modal>
+        <x-modal :itemEdit="$itemEdit" :itemID="$itemID">
         <x-slot name="modal_dialog">
             <div class=" w-full">
                 <x-jet-validation-errors />
@@ -62,12 +62,12 @@
                     <x-jet-label for="bahan_baku">Jumlah Penggunaan Dalam Satu Kali Produksi</x-jet-label>
                     <x-jet-input wire:model="max" type="number" class="w-full"/>
                 </div>
-                @if ($itemID != null)
-                <x-jet-button type="button" wire:click="edit({{ $itemID }})">Edit</x-jet-button>
-            @endif
+
             </div>
         </x-slot>
-        <x-slot name="modal_delete"></x-slot>
+        <x-slot name="modal_delete">
+
+        </x-slot>
     </x-modal>
     <x-table>
         <thead>
