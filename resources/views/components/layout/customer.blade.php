@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $page }}</title>
-    <link rel="stylesheet" href="{{asset('build/assets/app.821da831.css')}}">
-
+    @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 
 <body>
@@ -61,7 +60,6 @@
 
     @livewireScripts
 
-    <script defer src="{{asset('build/assets/app.ab93cf8a.js')}}"></script>
     <script src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 </body>

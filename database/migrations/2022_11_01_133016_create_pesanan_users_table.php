@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('pesanan_users', function (Blueprint $table) {
             $table->id();
+            $table->string('transaksi_id')->nullable();
+            $table->foreignId('jenis_id')->nullable();
+            $table->integer('jumlah');
+            $table->integer('sub_total');
+            $table->enum('status', ['1','2','3','4','5'])->default('1');
+            $table->string('ket')->nullable();
             $table->timestamps();
         });
     }

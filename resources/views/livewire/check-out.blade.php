@@ -14,10 +14,11 @@
         <!-- Order summary -->
         <section aria-labelledby="summary-heading" class="hidden bg-gray-50 w-full max-w-md flex-col lg:flex">
             <h2 id="summary-heading" class="sr-only">Order summary</h2>
-
+            <form class="mt-6" action="{{ route('Customer.Simpan-Pesanan', ['id' => \Hash::make('123456')]) }}"
+                method="POST" enctype="multipart/form-data">
             <ul role="list" class="flex-auto overflow-y-auto divide-y divide-gray-200 px-6">
                 <li class="flex py-2 space-x-2">
-                    <img src="{{asset('img/landing/landing (1).jpeg')}}"
+                    <img src="{{ asset('img/landing/landing (1).jpeg') }}"
                         alt="Moss green canvas compact backpack with double top zipper, zipper front pouch, and matching carry handle and backpack straps."
                         class="flex-none w-96 max-h-52 object-center object-cover bg-gray-200 rounded-md">
 
@@ -25,11 +26,10 @@
 
                 <!-- More products... -->
             </ul>
-            <form class="mt-6" action="{{route('Customer.Simpan-Pesanan', ['id'=> \Hash::make('123456')])}}" method="POST"
-                enctype="multipart/form-data">
+
                 @csrf
                 <input type="hidden" name="data">
-                <div class="sticky bottom-0 flex-none bg-gray-50 border-t border-gray-200 p-6">
+                <div class="sticky top-0 flex-none bg-gray-50 border-t border-gray-200 p-6">
                     {{-- <form>
                         <label for="discount-code" class="block text-sm font-medium text-gray-700">Discount code</label>
                         <div class="flex space-x-4 mt-1">
@@ -44,16 +44,16 @@
 
                         <div class="flex justify-between">
                             <dt>Stock Barang</dt>
-                            <dd class="text-gray-900">{{$jenis->id}}</dd>
+                            <dd class="text-gray-900">{{ $jenis->id }}</dd>
                         </div>
                         <div class="flex justify-between">
                             <dt>Harga</dt>
-                            <dd class="text-gray-900">Rp. {{number_format($jenis->harga,0,2)}}</dd>
+                            <dd class="text-gray-900">Rp. {{ number_format($jenis->harga, 0, 2) }}</dd>
                         </div>
                         <div class="flex items-center justify-between border-t border-gray-200 text-gray-900 pt-6">
                             <dt class="text-base">Total</dt>
-                            <dd class="text-base">Rp. {{number_format($sub_total,0,2)}}</dd>
-                            <input type="hidden" name="sub_total" value="{{$sub_total}}">
+                            <dd class="text-base">Rp. {{ number_format($sub_total, 0, 2) }}</dd>
+                            <input type="hidden" name="sub_total" value="{{ $sub_total }}">
                         </div>
                     </dl>
                 </div>
@@ -61,39 +61,46 @@
 
         <!-- Checkout form -->
         <section aria-labelledby="payment-heading"
-            class="flex-auto overflow-y-auto px-4 pt-12 pb-16 sm:px-6 sm:pt-16 lg:px-8 lg:pt-0 lg:pb-24">
+            class="bg-white flex-auto overflow-y-auto px-4 pt-12 pb-16 sm:px-6 sm:pt-16 lg:px-8 lg:pt-0 lg:pb-24">
             <div class=" mx-auto">
                 <div class="">
                     <div class="input-group input-group-vertical my-2">
                         <x-jet-label for="" class="font-semibold text-lg">Jenis Pembayaran</x-jet-label>
                         @foreach ($bank as $bank)
-                        <div tabindex="{{$bank->id}}"
-                            class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box h-max">
-                            <div class="collapse-title text-base font-medium">
-                                <input type="checkbox" checked="checked" class="checkbox checkbox-secondary" name="metode" value="{{$bank->metode}}"/>
-                                {{$bank->metode}}
+                            <div tabindex="{{ $bank->id }}"
+                                class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box h-max">
+                                <div class="collapse-title text-base font-medium">
+                                    <input type="radio" checked="checked" class="checkbox checkbox-secondary"
+                                        name="metode" value="{{ $bank->metode }}" />
+                                    {{ $bank->metode }}
+                                </div>
+                                <div class="collapse-content">
+                                    <p>Nama : {{ $bank->name_card }}</p>
+                                    <p>No. Rek :{{ $bank->number_rek }}</p>
+                                </div>
                             </div>
-                            <div class="collapse-content">
-                                <p>Nama : {{$bank->name_card}}</p>
-                                <p>No. Rek :{{$bank->number_rek}}</p>
-                            </div>
-                        </div>
                         @endforeach
                     </div>
                 </div>
                 <x-jet-validation-errors />
                 <label class="input-group input-group-vertical my-2">
+                    <input type="hidden" name="item" value="{{$item}}">
                     <x-jet-label for="" class="font-semibold text-lg">Bukti Transaksi</x-jet-label>
-                    <x-jet-input type="file" name="bukti" class="input input-bordered" />
+                    <input type="file" name="bukti" class="input input-bordered" />
                 </label>
                 <label class="input-group input-group-vertical my-2">
                     <x-jet-label for="" class="font-semibold text-lg">Jumlah</x-jet-label>
-                    <x-jet-input type="text" name="jumlah" wire:change='hitungTotal' wire:model.defer='jumlah_barang'
-                        placeholder="Masukkan Jumlah" class="input input-bordered" />
+                    <x-jet-input type="text" name="jumlah" wire:change='hitungTotal'
+                        wire:model.defer='jumlah_barang' placeholder="Masukkan Jumlah" class="input input-bordered" />
                 </label>
                 <label class="input-group input-group-vertical my-2">
                     <x-jet-label for="" class="font-semibold text-lg">Tanggal Transaksi</x-jet-label>
-                    <x-jet-input type="date" name="tgl" placeholder="Masukkan tgl" class="input input-bordered" />
+                    <x-jet-input type="date" name="tgl" placeholder="Masukkan tgl"
+                        class="input input-bordered" />
+                </label>
+                <label class="input-group input-group-vertical my-2">
+                    <x-jet-label for="" class="font-semibold text-lg">Keterangan</x-jet-label>
+                    <textarea name="ket" rows="5" cols="10"></textarea>
                 </label>
 
                 <button type="submit" class="btn btn-warning w-full">Bayar</button>

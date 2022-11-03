@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jenis;
+use App\Models\Status;
 use App\Models\Pesanan;
 use App\Models\Transaksi;
+use App\Models\BarangMasuk;
+use App\Models\PesananUser;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\StorePesananRequest;
 use App\Http\Requests\UpdatePesananRequest;
-use App\Models\BarangMasuk;
-use App\Models\Status;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class PesananController extends Controller
 {
@@ -24,8 +26,8 @@ class PesananController extends Controller
             'metode' => ['required', 'string'],
         ]);
         $data = session('data');
-       $ext =  $request->bukti->getClientOriginalExtension();
-       $namaFile = Str::random(10) . '.' . $ext;
+        $ext =  $request->bukti->getClientOriginalExtension();
+        $namaFile = Str::random(10) . '.' . $ext;
         $iD_transaksi = $this->transaksiKode();
         $transaksis =  array(
             "ID_transaksi" => $iD_transaksi,
@@ -38,9 +40,9 @@ class PesananController extends Controller
         );
         $request->bukti->storeAs('upload/bukti', $namaFile);
         // Buat Transaksi
-      $transaksi =  Transaksi::create($transaksis);
+        $transaksi =  Transaksi::create($transaksis);
         // Buat Pesanan
-       $pesan = Pesanan::create(array(
+        $pesan = Pesanan::create(array(
             "id" => NULL,
             "bahan_baku_id" => $data['itemID'],
             "satuan_id" => $data['satuan'],
@@ -51,24 +53,21 @@ class PesananController extends Controller
 
         // Buat Barang Masuk
         $barang = BarangMasuk::create([
-            'kode'=> $this->kodeBM(),
-            'pesanan_id'=> $pesan->id,
-            'status'=> 1,
-            'supplier_id'=> $data['supplier_id'],
+            'kode' => $this->kodeBM(),
+            'pesanan_id' => $pesan->id,
+            'status' => 1,
+            'supplier_id' => $data['supplier_id'],
         ]);
         // Buat Status
         $status = Status::create([
-            'pesanan_id'=> $pesan->id,
-            'status'=> '0',
-            'ket'=> 'Pembelian Bahan Baku',
+            'pesanan_id' => $pesan->id,
+            'status' => '0',
+            'ket' => 'Pembelian Bahan Baku',
         ]);
         Alert::success('Info', "Pemesanan berhasil mohon tunggu konfirmasi");
         return redirect()->route('Admin.Tr-Pesanan');
+    }
 
-    }
-    public function receiveUser(Request $request){
-        return $request;
-    }
     public function transaksiKode()
     {
         $kode_transaksi = 'ID' . Str::random(15);
@@ -79,17 +78,58 @@ class PesananController extends Controller
             return  $kode_transaksi = 'ID' . Str::random(15);
         }
     }
-    public function kodeBM(){
+    public function kodeBM()
+    {
         $barang = BarangMasuk::latest()->first();
-        if($barang == null){
+        if ($barang == null) {
             $Kode = "BM-001";
-        }else{
+        } else {
             $huruf = "BM-";
             $kd = $barang->kode;
-            $kd = substr($kd, 3,3);
+            $kd = substr($kd, 3, 3);
             $kd++;
-            $Kode =$huruf . sprintf('%03s', $kd);
+            $Kode = $huruf . sprintf('%03s', $kd);
         }
         return $Kode;
+    }
+
+    /**
+     * receiveUser
+     * Form Pembayaran User
+     * @param  mixed $request
+     * @return void
+     */
+    public function receiveUser(Request $request)
+    {
+        $this->validate($request,[
+            'metode'=> 'required',
+            'bukti'=> ['required', 'image'],
+
+        ]);
+        $ext =  $request->bukti->getClientOriginalExtension();
+        $n = $request->bukti->getClientOriginalName();
+        $namaFile = md5($n) . '.' . $ext;
+        $iD_transaksi = $this->transaksiKode();
+        $transaksis =  array(
+            "ID_transaksi" => $iD_transaksi,
+            "metode" => $request->metode,
+            "tgl_transaksi" => $request->tgl,
+            "bukti_transaksi" => $namaFile,
+            "keterangan" => $request->id,
+        );
+        $request->bukti->storeAs('upload/bukti', $namaFile);
+        // Buat Transaksi
+        $jenis = Jenis::find($request->item);
+        $transaksi =  Transaksi::create($transaksis);
+        $pesananUser = PesananUser::create([
+            'transaksi_id' => $transaksi->id,
+            'jenis_id' => $request->item,
+            'jumlah' => $request->jumlah,
+            'sub_total' => $jenis->harga * $request->jumlah,
+            'status' => '1',
+            'ket' => $request->ket,
+        ]);
+        Alert::success("Pemesanan Berhasil", "Mohon Tunggu Konfirmasi");
+        return redirect()->route('dashboard');
     }
 }
