@@ -60,7 +60,7 @@
 
             <!-- Menu -->
             <div class="mt-12 flex flex-col space-y-7 text-white font-medium"
-                x-data="{ Master: false, Transaksi: false, Produk: false }">
+                x-data="{ Master: false, Transaksi: false, Produk: false ,BahanBaku: false}">
 
 
                 @include('navigation-menu')
@@ -151,7 +151,6 @@
 
     @livewireScripts
     @yield('js')
-    <script defer src="{{asset('build/assets/app.ab93cf8a.js')}}"></script>
 
 </body>
 
