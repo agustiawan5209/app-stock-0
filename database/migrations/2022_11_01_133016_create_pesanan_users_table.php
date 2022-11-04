@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('pesanan_users', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable();
             $table->string('transaksi_id')->nullable();
             $table->foreignId('jenis_id')->nullable();
             $table->integer('jumlah');

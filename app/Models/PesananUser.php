@@ -10,7 +10,7 @@ class PesananUser extends Model
     use HasFactory;
     protected $table = 'pesanan_users';
     protected $fillable = [
-        'transaksi_id', 'jenis_id', 'jumlah', 'sub_total', 'status', 'ket'
+        'user_id', 'transaksi_id', 'jenis_id', 'jumlah', 'sub_total', 'status', 'ket'
     ];
     public function transaksi()
     {
@@ -20,4 +20,10 @@ class PesananUser extends Model
     {
         return $this->hasOne(Jenis::class, 'id', 'jenis_id');
     }
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
+
 }

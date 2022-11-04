@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
     <script src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
     <!-- Scripts -->
-    <link rel="stylesheet" href="{{asset('build/assets/app.821da831.css')}}">
+   @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">

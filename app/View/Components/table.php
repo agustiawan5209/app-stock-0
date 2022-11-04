@@ -11,9 +11,10 @@ class table extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $tambahItem ;
+    public function __construct($tambahItem = true)
     {
-        //
+        $this->tambahItem = $tambahItem;
     }
 
     /**
