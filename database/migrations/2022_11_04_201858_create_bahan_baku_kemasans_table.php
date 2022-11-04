@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('bahan_baku_kemasans', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_bahan_baku', 30);
             $table->timestamps();
         });
     }

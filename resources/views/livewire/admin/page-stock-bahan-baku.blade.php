@@ -1,6 +1,7 @@
 <div>
     @include('sweetalert::alert')
     <div>
+        <a href="{{route('Admin.List-BahanBaku')}}" class="btn btn-warning mt-3" >List Bahan Baku</a>
         <x-modal :itemEdit="$itemEdit" :itemID="$itemID">
         <x-slot name="modal_dialog">
             <div class=" w-full">
