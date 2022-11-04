@@ -71,7 +71,7 @@
 
         </x-slot>
     </x-modal>
-    <x-table>
+    <x-table :tambahItem="true">
         <thead>
             <x-tr>
                 <x-th>NO</x-th>

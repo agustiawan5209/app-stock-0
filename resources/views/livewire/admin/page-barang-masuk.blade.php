@@ -1,5 +1,5 @@
 <div>
-    <x-table>
+    <x-table :tambahItem="true">
         <thead>
             <x-tr>
                 <x-th>No.</x-th>

@@ -2,7 +2,7 @@
     @include('sweetalert::alert')
     <!-- component -->
     <section>
-        <x-table>
+        <x-table :tambahItem="true">
             <thead>
                 <x-tr>
                     <x-th>No.</x-th>
