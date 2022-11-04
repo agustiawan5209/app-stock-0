@@ -12,6 +12,7 @@ use App\Http\Livewire\Admin\PageCustomer;
 use App\Http\Livewire\Admin\PageSupplier;
 use App\Http\Livewire\Transaksi\PageBank;
 use App\Http\Livewire\Admin\DashboardAdmin;
+use App\Http\Livewire\Admin\PageBahanBakuKemasan;
 use App\Http\Livewire\Admin\PageBarangMasuk;
 use App\Http\Livewire\Admin\PageBuatPesanan;
 use App\Http\Livewire\Admin\PageBarangKeluar;
@@ -21,6 +22,7 @@ use App\Http\Livewire\Admin\PagePenjualan;
 use App\Http\Livewire\Admin\PageProduk;
 use App\Http\Livewire\Admin\PageProdukFermentasi;
 use App\Http\Livewire\Admin\PageStockBahanBaku;
+use App\Http\Livewire\Admin\PageStockBahanBakuKemasan;
 use App\Http\Livewire\Admin\PageTransaksiPesanan;
 use App\Http\Livewire\CheckOut;
 use App\Http\Livewire\Customer\DashboardCustomer;
@@ -61,6 +63,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::get('BarangMasuk', PageBarangMasuk::class)->name('Barang-Masuk');
 
         Route::get('Stock/Bahan-Baku', PageStockBahanBaku::class)->name('Stock-Bahan-Baku');
+        Route::get('Stock/Bahan-Baku/Kemasan', PageStockBahanBakuKemasan::class)->name('Stock-Bahan-Baku-Kemasan');
 
         // Route Pesanan
         Route::get('Pesanan', PageTransaksiPesanan::class)->name('Tr-Pesanan');
@@ -71,6 +74,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::get('Satuan', PageSatuan::class)->name('Satuan');
         Route::get('Jenis', PageJenis::class)->name('Jenis');
         Route::get('BahanBaku', PagelistBahanBaku::class)->name('List-BahanBaku');
+        Route::get('BahanBaku/Kemasan', PageBahanBakuKemasan::class)->name('List-BahanBaku-Kemasan');
         Route::get('Supplier', PageSupplier::class)->name('Supplier');
         Route::get('Customer', PageCustomer::class)->name('Customer');
 

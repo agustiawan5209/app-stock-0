@@ -47,20 +47,20 @@
         x-transition:leave-end="opacity-50 -translate-x-32">
         <div class="bg-white rounded-lg border border-gray-200 w-48 text-gray-900 text-sm font-medium mt-0 space-y-0">
 
-            <a href="{{ route('Admin.List-BahanBaku') }}"
-                class=" active:border-none focus:border-0 active:ring-0  {{ request()->routeIs('Admin.List-BahanBaku') ? 'block px-4 py-2 border-b border-gray-200 w-full rounded-t-lg bg-blue-700 text-white cursor-pointer' : 'block px-4 py-2 border-b border-gray-200 w-full hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 cursor-pointer' }}">
+            <a href="{{ route('Admin.Stock-Bahan-Baku') }}"
+                class=" active:border-none focus:border-0 active:ring-0  {{ request()->routeIs('Admin.Stock-Bahan-Baku') ? 'block px-4 py-2 border-b border-gray-200 w-full rounded-t-lg bg-blue-700 text-white cursor-pointer' : 'block px-4 py-2 border-b border-gray-200 w-full hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 cursor-pointer' }}">
                 Sirup Markisa
             </a>
-            <a href="{{ route('Admin.List-BahanBaku') }}"
-                class=" active:border-none focus:border-0 active:ring-0  {{ request()->routeIs('Admin.List-BahanBaku') ? 'block px-4 py-2 border-b border-gray-200 w-full rounded-t-lg bg-blue-700 text-white cursor-pointer' : 'block px-4 py-2 border-b border-gray-200 w-full hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 cursor-pointer' }}">
+            <a href="{{ route('Admin.Stock-Bahan-Baku-Kemasan') }}"
+                class=" active:border-none focus:border-0 active:ring-0  {{ request()->routeIs('Admin.Stock-Bahan-Baku-Kemasan') ? 'block px-4 py-2 border-b border-gray-200 w-full rounded-t-lg bg-blue-700 text-white cursor-pointer' : 'block px-4 py-2 border-b border-gray-200 w-full hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 cursor-pointer' }}">
                 Kemasan
             </a>
         </div>
     </div>
 
-    <a class=" {{ request()->routeIs('Admin.Satuan')  || request()->routeIs('Admin.List-BahanBaku') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-primary' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-primary hover:font-semibold ' }} relative  box-content"
+    <a class=" {{ request()->routeIs('Admin.Satuan')  || request()->routeIs('Admin.Customer') || request()->routeIs('Admin.Supplier') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-primary' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-primary hover:font-semibold ' }} relative  box-content"
         href="#" x-on:click="Master = ! Master " x-on:click.outside="Master = false">
-        <svg class="h-5 w-5 {{ request()->routeIs('Admin.Satuan') || request()->routeIs('Admin.List-BahanBaku') ? 'stroke-primary' : 'group-hover:stroke-primary' }}"
+        <svg class="h-5 w-5 {{ request()->routeIs('Admin.Satuan') || request()->routeIs('Admin.Customer') || request()->routeIs('Admin.Supplier') ? 'stroke-primary' : 'group-hover:stroke-primary' }}"
             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16">
             </path>
