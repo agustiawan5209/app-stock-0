@@ -57,7 +57,7 @@ class PageProdukFermentasi extends Component
         // dd($this->hitungFermentasi($date->tgl_frementasi));
         $produk = ProdukFermentasi::all();
         $stock = StockBahanBaku::all();
-        return view('livewire.admin.page-produk-fermentasi', compact('produk', 'stock'))->layoutData(['page' => 'Halaman Produk Fermentasi']);
+        return view('livewire.admin.page-produk-fermentasi', compact('produk', 'stock'))->layoutData(['page' => 'Halaman Produk']);
     }
     public function addModal()
     {

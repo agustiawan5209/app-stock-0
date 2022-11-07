@@ -52,8 +52,8 @@ class DatabaseSeeder extends Seeder
             ['nama_jenis' => '500ml x botol ungu (serat)', 'harga' => '90000'],
         ]);
         $this->call([
-            UserSeeder::class,
             BahanBakuSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }
