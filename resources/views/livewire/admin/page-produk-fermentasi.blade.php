@@ -1,7 +1,7 @@
 <main>
     @include('sweetalert::alert')
     <!-- component -->
-    <a href="{{route('Admin.Produk')}}" class="btn btn-warning">Produksi Dalam Botol</a>
+    {{-- <a href="{{route('Admin.Produk')}}" class="btn btn-warning">Produksi Dalam Botol</a> --}}
     <section>
         <x-table :tambahItem="true">
             <thead>

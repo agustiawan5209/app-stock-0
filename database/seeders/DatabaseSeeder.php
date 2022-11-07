@@ -45,11 +45,26 @@ class DatabaseSeeder extends Seeder
             ['nama_satuan' => 'Bungkus'],
         ]);
         Jenis::insert([
-            ['nama_jenis' => '500ml', 'harga' => '35000'],
-            ['nama_jenis' => '600ml', 'harga' => '45000'],
-            ['nama_jenis' => '1000ml', 'harga' => '67500'],
-            ['nama_jenis' => '1000ml x botol ungu (serat)', 'harga' => '90000'],
-            ['nama_jenis' => '500ml x botol ungu (serat)', 'harga' => '90000'],
+            ['nama_jenis' => '500ml',
+             'jumlah' => '500',
+             'harga' => '35000'
+            ],
+            ['nama_jenis' => '600ml',
+             'jumlah' => '600',
+             'harga' => '45000'
+            ],
+            ['nama_jenis' => '1000ml',
+             'jumlah' => '1000',
+             'harga' => '67500'
+            ],
+            ['nama_jenis' => '1000ml x botol ungu (serat)',
+             'jumlah' => '1000',
+             'harga' => '90000'
+            ],
+            ['nama_jenis' => '500ml x botol ungu (serat)',
+             'jumlah' => '500',
+             'harga' => '90000'
+            ],
         ]);
         $this->call([
             BahanBakuSeeder::class,
