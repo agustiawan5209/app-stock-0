@@ -7,6 +7,7 @@
                 <x-tr>
                     <x-th>NO</x-th>
                     <x-th>Nama Jenis</x-th>
+                    <x-th class="text-center">Jumlah  <span class="text-xs font-normal text-gray-500">( Jumlah Mililiter)</span></x-th>
                     <x-th>Harga</x-th>
                     <x-th></x-th>
                 </x-tr>
@@ -17,6 +18,7 @@
                         <x-tr>
                             <x-td>{{ $loop->iteration }}</x-td>
                             <x-td>{{ $item->nama_jenis }}</x-td>
+                            <x-td>{{ $item->jumlah }}</x-td>
                             <x-td>Rp. {{ number_format($item->harga,0,2) }}</x-td>
                             <x-td>
                                 @include('items.td-action', ['id'=> $item->id])
@@ -68,6 +70,13 @@
                                         class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
                                         type='text' wire:model='harga' required>
                                 </div>
+                                <div class="w-full md:w-full px-3 mb-6">
+                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                        for='Password'>Jumlah <span class="text-xs font-normal text-gray-500">(Masukkan Jumlah Mililiter)</span></label>
+                                    <input
+                                        class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
+                                        type='text' wire:model='jumlah' required>
+                                </div>
                                 <div class="flex items-center w-full mt-2">
                                     <div class="w-full md:w-1/3 px-3 pt-4 mx-2 border-t border-gray-400">
                                         <button
@@ -115,6 +124,13 @@
                                 <input
                                     class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
                                     type='text' wire:model='harga' required>
+                            </div>
+                            <div class="w-full md:w-full px-3 mb-6">
+                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                    for='Password'>Jumlah <span class="text-xs font-normal text-gray-500">(Masukkan Jumlah Mililiter)</span></label>
+                                <input
+                                    class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
+                                    type='text' wire:model='jumlah' required>
                             </div>
                             <div class="flex items-center w-full mt-2">
                                 <div class="w-full md:w-1/3 px-3 pt-4 mx-2 border-t border-gray-400">
