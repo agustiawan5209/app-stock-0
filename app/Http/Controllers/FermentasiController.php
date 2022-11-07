@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ProdukFermentasi;
 use App\Models\StockBahanBaku;
+use App\Models\StokProduk;
 use Carbon\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
 

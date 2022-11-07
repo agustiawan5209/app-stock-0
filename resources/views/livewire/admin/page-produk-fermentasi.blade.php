@@ -1,6 +1,7 @@
 <main>
     @include('sweetalert::alert')
     <!-- component -->
+    <a href="{{route('Admin.Produk')}}" class="btn btn-warning">Produksi Dalam Botol</a>
     <section>
         <x-table :tambahItem="true">
             <thead>
@@ -43,6 +44,7 @@
                              </x-td>
                         </x-tr>
                     @endforeach
+
                 @else
                     <x-tr>
                         <x-td colspan="3">Data Kosong</x-td>
@@ -50,6 +52,22 @@
                 @endif
             </tbody>
         </x-table>
+   <div class="bg-white w-full">
+    <table class="table bg-white w-full">
+        <x-tr>
+            <x-td></x-td>
+            <x-td></x-td>
+            <x-td></x-td>
+            <x-td></x-td>
+            <x-td></x-td>
+            <x-td>Jumlah Stock</x-td>
+            <x-td>
+                {{abs(number_format(isset($stokproduk->jumlah_produksi)-  $jumlah_produk_sisa,0,2))}}
+
+            </x-td>
+        </x-tr>
+    </table>
+   </div>
     </section>
     <div>
 

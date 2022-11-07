@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\ProdukFermentasi;
 use App\Models\StockBahanBaku;
+use App\Models\StokProduk;
 use Carbon\Carbon;
 use Livewire\Component;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -57,7 +58,9 @@ class PageProdukFermentasi extends Component
         // dd($this->hitungFermentasi($date->tgl_frementasi));
         $produk = ProdukFermentasi::all();
         $stock = StockBahanBaku::all();
-        return view('livewire.admin.page-produk-fermentasi', compact('produk', 'stock'))->layoutData(['page' => 'Halaman Produk']);
+        $stokproduk = StokProduk::latest()->first();
+        $jumlah_produk_sisa = ProdukFermentasi::sum('jumlah_stock');
+        return view('livewire.admin.page-produk-fermentasi', compact('produk', 'stock', 'stokproduk','jumlah_produk_sisa'))->layoutData(['page' => 'Halaman Produk']);
     }
     public function addModal()
     {
