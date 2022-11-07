@@ -1,6 +1,6 @@
 <div>
-    <div>
-        <x-table :tambahItem="true">
+    <div class="bg-white">
+        <x-table :tambahItem="true" class="bg-white">
             <thead>
                 <x-tr>
                     <x-th>No.</x-th>
@@ -18,7 +18,7 @@
                         <x-td>{{ $pesanan->transaksi->ID_transaksi }}</x-td>
                         <x-td>{{ $pesanan->jenis->nama_jenis }}</x-td>
                         <x-td>{{ $pesanan->jumlah }}</x-td>
-                        <x-td>{{ $pesanan->sub_total }}</x-td>
+                        <x-td>Rp. {{ number_format($pesanan->sub_total,0,2) }}</x-td>
                         <x-td>
                             <button wire:click='detailModal({{ $pesanan->id }})'
                             class="p-1 text-white  bg-info  rounded">
@@ -38,5 +38,4 @@
             </tbody>
         </x-table>
     </div>
-
 </div>

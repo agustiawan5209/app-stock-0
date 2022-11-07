@@ -7,7 +7,7 @@
             <x-jet-button wire:click='addModal()'>Tambah</x-jet-button>
         @endif
         <div class="mt-6 overflow-x-auto">
-            <table  class=" table-datatable w-full table-auto">
+            <table  class=" table-datatable w-full table-auto bg-white">
                 {{ $slot }}
             </table>
         </div>

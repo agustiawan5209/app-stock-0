@@ -1,6 +1,6 @@
 <div>
     <div class="w-full  flex justify-center container overflow-x-auto mx-auto">
-        <table class=" table table-normal w-full">
+        <x-table :tambahItem='false' class=" table table-normal w-full">
             <thead>
                 <x-tr>
                     <x-th>No.</x-th>
@@ -25,7 +25,7 @@
                     </x-tr>
                 @endforeach
             </tbody>
-        </table>
+        </x-table>
     </div>
 
 </div>
