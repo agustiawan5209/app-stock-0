@@ -60,7 +60,7 @@ class BahanBakuSeeder extends Seeder
             array(
                 "id" => 1,
                 "bahan_baku_id" => 1,
-                "stock" => 20,
+                "stock" => 3220,
                 "satuan_id" => 1,
                 "max" => 8,
                 "created_at" => "2022-10-07 20:30:52",
@@ -69,7 +69,7 @@ class BahanBakuSeeder extends Seeder
             array(
                 "id" => 2,
                 "bahan_baku_id" => 2,
-                "stock" => 20,
+                "stock" => 3220,
                 "satuan_id" => 1,
                 "max" => 1,
                 "created_at" => "2022-10-07 20:32:30",
@@ -78,7 +78,7 @@ class BahanBakuSeeder extends Seeder
             array(
                 "id" => 3,
                 "bahan_baku_id" => 3,
-                "stock" => 20,
+                "stock" => 3220,
                 "satuan_id" => 2,
                 "max" => 5,
                 "created_at" => "2022-10-07 20:32:43",
@@ -87,7 +87,7 @@ class BahanBakuSeeder extends Seeder
             array(
                 "id" => 4,
                 "bahan_baku_id" => 4,
-                "stock" => 20,
+                "stock" => 3220,
                 "satuan_id" => 3,
                 "max" => 2,
                 "created_at" => "2022-10-07 20:32:51",
@@ -96,7 +96,7 @@ class BahanBakuSeeder extends Seeder
             array(
                 "id" => 5,
                 "bahan_baku_id" => 5,
-                "stock" => 20,
+                "stock" => 3220,
                 "satuan_id" => 3,
                 "max" => 3,
                 "created_at" => "2022-10-07 20:33:06",
