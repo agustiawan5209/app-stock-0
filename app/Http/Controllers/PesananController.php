@@ -16,6 +16,7 @@ use App\Models\ProdukFermentasi;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\StorePesananRequest;
 use App\Http\Requests\UpdatePesananRequest;
+use Illuminate\Support\Facades\Auth;
 
 class PesananController extends Controller
 {
@@ -148,6 +149,7 @@ class PesananController extends Controller
             ]);
         }
         $pesananUser = PesananUser::create([
+            'user_id'=> Auth::user()->id,
             'transaksi_id' => $transaksi->id,
             'jenis_id' => $request->item,
             'jumlah' => $request->jumlah,

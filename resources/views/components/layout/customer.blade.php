@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $page }}</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="{{asset('vendor/sweetalert/sweetalert.all.js')}}"></script>
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 
@@ -31,7 +33,7 @@
                 <li><a href="{{route('Customer.Pesan-Produk')}}">Produk</a></li>
             </ul>
           </div>
-          <a class="btn btn-ghost normal-case text-xl">MegaBuan</a>
+          <a class="btn btn-ghost normal-case text-xl">{{config('app.name')}}</a>
         </div>
         <div class="navbar-center hidden lg:flex">
           <ul class="menu menu-horizontal p-0 bg-neutral text-white">

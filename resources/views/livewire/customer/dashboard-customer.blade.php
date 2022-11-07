@@ -1,18 +1,23 @@
 <div>
-    @include('sweetalert::alert')
     <section class=" container mt-10">
+        @include('sweetalert::alert')
         <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
             <!-- Card -->
             <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
                 <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full ">
-                    <svg class="w-6 h-6 text-primary " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
+                    <svg class="w-6 h-6 text-primary " fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4">
+                        </path>
+                    </svg>
                 </div>
                 <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600 ">
-                        Total Produksi
+                    <p class="mb-2 text-xs font-medium text-gray-600 ">
+                        Jumlah Stok Manufactur
                     </p>
                     <p class="text-lg font-semibold text-gray-700 ">
-                        {{-- {{$total_produksi}} --}}
+                        {{$stok_produk->jumlah_produksi}}
                     </p>
                 </div>
             </div>
@@ -30,7 +35,7 @@
                         Total Pembelian Bulan Ini
                     </p>
                     <p class="text-lg font-semibold text-gray-700 ">
-                        {{-- {{$pembelian}} --}}
+                        Rp. {{number_format($pembelian,0,2)}}
                     </p>
                 </div>
             </div>
