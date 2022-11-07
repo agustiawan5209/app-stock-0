@@ -25,5 +25,29 @@ class PesananUser extends Model
         return $this->hasOne(User::class, 'id', 'user_id');
     }
 
+    public function statusJenis($value)
+    {
+        switch ($value) {
+            case '1':
+                $msg = "Belum Dikonfirmasi";
+                break;
+            case '2':
+                $msg = "Telah Di konfirmasi!";
+                break;
+            case '3':
+                $msg = "Dalam Pengiriman.";
+                break;
+            case '4':
+                $msg = "Telah Di Terima!";
+                break;
+            case '5':
+                $msg = "Telah Diterima!";
+                break;
 
+            default:
+                $msg = "Error";
+                break;
+        }
+        return $msg;
+    }
 }

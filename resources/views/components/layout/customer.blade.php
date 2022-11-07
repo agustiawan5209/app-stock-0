@@ -28,8 +28,8 @@
                     <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
                   </a>
                   <ul class="p-2 bg-neutral">
-                    <li><a href="{{route('Customer.Pesan-Customer')}}">Diterima</a></li>
-                    <li><a href="{{route('Customer.Pesan-Customer')}}">Belum Diterima</a></li>
+                    <li><a href="{{route('Customer.Pesan-Customer', ['jenis'=> "Diterima"])}}">Diterima</a></li>
+                    <li><a href="{{route('Customer.Pesan-Customer', ['jenis'=> 'BDiterima'])}}">Belum Diterima</a></li>
                   </ul>
                 </li>
                 <li><a href="{{route('Customer.Pesan-Produk')}}">Produk</a></li>
@@ -46,8 +46,8 @@
                 <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
               </a>
               <ul class="p-2 bg-neutral">
-                <li><a href="{{route('Customer.Pesan-Customer')}}">Diterima</a></li>
-                <li><a href="{{route('Customer.Pesan-Customer')}}">Belum Diterima</a></li>
+                <li><a href="{{route('Customer.Pesan-Customer', ['jenis'=> "Diterima"])}}">Diterima</a></li>
+                <li><a href="{{route('Customer.Pesan-Customer', ['jenis'=> 'BDiterima'])}}">Belum Diterima</a></li>
               </ul>
             </li>
             <li><a href="{{route('Customer.Pesan-Produk')}}">Produk</a></li>
