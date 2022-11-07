@@ -1,16 +1,7 @@
 <div>
 
     <main class=" md:flex mt-5 z-0">
-        <div class="px-4 py-6 sm:px-6 lg:hidden">
-            <div class="max-w-lg mx-auto flex">
-                <a href="#">
-                    <span class="sr-only">Workflow</span>
-                    <img src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600" alt=""
-                        class="h-8 w-auto">
-                </a>
-            </div>
-        </div>
-
+        @include('sweetalert::alert')
         <!-- Order summary -->
         <section aria-labelledby="summary-heading" class="hidden bg-gray-50 w-full max-w-md flex-col lg:flex">
             <h2 id="summary-heading" class="sr-only">Order summary</h2>

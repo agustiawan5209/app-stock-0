@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\StorePesananRequest;
 use App\Http\Requests\UpdatePesananRequest;
+use App\Models\ProdukFermentasi;
 
 class PesananController extends Controller
 {
@@ -106,6 +107,11 @@ class PesananController extends Controller
             'bukti'=> ['required', 'image'],
 
         ]);
+        $sum_produk = ProdukFermentasi::sum('jumlah_stock');
+        if($sum_produk < $request->jumlah){
+            Alert::error('Jumlah Stock Kurang', 'Permintaan Jumlah Tidak Mencukupi');
+            return redirect()->back();
+        }
         $ext =  $request->bukti->getClientOriginalExtension();
         $n = $request->bukti->getClientOriginalName();
         $namaFile = md5($n) . '.' . $ext;
