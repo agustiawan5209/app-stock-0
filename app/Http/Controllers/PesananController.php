@@ -6,14 +6,15 @@ use App\Models\Jenis;
 use App\Models\Status;
 use App\Models\Pesanan;
 use App\Models\Transaksi;
+use App\Models\StokProduk;
 use App\Models\BarangMasuk;
 use App\Models\PesananUser;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\ProdukFermentasi;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\StorePesananRequest;
 use App\Http\Requests\UpdatePesananRequest;
-use App\Models\ProdukFermentasi;
 
 class PesananController extends Controller
 {
@@ -127,6 +128,16 @@ class PesananController extends Controller
         // Buat Transaksi
         $jenis = Jenis::find($request->item);
         $transaksi =  Transaksi::create($transaksis);
+        $stokProduk = StokProduk::latest()->first();
+        $sum_produk = ProdukFermentasi::sum('jumlah_stock');
+        if($stokProduk == null){
+            StokProduk::create([
+                'jenis_id'=> $request->item,
+                'jumlah'=> $request->jumlah,
+                'tgl_permintaan'=> Carbon::now()->format('Y-m-d'),
+                'jumlah_produksi'=> $sum_produk - ($jenis->)
+            ])
+        }
         $pesananUser = PesananUser::create([
             'transaksi_id' => $transaksi->id,
             'jenis_id' => $request->item,
