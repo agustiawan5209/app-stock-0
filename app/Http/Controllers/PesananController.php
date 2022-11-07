@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Jenis;
 use App\Models\Status;
 use App\Models\Pesanan;
@@ -130,13 +131,21 @@ class PesananController extends Controller
         $transaksi =  Transaksi::create($transaksis);
         $stokProduk = StokProduk::latest()->first();
         $sum_produk = ProdukFermentasi::sum('jumlah_stock');
+        $hasil_pembelian_jumlah = ($request->jumlah * $jenis->jumlah);
         if($stokProduk == null){
             StokProduk::create([
                 'jenis_id'=> $request->item,
                 'jumlah'=> $request->jumlah,
                 'tgl_permintaan'=> Carbon::now()->format('Y-m-d'),
-                'jumlah_produksi'=> $sum_produk - ($jenis->)
-            ])
+                'jumlah_produksi'=> $sum_produk - ($hasil_pembelian_jumlah / 1000)
+            ]);
+        }else{
+            StokProduk::create([
+                'jenis_id'=> $request->item,
+                'jumlah'=> $request->jumlah,
+                'tgl_permintaan'=> Carbon::now()->format('Y-m-d'),
+                'jumlah_produksi'=> $stokProduk->jumlah_produksi - ($hasil_pembelian_jumlah / 1000)
+            ]);
         }
         $pesananUser = PesananUser::create([
             'transaksi_id' => $transaksi->id,
