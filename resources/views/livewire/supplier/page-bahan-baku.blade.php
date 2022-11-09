@@ -109,7 +109,7 @@
         </div>
 
         <div class=" container">
-            <x-table
+            <x-table :tambahItem="true"
             class="stripe hover w-full whitespace-no-wrap mt-10 shadow-sm px-2 border-separate border-white"
             style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
             <thead
