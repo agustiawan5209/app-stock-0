@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('stock_bahan_bakus', function (Blueprint $table) {
             $table->id();
             $table->foreignId('bahan_baku_id')->constrained('bahan_bakus');
-            $table->bigInteger('stock');
+            $table->float('stock');
             $table->foreignId('satuan_id')->constrained('satuans');
             $table->integer('max');
             $table->timestamps();

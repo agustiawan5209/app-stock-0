@@ -16,7 +16,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 class PageBarangKeluar extends Component
 {
     use WithFileUploads;
-    public $kode, $itemID,  $jumlah = 2, $alamat, $customer, $tgl_keluar, $jenis_id, $sub_total, $total_harga, $id_transaksi, $bukti_transaksi, $status, $ket, $harga_produk = 10;
+    public $kode, $itemID,  $jumlah = 0, $alamat, $customer, $tgl_keluar, $jenis_id, $sub_total, $total_harga, $id_transaksi, $bukti_transaksi, $status, $ket, $harga_produk = 10;
 
     public $itemAdd = false, $itemDelete = false, $itemEdit = false, $tambahItem = true;
     public $row = 10, $search = '';
@@ -32,15 +32,17 @@ class PageBarangKeluar extends Component
             $this->kode = sprintf("%s-0%u", $str, $query + 1);
         }
     }
-    public function getStokKemasan()
+    public function getStokKemasan($id)
     {
         $kemasan = BahanBakuKemasan::all();
+        $jenis = Jenis::find($id);
         foreach ($kemasan as $item => $key) {
             $stock = StockBahanBakuKemasan::where('bahan_baku_id', $key->id)->first();
+            $perhitungan_stock = $stock->stock - $stock->max * ($this->jumlah *($jenis->jumlah / 1000));
             $stock->update([
-                'stock' => $stock->stock - $stock->max * $this->jumlah,
+                'stock' => $perhitungan_stock
             ]);
-            $data[$key->id] = $stock->stock - $stock->max * $this->jumlah;
+            $data[$key->id] = $perhitungan_stock;
         }
         return $data;
     }
@@ -121,7 +123,7 @@ class PageBarangKeluar extends Component
             $barangkeluar->sub_total = $this->total_harga;
             $barangkeluar->jenis_id = $this->jenis_id;
             $barangkeluar->save();
-            $this->getStokKemasan();
+            $this->getStokKemasan($this->jenis_id);
 
             Alert::success('info', 'Berhasil Di Tambah');
         }

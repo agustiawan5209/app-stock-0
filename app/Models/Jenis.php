@@ -12,5 +12,6 @@ class Jenis extends Model
     protected $fillable = [
         'nama_jenis',
         'harga',
+        'jumlah'
     ];
 }
