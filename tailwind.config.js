@@ -16,7 +16,8 @@ module.exports = {
             },
             colors: {
                 "ungu": '#e11d48',
-                'blueLight': "#1c6bed"
+                'blueLight': "#1c6bed",
+                'ungumuda': '#ea580c',
             }
         },
     },

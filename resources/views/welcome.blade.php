@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="hero min-h-screen bg-blueLight">
+    <div class="hero min-h-screen bg-ungumuda">
         <div class="hero-content flex-col lg:flex-row-reverse max-w-5xl mx-auto">
             <img src="{{asset('img/landing/landing (3).jpeg')}}" class="max-w-sm rounded-lg shadow-2xl" />
             <div>
@@ -37,7 +37,7 @@
     <section>
         <div class="mx-auto max-w-screen-2xl px-4 py-8 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-                <div class="bg-blue-600 p-8 md:p-12 lg:px-16 lg:py-24">
+                <div class="bg-ungumuda p-8 md:p-12 lg:px-16 lg:py-24">
                     <div class="mx-auto max-w-xl text-center">
                         <h2 class="text-sm font-bold text-white md:text-lg">
                             Diolah dari buah Markisa pilihan terbaik, Markisa MEGA BUANA merupakan satu dari sedikit
@@ -84,7 +84,7 @@
                     meningkatkan kesejahteraan para pelaku usaha industri sirup markisa dengan target mengeksport produk
                     sampai ke beberapa negara” </p>
             </div>
-            <div class="w-10/12 md:w-6/12 h-64 px-4 pb-6 md:px-12 bg-blueLight text-white">
+            <div class="w-10/12 md:w-6/12 h-64 px-4 pb-6 md:px-12 bg-ungumuda text-white">
                 <h6 pazly-editable="innerHTML"
                     class="font-semibold whitespace-pre-line text-2xl text-center md:text-left">
                     Misi</h6>

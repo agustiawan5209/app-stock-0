@@ -11,7 +11,7 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
     @livewireStyles
-    <link rel="stylesheet" href="{{asset('build/assets/app.821da831.css')}}">
+@vite(['resources/css/app.css', 'resources/js/app.js'])
     <!-- Styles -->
 </head>
 
@@ -19,7 +19,7 @@
     <!-- Pazly Blocks Come Here -->
     <section id="pazly-template-set " class="m-0 p-0 stretchToScreen bg-white">
         <header xmlns="http://www.w3.org/1999/xhtml"
-            class="text-p-gray-700 body-font shadow bg-gradient-to-t from-blueLight to-blue-200 fixed top-0 w-full z-50 navbar-scroll">
+            class="text-p-gray-700 body-font shadow bg-gradient-to-t from-ungumuda to-blue-200 fixed top-0 w-full z-50 navbar-scroll">
             <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-between">
                 <a pazly-editable="href"
                     class="flex title-font font-medium items-center px-2 text-p-gray-900 mb-4 md:mb-0">
@@ -46,7 +46,7 @@
         </main>
 
     </section>
-    <div class="bg-blueLight w-full">
+    <div class="bg-ungumuda w-full">
         <div class="w-full">
             <div class="flex flex-col w-full mt-NaN mr-NaN mb-NaN ml-NaN justify-between max-w-screen-2xl">
                 {{-- <div
