@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Supplier;
 
 use App\Models\BahanBaku;
+use App\Models\BahanBakuKemasan;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\BahanBakuSupplier;
@@ -19,7 +20,7 @@ class PageBahanBaku extends Component
         $itemDelete = false,
         $defa,
         $Alert = true;
-    public $gambar, $bahan, $Kode, $harga, $isi, $pcs, $getBahanAll, $satuan_id, $jumlah_stock;
+    public $gambar, $bahan, $Kode, $harga, $isi, $pcs, $getBahanAll, $satuan_id, $jumlah_stock, $jenis_bahan=0;
     public $row = 10,
         $search = '';
     public $optionPacking,
@@ -69,6 +70,7 @@ class PageBahanBaku extends Component
             $bb = BahanBakuSupplier::create([
                 'gambar' => $name,
                 'bahan_baku' => $this->bahan_id,
+                'jenis' => $this->jenis_bahan,
                 'isi' => $this->isi,
                 'satuan' => $this->satuan_id,
                 'harga' => $this->harga,
@@ -153,7 +155,8 @@ class PageBahanBaku extends Component
     {
         $bahanbaku = BahanBakuSupplier::where('suppliers_id', '=', Auth::user()->supplier->id)->get();
         $bahan_baku = BahanBaku::all();
+        $bahan_baku_kemasan = BahanBakuKemasan::all();
         $satuan = Satuan::all();
-        return view('livewire.supplier.page-bahan-baku', compact('bahanbaku', 'bahan_baku', 'satuan'))->layoutData(['page' => 'Halaman Bahan Baku']);
+        return view('livewire.supplier.page-bahan-baku', compact('bahanbaku', 'bahan_baku','bahan_baku_kemasan', 'satuan'))->layoutData(['page' => 'Halaman Bahan Baku']);
     }
 }

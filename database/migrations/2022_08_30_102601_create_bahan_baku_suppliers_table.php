@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('gambar', 255)->nullable();
             $table->string('bahan_baku', 50);
             $table->string('isi')->nullable();
+            $table->enum('jenis', ['1','2']);
             $table->string('satuan');
             $table->integer('harga');
             $table->integer('jumlah_stock');

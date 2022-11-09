@@ -9,7 +9,7 @@ class BahanBakuSupplier extends Model
 {
     use HasFactory;
     protected $table = 'bahan_baku_suppliers';
-    protected $fillable = ['gambar','bahan_baku','satuan' ,'isi', 'harga','jumlah_stock', 'suppliers_id'];
+    protected $fillable = ['gambar','bahan_baku','satuan','jenis' ,'isi', 'harga','jumlah_stock', 'suppliers_id'];
 
     public function supplier()
     {
@@ -21,5 +21,9 @@ class BahanBakuSupplier extends Model
     }
     public function bahanbaku(){
         return $this->hasOne(BahanBaku::class, 'id', 'bahan_baku');
+    }
+
+    public function bahanbakuKemasan(){
+        return $this->hasOne(BahanBakuKemasan::class, 'id', 'bahan_baku');
     }
 }

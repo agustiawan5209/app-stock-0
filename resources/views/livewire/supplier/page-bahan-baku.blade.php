@@ -28,7 +28,7 @@
                     @endforeach
                 @endif --}}
         {{-- Modal Insert Item --}}
-        <div class="">
+        <div class="" x-data="{ jenis: @entangle('jenis_bahan') }">
             <!-- Add Item Modal -->
             <x-jet-dialog-modal wire:model.defer="modal" maxWidth='md'>
                 <form>
@@ -48,12 +48,36 @@
                                 <span class="text-gray-500 text-sm">kosongkan jika tidak di ubah</span>
                             @endif
                         </div>
-                        <div class="mb-4">
-                            <x-jet-label for="bahan_id">Bahan Baku</x-jet-label>
+                       <div class="mb-4">
+                        <div class="form-control">
+                            <label class="label cursor-pointer">
+                                <x-jet-label for='namebahan' class="label-text">Bahan Baku Produksi</x-jet-label>
+                                <input type="radio" value="1" class="radio checked:bg-red-500" x-model="jenis" />
+                            </label>
+                        </div>
+                        <div class="form-control">
+                            <label class="label cursor-pointer">
+                                <x-jet-label for='namebahan' class="label-text">Bahan Baku Kemasan</x-jet-label>
+                                <input type="radio" value="2" class="radio checked:bg-green-500"
+                                    x-model="jenis" />
+                            </label>
+                        </div>
+                       </div>
+                        <div class="mb-4" x-show="jenis == 1">
+                            <x-jet-label for="bahan_id">Bahan Baku Produksi</x-jet-label>
                             <x-select wire:model="bahan_id">
                                 <option value="">-</option>
                                 @foreach ($bahan_baku as $item)
-                                    <option value="{{$item->id}}">{{$item->nama_bahan_baku}}</option>
+                                    <option value="{{ $item->id }}">{{ $item->nama_bahan_baku }}</option>
+                                @endforeach
+                            </x-select>
+                        </div>
+                        <div class="mb-4" x-show="jenis == 2">
+                            <x-jet-label for="bahan_id">Bahan Baku Kemasan</x-jet-label>
+                            <x-select wire:model="bahan_id">
+                                <option value="">-</option>
+                                @foreach ($bahan_baku_kemasan as $item)
+                                    <option value="{{ $item->id }}">{{ $item->nama_bahan_baku }}</option>
                                 @endforeach
                             </x-select>
                         </div>
@@ -101,7 +125,7 @@
                     <x-jet-danger-button wire:click="CloseModal" wire:loading.attr="disabled">
                         {{ __('Cancel') }}
                         </x-jet-button>
-                        <x-jet-button wire:click.prevent="delete({{$ItemId}})" name="simpan" type="button">
+                        <x-jet-button wire:click.prevent="delete({{ $ItemId }})" name="simpan" type="button">
                             {{ __('Hapus Data') }}
                         </x-jet-button>
                 </x-slot>
@@ -110,56 +134,61 @@
 
         <div class=" container">
             <x-table :tambahItem="true"
-            class="stripe hover w-full whitespace-no-wrap mt-10 shadow-sm px-2 border-separate border-white"
-            style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
-            <thead
-                class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b   bg-gray-50">
-                <x-tr
+                class="stripe hover w-full whitespace-no-wrap mt-10 shadow-sm px-2 border-separate border-white"
+                style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                <thead
                     class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b   bg-gray-50">
-                    <x-th class="font-semibold p-2 text-center text-dark">No</x-th>
-                    <x-th class="font-semibold p-2 text-center text-dark">gambar</x-th>
-                    <x-th class="font-semibold p-2 text-center text-dark">Bahan Baku</x-th>
-                    <x-th class="font-semibold p-2 text-center text-dark">isi</x-th>
-                    <x-th class="font-semibold p-2 text-center text-dark">Satuan</x-th>
-                    <x-th class="font-semibold p-2 text-center text-dark">Harga</x-th>
-                    <x-th class="font-semibold p-2 text-center text-dark">Jumlah Stock</x-th>
-                    <x-th class="font-semibold p-2 text-center text-dark">Aksi</x-th>
-                </x-tr>
-            </thead>
-            <tbody>@php
-                $no = 1;
-            @endphp
-                @foreach ($bahanbaku as $item)
                     <x-tr
-                        class="text-xs font-medium tracking-wide text-left text-black  border-b   bg-white"
-                        wire:loading.class.delay.500ms='opacity-50'>
-                        <x-td class="border border-gray-100 text-xs bg-white text-center">
-                            {{ $no++ }}
-                        </x-td>
-                        <x-td class="border border-gray-100 text-xs bg-white text-center">
-                            <img width="100" src="{{ asset('upload/' . $item->gambar) }}"
-                                alt="Image Bahan Baku">
-                        </x-td>
-                        <x-td class="border border-gray-100 text-xs bg-white text-center">
-                            {{ $item->bahanbaku->nama_bahan_baku }}</x-td>
-                        <x-td class="border border-gray-100 text-xs bg-white text-center">
-                            {{ $item->isi }}
-                        </x-td>
-                        <x-td class="border border-gray-100 text-xs bg-white text-center">
-                            {{ $item->satuan }}
-                        </x-td>
-                        <x-td class="border border-gray-100 text-xs bg-white text-center">Rp.
-                            {{ number_format($item->harga, 0, 2) }}</x-td>
-                        <x-td class="border border-gray-100 text-xs bg-white text-center">
-                            {{ $item->jumlah_stock }}</x-td>
-                        <x-td class="border border-gray-100 text-xs bg-white text-center">
-                            @include('items.td-action', ['id' => $item->id])
-                        </x-td>
+                        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b   bg-gray-50">
+                        <x-th class="font-semibold p-2 text-center text-dark">No</x-th>
+                        <x-th class="font-semibold p-2 text-center text-dark">gambar</x-th>
+                        <x-th class="font-semibold p-2 text-center text-dark">Bahan Baku</x-th>
+                        <x-th class="font-semibold p-2 text-center text-dark">isi</x-th>
+                        <x-th class="font-semibold p-2 text-center text-dark">Satuan</x-th>
+                        <x-th class="font-semibold p-2 text-center text-dark">Harga</x-th>
+                        <x-th class="font-semibold p-2 text-center text-dark">Jumlah Stock</x-th>
+                        <x-th class="font-semibold p-2 text-center text-dark">Aksi</x-th>
                     </x-tr>
-                @endforeach
-            </tbody>
+                </thead>
+                <tbody>@php
+                    $no = 1;
+                @endphp
+                    @foreach ($bahanbaku as $item)
+                        <x-tr class="text-xs font-medium tracking-wide text-left text-black  border-b   bg-white"
+                            wire:loading.class.delay.500ms='opacity-50'>
+                            <x-td class="border border-gray-100 text-xs bg-white text-center">
+                                {{ $no++ }}
+                            </x-td>
+                            <x-td class="border border-gray-100 text-xs bg-white text-center">
+                                <img width="100" src="{{ asset('upload/' . $item->gambar) }}"
+                                    alt="Image Bahan Baku">
+                            </x-td>
+                            <x-td class="border border-gray-100 text-xs bg-white text-center">
+                               @if ($item->jenis == 1)
+                                 {{ $item->bahanbaku->nama_bahan_baku }}
+                                 @elseif($item->jenis ==2)
+                                 {{ $item->bahanbakuKemasan->nama_bahan_baku }}
 
-        </x-table>
+                               @endif
+                            </x-td>
+                            <x-td class="border border-gray-100 text-xs bg-white text-center">
+                                {{ $item->isi }}
+                            </x-td>
+                            <x-td class="border border-gray-100 text-xs bg-white text-center">
+                                {{ $item->satuan }}
+                            </x-td>
+                            <x-td class="border border-gray-100 text-xs bg-white text-center">Rp.
+                                {{ number_format($item->harga, 0, 2) }}</x-td>
+                            <x-td class="border border-gray-100 text-xs bg-white text-center">
+                                {{ $item->jumlah_stock }}</x-td>
+                            <x-td class="border border-gray-100 text-xs bg-white text-center">
+                                @include('items.td-action', ['id' => $item->id])
+                            </x-td>
+                        </x-tr>
+                    @endforeach
+                </tbody>
+
+            </x-table>
         </div>
     </div>
 </div>
