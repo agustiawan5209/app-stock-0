@@ -57,7 +57,7 @@ class CrudFermentasi extends Component
         }
         $stock = StockBahanBaku::all();
 
-        return view('livewire.admin.crud-fermentasi', compact('stock'))->layoutData(['page' => 'Halaman Produk Fermentasi']);
+        return view('livewire.admin.crud-fermentasi', compact('stock'))->layoutData(['page' => 'Halaman Proses Produksi']);
     }
     public function closeModal()
     {
