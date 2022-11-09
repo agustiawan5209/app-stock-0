@@ -16,7 +16,7 @@ class PageBarangKeluar extends Component
     use WithFileUploads;
     public $kode, $itemID,  $jumlah, $alamat, $customer, $tgl_keluar, $jenis_id, $sub_total, $total_harga, $id_transaksi, $bukti_transaksi, $status, $ket,$harga_produk = 10;
 
-    public $itemAdd = false, $itemDelete = false, $itemEdit = false;
+    public $itemAdd = false, $itemDelete = false, $itemEdit = false, $tambahItem = true;
     public $row = 10, $search = '';
 
     public function generateKode()

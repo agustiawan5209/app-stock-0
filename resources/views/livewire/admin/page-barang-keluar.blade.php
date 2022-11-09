@@ -143,7 +143,7 @@
                 <div class="w-full overflow-hidden">
                     <div class="w-full overflow-x-auto">
                         @include('sweetalert::alert')
-                        <x-table id=""
+                        <x-table :tambahItem="true"
                             class="table-bk text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b   bg-gray-50   "
                             style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                             <thead class="w-full whitespace-no-wrap">
