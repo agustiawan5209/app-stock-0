@@ -2,6 +2,8 @@
 
 namespace App\Actions\Fortify;
 
+use App\Models\Customer;
+use App\Models\Supplier;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -41,6 +43,17 @@ class CreateNewUser implements CreatesNewUsers
                 'no_telpon'=> $input['no_telpon'],
             ]), function (User $user) {
                 $this->createTeam($user);
+                if($user->role_id == 2 ){
+                    Supplier::create([
+                        'supplier' => $user->name,
+                        'user_id' => $user->id,
+                    ]);
+                }elseif($user->role_id == 3){
+                    Customer::create([
+                        'customer' => $user->name,
+                        'user_id' => $user->id,
+                    ]);
+                }
             });
         });
     }
