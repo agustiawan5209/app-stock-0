@@ -10,8 +10,6 @@
                     <x-th>Kode</x-th>
                     <x-th>jumlah</x-th>
                     <x-th>Tanggal Produk</x-th>
-                    <x-th>Hari Sebelum Expired</x-th>
-                    <x-th>Status</x-th>
                     <x-th>Aksi</x-th>
                 </x-tr>
             </thead>
@@ -27,8 +25,6 @@
                                 $second = \Carbon\Carbon::createFromDate($item->tgl_frementasi);
                             @endphp
                             <x-td>{{ $item->tgl_frementasi }}</x-td>
-                            <x-td>{{ $second->diffInDays($carbon) }} Hari</x-td>
-                            <x-td>{{ $item->getFermentasi($item->status) }}</x-td>
                             <x-td>
                                 <div class="flex space-x-1 justify-around">
                                     <button wire:click='deleteModal({{ $item->id }})'
