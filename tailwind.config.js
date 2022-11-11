@@ -12,7 +12,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['ui-monospace', ...defaultTheme.fontFamily.sans],
+                sans: ['Sans-serif', ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 "ungu": '#e11d48',

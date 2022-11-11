@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\BahanBakuSupplier;
+use App\Models\Supplier;
 use Livewire\Component;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -14,8 +15,10 @@ class PageBuatPesanan extends Component
     public function render()
     {
         $bahanbaku = BahanBakuSupplier::latest()->paginate(10);
+        $supplier = Supplier::all();
         return view('livewire.admin.page-buat-pesanan', [
             'bahanbaku' => $bahanbaku,
+            'supplier'=> $supplier,
         ])->layoutData(['page' => 'Halaman Buat Pesanan']);
     }
     public $itemAdd = false, $itemEdit = false, $itemDelete = false, $itemID;

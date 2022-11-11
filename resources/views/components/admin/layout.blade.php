@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Form Pembayaran</title>
-    <link rel="stylesheet" href="{{asset('build/assets/app.821da831.css')}}">
+    <link rel="stylesheet" href="{{asset('build/assets/app.e4f635fb.css')}}">
     @livewireStyles
 </head>
 <body>
     <div class="navbar bg-info">
         <a class="btn btn-ghost normal-case text-xl ">Form Pembayaran</a>
       </div>
-      <div class="container">
+      <div class="container mx-auto py-2">
         {{$slot}}
       </div>
       @stack('modal')

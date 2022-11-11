@@ -11,7 +11,7 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
     @livewireStyles
-    <link rel="stylesheet" href="{{asset('build/assets/app.e4f635fb.css')}}">
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
     <!-- Styles -->
 </head>
 
@@ -19,19 +19,19 @@
     <!-- Pazly Blocks Come Here -->
     <section id="pazly-template-set " class="m-0 p-0 stretchToScreen bg-white">
         <header xmlns="http://www.w3.org/1999/xhtml"
-            class="text-p-gray-700 body-font shadow bg-gradient-to-t from-ungumuda to-blue-200 fixed top-0 w-full z-50 navbar-scroll">
-            <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-between">
+            class="text-p-gray-700 body-font shadow bg-gradient-to-t from-ungumuda to-orange-600 fixed top-0 w-full z-50 navbar-scroll">
+            <div class="container mx-auto flex flex-wrap py-2 flex-col md:flex-row items-center justify-between">
                 <a pazly-editable="href"
                     class="flex title-font font-medium items-center px-2 text-p-gray-900 mb-4 md:mb-0">
-                    <span pazly-editable="innerHTML child" class="ml-3 text-xl">UD. MegaBuana</span>
+                    <span pazly-editable="innerHTML child" class="ml-3 text-xl text-white font-bold">UD. MegaBuana</span>
                 </a>
                 <nav class="flex flex-wrap items-center text-center justify-center pb-4 md:pb-0">
                     <a href="{{ url('/') }}"
-                        class="mr-5 text-base md:text-xl font-bold hover:text-white transition-all ease-in cursor-pointer">Home</a>
+                        class="mr-5 text-base text-white md:text-md font-bold hover:text-white transition-all ease-in cursor-pointer">Home</a>
                     <a href="{{ url('Sejarah') }}"
-                        class="mr-5 text-base md:text-xl font-bold hover:text-white transition-all ease-in cursor-pointer">Sejarah</a>
+                        class="mr-5 text-base text-white md:text-md font-bold hover:text-white transition-all ease-in cursor-pointer">Sejarah</a>
                     <a href="#"
-                        class="mr-5 text-base md:text-xl font-bold hover:text-white transition-all ease-in cursor-pointer">Contact</a>
+                        class="mr-5 text-base text-white md:text-md font-bold hover:text-white transition-all ease-in cursor-pointer">Contact</a>
                 </nav>
                 <div class="flex flex-row">
                     <a href="{{ route('login') }}"
@@ -41,7 +41,7 @@
                 </div>
             </div>
         </header>
-        <main class="relative mt-20">
+        <main class="relative mt-[56px]">
             {{ $slot }}
         </main>
 
@@ -49,18 +49,9 @@
     <div class="bg-ungumuda w-full">
         <div class="w-full">
             <div class="flex flex-col w-full mt-NaN mr-NaN mb-NaN ml-NaN justify-between max-w-screen-2xl">
-                {{-- <div
-                    class="flex flex-row bg-transparent justify-center items-center mt-2 mr-0 mb-2 ml-0 md:m-0 hidden md:flex">
-                    <a url="#"
-                        class="text-gray-700 text-center font-semibold text-lg hover:text-gray-600 hover:-translate-y-1 hover:text-gray-600">Features</a><a
-                        url="#"
-                        class="text-gray-700 text-center mt-0 mr-16 mb-0 ml-16 font-semibold text-lg hover:text-gray-600 hover:-translate-y-1 hover:text-gray-600">Pricing</a><a
-                        url="#"
-                        class="text-gray-700 text-center font-semibold text-lg hover:text-gray-600 hover:-translate-y-1 hover:text-gray-600">About
-                        Us</a>
-                </div> --}}
+
                 <div class="flex flex-row justify-center items-center mt-8 mr-0 mb-2 ml-0"><a
-                        class="flex items-center font-normal text-white text-xl tracking-wide no-underline hover:no-underline">©
+                        class="flex items-center font-normal text-white text-base tracking-wide no-underline hover:no-underline">©
                         Copyright 2021, All Rights Reserved</a></div>
             </div>
         </div>

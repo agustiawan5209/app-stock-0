@@ -1,18 +1,9 @@
 <div>
 
     <main class="lg:min-h-full lg:overflow-hidden lg:flex ">
-        <div class="px-4 py-6 sm:px-6 lg:hidden">
-            <div class="max-w-lg mx-auto flex">
-                <a href="#">
-                    <span class="sr-only">Workflow</span>
-                    <img src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600" alt=""
-                        class="h-8 w-auto">
-                </a>
-            </div>
-        </div>
 
         <!-- Order summary -->
-        <section aria-labelledby="summary-heading" class="hidden bg-gray-50 w-full max-w-md flex-col lg:flex">
+        <section aria-labelledby="summary-heading" class="block bg-gray-50 w-full max-w-md flex-col lg:flex">
             <h2 id="summary-heading" class="sr-only">Order summary</h2>
 
             <ul role="list" class="flex-auto overflow-y-auto divide-y divide-gray-200 px-6">

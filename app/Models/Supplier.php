@@ -12,10 +12,10 @@ class Supplier extends Model
     use HasFactory;
 
     public function bahan_bakus(){
-        return $this->hasOne(BahanBaku::class, 'suppliers_id');
+        return $this->hasMany(BahanBakuSupplier::class, 'suppliers_id');
     }
-    public function bahan_baku_air(){
-        return $this->hasOne(BahanBakuAir::class, 'suppliers_id');
+    public function bahan_baku_kemasan(){
+        return $this->hasMany(BahanBakuSupplier::class, 'suppliers_id');
     }
     public function barang()
     {
