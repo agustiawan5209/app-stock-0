@@ -130,7 +130,7 @@
         </aside>
         <!-- /Sidebar -->
 
-        <main class="bg-primary0 w-full ">
+        <main class="bg-primary0 w-full overflow-y-auto">
 
             <!-- Nav -->
             <nav
