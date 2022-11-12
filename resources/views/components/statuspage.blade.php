@@ -22,7 +22,7 @@
                                     Barang Gagal Diterima
                                     @break
                                 @default
-                                Error
+                                Barang Gagal
                             @endswitch</span>
                         </div>
                         <p>Ket : {!! $status->ket !!}</p>

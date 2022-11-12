@@ -9,7 +9,7 @@ class Status extends Model
 {
     use HasFactory;
     protected $table = 'status';
-    protected $fillable = ['status', 'pesanan_id', 'ket'];
+    protected $fillable = ['status', 'pesanan_id', 'jenis', 'ket'];
     public function pesanan(){
         return $this->belongsTo(Pesanan::class, 'pesanan_id', 'id');
     }

@@ -26,7 +26,10 @@ class Statuspage extends Component
      */
     public function render()
     {
-        $pesanan = Status::where('pesanan_id','=', $this->item)->where('jenis', '=', $this->jenis)->latest()->get();
+        $jns = $this->jenis;
+        $pesanan = Status::where('jenis', '=', $this->jenis)
+        ->where('pesanan_id','=', $this->item)
+        ->latest()->get();
         return view('components.statuspage', compact('pesanan'));
     }
 }
