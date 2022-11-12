@@ -57,8 +57,8 @@ class UserSeeder extends Seeder
                 'email' => 'SumberPlastik@gmail.com',
                 'password' => bcrypt(12345678),
                 'role_id' => '2',
-                'alamat' => 'Jl. Masjid Raya No.70',
-                'no_telpon' => '0818883338',
+                // 'alamat' => 'Jl. Masjid Raya No.70',
+                // 'no_telpon' => '0818883338',
             ],
             [
                 'id'=> '5',
@@ -66,8 +66,8 @@ class UserSeeder extends Seeder
                 'email' => 'PercetakanPelangi@gmail.com',
                 'password' => bcrypt(12345678),
                 'role_id' => '2',
-                'alamat' => 'Jl. Sungai Saddang No.79',
-                'no_telpon' => '08114442515',
+                // 'alamat' => 'Jl. Sungai Saddang No.79',
+                // 'no_telpon' => '08114442515',
             ],
             [
                 'id'=> '6',
@@ -75,8 +75,8 @@ class UserSeeder extends Seeder
                 'email' => 'BajiPamiMarket@gmail.com',
                 'password' => bcrypt(12345678),
                 'role_id' => '2',
-                'alamat' => 'Jl. Sultan Hasanuddin No.15 E',
-                'no_telpon' => '0816251100',
+                // 'alamat' => 'Jl. Sultan Hasanuddin No.15 E',
+                // 'no_telpon' => '0816251100',
             ],
             [
                 'id'=> '7',
@@ -84,8 +84,8 @@ class UserSeeder extends Seeder
                 'email' => 'Darwis@gmail.com',
                 'password' => bcrypt(12345678),
                 'role_id' => '2',
-                'alamat' => 'Malakaji, Kec. Tompobulu',
-                'no_telpon' => '085244152035',
+                // 'alamat' => 'Malakaji, Kec. Tompobulu',
+                // 'no_telpon' => '085244152035',
             ],
             [
                 'id'=> '8',
@@ -93,8 +93,8 @@ class UserSeeder extends Seeder
                 'email' => 'GrandTos@gmail.com',
                 'password' => bcrypt(12345678),
                 'role_id' => '3',
-                'alamat' => 'Komplek Ruko wira, Jl. Pengayoman, Pandang, Kec.Panakukang',
-                'no_telpon' => '081520403111',
+                // 'alamat' => 'Komplek Ruko wira, Jl. Pengayoman, Pandang, Kec.Panakukang',
+                // 'no_telpon' => '081520403111',
             ],
             [
                 'id'=> '9',
@@ -102,8 +102,8 @@ class UserSeeder extends Seeder
                 'email' => 'Panorama@gmail.com',
                 'password' => bcrypt(12345678),
                 'role_id' => '3',
-                'alamat' => 'Jl. Sumba Opu no.226, Maloku, Kec. Ujung Pandang',
-                'no_telpon' => '082342516783',
+                // 'alamat' => 'Jl. Sumba Opu no.226, Maloku, Kec. Ujung Pandang',
+                // 'no_telpon' => '082342516783',
             ],
             [
                 'id'=> '10',
@@ -111,8 +111,8 @@ class UserSeeder extends Seeder
                 'email' => 'RumahMarkisa@gmail.com',
                 'password' => bcrypt(12345678),
                 'role_id' => '3',
-                'alamat' => 'Bandara Sultan Hasanuddin',
-                'no_telpon' => '081236705244',
+                // 'alamat' => 'Bandara Sultan Hasanuddin',
+                // 'no_telpon' => '081236705244',
             ],
             [
                 'id'=> '11',
@@ -120,8 +120,8 @@ class UserSeeder extends Seeder
                 'email' => 'misiPasaraya@gmail.com',
                 'password' => bcrypt(12345678),
                 'role_id' => '3',
-                'alamat' => 'Jl. Antang Raya No.5',
-                'no_telpon' => '081257333242',
+                // 'alamat' => 'Jl. Antang Raya No.5',
+                // 'no_telpon' => '081257333242',
             ],
         ]);
         Customer::insert([
