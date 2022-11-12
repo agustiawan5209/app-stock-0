@@ -82,7 +82,12 @@ class PageStockBahanBakuKemasan extends Component
         ]);
         Alert::success('Info', 'Berhasil Di Edit');
         $this->clear();
-        StockBahanBakuKemasan::find($id)->update($valid);
+        StockBahanBakuKemasan::find($id)->update([
+            'bahan_baku_id'=> $this->bahan_baku_id,
+            'satuan_id'=> $this->satuan_id,
+            'max'=> $this->max,
+            'stock'=> $this->stock,
+        ]);
     }
     public function delete($id)
     {
