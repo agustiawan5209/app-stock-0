@@ -12,9 +12,6 @@ class StockBahanBakuKemasan extends Model
     protected $fillable = [
         'bahan_baku_id','stock', 'satuan_id', 'jenis_id', 'max'
     ];
-    protected $hidden = [
-        'bahan_baku_id', 'satuan_id', 'jenis_id'
-    ];
     public function bahanbaku(){
         return $this->hasOne(BahanBakuKemasan::class, 'id', 'bahan_baku_id');
     }

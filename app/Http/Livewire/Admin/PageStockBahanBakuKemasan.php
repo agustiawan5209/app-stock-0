@@ -83,9 +83,9 @@ class PageStockBahanBakuKemasan extends Component
         Alert::success('Info', 'Berhasil Di Edit');
         StockBahanBakuKemasan::find($id)->update([
             'bahan_baku_id'=> $this->bahan_baku_id,
+            'stock'=> $this->stock,
             'satuan_id'=> $this->satuan_id,
             'max'=> $this->max,
-            'stock'=> $this->stock,
         ]);
         $this->clear();
     }
