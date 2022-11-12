@@ -4,10 +4,12 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\Pesanan;
 use Livewire\Component;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PageTransaksiPesanan extends Component
 {
     public $row = 10, $search ='';
+    public $itemDelete = false, $itemID;
     public function render()
     {
         $pesanan = Pesanan::with(['transaksi', 'bahanbaku'])
@@ -24,5 +26,19 @@ class PageTransaksiPesanan extends Component
     }
     public function detailModal($id){
         return redirect()->route('Detail-Pesanan-Bahan-baku', ['item'=> $id]);
+    }
+    public function deleteModal($id){
+        $pesanan = Pesanan::find($id);
+        if($pesanan->barangmasuk->status == 1){
+            $this->itemDelete = true;
+            $this->itemID = $id;
+        }else{
+            Alert::error('Pesanan Telah Dikonfirmasi', 'Pembatalan Tidak Dapat Dilakukan');
+        }
+    }
+    public function delete($id){
+        $pesanan = Pesanan::find($id)->delete();
+        $this->itemDelete = false;
+        Alert::success("Info", 'Berhasil Di Hapus');
     }
 }

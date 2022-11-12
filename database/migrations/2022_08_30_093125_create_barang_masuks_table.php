@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('barang_masuks', function (Blueprint $table) {
             $table->id();
             $table->string('kode',50);
-            $table->foreignId('pesanan_id');
+            $table->foreignId('pesanan_id')->constrained('pesanans')->onDelete('cascade');
             $table->enum('status', ['1','2','3','4'])->comment('Belum DiVerifikasi, 2 = Diverifikasi, 3 = Dalam Pengiriman, 4 = Diteriman');
             $table->foreignId('supplier_id');
             $table->timestamps();
