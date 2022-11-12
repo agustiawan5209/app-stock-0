@@ -12,7 +12,7 @@ class DashboardCustomer extends Component
 {
     public function render()
     {
-        $stokProduk = StokProduk::latest()->first();
+        $stokProduk = StokProduk::orderBy('id','desc')->latest()->first();
         $jumlah_pembelian = PesananUser::where('user_id', Auth::user()->id)->sum('sub_total');
         return view('livewire.customer.dashboard-customer',[
             'stok_produk'=> $stokProduk,

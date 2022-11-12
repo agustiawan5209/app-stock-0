@@ -17,7 +17,7 @@
                         Jumlah Stok Manufactur
                     </p>
                     <p class="text-lg font-semibold text-gray-700 ">
-                        {{isset($stok_produk->jumlah_produksi) ?? $stok_produk->jumlah_produksi}}
+                        {{$stok_produk->jumlah_produksi}} Liter
                     </p>
                 </div>
             </div>
