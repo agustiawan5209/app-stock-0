@@ -18,5 +18,8 @@ class Pesanan extends Model
     public function bahanbaku(){
         return $this->hasOne(BahanBaku::class, 'id', 'bahan_baku_id');
     }
+    public function barangmasuk(){
+        return $this->hasOne(BarangMasuk::class, 'pesanan_id', 'id');
+    }
 
 }

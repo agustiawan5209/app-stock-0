@@ -2,12 +2,13 @@
 
 namespace App\Http\Livewire\Supplier;
 
-use App\Models\BahanBakuSupplier;
 use App\Models\Status;
 use Livewire\Component;
 use App\Models\BarangMasuk;
 use App\Models\StockBahanBaku;
+use App\Models\BahanBakuSupplier;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PagePesananBahanBaku extends Component
 {
@@ -37,6 +38,7 @@ class PagePesananBahanBaku extends Component
             'status'=> $this->status,
             'ket'=> $this->ket,
         ]);
+        Alert::success('Info', 'Berhasil Di Ganti...!!!');
         $this->itemStatus = false;
     }
     public function createBarang($id, $status){
