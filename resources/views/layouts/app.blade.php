@@ -18,7 +18,7 @@
     <!-- Styles -->
     <script src="{{asset('datatables/datatables.js')}}"></script>
     <link rel="stylesheet" href="{{asset('build/assets/app.a237db68.css')}}">
-    @vite('resources/js/app.js')
+    @vite(['resources/js/app.js'])
     @livewireStyles
     <style>
         .loading {
@@ -56,7 +56,7 @@
         <!-- Sidebar -->
         {{-- Dekstop --}}
         <aside
-            class="bg-gradient-to-b from-neutral to-yellow-800 w-1/5 py-10 pl-10  min-w-min   border-r border-primary/20 hidden md:block ">
+            class="bg-gradient-to-b from-neutral to-yellow-800 w-1/5 py-10 pl-10  min-w-min   border-r border-primary/20 hidden md:block overflow-y-auto">
             <div class=" font-bold text-2xl text-white">{{ Auth::user()->name }}</div>
 
             <!-- Menu -->
@@ -187,6 +187,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+    <script defer src="{{asset('build/assets/app.ab93cf8a.js')}}"></script>
     @stack('modals')
 
     @livewireScripts
