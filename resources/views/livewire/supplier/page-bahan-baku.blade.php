@@ -1,6 +1,6 @@
 <div>
     @include('sweetalert::alert')
-    <div class="py-2 px-4 ">
+    <div class="py-2 px-4 overflow-y-auto">
         {{-- @if ($StockKurang != null)
                     @foreach ($StockKurang as $item)
                         <div class="flex items-center bg-yellow-300 text-white text-sm font-bold px-4 py-3" role="alert"
@@ -48,21 +48,22 @@
                                 <span class="text-gray-500 text-sm">kosongkan jika tidak di ubah</span>
                             @endif
                         </div>
-                       <div class="mb-4">
-                        <div class="form-control">
-                            <label class="label cursor-pointer">
-                                <x-jet-label for='namebahan' class="label-text">Bahan Baku Produksi</x-jet-label>
-                                <input type="radio" value="1" class="radio checked:bg-red-500" x-model="jenis" />
-                            </label>
+                        <div class="mb-4">
+                            <div class="form-control">
+                                <label class="label cursor-pointer">
+                                    <x-jet-label for='namebahan' class="label-text">Bahan Baku Produksi</x-jet-label>
+                                    <input type="radio" value="1" class="radio checked:bg-red-500"
+                                        x-model="jenis" />
+                                </label>
+                            </div>
+                            <div class="form-control">
+                                <label class="label cursor-pointer">
+                                    <x-jet-label for='namebahan' class="label-text">Bahan Baku Kemasan</x-jet-label>
+                                    <input type="radio" value="2" class="radio checked:bg-green-500"
+                                        x-model="jenis" />
+                                </label>
+                            </div>
                         </div>
-                        <div class="form-control">
-                            <label class="label cursor-pointer">
-                                <x-jet-label for='namebahan' class="label-text">Bahan Baku Kemasan</x-jet-label>
-                                <input type="radio" value="2" class="radio checked:bg-green-500"
-                                    x-model="jenis" />
-                            </label>
-                        </div>
-                       </div>
                         <div class="mb-4" x-show="jenis == 1">
                             <x-jet-label for="bahan_id">Bahan Baku Produksi</x-jet-label>
                             <x-select wire:model="bahan_id">
@@ -164,12 +165,19 @@
                                     alt="Image Bahan Baku">
                             </x-td>
                             <x-td class="border border-gray-100 text-xs bg-white text-center">
-                               @if ($item->jenis == 1)
-                                 {{ $item->bahanbaku->nama_bahan_baku }}
-                                 @elseif($item->jenis ==2)
-                                 {{ $item->bahanbakuKemasan->nama_bahan_baku }}
-
-                               @endif
+                                @if ($item->jenis == 1)
+                                    @if ($item->bahanbaku == null)
+                                        Bahan baku Hilang
+                                    @else
+                                        {{ $item->bahanbaku->nama_bahan_baku }}
+                                    @endif
+                                @elseif($item->jenis == 2)
+                                    @if ($item->bahanbakuKemasan == null)
+                                        Bahan baku Hilang
+                                    @else
+                                        {{ $item->bahanbakuKemasan->nama_bahan_baku }}
+                                    @endif
+                                @endif
                             </x-td>
                             <x-td class="border border-gray-100 text-xs bg-white text-center">
                                 {{ $item->isi }}
