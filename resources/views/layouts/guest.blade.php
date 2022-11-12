@@ -11,7 +11,8 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
     @livewireStyles
-    @vite(['resources/js/app.js', 'resources/css/app.css'])
+    <link rel="stylesheet" href="{{asset('build/assets/app.a237db68.css')}}">
+    @vite('resources/js/app.js')
     <!-- Styles -->
 </head>
 

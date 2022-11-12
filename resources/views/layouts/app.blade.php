@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="{{asset('datatables/datatables.css')}}">
     <!-- Styles -->
     <script src="{{asset('datatables/datatables.js')}}"></script>
-    @vite(['resources/js/app.js', 'resources/css/app.css'])
+    <link rel="stylesheet" href="{{asset('build/assets/app.a237db68.css')}}">
+    @vite('resources/js/app.js')
     @livewireStyles
     <style>
         .loading {
