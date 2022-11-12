@@ -45,7 +45,12 @@ class PageBuatPesanan extends Component
         $bahanBaku = BahanBakuSupplier::find($id);
         $this->itemID = $id;
         $this->gambar = $bahanBaku->gambar;
-        $this->bahan_baku = $bahanBaku->bahanbaku->nama_bahan_baku;
+        if($bahanBaku->jenis == 1){
+            $this->bahan_baku = $bahanBaku->bahanbaku->nama_bahan_baku;
+        }else if($bahanBaku->jenis == 2){
+            $this->bahan_baku = $bahanBaku->bahanbakuKemasan->nama_bahan_baku;
+
+        }
         $this->satuan = $bahanBaku->satuan;
         $this->isi = $bahanBaku->isi;
         $this->harga = $bahanBaku->harga;

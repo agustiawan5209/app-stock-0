@@ -21,15 +21,7 @@
                         <x-td>{{ $pesanana->jumlah }}</x-td>
                         <x-td>{{ $pesanana->sub_total }}</x-td>
                         <x-td>
-                            @if ($pesanana->barangmasuk->status == 1)
-                            <option value="2">Konfirmasi</option>
-                        @endif
-                        @if ($pesanana->barangmasuk->status == 2)
-                            <option value="3">Pengiriman Barang</option>
-                        @endif
-                        @if ($pesanana->barangmasuk->status == 3)
-                            <option value="4">Barang Diterima</option>
-                        @endif
+                            {{ $pesanana->barangmasuk->status($pesanana->barangmasuk->status) }}
                         </x-td>
                         <x-td>
                             <button wire:click='detailModal({{ $pesanana->id }})'
