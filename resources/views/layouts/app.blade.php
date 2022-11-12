@@ -98,7 +98,7 @@
 
             <!-- Menu -->
             <div class="mt-12 flex flex-col space-y-7 text-white font-medium"
-                x-data="{ Master: false, Transaksi: false, Produk: false ,BahanBaku: false}">
+                x-data="{ Master: false, trans: false, Produk: false ,BahanBaku: false}">
 
 
                 @include('navigation-menu')
