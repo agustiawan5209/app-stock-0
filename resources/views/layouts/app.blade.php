@@ -18,7 +18,7 @@
     <!-- Styles -->
     <script src="{{asset('datatables/datatables.js')}}"></script>
     <link rel="stylesheet" href="{{asset('build/assets/app.a237db68.css')}}">
-    @vite(['resources/js/app.js'])
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
     @livewireStyles
     <style>
         .loading {
@@ -61,7 +61,7 @@
 
             <!-- Menu -->
             <div class="mt-12 flex flex-col space-y-7 text-white font-medium"
-                x-data="{ Master: false, Transaksi: false, Produk: false ,BahanBaku: false}">
+                x-data="{ Master: false, trans: false, Produk: false ,BahanBaku: false}">
 
 
                 @include('navigation-menu')
@@ -187,7 +187,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
-    <script defer src="{{asset('build/assets/app.ab93cf8a.js')}}"></script>
     @stack('modals')
 
     @livewireScripts
