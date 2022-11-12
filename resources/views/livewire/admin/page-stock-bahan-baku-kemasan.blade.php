@@ -88,7 +88,7 @@
                     <x-tr>
                         <x-td>{{ $loop->iteration }}</x-td>
                         <x-td>
-                            @if ($item->bahanbaku->nama_bahan_baku == null)
+                            @if ($item->bahanbaku == null)
                                 Bahan Baku Terhapus
                                 @else
                                 {{$item->bahanbaku->nama_bahan_baku}}
