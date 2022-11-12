@@ -23,7 +23,7 @@
                 <x-td>{{ $item->jumlah }}</x-td>
                 <x-td>{{ number_format($item->sub_total, 0, 2) }}</x-td>
                 <x-td>
-                   <span class="badge-warning px-3 py-1 rounded-lg text-gray-800">{{$item->statusJenis($item->status)}}</span>
+                   <span class="badge-warning px-3 py-1 rounded-lg text-gray-800" wire:click='statusPesanan({{ $item->id }})'>{{$item->statusJenis($item->status)}}</span>
                 </x-td>
                 <x-td>
                     <div class="flex space-x-1 justify-around">
@@ -42,4 +42,35 @@
             </x-tr>
         @endforeach
     </x-table>
+    <x-jet-dialog-modal wire:model="itemStatus">
+        <x-slot name="title"></x-slot>
+        <x-slot name="content">
+            <x-statuspage :id="$itemID" :jenis="2"/>
+            <form action="" class="w-full">
+                <label class="input-group input-group-vertical my-2">
+                    <span class="bg-neutral font-semibold text-lg">Update Status</span>
+                    <select wire:model='status' name="bukti" class="input input-bordered">
+                        <option value="">---</option>
+                        @if ($statusItem == 1)
+                            <option value="2">Konfirmasi</option>
+                        @endif
+                        @if ($statusItem == 2)
+                            <option value="3">Pengiriman Barang</option>
+                        @endif
+                        @if ($statusItem == 3)
+                            <option value="4">Barang Diterima</option>
+                        @endif
+                    </select>
+                </label>
+                <label class="input-group input-group-vertical my-2">
+                    <span class="bg-neutral font-semibold text-lg">Keterangan</span>
+                    <textarea class="textarea textarea-bordered h-40" wire:model="ket" id="ket" cols="10" rows="10"></textarea>
+                </label>
+            </form>
+        </x-slot>
+        <x-slot name="footer">
+            <button type="button" class="btn btn-nebg-neutral"
+                wire:click="updateStatus({{ $itemID }})">Simpan</button>
+        </x-slot>
+    </x-jet-dialog-modal>
 </div>

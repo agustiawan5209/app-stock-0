@@ -7,6 +7,7 @@
                     <x-th>ID Pesanan</x-th>
                     <x-th>Jenis Produk</x-th>
                     <x-th>Jumlah</x-th>
+                    <x-th>Status</x-th>
                     <x-th>Total</x-th>
                     <x-th>Aksi</x-th>
                 </x-tr>
@@ -18,6 +19,9 @@
                         <x-td>{{ $pesanan->transaksi->ID_transaksi }}</x-td>
                         <x-td>{{ $pesanan->jenis->nama_jenis }}</x-td>
                         <x-td>{{ $pesanan->jumlah }}</x-td>
+                        <x-td>
+                            <span class="badge-warning px-3 py-1 rounded-lg text-gray-800" >{{$pesanan->statusJenis($pesanan->status)}}</span>
+                         </x-td>
                         <x-td>Rp. {{ number_format($pesanan->sub_total,0,2) }}</x-td>
                         <x-td>
                             <button wire:click='detailModal({{ $pesanan->id }})'

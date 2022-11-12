@@ -12,10 +12,11 @@ class Statuspage extends Component
      *
      * @return void
      */
-    public $item;
-    public function __construct($id)
+    public $item, $jenis;
+    public function __construct($id, $jenis = 1)
     {
         $this->item = $id;
+        $this->jenis = $jenis;
     }
 
     /**
@@ -25,7 +26,7 @@ class Statuspage extends Component
      */
     public function render()
     {
-        $pesanan = Status::where('pesanan_id','=', $this->item)->latest()->get();
+        $pesanan = Status::where('pesanan_id','=', $this->item)->where('jenis', '=', $this->jenis)->latest()->get();
         return view('components.statuspage', compact('pesanan'));
     }
 }
