@@ -87,7 +87,13 @@
                 @foreach ($stockbahanbaku as $item)
                     <x-tr>
                         <x-td>{{ $loop->iteration }}</x-td>
-                        <x-td>{{ $item->bahanbaku->nama_bahan_baku }}</x-td>
+                        <x-td>
+                            @if ($item->bahanbaku->nama_bahan_baku == null)
+                                Bahan Baku Terhapus
+                                @else
+                                {{$item->bahanbaku->nama_bahan_baku}}
+                            @endif
+                        </x-td>
                         <x-td>{{ $item->satuan->nama_satuan }}</x-td>
                         <x-td>{{ $item->stock }}</x-td>
                         <x-td>{{ $item->max }}</x-td>
