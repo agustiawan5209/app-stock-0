@@ -13,11 +13,11 @@
     <script src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
     <!-- Scripts -->
     <script src="{{asset('js/jquery-3.6.1.min.js')}}"></script>
-    @vite(['resources/js/app.js', 'resources/css/app.css'])
 
     <link rel="stylesheet" href="{{asset('datatables/datatables.css')}}">
     <!-- Styles -->
     <script src="{{asset('datatables/datatables.js')}}"></script>
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
     @livewireStyles
     <style>
         .loading {
@@ -51,9 +51,9 @@
         <div class="loading-icon animate-spin">
         </div>
     </div> --}}
-    <div class="flex min-h-screen 2xl:max-w-7xl 2xl:mx-auto 2xl:border-x-2 2xl:border-primary">
+    <div class="flex min-h-screen 2xl:max-w-7xl 2xl:mx-auto 2xl:border-x-2 2xl:border-primary drawer" x-data="{navbar : false }">
         <!-- Sidebar -->
-
+        {{-- Dekstop --}}
         <aside
             class="bg-gradient-to-b from-neutral to-yellow-800 w-1/5 py-10 pl-10  min-w-min   border-r border-primary/20 hidden md:block ">
             <div class=" font-bold text-2xl text-white">{{ Auth::user()->name }}</div>
@@ -89,15 +89,54 @@
 
 
             </div><!-- /Menu -->
-        </aside><!-- /Sidebar -->
+        </aside>
+        {{-- Mobile --}}
+        <aside x-show="navbar"
+            class="bg-gradient-to-b from-neutral to-yellow-800 w-1/2  max-w-md  border-r border-primary/20 block md:hidden drawer-side">
+            <div class=" font-bold text-2xl text-white">{{ Auth::user()->name }}</div>
+
+            <!-- Menu -->
+            <div class="mt-12 flex flex-col space-y-7 text-white font-medium"
+                x-data="{ Master: false, Transaksi: false, Produk: false ,BahanBaku: false}">
+
+
+                @include('navigation-menu')
+                <a class=" flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-primary hover:font-semibold "
+                    href="{{ route('Page-Bank') }}">
+                    <svg class="h-5 w-5 group-hover:stroke-primary" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z">
+                        </path>
+
+                    </svg>
+                    <span>Metode Pembayaran</span>
+                </a>
+                <form action="{{ route('logout') }}" method="POST"
+                    class=" flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-primary hover:font-semibold ">
+                    @csrf
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
+                        </path>
+                    </svg>
+                    <button type="submit">Logout</button>
+                </form>
+
+
+            </div><!-- /Menu -->
+        </aside>
+        <!-- /Sidebar -->
 
         <main class="bg-primary0 w-full ">
 
             <!-- Nav -->
             <nav
                 class="text-lg flex items-center justify-between content-center py-5 px-5 bg-gradient-to-r from-neutral to-yellow-700">
-                <div class=" font-semibold text-xl text-white flex space-x-4 items-center">
-                    <a href="#">
+                <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+                <div class=" font-semibold text-xl text-white flex space-x-4 drawer-content items-center">
+                    <a href="#" @click="navbar = ! navbar">
                         <span class="md:hidden">
                             <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -133,7 +172,7 @@
                 </div>
             </nav> <!-- /Nav -->
 
-            <section class="px-3">
+            <section class="md:px-3">
                 {{ $slot }}
             </section>
         </main>
