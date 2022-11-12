@@ -81,13 +81,13 @@ class PageStockBahanBakuKemasan extends Component
             'stock' => ['required', 'integer'],
         ]);
         Alert::success('Info', 'Berhasil Di Edit');
-        $this->clear();
         StockBahanBakuKemasan::find($id)->update([
             'bahan_baku_id'=> $this->bahan_baku_id,
             'satuan_id'=> $this->satuan_id,
             'max'=> $this->max,
             'stock'=> $this->stock,
         ]);
+        $this->clear();
     }
     public function delete($id)
     {
