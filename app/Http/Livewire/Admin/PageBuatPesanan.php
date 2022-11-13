@@ -18,7 +18,7 @@ class PageBuatPesanan extends Component
         $supplier = Supplier::all();
         return view('livewire.admin.page-buat-pesanan', [
             'bahanbaku' => $bahanbaku,
-            'supplier'=> $supplier,
+            'supplier' => $supplier,
         ])->layoutData(['page' => 'Halaman Buat Pesanan']);
     }
     public $itemAdd = false, $itemEdit = false, $itemDelete = false, $itemID;
@@ -41,15 +41,24 @@ class PageBuatPesanan extends Component
     public function addModal($id)
     {
 
-        $this->itemAdd = true;
         $bahanBaku = BahanBakuSupplier::find($id);
         $this->itemID = $id;
         $this->gambar = $bahanBaku->gambar;
-        if($bahanBaku->jenis == 1){
-            $this->bahan_baku = $bahanBaku->bahanbaku->nama_bahan_baku;
-        }else if($bahanBaku->jenis == 2){
-            $this->bahan_baku = $bahanBaku->bahanbakuKemasan->nama_bahan_baku;
-
+        if ($bahanBaku->jenis == 1) {
+            if ($bahanBaku->bahanbaku == null) {
+                Alert::error("Maaf Pemesanan Gagal", 'Bahan Baku Tujuan Pemesanan Hilang');
+            } else {
+                $this->bahan_baku = $bahanBaku->bahanbaku->nama_bahan_baku;
+                $this->itemAdd = true;
+            }
+        }
+        if ($bahanBaku->jenis == 2) {
+            if ($bahanBaku->bahanbakuKemasan == null) {
+                Alert::error("Maaf Pemesanan Gagal", 'Bahan Baku Tujuan Pemesanan Hilang');
+            } else {
+                $this->bahan_baku = $bahanBaku->bahanbakuKemasan->nama_bahan_baku;
+                $this->itemAdd = true;
+            }
         }
         $this->satuan = $bahanBaku->satuan;
         $this->isi = $bahanBaku->isi;

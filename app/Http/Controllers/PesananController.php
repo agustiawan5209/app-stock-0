@@ -47,7 +47,6 @@ class PesananController extends Controller
         $transaksi =  Transaksi::create($transaksis);
         // Buat Pesanan
         $pesan = Pesanan::create(array(
-            "id" => NULL,
             "bahan_baku_id" => $data['itemID'],
             "satuan_id" => $data['satuan'],
             "jumlah" => $request->jumlah,

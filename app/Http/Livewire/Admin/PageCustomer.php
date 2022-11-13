@@ -44,7 +44,7 @@ class PageCustomer extends Component
             'email'=> $this->email,
             'alamat'=> $this->alamat,
             'no_telpon'=> $this->no_telpon,
-            'password'=> $this->password,
+            'password'=> bcrypt($this->password),
             'role_id'=> '2',
         ]);
         Customer::create([

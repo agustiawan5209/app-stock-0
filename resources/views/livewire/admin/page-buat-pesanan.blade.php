@@ -12,7 +12,7 @@
                 </thead>
                 <tbody>
                     @foreach ($supplier as $supplier)
-                    @if ($supplier->bahan_baku_kemasan->count() > 0 || $supplier->bahan_bakus->count() > 0)
+                        @if ($supplier->bahan_baku_kemasan->count() > 0 || $supplier->bahan_bakus->count() > 0)
                             <x-tr>
                                 <x-td>{{ $supplier->supplier }}</x-td>
                                 <td>
@@ -28,24 +28,33 @@
                                             <tr>
                                                 <x-td>
                                                     @if ($item->jenis == 1)
-                                                        {{ $item->bahanbaku->nama_bahan_baku }}
+                                                        @if ($item->bahanbaku == null)
+                                                            Bahan baku Hilang
+                                                        @else
+                                                            {{ $item->bahanbaku->nama_bahan_baku }}
+                                                        @endif
                                                     @elseif($item->jenis == 2)
-                                                        {{ $item->bahanbakuKemasan->nama_bahan_baku }}
+                                                        @if ($item->bahanbakuKemasan == null)
+                                                            Bahan baku Hilang
+                                                        @else
+                                                            {{ $item->bahanbakuKemasan->nama_bahan_baku }}
+                                                        @endif
                                                     @endif
                                                 </x-td>
                                                 <td>{{ $item->harga }}</td>
                                                 <td>{{ $item->satuan }}</td>
                                                 <td>{{ $item->jumlah_stock }}</td>
                                                 <x-td>
-                                                    <button type="button" wire:click='addModal({{$item->id}})' class="btn">Pesan</button>
+                                                    <button type="button" wire:click='addModal({{ $item->id }})'
+                                                        class="btn">Pesan</button>
                                                 </x-td>
                                             </tr>
                                         @endforeach
                                     </table>
                                 </td>
                             </x-tr>
-                            @endif
-                            @endforeach
+                        @endif
+                    @endforeach
                 </tbody>
             </x-table>
         </div>
