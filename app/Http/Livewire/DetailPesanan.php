@@ -13,7 +13,7 @@ class DetailPesanan extends Component
     }
     public function render()
     {
-        $barang = BarangMasuk::find($this->itemID);
+        $barang = BarangMasuk::with(['pesanan'])->find($this->itemID);
         dd($barang);
         return view('livewire.detail-pesanan', [
             'barang'=> $barang,
