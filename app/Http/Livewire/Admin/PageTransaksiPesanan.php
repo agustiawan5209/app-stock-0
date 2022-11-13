@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\BarangMasuk;
 use App\Models\Pesanan;
 use Livewire\Component;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -28,8 +29,8 @@ class PageTransaksiPesanan extends Component
         return redirect()->route('Detail-Pesanan-Bahan-baku', ['item'=> $id]);
     }
     public function deleteModal($id){
-        $pesanan = Pesanan::find($id);
-        if($pesanan->barangmasuk->status == 1){
+        $pesanan = BarangMasuk::find($id);
+        if($pesanan->status == 1){
             $this->itemDelete = true;
             $this->itemID = $id;
         }else{
@@ -37,7 +38,10 @@ class PageTransaksiPesanan extends Component
         }
     }
     public function delete($id){
-        $pesanan = Pesanan::find($id)->delete();
+        $pesanan = BarangMasuk::find($id);
+        Pesanan::find($pesanan->pesanan->id)->delete();
+        $pesanan->delete();
+
         $this->itemDelete = false;
         Alert::success("Info", 'Berhasil Di Hapus');
     }
