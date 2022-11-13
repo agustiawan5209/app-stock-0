@@ -16,6 +16,6 @@ class DetailPesanan extends Component
         $barang = BarangMasuk::find($this->itemID);
         return view('livewire.detail-pesanan', [
             'barangmasuks'=> $barang,
-        ])->layoutData(['page'=> 'Detail Pesanan '. $barang->pesanan->bahanbaku->nama_bahan_baku]);
+        ])->layoutData(['page'=> 'Detail Pesanan ']);
     }
 }
