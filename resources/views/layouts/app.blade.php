@@ -16,7 +16,6 @@
 
     <link rel="stylesheet" href="{{asset('datatables/datatables.css')}}">
     <!-- Styles -->
-    <script src="{{asset('datatables/datatables.js')}}"></script>
     <link rel="stylesheet" href="{{asset('build/assets/app.a237db68.css')}}">
     @vite(['resources/js/app.js', 'resources/css/app.css'])
     @livewireStyles
@@ -187,6 +186,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+    <script src="{{asset('datatables/datatables.js')}}"></script>
+
     @stack('modals')
 
     @livewireScripts

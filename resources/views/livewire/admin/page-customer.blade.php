@@ -1,36 +1,57 @@
 <div class="animate__animated animate__fadeIn">
     @include('sweetalert::alert')
-    <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
-
-        <x-jet-dialog-modal wire:model="itemEdit">
+    <div id='recipients' class=" rounded shadow bg-white">
+        <x-jet-dialog-modal wire:model="addItem">
             <x-slot name="title">Form Edit</x-slot>
             <x-slot name="content">
                 <x-jet-validation-errors />
                 <form action="#">
                     <div class="mb-4">
-                        <x-jet-label for="nama">Nama Customer</x-jet-label>
+                        <x-jet-label for="nama">Nama customer</x-jet-label>
                         <x-jet-input type="text" class="input" wire:model="nama_customer" />
                     </div>
+                    <div class="mb-4">
+                        <x-jet-label for="nama">Email customer</x-jet-label>
+                        <x-jet-input type="email" class="input" wire:model="email" />
+                    </div>
+
                     <div class="mb-4">
                         <x-jet-label for="lala">Alamat</x-jet-label>
                         <x-jet-input type="text" class="input" wire:model="alamat" />
                     </div>
                     <div class="mb-4">
                         <x-jet-label for="no_telpon">Nomor Telepon</x-jet-label>
-                        <x-jet-input type="text" class="input" wire:model="no_telpon" />
+                        <x-jet-input type="tel" class="input" name="no_telpon" wire:model="no_telpon" />
+                    </div>
+                    <div class="mb-4">
+                        <x-jet-label for="nama">password customer</x-jet-label>
+                        <x-jet-input type="password" class="input" wire:model="password" />
                     </div>
                 </form>
             </x-slot>
             <x-slot name="footer">
-                <x-jet-danger-button wire:click="$toggle('itemEdit')">Batal</x-jet-danger-button>
-                <x-jet-button wire:click="edit({{ $itemID }})">Simpan</x-jet-button>
+                <x-jet-danger-button wire:click="clear()">Batal</x-jet-danger-button>
+                @if ($itemEdit)
+                    <x-jet-button wire:click="edit({{ $itemID }})">Simpan</x-jet-button>
+                @else
+                    <x-jet-button wire:click="create()">Tambah</x-jet-button>
+                @endif
             </x-slot>
         </x-jet-dialog-modal>
+        <x-jet-confirmation-modal wire:model="itemDelete">
+            <x-slot name="title">Apakah Anda Yakin?</x-slot>
+            <x-slot name="content"></x-slot>
+            <x-slot name="footer">
+                <x-jet-danger-button wire:click="clear()">Batal</x-jet-danger-button>
+                <x-jet-button wire:click="delete({{ $itemID }})">Hapus</x-jet-button>
+
+            </x-slot>
+        </x-jet-confirmation-modal>
         <div class="w-full overflow-hidden">
             <div class="w-full overflow-auto">
-                <x-table :tambahItem='false' >
-                    <thead
-                        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b   bg-gray-50">
+                <x-table :tambahItem='true' class="stripe hover w-full whitespace-no-wrap"
+                    style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                    <thead>
                         <x-tr class="bg-gray-300 text-dark">
                             <x-th>No</x-th>
                             <x-th>customer</x-th>
@@ -48,15 +69,7 @@
                                 <x-td class=" border border-gray-100 text-center "
                                     class="text-xs whitespace-pre-wrap w-48">{{ $item->user->alamat }}</x-td>
                                 <x-td>
-                                    <button wire:click='editModal({{ $item->id }})'
-                                        class="px-1 py-2 text-green-500 text-sm font-semibold"><svg class="w-6 h-6"
-                                            fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
-                                            </path>
-                                        </svg>
-                                    </button>
+                                    @include('items.td-action', ['id' => $item->id])
                                 </x-td>
                             </x-tr>
                         @endforeach
