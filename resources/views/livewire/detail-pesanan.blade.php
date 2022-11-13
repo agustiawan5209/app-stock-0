@@ -7,37 +7,37 @@
                         <tbody>
                             <x-tr>
                                 <x-th class="bg-secondary ">Metode Bayar</x-th>
-                                <x-td>Bank {{$barangmasuks->pesanan->transaksi->metode}}</x-td>
+                                <x-td>Bank {{$barang->pesanan->transaksi->metode}}</x-td>
                             </x-tr>
                             <x-tr>
                                 <x-th class="bg-secondary ">ID Pesanan</x-th>
-                                <x-td>{{$barangmasuks->pesanan->transaksi->ID_transaksi}}</x-td>
+                                <x-td>{{$barang->pesanan->transaksi->ID_transaksi}}</x-td>
                             </x-tr>
                             <x-tr>
                                 <x-th class="bg-secondary ">Kode Barang Masuk</x-th>
-                                <x-td>{{$barangmasuks->kode}}</x-td>
+                                <x-td>{{$barang->kode}}</x-td>
                             </x-tr>
                             <x-tr>
                                 <x-th class="bg-secondary ">Bahan Baku</x-th>
-                                <x-td>{{$barangmasuks->pesanan->bahanbaku->nama_bahan_baku}}</x-td>
+                                <x-td>{{$barang->pesanan->bahanbaku->nama_bahan_baku}}</x-td>
                             </x-tr>
                             <x-tr>
                             <x-th class="bg-secondary ">Tanggal Transaksi</x-th>
-                            <x-td>{{$barangmasuks->pesanan->transaksi->tgl_transaksi}}</x-td>
+                            <x-td>{{$barang->pesanan->transaksi->tgl_transaksi}}</x-td>
                             </x-tr>
                             <x-tr>
                                 <x-th class="bg-secondary ">Jumlah Pembelian</x-th>
-                                <x-td>{{$barangmasuks->pesanan->jumlah}}</x-td>
+                                <x-td>{{$barang->pesanan->jumlah}}</x-td>
                             </x-tr>
                             <x-tr>
                                 <x-th class="bg-secondary ">Total Pembelian</x-th>
-                                <x-td>Rp. {{number_format($barangmasuks->pesanan->sub_total, 0,2)}}</x-td>
+                                <x-td>Rp. {{number_format($barang->pesanan->sub_total, 0,2)}}</x-td>
                             </x-tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="card w-96 glass">
-                    <figure><img src="{{asset('upload/bukti/'.$barangmasuks->pesanan->transaksi->bukti_transaksi)}}" alt="car!"/></figure>
+                    <figure><img src="{{asset('upload/bukti/'.$barang->pesanan->transaksi->bukti_transaksi)}}" alt="car!"/></figure>
                     <div class="card-body">
                       <h2 class="card-title bg-info-content px-2 py-2 text-center">Bukti Bayar</h2>
                       <div class="card-action">
