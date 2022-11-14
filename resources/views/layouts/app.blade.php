@@ -12,11 +12,12 @@
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
     <script src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
     <!-- Scripts -->
-    <script src="{{asset('js/jquery-3.6.1.min.js')}}"></script>
+    <script src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
 
-    <link rel="stylesheet" href="{{asset('datatables/datatables.css')}}">
+    <link rel="stylesheet" href="{{ asset('datatables/datatables.css') }}">
     <!-- Styles -->
-    <link rel="stylesheet" href="{{asset('build/assets/app.a237db68.css')}}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app.a237db68.css') }}">
+    <script src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
     @vite(['resources/js/app.js', 'resources/css/app.css'])
     @livewireStyles
     <style>
@@ -51,7 +52,8 @@
         <div class="loading-icon animate-spin">
         </div>
     </div> --}}
-    <div class="flex min-h-screen 2xl:max-w-7xl 2xl:mx-auto 2xl:border-x-2 2xl:border-primary drawer" x-data="{navbar : false }">
+    <div class="flex min-h-screen 2xl:max-w-7xl 2xl:mx-auto 2xl:border-x-2 2xl:border-primary drawer"
+        x-data="{ navbar: false }">
         <!-- Sidebar -->
         {{-- Dekstop --}}
         <aside
@@ -59,8 +61,7 @@
             <div class=" font-bold text-2xl text-white">{{ Auth::user()->name }}</div>
 
             <!-- Menu -->
-            <div class="mt-12 flex flex-col space-y-7 text-white font-medium"
-                x-data="{ Master: false, trans: false, Produk: false ,BahanBaku: false}">
+            <div class="mt-12 flex flex-col space-y-7 text-white font-medium" x-data="{ Master: false, trans: false, Produk: false, BahanBaku: false }">
 
 
                 @include('navigation-menu')
@@ -96,8 +97,7 @@
             <div class=" font-bold text-2xl text-white">{{ Auth::user()->name }}</div>
 
             <!-- Menu -->
-            <div class="mt-12 flex flex-col space-y-7 text-white font-medium"
-                x-data="{ Master: false, trans: false, Produk: false ,BahanBaku: false}">
+            <div class="mt-12 flex flex-col space-y-7 text-white font-medium" x-data="{ Master: false, trans: false, Produk: false, BahanBaku: false }">
 
 
                 @include('navigation-menu')
@@ -186,13 +186,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
-    <script src="{{asset('datatables/datatables.js')}}"></script>
+    <script src="{{ asset('datatables/datatables.js') }}"></script>
 
     @stack('modals')
 
     @livewireScripts
     @yield('js')
-
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+    </script>
 </body>
 
 </html>

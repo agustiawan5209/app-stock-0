@@ -12,7 +12,7 @@ class PagePenjualan extends Component
     public $itemID , $itemDetail = false;
     // ItemTable
     public $itemStatus= false, $itemEdit = false, $statusItem,$ket;
-    public $user, $jenis,$jumlah,$sub_total, $status;
+    public $user, $jenis,$jumlah,$sub_total, $status, $detail ;
     public function render()
     {
         $pesanan = PesananUser::all();
@@ -24,6 +24,7 @@ class PagePenjualan extends Component
     public function detailModal($id){
         $this->itemDetail = true;
         $pesananUser = PesananUser::find($id);
+        $this->detail = $pesananUser;
         $this->user = $pesananUser->user;
         $this->jenis = $pesananUser->jenis;
         $this->jumlah = $pesananUser->jumlah;
