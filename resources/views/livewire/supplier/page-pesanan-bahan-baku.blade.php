@@ -23,7 +23,7 @@
                     <x-td>Rp. {{ number_format($barangmasuks->pesanan->sub_total, 0, 2) }}</x-td>
                     <x-td>
                         <button type="button" class="btn btn-accent"
-                            wire:click='statusPesanan({{ $barangmasuks->pesanan->id }})'>
+                            wire:click='statusPesanan({{ $barangmasuks->id }})'>
                             {{ $barangmasuks->status($barangmasuks->status) }}
                         </button>
                     </x-td>
