@@ -80,6 +80,8 @@ class PagePesananBahanBaku extends Component
             if($barang->pesanan->jenis ==2){
                 $stock = BahanBakuSupplier::where('bahan_baku', '=', $barang->pesanan->bahan_baku_id)->first();
             }
+
+            dd($stock);
             BahanBakuSupplier::where('id', $stock->id)->update([
                 'jumlah_stock'=> $barang->pesanan->jumlah - $stock->jumlah_stock,
             ]);
