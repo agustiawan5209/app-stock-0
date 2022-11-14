@@ -75,7 +75,7 @@ class PagePesananBahanBaku extends Component
         $barang = BarangMasuk::find($id);
         if($status == 3){
             $stock = BahanBakuSupplier::where('bahan_baku', '=', $barang->pesanan->bahanbaku->id)->first();
-            $stock->update([
+            BahanBakuSupplier::where('id', $stock->id)->update([
                 'jumlah_stock'=> $barang->pesanan->jumlah - $stock->jumlah_stock,
             ]);
         }
