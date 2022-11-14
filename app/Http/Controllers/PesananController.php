@@ -46,14 +46,14 @@ class PesananController extends Controller
         // Buat Transaksi
         $transaksi =  Transaksi::create($transaksis);
         // Buat Pesanan
-        $pesan = Pesanan::create(array(
+        $pesan = Pesanan::create([
             "bahan_baku_id" => $data['itemID'],
             "satuan_id" => $data['satuan'],
             "jumlah" => $request->jumlah,
             'jenis'=> $data['jenis'],
             "transaksi_id" => $transaksi->id,
-            "sub_total" => $request->sub_total,
-        ));
+            "sub_total" => $data['harga'] * $request->jumlah,
+        ]);
 
         // Buat Barang Masuk
         $barang = BarangMasuk::create([
