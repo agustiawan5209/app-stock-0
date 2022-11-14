@@ -7,6 +7,7 @@ use Livewire\Component;
 use App\Models\BarangMasuk;
 use App\Models\StockBahanBaku;
 use App\Models\BahanBakuSupplier;
+use App\Models\StockBahanBakuKemasan;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -52,7 +53,12 @@ class PagePesananBahanBaku extends Component
     public function createBarang($id, $status){
         $barang = BarangMasuk::find($id);
         if($status == 4){
-            $stock = StockBahanBaku::where('bahan_baku', '=', $barang->pesanan->bahanbaku->id)->first();
+            if($barang->pesanan->jenis == 1){
+                $stock = StockBahanBaku::where('bahan_baku', '=', $barang->pesanan->bahanbaku->id)->first();
+            }
+            if($barang->pesanan->jenis ==2){
+                $stock = StockBahanBakuKemasan::where('bahan_baku', '=', $barang->pesanan->bahanbaku->id)->first();
+            }
             $stock->update([
                 'stock'=> $barang->pesanan->jumlah + $stock->stock,
             ]);
@@ -70,7 +76,7 @@ class PagePesananBahanBaku extends Component
         if($status == 3){
             $stock = BahanBakuSupplier::where('bahan_baku', '=', $barang->pesanan->bahanbaku->id)->first();
             $stock->update([
-                'stock'=> $barang->pesanan->jumlah - $stock->jumlah_stock,
+                'jumlah_stock'=> $barang->pesanan->jumlah - $stock->jumlah_stock,
             ]);
         }
     }
