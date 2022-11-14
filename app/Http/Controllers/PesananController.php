@@ -50,6 +50,7 @@ class PesananController extends Controller
             "bahan_baku_id" => $data['itemID'],
             "satuan_id" => $data['satuan'],
             "jumlah" => $request->jumlah,
+            'jenis'=> $data['jenis'],
             "transaksi_id" => $transaksi->id,
             "sub_total" => $request->sub_total,
         ));

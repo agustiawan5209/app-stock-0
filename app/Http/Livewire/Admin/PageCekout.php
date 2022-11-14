@@ -18,7 +18,6 @@ class PageCekout extends Component
     public function render()
     {
         $data = session('data');
-        // dd($data);
         $bank = Bank::where('user_id', $data['user_id'] )->get();
         return view('livewire.admin.page-cekout', compact('data', 'bank'))->layout('components.admin.layout');
     }

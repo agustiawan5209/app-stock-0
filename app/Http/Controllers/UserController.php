@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\StockBahanBaku;
+use App\Models\StockBahanBakuKemasan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,5 +29,10 @@ class UserController extends Controller
         } else {
             abort(401);
         }
+    }
+    public function cekStok(){
+        $stok['produksi'] = StockBahanBaku::all();
+        $stok['kemasan'] = StockBahanBakuKemasan::all();
+        return $stok;
     }
 }

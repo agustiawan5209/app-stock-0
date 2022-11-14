@@ -83,6 +83,7 @@ class PageBuatPesanan extends Component
             'bahan_baku' => $bahanBaku->bahan_baku,
             'satuan' => $bahanBaku->satuan,
             'isi' => $bahanBaku->isi,
+            'jenis'=> $bahanBaku->jenis,
             'harga' => $bahanBaku->harga,
             'jumlah_stock' => $bahanBaku->jumlah_stock,
             'supplier_id' => $bahanBaku->suppliers_id,

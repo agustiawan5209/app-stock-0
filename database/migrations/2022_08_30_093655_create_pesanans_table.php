@@ -1,5 +1,6 @@
 <?php
 
+use App\View\Components\table;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,6 +19,7 @@ return new class extends Migration
             $table->foreignId('bahan_baku_id')->constrained('bahan_bakus');
             $table->string('satuan_id');
             $table->integer('jumlah');
+            $table->integer('jenis')->comment('1: produksi, 2: kemasan');
             $table->foreignId('transaksi_id');
             $table->bigInteger('sub_total');
             // $table->foreignId('status_id')->constrained('status');
