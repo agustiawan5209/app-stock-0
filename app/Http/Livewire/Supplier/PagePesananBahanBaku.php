@@ -32,6 +32,7 @@ class PagePesananBahanBaku extends Component
         $barang = BarangMasuk::find($id);
         // dd($this->status);
         $this->createBarang($id,$this->status);
+        $this->kurangi($id,$this->status);
         $barang->update(['status'=> $this->status]);
         $status = Status::create([
             'pesanan_id'=> $barang->pesanan->id,
@@ -41,6 +42,13 @@ class PagePesananBahanBaku extends Component
         Alert::success('Info', 'Berhasil Di Ganti...!!!');
         $this->itemStatus = false;
     }
+    /**
+     * createBarang
+     * Fungsi Membuat Stok Bahan Baku Tertambah
+     * @param  mixed $id
+     * @param  mixed $status
+     * @return void
+     */
     public function createBarang($id, $status){
         $barang = BarangMasuk::find($id);
         if($status == 4){
@@ -50,6 +58,13 @@ class PagePesananBahanBaku extends Component
             ]);
         }
     }
+    /**
+     * kurangi
+     *  Bahan Baku Supplier Berkurang Jika Status == 3
+     * @param  mixed $id
+     * @param  mixed $status
+     * @return void
+     */
     public function kurangi($id, $status){
         $barang = BarangMasuk::find($id);
         if($status == 3){

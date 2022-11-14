@@ -31,8 +31,9 @@ class UserController extends Controller
         }
     }
     public function cekStok(){
-        $stok['produksi'] = StockBahanBaku::all();
-        $stok['kemasan'] = StockBahanBakuKemasan::all();
+        $stok['produksi'] = StockBahanBaku::where('stock', '<', '50')->get();
+        $stok['kemasan'] = StockBahanBakuKemasan::where('stock', '<', '50')->get();
+
         return $stok;
     }
 }

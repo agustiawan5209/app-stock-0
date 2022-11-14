@@ -3,7 +3,11 @@
         <!-- Card -->
         <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">
             <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full ">
-                <svg class="w-6 h-6 text-primary " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
+                <svg class="w-6 h-6 text-primary " fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
+                </svg>
             </div>
             <div>
                 <p class="mb-2 text-sm font-medium text-gray-600 ">
@@ -68,5 +72,63 @@
                 </p>
             </div>
         </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 container mx-auto">
+        @if ($stok['kemasan']->count() > 0 || $stok['produksi']->count() > 0)
+            @if ($stok['produksi']->count() > 0)
+                <div class="card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <h2 class="card-title">Bahan Baku Produksi!</h2>
+                        <ul class="menu menu-compact lg:menu-normal bg-base-100 w-full p-2 rounded-box">
+                            @foreach ($stok['produksi'] as $item)
+                                <li class="mb-1">
+                                    <div class="alert alert-error shadow-lg">
+                                        <div>
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="stroke-current flex-shrink-0 h-6 w-6 text-white" fill="none"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <span class="text-white">{{ $item->bahanbaku->nama_bahan_baku }} : Jumlah
+                                                Stok = {{ $item->stock }}</span>
+
+                                        </div>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            @endif
+            @if ($stok['kemasan']->count() > 0)
+                <div class="card bg-base-100 shadow-xl">
+                    <div class="card-body">
+                        <h2 class="card-title">Bahan Baku Kemasan!</h2>
+                        <ul class="menu menu-compact lg:menu-normal bg-base-100 w-full p-2 rounded-box">
+
+                            @foreach ($stok['kemasan'] as $item)
+                                <li class="mb-1">
+                                    <div class="alert alert-error shadow-lg">
+                                        <div>
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="stroke-current flex-shrink-0 h-6 w-6 text-white" fill="none"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            <span class="text-white">{{ $item->bahanbaku->nama_bahan_baku }} : Jumlah
+                                                Stok =
+                                                {{ $item->stock }}</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            @endif
+
+        @endif
     </div>
 </section>
