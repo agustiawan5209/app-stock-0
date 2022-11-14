@@ -52,7 +52,7 @@ class PagePesananBahanBaku extends Component
     public function createBarang($id, $status){
         $barang = BarangMasuk::find($id);
         if($status == 4){
-            $stock = StockBahanBaku::where('bahan_baku_id', '=', $barang->pesanan->bahanbaku->id)->first();
+            $stock = StockBahanBaku::where('bahan_baku', '=', $barang->pesanan->bahanbaku->id)->first();
             $stock->update([
                 'stock'=> $barang->pesanan->jumlah + $stock->stock,
             ]);
@@ -68,7 +68,7 @@ class PagePesananBahanBaku extends Component
     public function kurangi($id, $status){
         $barang = BarangMasuk::find($id);
         if($status == 3){
-            $stock = BahanBakuSupplier::where('bahan_baku_id', '=', $barang->pesanan->bahanbaku->id)->first();
+            $stock = BahanBakuSupplier::where('bahan_baku', '=', $barang->pesanan->bahanbaku->id)->first();
             $stock->update([
                 'stock'=> $barang->pesanan->jumlah - $stock->jumlah_stock,
             ]);
