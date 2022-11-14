@@ -19,7 +19,22 @@
                             </x-tr>
                             <x-tr>
                                 <x-th class="bg-secondary ">Bahan Baku</x-th>
-                                <x-td>{{$barang->pesanan->bahanbaku->nama_bahan_baku}}</x-td>
+                                <x-td>
+                                    @if ($barang->pesanan->jenis == 1)
+                                    @if ($barang->pesanan->bahanbaku == null)
+                                        Bahan Baku Produksi Hilang
+                                    @else
+                                        {{ $barang->pesanan->bahanbaku->bahanbaku->nama_bahan_baku }}
+                                    @endif
+                                @endif
+                                @if ($barang->pesanan->jenis == 2)
+                                    @if ($barang->pesanan->bahanbaku->bahanbakuKemasan == null)
+                                        Bahan Baku Kemasan Hilang
+                                    @else
+                                        {{ $barang->pesanan->bahanbaku->bahanbakuKemasan->nama_bahan_baku }}
+                                    @endif
+                                @endif
+                                </x-td>
                             </x-tr>
                             <x-tr>
                             <x-th class="bg-secondary ">Tanggal Transaksi</x-th>
