@@ -32,8 +32,8 @@ class PagePesananBahanBaku extends Component
     public function updateStatus($id){
         $barang = BarangMasuk::find($id);
         // dd($this->status);
-        $this->createBarang($id,$this->status);
         $this->kurangi($id,$this->status);
+        $this->createBarang($id,$this->status);
         $barang->update(['status'=> $this->status]);
         $status = Status::create([
             'pesanan_id'=> $barang->pesanan->id,
@@ -54,10 +54,10 @@ class PagePesananBahanBaku extends Component
         $barang = BarangMasuk::find($id);
         if($status == 4){
             if($barang->pesanan->jenis == 1){
-                $stock = StockBahanBaku::where('bahan_baku', '=', $barang->pesanan->bahan_baku_id)->first();
+                $stock = StockBahanBaku::where('bahan_baku_id', '=', $barang->pesanan->bahanbaku->bahan_baku)->first();
             }
-            if($barang->pesanan->jenis ==2){
-                $stock = StockBahanBakuKemasan::where('bahan_baku', '=', $barang->pesanan->bahan_baku_id)->first();
+            if($barang->pesanan->jenis == 2){
+                $stock = StockBahanBakuKemasan::where('bahan_baku_id', '=', $barang->pesanan->bahanbaku->bahan_baku)->first();
             }
             $stock->update([
                 'stock'=> $barang->pesanan->jumlah + $stock->stock,
@@ -74,8 +74,7 @@ class PagePesananBahanBaku extends Component
     public function kurangi($id, $status){
         $barangmasuk = BarangMasuk::find($id);
         if($status == 3){
-            $stock = BahanBakuSupplier::where('bahan_baku', '=', $barangmasuk->pesanan->bahan_baku_id)->first();
-            dd([$barangmasuk,$stock]);
+            $stock = BahanBakuSupplier::where('id', '=', $barangmasuk->pesanan->bahan_baku_id)->first();
             BahanBakuSupplier::where('id', $stock->id)->update([
                 'jumlah_stock'=> $barangmasuk->pesanan->jumlah - $stock->jumlah_stock,
             ]);
