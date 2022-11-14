@@ -20,10 +20,10 @@ class PagePesananBahanBaku extends Component
         return view('livewire.supplier.page-pesanan-bahan-baku', compact('barang'))->layoutData(['page'=> 'Pesanan Bahan Baku']);
     }
     public function statusPesanan($id){
-        $b = BarangMasuk::find($id)->status;
+        $b = BarangMasuk::find($id);
         $this->itemID = $id;
         $this->itemStatus = true;
-        $this->statusItem =  $b;
+        $this->statusItem =  $b->status;
     }
     public function detailModal($id){
         return redirect()->route('Detail-Pesanan-Bahan-baku', ['item'=> $id]);
