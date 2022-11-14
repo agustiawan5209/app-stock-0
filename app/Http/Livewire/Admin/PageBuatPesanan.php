@@ -78,7 +78,7 @@ class PageBuatPesanan extends Component
         $this->itemID = $id;
         $bahanBaku = BahanBakuSupplier::find($id);
         session()->put('data', [
-            'itemID' => $id,
+            'itemID' => $bahanBaku->id,
             'gambar' => $bahanBaku->gambar,
             'bahan_baku' => $bahanBaku->bahan_baku,
             'satuan' => $bahanBaku->satuan,

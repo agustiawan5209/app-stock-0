@@ -42,7 +42,6 @@ class PesananController extends Controller
             "created_at" => NULL,
             "updated_at" => NULL,
         );
-        $request->bukti->storeAs('upload/bukti', $namaFile);
         // Buat Transaksi
         $transaksi =  Transaksi::create($transaksis);
         // Buat Pesanan
@@ -52,9 +51,10 @@ class PesananController extends Controller
             "jumlah" => $request->jumlah,
             'jenis'=> $data['jenis'],
             "transaksi_id" => $transaksi->id,
-            "sub_total" => $data['harga'] * $request->jumlah,
+            "sub_total" => $request->jumlah * $data['harga'],
         ]);
 
+        $request->bukti->storeAs('upload/bukti', $namaFile);
         // Buat Barang Masuk
         $barang = BarangMasuk::create([
             'kode' => $this->kodeBM(),

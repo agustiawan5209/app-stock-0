@@ -19,16 +19,17 @@
                         <x-td>{{ $pesanana->transaksi->ID_transaksi }}</x-td>
                         <x-td>
                             @if ($pesanana->jenis == 1)
-                                @if ($pesanana->bahanbakuKemasan == null)
-                                    Bahan Baku Hilang
+                                @if ($pesanana->bahanbaku == null)
+                                    Bahan Baku Produksi Hilang
                                 @else
-                                    {{ $pesanana->bahanbaku->nama_bahan_baku }}
+                                    {{ $pesanana->bahanbaku->bahanbaku->nama_bahan_baku }}
                                 @endif
-                            @elseif($pesanana->jenis == 2)
-                                @if ($pesanana->bahanbakuKemasan == null)
-                                    Bahan Baku Hilang
+                            @endif
+                            @if ($pesanana->jenis == 2)
+                                @if ($pesanana->bahanbaku->bahanbakuKemasan == null)
+                                    Bahan Baku Kemasan Hilang
                                 @else
-                                    {{ $pesanana->bahanbakuKemasan->nama_bahan_baku }}
+                                    {{ $pesanana->bahanbaku->bahanbakuKemasan->nama_bahan_baku }}
                                 @endif
                             @endif
                         </x-td>

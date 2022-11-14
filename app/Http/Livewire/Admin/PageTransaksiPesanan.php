@@ -38,9 +38,9 @@ class PageTransaksiPesanan extends Component
         }
     }
     public function delete($id){
-        $pesanan = BarangMasuk::find($id);
-        Pesanan::find($pesanan->pesanan->id)->delete();
-        $pesanan->delete();
+        $barangmasuk = BarangMasuk::find($id);
+        Pesanan::find($barangmasuk->pesanan->id)->delete();
+        $barangmasuk->delete();
 
         $this->itemDelete = false;
         Alert::success("Info", 'Berhasil Di Hapus');
