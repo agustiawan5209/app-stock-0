@@ -10,7 +10,7 @@ class LaporanBarangMasuk extends Component
     public $tgl_awal,$tgl_akhir, $cetak = false;
     public function render()
     {
-        $barangmasuk = BarangMasuk::all();
+        $barangmasuk = BarangMasuk::where('status', '=', 4)->get();
         if($this->cetak == true){
             $barangmasuk = BarangMasuk::where('status', '=', 4)
             ->whereHas('pesanan', function($query){
@@ -20,6 +20,7 @@ class LaporanBarangMasuk extends Component
             })
             ->get();
         }
+        dd($barangmasuk);
         return view('livewire.laporan.laporan-barang-masuk', [
             'barangmasuk'=> $barangmasuk,
         ])

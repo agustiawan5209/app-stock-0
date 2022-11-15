@@ -43,36 +43,36 @@
             </x-tr>
         </thead>
         <tbody>
-            @foreach ($barangmasuk as $item)
+            @foreach ($barangmasuk as $barangmasuk)
                 <x-tr>
                     <x-td>{{ $loop->iteration }}</x-td>
-                    <x-td>{{ $item->kode }}</x-td>
+                    <x-td>{{ $barangmasuk->kode }}</x-td>
                     <x-td>
-                        @if ($item->supplier == null)
+                        @if ($barangmasuk->supplier == null)
                             Supplier Hilang
                         @else
-                            {{ $item->supplier->supplier }}
+                            {{ $barangmasuk->supplier->supplier }}
                         @endif
                     </x-td>
                     <x-td>
-                        @if ($item->pesanan->jenis == 1)
-                            @if ($item->pesanan->bahanbaku == null)
+                        @if ($barangmasuk->pesanan->jenis == 1)
+                            @if ($barangmasuk->pesanan->bahanbaku == null)
                                 Bahan Baku Hilang
                             @else
-                                {{ $item->pesanan->bahanbaku->bahanbaku->nama_bahan_baku }}
+                                {{ $barangmasuk->pesanan->bahanbaku->bahanbaku->nama_bahan_baku }}
                             @endif
-                        @elseif($item->pesanan->jenis == 2)
-                            @if ($item->pesanan->bahanbakuKemasan == null)
+                        @elseif($barangmasuk->pesanan->jenis == 2)
+                            @if ($barangmasuk->pesanan->bahanbakuKemasan == null)
                                 Bahan Baku Hilang
                             @else
-                                {{ $item->pesanan->bahanbakuKemasan->bahanbakuKemasan->nama_bahan_baku }}
+                                {{ $barangmasuk->pesanan->bahanbakuKemasan->bahanbakuKemasan->nama_bahan_baku }}
                             @endif
                         @endif
                     </x-td>
-                    <x-td>{{ $item->pesanan->jumlah }}</x-td>
-                    <x-td>Rp. {{ number_format($item->pesanan->sub_total, 0, 2) }}</x-td>
+                    <x-td>{{ $barangmasuk->pesanan->jumlah }}</x-td>
+                    <x-td>Rp. {{ number_format($barangmasuk->pesanan->sub_total, 0, 2) }}</x-td>
                     {{-- <x-td>
-                        @include('items.td-action', ['id' => $item->id])
+                        @include('items.td-action', ['id' => $barangmasuk->id])
                     </x-td> --}}
                 </x-tr>
             @endforeach
