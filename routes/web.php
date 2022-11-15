@@ -29,6 +29,10 @@ use App\Http\Livewire\Customer\DashboardCustomer;
 use App\Http\Livewire\Customer\PagePesan;
 use App\Http\Livewire\Customer\PesanProduk;
 use App\Http\Livewire\DetailPesanan;
+use App\Http\Livewire\Laporan\LaporanBarangKeluar;
+use App\Http\Livewire\Laporan\LaporanBarangMasuk;
+use App\Http\Livewire\Laporan\LaporanPenjualan;
+use App\Http\Livewire\Laporan\LaporanStok;
 use App\Http\Livewire\Supplier\DashboardSupplier;
 use App\Http\Livewire\Supplier\PageBahanBaku;
 use App\Http\Livewire\Supplier\PagePesananBahanBaku;
@@ -89,6 +93,13 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         // });
 
         // End Admin Route
+        // Laporan
+        Route::group(['prefix'=> 'laporan', 'as'=> 'laporan'], function(){
+            Route::get('Penjulan', LaporanPenjualan::class)->name('Penjualan');
+            Route::get('barangmasuk', LaporanBarangMasuk::class)->name('barangmasuk');
+            Route::get('barangkeluar', LaporanBarangKeluar::class)->name('barangkeluar');
+            Route::get('stok', LaporanStok::class)->name('stok');
+        });
 
     });
     Route::group(['middleware' => 'role:Supplier', 'prefix' => 'Supplier', 'as' => 'Supplier.'], function () {
