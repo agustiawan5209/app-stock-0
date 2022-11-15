@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
-    <link rel="stylesheet" href="{{public_path('build/assets/app.a237db68.css')}}">
+    <link rel="stylesheet" href="{{public_path('build/assets/app.0668dc12.css')}}">
 </head>
 
 <body>

@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" href="{{ asset('datatables/datatables.css') }}">
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('build/assets/app.a237db68.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app.0668dc12.css') }}">
     <script src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
     @vite(['resources/js/app.js', 'resources/css/app.css'])
     @livewireStyles

@@ -105,7 +105,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::group(['prefix'=> 'cetak', 'as'=> 'cetak'], function(){
             Route::get('Penjualan', [LaporanController::class, 'penjualan'])->name('penjualan');
             Route::get('barangmasuk', [LaporanController::class, 'barangmasuk'])->name('barangmasuk');
-            Route::get('baragnkeluar', [LaporanController::class, 'baragnkeluar'])->name('baragnkeluar');
+            Route::get('barangkeluar', [LaporanController::class, 'barangkeluar'])->name('barangkeluar');
             Route::get('stok', [LaporanController::class, 'stok'])->name('stok');
         });
 
