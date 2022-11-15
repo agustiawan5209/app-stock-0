@@ -12,7 +12,7 @@ class LaporanBarangMasuk extends Component
     {
         $barangmasuk = BarangMasuk::all();
         if($this->cetak == true){
-            $barangmasuk = BarangMasuk::with(['pesanan', 'pesanan.transaksi'])
+            $barangmasuk = BarangMasuk::where('status', '=', 4)
             ->whereHas('pesanan', function($query){
                 return $query->whereHas('transaksi', function($query){
                     return $query->whereBetween('tgl_transaksi', [$this->tgl_awal, $this->tgl_akhir]);
