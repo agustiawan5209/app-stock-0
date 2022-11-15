@@ -37,6 +37,7 @@
                 <x-th>ID Pesanan</x-th>
                 <x-th>Supplier</x-th>
                 <x-th>Bahan Baku</x-th>
+                <x-th>Tanggal</x-th>
                 <x-th>Jumlah</x-th>
                 <x-th>Total</x-th>
                 {{-- <x-th>Aksi</x-th> --}}
@@ -69,6 +70,7 @@
                             @endif
                         @endif
                     </x-td>
+                    <x-td>{{ $barangmasuk->pesanan->transaksi->tgl_transaksi }}</x-td>
                     <x-td>{{ $barangmasuk->pesanan->jumlah }}</x-td>
                     <x-td>Rp. {{ number_format($barangmasuk->pesanan->sub_total, 0, 2) }}</x-td>
                     {{-- <x-td>
