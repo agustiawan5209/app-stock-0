@@ -39,7 +39,7 @@
                         @endif
                     </x-td>
                     <x-td>{{ $item->pesanan->jumlah }}</x-td>
-                    <x-td>{{ $item->pesanan->sub_total }}</x-td>
+                    <x-td>Rp. {{ number_formst($item->pesanan->sub_total,0,2) }}</x-td>
                     {{-- <x-td>
                         @include('items.td-action', ['id' => $item->id])
                     </x-td> --}}
