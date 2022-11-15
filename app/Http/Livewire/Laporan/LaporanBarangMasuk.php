@@ -20,7 +20,6 @@ class LaporanBarangMasuk extends Component
             })
             ->get();
         }
-        dd($barangmasuk);
         return view('livewire.laporan.laporan-barang-masuk', [
             'barangmasuk'=> $barangmasuk,
         ])
