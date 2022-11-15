@@ -136,7 +136,7 @@
         <span>Penjualan</span>
     </a>
     <a class=" {{ request()->routeIs('Admin.laporanbarangkeluar') || request()->routeIs('Admin.laporanbarangmasuk') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-primary pr-20' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-primary hover:font-semibold ' }} relative  box-content"
-        href="#" x-on:click="trans = ! trans" x-on:click.outside="trans = false">
+        href="#" x-on:click="laporan = ! laporan" x-on:click.outside="laporan = false">
         <svg class="h-5 w-5 {{ request()->routeIs('Admin.laporanbarangkeluar') || request()->routeIs('Admin.laporanbarangmasuk') ? 'stroke-primary' : 'group-hover:stroke-primary' }}"
             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -144,7 +144,7 @@
             </path>
             <span>Laporan</span>
         </svg>
-        <div class="-translate-x-5 m-0 !space-y-0" x-show="trans"
+        <div class="-translate-x-5 m-0 !space-y-0" x-show="laporan"
             x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-50 -translate-x-32"
             x-transition:enter-end="opacity-100 -translate-x-5" x-transition:leave="transition ease-in duration-300"
             x-transition:leave-start="opacity-100 translate-x-0" x-transition:leave-end="opacity-50 -translate-x-32">

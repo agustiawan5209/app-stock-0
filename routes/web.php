@@ -1,41 +1,42 @@
 <?php
 
-use App\Http\Controllers\FermentasiController;
-use App\Http\Controllers\PesananController;
-use App\Http\Controllers\TableController;
+use App\Http\Livewire\CheckOut;
+use App\Http\Livewire\DetailPesanan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Admin\PageJenis;
+use App\Http\Livewire\Admin\PageCekout;
+use App\Http\Livewire\Admin\PageProduk;
 use App\Http\Livewire\Admin\PageSatuan;
 use App\Http\Controllers\UserController;
-use App\Http\Livewire\Admin\CrudFermentasi;
+use App\Http\Controllers\TableController;
 use App\Http\Livewire\Admin\PageCustomer;
 use App\Http\Livewire\Admin\PageSupplier;
+use App\Http\Livewire\Customer\PagePesan;
 use App\Http\Livewire\Transaksi\PageBank;
+use App\Http\Livewire\Admin\PagePenjualan;
+use App\Http\Livewire\Laporan\LaporanStok;
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\PesananController;
+use App\Http\Livewire\Admin\CrudFermentasi;
 use App\Http\Livewire\Admin\DashboardAdmin;
-use App\Http\Livewire\Admin\PageBahanBakuKemasan;
+use App\Http\Livewire\Customer\PesanProduk;
 use App\Http\Livewire\Admin\PageBarangMasuk;
 use App\Http\Livewire\Admin\PageBuatPesanan;
 use App\Http\Livewire\Admin\PageBarangKeluar;
-use App\Http\Livewire\Admin\PageCekout;
-use App\Http\Livewire\Admin\PagelistBahanBaku;
-use App\Http\Livewire\Admin\PagePenjualan;
-use App\Http\Livewire\Admin\PageProduk;
-use App\Http\Livewire\Admin\PageProdukFermentasi;
-use App\Http\Livewire\Admin\PageStockBahanBaku;
-use App\Http\Livewire\Admin\PageStockBahanBakuKemasan;
-use App\Http\Livewire\Admin\PageTransaksiPesanan;
-use App\Http\Livewire\CheckOut;
-use App\Http\Livewire\Customer\DashboardCustomer;
-use App\Http\Livewire\Customer\PagePesan;
-use App\Http\Livewire\Customer\PesanProduk;
-use App\Http\Livewire\DetailPesanan;
-use App\Http\Livewire\Laporan\LaporanBarangKeluar;
-use App\Http\Livewire\Laporan\LaporanBarangMasuk;
-use App\Http\Livewire\Laporan\LaporanPenjualan;
-use App\Http\Livewire\Laporan\LaporanStok;
-use App\Http\Livewire\Supplier\DashboardSupplier;
 use App\Http\Livewire\Supplier\PageBahanBaku;
+use App\Http\Controllers\FermentasiController;
+use App\Http\Livewire\Admin\PagelistBahanBaku;
+use App\Http\Livewire\Admin\PageStockBahanBaku;
+use App\Http\Livewire\Laporan\LaporanPenjualan;
+use App\Http\Livewire\Admin\PageBahanBakuKemasan;
+use App\Http\Livewire\Admin\PageProdukFermentasi;
+use App\Http\Livewire\Admin\PageTransaksiPesanan;
+use App\Http\Livewire\Customer\DashboardCustomer;
+use App\Http\Livewire\Laporan\LaporanBarangMasuk;
+use App\Http\Livewire\Supplier\DashboardSupplier;
+use App\Http\Livewire\Laporan\LaporanBarangKeluar;
 use App\Http\Livewire\Supplier\PagePesananBahanBaku;
+use App\Http\Livewire\Admin\PageStockBahanBakuKemasan;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,6 +100,13 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
             Route::get('barangmasuk', LaporanBarangMasuk::class)->name('barangmasuk');
             Route::get('barangkeluar', LaporanBarangKeluar::class)->name('barangkeluar');
             Route::get('stok', LaporanStok::class)->name('stok');
+
+        });
+        Route::group(['prefix'=> 'cetak', 'as'=> 'cetak'], function(){
+            Route::get('Penjualan', [LaporanController::class, 'penjualan'])->name('penjualan');
+            Route::get('barangmasuk', [LaporanController::class, 'barangmasuk'])->name('barangmasuk');
+            Route::get('baragnkeluar', [LaporanController::class, 'baragnkeluar'])->name('baragnkeluar');
+            Route::get('stok', [LaporanController::class, 'stok'])->name('stok');
         });
 
     });

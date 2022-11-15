@@ -61,7 +61,7 @@
             <div class=" font-bold text-2xl text-white">{{ Auth::user()->name }}</div>
 
             <!-- Menu -->
-            <div class="mt-12 flex flex-col space-y-7 text-white font-medium" x-data="{ Master: false, trans: false, Produk: false, BahanBaku: false }">
+            <div class="mt-12 flex flex-col space-y-7 text-white font-medium" x-data="{ Master: false, trans: false, Produk: false, BahanBaku: false, laporan:false }">
 
 
                 @include('navigation-menu')
@@ -97,7 +97,7 @@
             <div class=" font-bold text-2xl text-white">{{ Auth::user()->name }}</div>
 
             <!-- Menu -->
-            <div class="mt-12 flex flex-col space-y-7 text-white font-medium" x-data="{ Master: false, trans: false, Produk: false, BahanBaku: false }">
+            <div class="mt-12 flex flex-col space-y-7 text-white font-medium" x-data="{ Master: false, trans: false, Produk: false, BahanBaku: false, laporan:false }">
 
 
                 @include('navigation-menu')

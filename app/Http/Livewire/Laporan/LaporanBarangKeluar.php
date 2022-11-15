@@ -8,6 +8,8 @@ class LaporanBarangKeluar extends Component
 {
     public function render()
     {
-        return view('livewire.laporan.laporan-barang-keluar');
+        return view('livewire.laporan.laporan-barang-keluar')
+        ->layoutData(['page'=> 'Laporan Stok Bahan Baku']);
+
     }
 }
