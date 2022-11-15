@@ -25,7 +25,7 @@
                     </x-td>
                     <x-td>
                         @if ($item->pesanan->jenis == 1)
-                            @if ($item->pesanan->bahanbakuKemasan == null)
+                            @if ($item->pesanan->bahanbaku == null)
                                 Bahan Baku Hilang
                             @else
                                 {{ $item->pesanan->bahanbaku->nama_bahan_baku }}
