@@ -5,7 +5,7 @@
             <x-jet-button wire:click='addModal()'>Tambah</x-jet-button>
         @endif
         <div class="md:mt-6 overflow-x-auto">
-            <table class=" table-datatable w-full table-auto bg-white">
+            <table id="table-datatable" class="  w-full table-auto bg-white">
                 {{ $slot }}
             </table>
         </div>
@@ -15,8 +15,12 @@
 
 <script>
     $(document).ready(function() {
-        $('.table-datatable').DataTable({
+        $('#table-datatable').DataTable({
             "processing": true,
+            deferRender: true,
+            scrollCollapse: true,
+            scroller: true,
+            select: true
         });
     });
 </script>
