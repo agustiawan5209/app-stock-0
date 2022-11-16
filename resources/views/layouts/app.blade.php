@@ -192,11 +192,6 @@
 
     @livewireScripts
     @yield('js')
-    <script>
-        $(document).ready(function() {
-            $('#myTable').DataTable();
-        });
-    </script>
 </body>
 
 </html>
