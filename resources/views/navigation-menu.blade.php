@@ -161,10 +161,6 @@
                     class=" active:border-none focus:border-0 active:ring-0  {{ request()->routeIs('Admin.laporanbarangmasuk') ? 'block px-4 py-2 border-b border-gray-200 w-full rounded-t-lg bg-blue-700 text-white cursor-pointer' : 'block px-4 py-2 border-b border-gray-200 w-full hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 cursor-pointer' }}">
                     Barang Masuk
                 </a>
-                <a href="{{ route('Admin.laporanPenjualan') }}"
-                    class=" active:border-none focus:border-0 active:ring-0  {{ request()->routeIs('Admin.laporanPenjualan') ? 'block px-4 py-2 border-b border-gray-200 w-full rounded-t-lg bg-blue-700 text-white cursor-pointer' : 'block px-4 py-2 border-b border-gray-200 w-full hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 cursor-pointer' }}">
-                    Penjualan
-                </a>
 
             </div>
         </div>

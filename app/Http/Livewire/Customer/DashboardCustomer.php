@@ -7,12 +7,13 @@ use App\Models\StokProduk;
 use App\Models\PesananUser;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\ProdukFermentasi;
 
 class DashboardCustomer extends Component
 {
     public function render()
     {
-        $stokProduk = StokProduk::orderBy('id','desc')->latest()->first();
+        $stokProduk = ProdukFermentasi::sum('jumlah_stock');
         $jumlah_pembelian = PesananUser::where('user_id', Auth::user()->id)->sum('sub_total');
         return view('livewire.customer.dashboard-customer',[
             'stok_produk'=> $stokProduk,

@@ -58,7 +58,7 @@
             <x-td></x-td>
             <x-td>Jumlah Stock</x-td>
             <x-td>
-                {{abs(number_format(isset($stokproduk->jumlah_produksi)-  $jumlah_produk_sisa,0,2))}}
+                {{abs(number_format( $jumlah_produk_sisa == null ? 0 : $jumlah_produk_sisa,0,2))}}
 
             </x-td>
         </x-tr>
