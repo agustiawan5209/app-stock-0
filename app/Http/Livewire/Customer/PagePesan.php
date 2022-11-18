@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Customer;
 
 use App\Models\PesananUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class PagePesan extends Component
@@ -23,7 +24,9 @@ class PagePesan extends Component
         if($this->jenis == "BDiterima"){
             $item = ['1','2','3'];
         }
-        $pesan = PesananUser::whereIn('status', $item)->latest()->paginate($this->row);
+        $pesan = PesananUser::whereIn('status', $item)
+        ->where('user_id', Auth::user()->id)
+        ->latest()->paginate($this->row);
         return view('livewire.customer.page-pesan', compact('pesan'))
         ->layout('components.layout.customer')
         ->layoutData(['page'=> 'Dashboard ']);
