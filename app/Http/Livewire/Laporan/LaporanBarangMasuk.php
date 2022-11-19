@@ -23,7 +23,7 @@ class LaporanBarangMasuk extends Component
         return view('livewire.laporan.laporan-barang-masuk', [
             'barangmasuk'=> $barangmasuk,
         ])
-        ->layoutData(['page'=> 'Laporan Stok Bahan Baku']);
+        ->layoutData(['page'=> 'Laporan Barang Masuk']);
 
     }
 

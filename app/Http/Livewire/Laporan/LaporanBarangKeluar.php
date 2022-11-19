@@ -18,7 +18,7 @@ class LaporanBarangKeluar extends Component
         return view('livewire.laporan.laporan-barang-keluar', [
             'barangkeluar'=> $barangkeluar,
         ])
-        ->layoutData(['page'=> 'Laporan Stok Bahan Baku']);
+        ->layoutData(['page'=> 'Laporan Barang Keluar']);
 
     }
     public function cetakAl(){
