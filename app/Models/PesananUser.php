@@ -38,7 +38,7 @@ class PesananUser extends Model
                 $msg = "Dalam Pengiriman.";
                 break;
             case '4':
-                $msg = "Telah Di Terima!";
+                $msg = "Butuh Konfirmasi Penerimaan Pengguna!";
                 break;
             case '5':
                 $msg = "Telah Diterima!";

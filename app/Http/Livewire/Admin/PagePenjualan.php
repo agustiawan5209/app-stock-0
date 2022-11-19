@@ -38,11 +38,11 @@ class PagePenjualan extends Component
         $this->statusItem =  $b;
     }
     public function updateStatus($id){
-        $barang = PesananUser::find($id);
+        $pesanan = PesananUser::find($id);
         // dd($this->status);
-        $barang->update(['status'=> $this->status]);
+        $pesanan->update(['status'=> $this->status]);
         $status = Status::create([
-            'pesanan_id'=> $barang->id,
+            'pesanan_id'=> $pesanan->id,
             'jenis'=> '2',
             'status'=> $this->status,
             'ket'=> $this->ket,

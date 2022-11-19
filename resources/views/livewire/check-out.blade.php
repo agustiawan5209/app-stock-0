@@ -35,7 +35,7 @@
 
                         <div class="flex justify-between">
                             <dt>Stock Barang</dt>
-                            <dd class="text-gray-900">{{ $jenis->id }}</dd>
+                            <dd class="text-gray-900">{{ $stockProduk->jumlah_produksi }}</dd>
                         </div>
                         <div class="flex justify-between">
                             <dt>Harga</dt>

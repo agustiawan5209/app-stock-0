@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Bank;
 use App\Models\Jenis;
+use App\Models\StokProduk;
 use Livewire\Component;
 
 class CheckOut extends Component
@@ -20,7 +21,8 @@ class CheckOut extends Component
         $bank = Bank::whereHas('user', function($query){
             return $query->where('role_id', '1');
         })->get();
-        return view('livewire.check-out' , compact('jenis', 'bank'))
+        $stockProduk = StokProduk::latest()->first();
+        return view('livewire.check-out' , compact('jenis', 'bank', 'stockProduk'))
         ->layout('components.layout.customer')
         ->layoutData(['page'=> 'Detail Pesanan ']);
     }
