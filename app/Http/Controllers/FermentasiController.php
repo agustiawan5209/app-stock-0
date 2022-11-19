@@ -43,14 +43,14 @@ class FermentasiController extends Controller
                 $hasil_fer =  $hasil_hitung + $item->jumlah_stock;
 
                 ProdukFermentasi::find($item->id)->update([
-                    'jumlah_stock' =>$hasil_fer ,
+                    'jumlah_stock' => $hasil_fer,
                 ]);
                 $stokProduk = StokProduk::latest()->first();
-            $sum_produk = ProdukFermentasi::sum('jumlah_stock');
-            StokProduk::create([
-                'tgl_permintaan'=> $request->tgl_frementasi,
-                'jumlah_produksi'=> $stokProduk == null ? $hasil_hitung : $stokProduk->jumlah_produksi + $hasil_hitung,
-            ]);
+                $sum_produk = ProdukFermentasi::sum('jumlah_stock');
+                StokProduk::create([
+                    'tgl_permintaan' => $request->tgl_frementasi,
+                    'jumlah_produksi' => $stokProduk == null ? $hasil_hitung : $stokProduk->jumlah_produksi + $hasil_hitung,
+                ]);
             }
         } else {
             $hasil_hitung = $request->jumlah_stock * 7.5;
@@ -64,8 +64,8 @@ class FermentasiController extends Controller
             $stokProduk = StokProduk::latest()->first();
             $sum_produk = ProdukFermentasi::sum('jumlah_stock');
             StokProduk::create([
-                'tgl_permintaan'=> $request->tgl_frementasi,
-                'jumlah_produksi'=> $stokProduk == null ? $hasil_hitung : $stokProduk->jumlah_produksi + $hasil_hitung, //Stok Produk Jumlah
+                'tgl_permintaan' => $request->tgl_frementasi,
+                'jumlah_produksi' => $stokProduk == null ? $hasil_hitung : $stokProduk->jumlah_produksi + $hasil_hitung, //Stok Produk Jumlah
             ]);
         }
 
