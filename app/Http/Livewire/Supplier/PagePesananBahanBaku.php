@@ -17,7 +17,8 @@ class PagePesananBahanBaku extends Component
     public $status, $ket;
     public function render()
     {
-        $barang = BarangMasuk::where('supplier_id', Auth::user()->supplier->id)->get();
+        $barang = BarangMasuk::with(['pesanan', 'pesanan.transaksi'])->where('supplier_id', Auth::user()->supplier->id)->get();
+        dd($barang);
         return view('livewire.supplier.page-pesanan-bahan-baku', compact('barang'))->layoutData(['page'=> 'Pesanan Bahan Baku']);
     }
     public function statusPesanan($id){
