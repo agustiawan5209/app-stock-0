@@ -14,7 +14,6 @@ class PageBarangMasuk extends Component
     {
         $barangmasuk = BarangMasuk::where('status', '=', '4')
         ->orderBy('id', 'desc')->get();
-        dd($barangmasuk);
         $bahan = BahanBaku::all();
         return view('livewire.admin.page-barang-masuk', compact('barangmasuk','bahan'))->layoutData(['page'=> 'Halaman Barang Masuk']);
     }
