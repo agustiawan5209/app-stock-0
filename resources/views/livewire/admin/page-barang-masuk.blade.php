@@ -39,7 +39,7 @@
                             @endif
                         @endif
                     </x-td>
-                    <x-td>{{ $barangmasuk->pesanan->transaksi->tgl_transaksi }}</x-td>
+                    <x-td>{{ $item->pesanan->transaksi->tgl_transaksi }}</x-td>
                     <x-td>{{ $item->pesanan->jumlah }}</x-td>
                     <x-td>Rp. {{ number_format($item->pesanan->sub_total,0,2) }}</x-td>
                     {{-- <x-td>
