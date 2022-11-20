@@ -14,7 +14,7 @@ class PageBuatPesanan extends Component
     public $total, $sub_total;
     public function render()
     {
-        $bahanbaku = BahanBakuSupplier::latest()->paginate(10);
+        $bahanbaku = BahanBakuSupplier::latest()->get();
         $supplier = Supplier::all();
         return view('livewire.admin.page-buat-pesanan', [
             'bahanbaku' => $bahanbaku,
