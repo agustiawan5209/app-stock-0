@@ -1,5 +1,5 @@
 <div>
-    <x-table class="table" :tambahItem="true">
+    <x-table class="table" :tambahItem="false">
         <thead>
             <x-tr>
                 <x-th>No.</x-th>
@@ -17,7 +17,15 @@
             <x-tr>
                     <x-td>{{ $loop->iteration }}</x-td>
                     <x-td>{{ $barangmasuks->pesanan->transaksi->ID_transaksi }}</x-td>
-                    <x-td>{{ $barangmasuks->pesanan->bahanbaku->nama_bahan_baku }}</x-td>
+                    <x-td>
+                        @if ($barangmasuks->pesanan->jenis == 1)
+                        {{ $barangmasuks->pesanan->bahanbaku->nama_bahan_baku }}
+                        @elseif($barangmasuks->pesanan->jenis == 2)
+                        {{ $barangmasuks->pesanan->bahanbakuKemasan->nama_bahan_baku }}
+                        @else
+                        Bahan Baku Hilang
+                        @endif
+                    </x-td>
                     <x-td>{{ $barangmasuks->pesanan->transaksi->metode }}</x-td>
                     <x-td>{{ $barangmasuks->pesanan->jumlah }}</x-td>
                     <x-td>Rp. {{ number_format($barangmasuks->pesanan->sub_total, 0, 2) }}</x-td>
