@@ -12,13 +12,9 @@ class PageBarangMasuk extends Component
     public $row = 10, $search ='';
     public function render()
     {
-        $barangmasuk = BarangMasuk::where('status', '=', 4)
+        $barangmasuk = BarangMasuk::where('status', '=', '4')
         ->orderBy('id', 'desc')->get();
-        if($this->search != ''){
-            $barangmasuk = BarangMasuk::orderBy('id', 'desc')
-            ->where('kode', 'like', '%'. $this->search . '%')
-            ->get();
-        }
+        dd($barangmasuk);
         $bahan = BahanBaku::all();
         return view('livewire.admin.page-barang-masuk', compact('barangmasuk','bahan'))->layoutData(['page'=> 'Halaman Barang Masuk']);
     }

@@ -14,24 +14,31 @@
         </thead>
         <tbody>
             @foreach ($barang as $barangmasuks)
-            <x-tr>
+                <x-tr>
                     <x-td>{{ $loop->iteration }}</x-td>
-                    <x-td>{{ $barangmasuks->pesanan->transaksi->ID_transaksi }}</x-td>
                     <x-td>
-                        @if ($barangmasuks->pesanan->jenis == 1)
-                        {{ $barangmasuks->pesanan->bahanbaku->nama_bahan_baku }}
-                        @elseif($barangmasuks->pesanan->jenis == 2)
-                        {{ $barangmasuks->pesanan->bahanbakuKemasan->nama_bahan_baku }}
+                        @if ($barangmasuks->pesanan != null)
+                            {{ $barangmasuks->pesanan->transaksi->ID_transaksi }}
                         @else
-                        Bahan Baku Hilang
+                            Pesanan Kosong
                         @endif
                     </x-td>
-                    <x-td>{{ $barangmasuks->pesanan->transaksi->metode }}</x-td>
-                    <x-td>{{ $barangmasuks->pesanan->jumlah }}</x-td>
-                    <x-td>Rp. {{ number_format($barangmasuks->pesanan->sub_total, 0, 2) }}</x-td>
+                  @if ($barangmasuks->pesanan!=null)
+                      <x-td>
+                          @if ($barangmasuks->pesanan->jenis == 1)
+                              {{ $barangmasuks->pesanan->bahanbaku->nama_bahan_baku }}
+                          @elseif($barangmasuks->pesanan->jenis == 2)
+                              {{ $barangmasuks->pesanan->bahanbakuKemasan->nama_bahan_baku }}
+                          @else
+                              Bahan Baku Hilang
+                          @endif
+                      </x-td>
+                      <x-td>{{ $barangmasuks->pesanan->transaksi->metode }}</x-td>
+                      <x-td>{{ $barangmasuks->pesanan->jumlah }}</x-td>
+                      <x-td>Rp. {{ number_format($barangmasuks->pesanan->sub_total, 0, 2) }}</x-td>
+                  @endif
                     <x-td>
-                        <button type="button" class="btn btn-accent"
-                            wire:click='statusPesanan({{ $barangmasuks->id }})'>
+                        <button type="button" class="btn btn-accent" wire:click='statusPesanan({{ $barangmasuks->id }})'>
                             {{ $barangmasuks->status($barangmasuks->status) }}
                         </button>
                     </x-td>
@@ -50,7 +57,7 @@
 
                     </x-td>
                 </x-tr>
-                @endforeach
+            @endforeach
         </tbody>
 
     </x-table>
