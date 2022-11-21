@@ -103,6 +103,7 @@
                     <x-th>Nama Pembeli</x-th>
                     <x-th>No. Telpon</x-th>
                     <x-th>Jenis Produk</x-th>
+                    <x-th>Tanggal Transasi</x-th>
                     <x-th>Jumlah</x-th>
                     <x-th>Sub Total</x-th>
                     <x-th>Status</x-th>
@@ -120,6 +121,7 @@
                             <x-td>{{ $item->user->no_telpon }}</x-td>
                         @endif
                         <x-td>{{ $item->jenis->nama_jenis }}</x-td>
+                        <x-td>{{ $item->transaksi->tgl_transaksi }}</x-td>
                         <x-td>{{ $item->jumlah }}</x-td>
                         <x-td>{{ number_format($item->sub_total, 0, 2) }}</x-td>
                         <x-td>
