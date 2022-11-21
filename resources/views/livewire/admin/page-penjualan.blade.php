@@ -125,7 +125,7 @@
                         <x-td>{{ $item->jumlah }}</x-td>
                         <x-td>{{ number_format($item->sub_total, 0, 2) }}</x-td>
                         <x-td>
-                            <span class="badge-warning px-3 py-1 rounded-lg text-gray-800"
+                            <span class="badge-warning text-xs py-1 rounded-lg text-gray-800"
                                 wire:click='statusPesanan({{ $item->id }})'>{{ $item->statusJenis($item->status) }}</span>
                         </x-td>
                         <x-td>
