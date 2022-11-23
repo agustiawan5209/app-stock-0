@@ -15,6 +15,9 @@ class Pesanan extends Model
     {
         return $this->hasOne(Transaksi::class, 'id', 'transaksi_id');
     }
+    public function bahanbakuSupplier(){
+        return $this->hasOne(BahanBakuSupplier::class, 'id', 'bahan_baku_id');
+    }
     public function bahanbaku(){
         return $this->hasOne(BahanBaku::class, 'id', 'bahan_baku_id');
     }
