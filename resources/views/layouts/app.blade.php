@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" href="{{ asset('datatables/datatables.css') }}">
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('build/assets/app.0668dc12.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app.da8f856f.css') }}">
     <script src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
     @vite(['resources/js/app.js', 'resources/css/app.css'])
     @livewireStyles
@@ -43,6 +43,11 @@
 
         }
     </style>
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+    <script src="{{ asset('js/wow.min.js') }}"></script>
+    <script>
+        new WOW().init();
+    </script>
     {{--
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /> --}}
 </head>

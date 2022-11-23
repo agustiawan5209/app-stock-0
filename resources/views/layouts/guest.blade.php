@@ -11,15 +11,24 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
     @livewireStyles
-    <link rel="stylesheet" href="{{asset('build/assets/app.0668dc12.css')}}">
+    <link rel="stylesheet" href="{{asset('build/assets/app.da8f856f.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    <script src="{{ asset('js/wow.min.js') }}"></script>
+    <script>
+        new WOW().init();
+    </script>
     <!-- Styles -->
 </head>
 
-<body class="bg-white text-base">
+<body class="bg-white text-base overflow-x-hidden">
     <!-- Pazly Blocks Come Here -->
     <section id="pazly-template-set " class="m-0 p-0 stretchToScreen bg-white">
         <header xmlns="http://www.w3.org/1999/xhtml"
-            class="text-p-gray-700 body-font shadow bg-gradient-to-t from-ungumuda to-orange-600 fixed top-0 w-full z-50 navbar-scroll">
+            class="text-p-gray-700 body-font shadow bg-gradient-to-t from-ungumuda to-orange-600 fixed top-0 w-full z-50 navbar-scroll wow slideInTop">
             <div class="container mx-auto flex flex-wrap py-2 flex-col md:flex-row items-center justify-between">
                 <a pazly-editable="href"
                     class="flex title-font font-medium items-center px-2 text-p-gray-900 mb-4 md:mb-0">
