@@ -99,7 +99,7 @@
                         <h2 class="card-title">Bahan Baku Produksi!</h2>
                         <ul class="menu menu-compact lg:menu-normal bg-base-100 w-full p-2 rounded-box">
                             @foreach ($stok['produksi'] as $item)
-                                <li class="mb-1">
+                                <li class="mb-1 wow slideInLeft" data-wow-delay="50{{ $item->id }}ms" data-wow-duration="1s">
                                     <div class="alert alert-error shadow-lg">
                                         <div>
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -126,7 +126,7 @@
                         <ul class="menu menu-compact lg:menu-normal bg-base-100 w-full p-2 rounded-box">
 
                             @foreach ($stok['kemasan'] as $item)
-                                <li class="mb-1">
+                                <li class="mb-1 wow slideInLeft" data-wow-delay="50{{ $item->id }}ms" data-wow-duration="1s">
                                     <div class="alert alert-error shadow-lg">
                                         <div>
                                             <svg xmlns="http://www.w3.org/2000/svg"
