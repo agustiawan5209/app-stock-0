@@ -1,4 +1,13 @@
 <section class=" container mt-10">
+    <div class="hero min-h-max bg-base-200">
+        <div class="hero-content max-w-full text-center">
+          <div class="max-w-2xl">
+            <h1 class="text-5xl font-bold">Selamat Datang {{ Auth::user()->name }}</h1>
+            <p class="py-6"><span class="font-semibold text-base">UD. Mega Buana</span> adalah perusahaan yang bergerak dalam industri pengolahan markisa. <span class="font-semibold text-base">UD. Mega Buana</span> pertama kali didirikan oleh Bapak IdrisHusain, SE. Nama UD. Mega Buana terdiri dari dua kata yaitu mega yang berarti besar dan buana yang berarti bumi.</p>
+
+          </div>
+        </div>
+      </div>
     <div class="grid gap-6 mb-8 md:grid-cols-3 xl:grid-cols-3">
         <!-- Card -->
         <div class="flex items-center p-4 bg-white rounded-lg shadow-xs">

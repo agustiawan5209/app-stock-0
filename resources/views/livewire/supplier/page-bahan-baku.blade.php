@@ -188,7 +188,7 @@
                             <x-td class="border border-gray-100 text-xs bg-white text-center">Rp.
                                 {{ number_format($item->harga, 0, 2) }}</x-td>
                             <x-td class="border border-gray-100 text-xs bg-white text-center">
-                                {{ $item->jumlah_stock }}</x-td>
+                                {{ abs($item->jumlah_stock) }}</x-td>
                             <x-td class="border border-gray-100 text-xs bg-white text-center">
                                 @include('items.td-action', ['id' => $item->id])
                             </x-td>

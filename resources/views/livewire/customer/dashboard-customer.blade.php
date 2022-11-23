@@ -41,5 +41,14 @@
             </div>
         </div>
     </section>
-
+    <div class="hero min-h-max bg-base-200">
+        <div class="hero-content text-center">
+          <div class="max-w-md">
+            <h1 class="text-5xl font-bold">Selamat Datang {{ Auth::user()->name }}</h1>
+            <p class="py-6">UD. Mega Buana adalah perusahaan yang bergerak dalam industri pengolahan markisa. UD. Mega Buana pertama kali didirikan oleh Bapak IdrisHusain, SE. Nama UD. Mega Buana terdiri dari dua kata yaitu mega yang berarti besar dan buana yang berarti bumi.</p>
+            <a href="{{ route('Customer.Pesan-Produk') }}">
+                <button class="btn btn-primary">Lihat Produk</button></a>
+          </div>
+        </div>
+      </div>
 </div>
