@@ -1,8 +1,8 @@
 <section class=" container mt-10">
 
-    <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+    <div class="grid gap-6 mb-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
         <!-- Card -->
-        <div class="flex items-center p-4  rounded-lg shadow-xs bg-gradient-to-b from-neutral to-ungu">
+        <div class="flex items-center p-4  rounded-lg shadow-xs bg-gradient-to-b from-neutral to-ungu wow slideInDown" data-wow-duration="1000ms" data-wow-delay=500ms>
             <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full ">
                 <svg class="w-6 h-6 text-primary " fill="none" stroke="currentColor" viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg">
@@ -14,13 +14,13 @@
                 <p class="mb-2 text-sm  text-black font-semibold font-mono ">
                     Total Produksi
                 </p>
-                <p class="text-lg font-semibold text-gray-700 ">
-                    {{-- {{$total_produksi}} --}}
+                <p class="text-lg font-semibold text-white">
+                    {{$total_produksi}}
                 </p>
             </div>
         </div>
         <!-- Card -->
-        <div class="flex items-center p-4  rounded-lg shadow-xs bg-gradient-to-b from-neutral to-ungu">
+        <div class="flex items-center p-4  rounded-lg shadow-xs bg-gradient-to-b from-neutral to-ungu wow slideInDown" data-wow-duration="1000ms" data-wow-delay=600ms>
             <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full      ">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd"
@@ -30,15 +30,15 @@
             </div>
             <div>
                 <p class="mb-2 text-sm  text-white font-semibold font-mono ">
-                    Total Pembelian Bulan Ini
+                    Pembelian
                 </p>
-                <p class="text-lg font-semibold text-gray-700 ">
-                    {{-- {{$pembelian}} --}}
+                <p class="text-lg font-semibold text-white">
+                    Rp. {{ number_format($total_pembelian,0,2) }}
                 </p>
             </div>
         </div>
         <!-- Card -->
-        <div class="flex items-center p-4  rounded-lg shadow-xs bg-gradient-to-b from-neutral to-ungu">
+        <div class="flex items-center p-4  rounded-lg shadow-xs bg-gradient-to-b from-neutral to-ungu wow slideInDown" data-wow-duration="1000ms" data-wow-delay=700ms>
             <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full      ">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path
@@ -48,15 +48,15 @@
             </div>
             <div>
                 <p class="mb-2 text-sm  text-white font-semibold font-mono ">
-                    Total Penjualan Bulan Ini
+                   Total Penjualan
                 </p>
-                <p class="text-lg font-semibold text-gray-700 ">
-                    {{-- {{ $total_penjualan }} Dus --}}
+                <p class="text-lg font-semibold text-white">
+                    Rp. {{ number_format($total_penjualan,0,2) }}
                 </p>
             </div>
         </div>
         <!-- Card -->
-        <div class="flex items-center p-4  rounded-lg shadow-xs bg-gradient-to-b from-neutral to-ungu">
+        <div class="flex items-center p-4  rounded-lg shadow-xs bg-gradient-to-b from-neutral to-ungu wow slideInLeft" data-wow-duration="1000ms" data-wow-delay=800ms>
             <div class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full   ">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd"
@@ -66,10 +66,27 @@
             </div>
             <div>
                 <p class="mb-2 text-sm  text-white font-semibold font-mono ">
-                    Status Pemesanan Bahan Baku Belum Di Konfirmasi
+                    Stok Bahan Baku Kemasan
                 </p>
-                <p class="text-lg font-semibold text-gray-700 ">
-                    {{-- {{$pesan}} --}}
+                <p class="text-lg font-semibold text-white">
+                    {{ $stok_kemasan }}
+                </p>
+            </div>
+        </div>
+        <div class="flex items-center p-4  rounded-lg shadow-xs bg-gradient-to-b from-neutral to-ungu wow slideInRight" data-wow-duration="1000ms" data-wow-delay=900ms>
+            <div class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full   ">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd"
+                        d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
+                        clip-rule="evenodd"></path>
+                </svg>
+            </div>
+            <div>
+                <p class="mb-2 text-sm  text-white font-semibold font-mono ">
+                    Stok Bahan Baku Produksi
+                </p>
+                <p class="text-lg font-semibold text-white">
+                    {{ $stok_markisa }}
                 </p>
             </div>
         </div>

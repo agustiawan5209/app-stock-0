@@ -15,10 +15,11 @@
     <script src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
 
     <link rel="stylesheet" href="{{ asset('datatables/datatables.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('build/assets/app.da8f856f.css') }}">
     <script src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
-    @vite(['resources/js/app.js', 'resources/css/app.css'])
+    @vite(['resources/js/app.js'])
     @livewireStyles
     <style>
         .loading {
@@ -57,12 +58,12 @@
         <div class="loading-icon animate-spin">
         </div>
     </div> --}}
-    <div class="flex min-h-screen 2xl:max-w-7xl 2xl:mx-auto 2xl:border-x-2 2xl:border-primary drawer"
+    <div class="flex min-h-screen 2xl:max-w-7xl 2xl:mx-auto 2xl:border-x-2 2xl:border-primary drawer wow sildeInLeft"
         x-data="{ navbar: false }">
         <!-- Sidebar -->
         {{-- Dekstop --}}
         <aside
-            class="bg-gradient-to-b from-neutral to-yellow-800 w-1/5 py-10 pl-10  min-w-min   border-r border-primary/20 hidden md:block overflow-y-auto">
+            class="bg-gradient-to-b from-neutral to-yellow-800 w-1/5 py-10 pl-10  min-w-min   border-r border-primary/20 hidden md:block overflow-y-auto wow sildeInLeft">
             <div class=" font-bold text-2xl text-white">{{ Auth::user()->name }}</div>
 
             <!-- Menu -->
@@ -99,7 +100,7 @@
         {{-- Mobile --}}
         <aside x-show="navbar"
             class="bg-gradient-to-b from-neutral to-yellow-800 w-1/2  max-w-md  border-r border-primary/20 block md:hidden drawer-side">
-            <div class=" font-bold text-2xl text-white">{{ Auth::user()->name }}</div>
+            <div class=" font-bold text-2xl text-white wow sildeInLeft">{{ Auth::user()->name }}</div>
 
             <!-- Menu -->
             <div class="mt-12 flex flex-col space-y-7 text-white font-medium" x-data="{ Master: false, trans: false, Produk: false, BahanBaku: false, laporan:false }">
@@ -134,7 +135,7 @@
         </aside>
         <!-- /Sidebar -->
 
-        <main class="bg-primary0 w-full overflow-y-auto">
+        <main class="bg-primary0 w-full overflow-y-auto ">
 
             <!-- Nav -->
             <nav
