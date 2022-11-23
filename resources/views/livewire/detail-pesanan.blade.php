@@ -24,14 +24,14 @@
                                     @if ($barang->pesanan->bahanbaku == null)
                                         Bahan Baku Produksi Hilang
                                     @else
-                                        {{ $barang->pesanan->bahanbaku->bahanbaku->nama_bahan_baku }}
+                                        {{ $barang->pesanan->bahanbaku->nama_bahan_baku }}
                                     @endif
                                 @endif
                                 @if ($barang->pesanan->jenis == 2)
-                                    @if ($barang->pesanan->bahanbaku->bahanbakuKemasan == null)
+                                    @if ($barang->pesanan->bahanbakuKemasan == null)
                                         Bahan Baku Kemasan Hilang
                                     @else
-                                        {{ $barang->pesanan->bahanbaku->bahanbakuKemasan->nama_bahan_baku }}
+                                        {{ $barang->pesanan->bahanbakuKemasan->nama_bahan_baku }}
                                     @endif
                                 @endif
                                 </x-td>

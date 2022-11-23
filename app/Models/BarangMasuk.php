@@ -34,6 +34,9 @@ class BarangMasuk extends Model
             case '4':
                 $msg = "Barang Diterima";
                 break;
+            case '5':
+                $msg = "Barang Dikonfirmasi";
+                break;
 
             default:
                 $msg = "Gagal";

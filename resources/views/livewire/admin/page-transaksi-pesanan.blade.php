@@ -4,7 +4,7 @@
             <thead>
                 <x-tr>
                     <x-th>No.</x-th>
-                    <x-th>ID Pesanan</x-th>
+                    <x-th>ID Pesanan a</x-th>
                     <x-th>Bahan Baku</x-th>
                     <x-th>Jumlah</x-th>
                     <x-th>Total</x-th>
@@ -22,7 +22,7 @@
                                 @if ($pesanana->bahanbaku == null)
                                     Bahan Baku Produksi Hilang
                                 @else
-                                    {{ $pesanana->bahanbaku->bahanbaku->nama_bahan_baku }}
+                                    {{ $pesanana->bahanbaku->nama_bahan_baku }}
                                 @endif
                             @endif
                             @if ($pesanana->jenis == 2)
@@ -36,7 +36,9 @@
                         <x-td>{{ $pesanana->jumlah }}</x-td>
                         <x-td>{{ $pesanana->sub_total }}</x-td>
                         <x-td>
-                            {{ $pesanana->barangmasuk->status($pesanana->barangmasuk->status) }}
+                            <button type="button" class="btn btn-accent" wire:click='statusPesanan({{ $pesanana->barangmasuk->id }})'>
+                                {{ $pesanana->barangmasuk->status($pesanana->barangmasuk->status) }}
+                            </button>
                         </x-td>
                         <x-td>
                             <button wire:click='detailModal({{ $pesanana->barangmasuk->id }})'
@@ -72,6 +74,33 @@
                 <x-jet-button wire:click="delete({{ $itemID }})">Hapus</x-jet-button>
             </x-slot>
         </x-jet-confirmation-modal>
+        <x-jet-dialog-modal wire:model="itemStatus">
+            <x-slot name="title"></x-slot>
+            <x-slot name="content">
+                <x-statuspage :id="$itemID" />
+                @if ($statusItem == 4)
+                    <form action="" class="w-full">
+                        <label class="input-group input-group-vertical my-2">
+                            <span class="bg-neutral font-semibold text-lg">Update Status</span>
+                            <select wire:model='status' name="bukti" class="input input-bordered">
+                                <option value="">---</option>
+                                    <option value="5" selected>Barang Diterima</option>
+                            </select>
+                        </label>
+                        <label class="input-group input-group-vertical my-2">
+                            <span class="bg-neutral font-semibold text-lg">Keterangan</span>
+                            <textarea class="textarea textarea-bordered h-40" wire:model="ket" id="ket" cols="10" rows="10"></textarea>
+                        </label>
+                    </form>
+                @endif
+            </x-slot>
+            <x-slot name="footer">
+                @if ($statusItem == 4)
+                    <button type="button" class="btn btn-nebg-neutral"
+                        wire:click="updateStatus({{ $itemID }})">Simpan</button>
+                @endif
+            </x-slot>
+        </x-jet-dialog-modal>
     </div>
 
 </div>
