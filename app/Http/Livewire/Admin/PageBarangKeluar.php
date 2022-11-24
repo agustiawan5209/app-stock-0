@@ -126,10 +126,11 @@ class PageBarangKeluar extends Component
             $barangkeluar->save();
             $this->getStokKemasan($this->jenis_id);
             $jenis = Jenis::find($this->jenis_id);
+            $dataProduksi = StokProduk::latest()->first();
             StokProduk::create([
                 'jenis' => "barangKeluar",
                 'jumlah' => $this->jumlah,
-                'jumlah_produksi' => $produk - ($this->jumlah * ($jenis->jumlah / 1000)),
+                'jumlah_produksi' => $dataProduksi->jumlah_produksi - ($this->jumlah * ($jenis->jumlah / 1000)),
                 'tgl_permintaan' => $this->tgl_keluar,
             ]);
             Alert::success('info', 'Berhasil Di Tambah');
