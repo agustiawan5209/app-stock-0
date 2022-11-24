@@ -9,6 +9,7 @@ use App\Models\Jenis;
 use App\Models\Produk;
 use App\Models\ProdukFermentasi;
 use App\Models\StockBahanBakuKemasan;
+use App\Models\StokProduk;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -38,7 +39,7 @@ class PageBarangKeluar extends Component
         $jenis = Jenis::find($id);
         foreach ($kemasan as $item => $key) {
             $stock = StockBahanBakuKemasan::where('bahan_baku_id', $key->id)->first();
-            $perhitungan_stock = $stock->stock - $stock->max * ($this->jumlah *($jenis->jumlah / 1000));
+            $perhitungan_stock = $stock->stock - $stock->max * ($this->jumlah * ($jenis->jumlah / 1000));
             $stock->update([
                 'stock' => $perhitungan_stock
             ]);
@@ -124,7 +125,13 @@ class PageBarangKeluar extends Component
             $barangkeluar->jenis_id = $this->jenis_id;
             $barangkeluar->save();
             $this->getStokKemasan($this->jenis_id);
-
+            $jenis = Jenis::find($this->jenis_id);
+            StokProduk::create([
+                'jenis' => "barangKeluar",
+                'jumlah' => $this->jumlah,
+                'jumlah_produksi' => $produk - ($this->jumlah * ($jenis->jumlah / 1000)),
+                'tgl_permintaan' => $this->tgl_keluar,
+            ]);
             Alert::success('info', 'Berhasil Di Tambah');
         }
     }
