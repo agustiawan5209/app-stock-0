@@ -24,11 +24,13 @@ class DashboardSupplier extends Component
             return $query->where("status",1);
         })
         ->count();
+        $sisa_produksi = StokProduk::latest()->first();
         return view('livewire.supplier.dashboard-supplier', [
             'stok'=> $stok->cekStok(),
             'total_produksi'=> $stok_produksi->jumlah_produksi,
             'total_penjualan'=> $total_penjualan,
             'pesan'=> $pesanan_terbaru,
+            'sisa_produksi'=> $sisa_produksi,
         ])->layoutData(['page'=> 'Dashboard']);
     }
 }
