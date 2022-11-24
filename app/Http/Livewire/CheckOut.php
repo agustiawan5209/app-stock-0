@@ -24,7 +24,7 @@ class CheckOut extends Component
         })->get();
         $stockProduk = StokProduk::latest()->first();
         $jumlah_produk_sisa = ProdukFermentasi::sum('jumlah_stock');
-        return view('livewire.check-out' , compact('jenis', 'bank', 'stockProduk'))
+        return view('livewire.check-out' , compact('jenis', 'bank', 'stockProduk' ,'jumlah_produk_sisa'))
         ->layout('components.layout.customer')
         ->layoutData(['page'=> 'Detail Pesanan ']);
     }
