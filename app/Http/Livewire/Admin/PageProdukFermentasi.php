@@ -20,26 +20,26 @@ class PageProdukFermentasi extends Component
         $itemDelete = false,
         $jenis_id = false,
         $itemID;
-        public function closeModal()
-        {
-            $this->kode = null;
-            $this->jumlah_stock = null;
-            $this->status = null;
-            $this->tgl_frementasi = null;
-            $this->itemAdd = false;
-            $this->itemEdit = false;
-            $this->itemDelete = false;
-            $this->jenis_id = false;
-        }
+    public function closeModal()
+    {
+        $this->kode = null;
+        $this->jumlah_stock = null;
+        $this->status = null;
+        $this->tgl_frementasi = null;
+        $this->itemAdd = false;
+        $this->itemEdit = false;
+        $this->itemDelete = false;
+        $this->jenis_id = false;
+    }
 
     public function SelesaiFermentasi()
     {
         $produk = ProdukFermentasi::all();
-        foreach($produk  as $produkfermentasi){
+        foreach ($produk  as $produkfermentasi) {
             $hari = $this->hitungFermentasi($produkfermentasi->tgl_frementasi);
-            if($hari > "90"){
+            if ($hari > "90") {
                 ProdukFermentasi::where('id', $produkfermentasi->id)->update([
-                    'status'=> '2',
+                    'status' => '2',
                 ]);
             }
         }
@@ -60,7 +60,7 @@ class PageProdukFermentasi extends Component
         $stock = StockBahanBaku::all();
         $stokproduk = StokProduk::latest()->first();
         $jumlah_produk_sisa = ProdukFermentasi::sum('jumlah_stock');
-        return view('livewire.admin.page-produk-fermentasi', compact('produk', 'stock', 'stokproduk','jumlah_produk_sisa'))->layoutData(['page' => 'Halaman Produk']);
+        return view('livewire.admin.page-produk-fermentasi', compact('produk', 'stock', 'stokproduk', 'jumlah_produk_sisa'))->layoutData(['page' => 'Halaman Produk']);
     }
     public function addModal()
     {
@@ -76,7 +76,6 @@ class PageProdukFermentasi extends Component
         $this->tgl_frementasi = $satuan->tgl_frementasi;
         $this->itemID = $satuan->id;
         $this->itemEdit = true;
-        return redirect()->route('Admin.Crud-Fermentasi', ['id'=> $satuan->id,'kode'=> $this->kode]);
+        return redirect()->route('Admin.Crud-Fermentasi', ['id' => $satuan->id, 'kode' => $this->kode]);
     }
-
 }

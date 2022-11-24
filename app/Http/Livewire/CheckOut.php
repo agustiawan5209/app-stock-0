@@ -4,8 +4,9 @@ namespace App\Http\Livewire;
 
 use App\Models\Bank;
 use App\Models\Jenis;
-use App\Models\StokProduk;
 use Livewire\Component;
+use App\Models\StokProduk;
+use App\Models\ProdukFermentasi;
 
 class CheckOut extends Component
 {
@@ -22,6 +23,7 @@ class CheckOut extends Component
             return $query->where('role_id', '1');
         })->get();
         $stockProduk = StokProduk::latest()->first();
+        $jumlah_produk_sisa = ProdukFermentasi::sum('jumlah_stock');
         return view('livewire.check-out' , compact('jenis', 'bank', 'stockProduk'))
         ->layout('components.layout.customer')
         ->layoutData(['page'=> 'Detail Pesanan ']);
