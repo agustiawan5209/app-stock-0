@@ -15,7 +15,9 @@ class DashboardAdmin extends Component
 {
     public function render()
     {
-        $stok = new UserController;
+        $stok =[];
+        $stok['produksi'] = StockBahanBaku::with(['bahanbaku','jenis','satuan'])->where('stock', '>', '50')->get();
+        $stok['kemasan'] = StockBahanBakuKemasan::with(['bahanbaku','jenis','satuan'])->where('stock', '<', '50')->get();
         // dd($stok);
         $stok_kemasan = StockBahanBakuKemasan::sum('stock');
         $stok_markisa = StockBahanBaku::sum('stock');
@@ -25,8 +27,8 @@ class DashboardAdmin extends Component
             return $query->where('status', '=', '5');
         })->sum('sub_total');
         return view('livewire.admin.dashboard-admin', [
-            'stok'=> $stok->cekStok(),
-            'total_produksi'=> $total_produk->jumlah_produksi,
+            'stok'=> $stok,
+            'total_produksi'=> $total_produk !== null ? $total_produk->jumlah_produksi : 0,
             'stok_kemasan'=> $stok_kemasan,
             'stok_markisa'=> $stok_markisa,
             'total_penjualan'=> $total_penjualan,

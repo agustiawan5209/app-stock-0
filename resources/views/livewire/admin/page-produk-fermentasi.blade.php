@@ -39,6 +39,18 @@
 
                              </x-td>
                         </x-tr>
+                        <x-tr>
+                            <x-td></x-td>
+                            <x-td></x-td>
+                            <x-td></x-td>
+                            <x-td></x-td>
+                            <x-td></x-td>
+                            <x-td>Jumlah Stock</x-td>
+                            <x-td>
+                                {{abs(number_format( $jumlah_produk_sisa == null ? 0 : $stokproduk->jumlah_produksi,0,2))}}
+
+                            </x-td>
+                        </x-tr>
                     @endforeach
 
                 @else
@@ -50,18 +62,7 @@
         </x-table>
    <div class="bg-white w-full">
     <table class="table bg-white w-full">
-        <x-tr>
-            <x-td></x-td>
-            <x-td></x-td>
-            <x-td></x-td>
-            <x-td></x-td>
-            <x-td></x-td>
-            <x-td>Jumlah Stock</x-td>
-            <x-td>
-                {{abs(number_format( $jumlah_produk_sisa == null ? 0 : $stokproduk->jumlah_produksi,0,2))}}
 
-            </x-td>
-        </x-tr>
     </table>
    </div>
     </section>
