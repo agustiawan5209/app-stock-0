@@ -17,7 +17,7 @@
                         Jumlah Stok Manufactur
                     </p>
                     <p class="text-lg font-semibold text-gray-700 ">
-                        {{$stok_produk->jumlah_produksi}} Liter
+                        {{$stok_produk}} Liter
                     </p>
                 </div>
             </div>

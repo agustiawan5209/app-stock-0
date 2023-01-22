@@ -37,22 +37,19 @@
                                     </button>
                                 </div>
 
-                             </x-td>
-                        </x-tr>
-                        <x-tr>
-                            <x-td></x-td>
-                            <x-td></x-td>
-                            <x-td></x-td>
-                            <x-td></x-td>
-                            <x-td></x-td>
-                            <x-td>Jumlah Stock</x-td>
-                            <x-td>
-                                {{abs(number_format( $jumlah_produk_sisa == null ? 0 : $stokproduk->jumlah_produksi,0,2))}}
-
                             </x-td>
                         </x-tr>
-                    @endforeach
+                        <x-tr>
+                            <x-td>Jumlah Stock</x-td>
+                            <x-td>
+                                {{ abs(number_format($jumlah_produk_sisa == null ? 0 : $stokproduk->jumlah_produksi, 0, 2)) }}
 
+                            </x-td>
+                            <x-td></x-td>
+                            <x-td></x-td>
+                            <x-td></x-td>
+                        </x-tr>
+                    @endforeach
                 @else
                     <x-tr>
                         <x-td colspan="3">Data Kosong</x-td>
@@ -60,11 +57,11 @@
                 @endif
             </tbody>
         </x-table>
-   <div class="bg-white w-full">
-    <table class="table bg-white w-full">
+        <div class="bg-white w-full">
+            <table class="table bg-white w-full">
 
-    </table>
-   </div>
+            </table>
+        </div>
     </section>
     <div>
 

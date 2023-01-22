@@ -16,7 +16,7 @@ class DashboardCustomer extends Component
         $stokProduk = StokProduk::latest()->first();
         $jumlah_pembelian = PesananUser::where('user_id', Auth::user()->id)->sum('sub_total');
         return view('livewire.customer.dashboard-customer',[
-            'stok_produk'=> $stokProduk,
+            'stok_produk'=> $stokProduk == null ?  0 : $stokProduk->jumlah_produksi,
             'pembelian'=> $jumlah_pembelian,
         ])
         ->layout('components.layout.customer')

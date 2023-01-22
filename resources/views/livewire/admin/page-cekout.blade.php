@@ -9,7 +9,7 @@
             <ul role="list" class="flex-auto overflow-y-auto divide-y divide-gray-200 px-6">
                 <li class="flex py-2 space-x-2">
                     <img src="{{asset('upload/'. $data['gambar'])}}"
-                        alt="Moss green canvas compact backpack with double top zipper, zipper front pouch, and matching carry handle and backpack straps."
+                        alt="Gambar Bahan Baku."
                         class="flex-none w-96 max-h-96 object-center object-cover bg-gray-200 rounded-md">
 
                 </li>
