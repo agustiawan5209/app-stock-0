@@ -37,6 +37,11 @@ class PageJenis extends Component
 
     // Crud
     public function create(){
+        $this->validate([
+            'nama_jenis' => ['required','string'],
+            'harga' => ['required','string'],
+            'jumlah' => ['required','string'],
+        ]);
         Jenis::create([
             'nama_jenis' => $this->nama_jenis,
             'harga' => $this->harga,

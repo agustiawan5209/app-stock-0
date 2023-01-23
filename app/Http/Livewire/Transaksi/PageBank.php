@@ -11,7 +11,7 @@ class PageBank extends Component
 {
     public $Bank;
     public $itemDelete = false, $itemEdit = false, $itemID, $itemCreate = false, $validasi;
-    public $name_card, $number_rek, $metode;
+    public $name_card, $number_rek, $metode, $payment;
     public function render()
     {
         // abort_if(Auth::user()->role_id == 111, 403);
