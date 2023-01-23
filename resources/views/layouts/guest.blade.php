@@ -11,7 +11,7 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
     @livewireStyles
-    <link rel="stylesheet" href="{{asset('build/assets/app.da8f856f.css')}}">
+    <link rel="stylesheet" href="{{asset('build/assets/app.4828a3de.css')}}">
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <link
     rel="stylesheet"
