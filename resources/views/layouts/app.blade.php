@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="{{ asset('build/assets/app.4828a3de.css') }}">
     <script src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
     @vite(['resources/js/app.js'])
-    <script defer src="{{ asset('build/assets/app.d225c007.js') }}"></script>
 
     @livewireStyles
     <style>
@@ -195,6 +194,8 @@
     <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
     <script src="{{ asset('datatables/datatables.js') }}"></script>
+    <script defer src="{{ asset('build/assets/app.d225c007.js') }}"></script>
+
     @stack('modals')
 
     @livewireScripts
