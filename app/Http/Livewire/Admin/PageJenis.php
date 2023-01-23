@@ -52,6 +52,11 @@ class PageJenis extends Component
 
     }
     public function edit($id){
+        $this->validate([
+            'nama_jenis' => ['required','string'],
+            'harga' => ['required','string'],
+            'jumlah' => ['required','string'],
+        ]);
         Jenis::where('id', $id)->update([
             'nama_jenis' => $this->nama_jenis,
             'harga' => $this->harga,
