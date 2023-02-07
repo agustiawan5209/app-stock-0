@@ -4,7 +4,7 @@
             <thead>
                 <x-tr>
                     <x-th>No.</x-th>
-                    <x-th>ID Pesanan a</x-th>
+                    <x-th>ID Pesanan</x-th>
                     <x-th>Bahan Baku</x-th>
                     <x-th>Jumlah</x-th>
                     <x-th>Total</x-th>
@@ -18,20 +18,7 @@
                         <x-td>{{ $loop->iteration }}</x-td>
                         <x-td>{{ $pesanana->transaksi->ID_transaksi }}</x-td>
                         <x-td>
-                            @if ($pesanana->jenis == 1)
-                                @if ($pesanana->bahanbaku == null)
-                                    Bahan Baku Produksi Hilang
-                                @else
-                                    {{ $pesanana->bahanbaku->nama_bahan_baku }}
-                                @endif
-                            @endif
-                            @if ($pesanana->jenis == 2)
-                                @if ($pesanana->bahanbaku->bahanbakuKemasan == null)
-                                    Bahan Baku Kemasan Hilang
-                                @else
-                                    {{ $pesanana->bahanbaku->bahanbakuKemasan->nama_bahan_baku }}
-                                @endif
-                            @endif
+                           {{$pesanana->nama_bahan_baku}}
                         </x-td>
                         <x-td>{{ $pesanana->jumlah }}</x-td>
                         <x-td>{{ $pesanana->sub_total }}</x-td>

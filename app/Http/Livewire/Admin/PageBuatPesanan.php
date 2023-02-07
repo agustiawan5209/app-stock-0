@@ -77,13 +77,24 @@ class PageBuatPesanan extends Component
     {
         $this->itemID = $id;
         $bahanBaku = BahanBakuSupplier::find($id);
+        $namabahanbaku = null;
+        if ($bahanBaku->jenis == 1) {
+            if ($bahanBaku->bahanbaku != null) {
+                $namabahanbaku =  $bahanBaku->bahanbaku->nama_bahan_baku;
+            }
+        } elseif ($bahanBaku->jenis == 2) {
+            if ($bahanBaku->bahanbakuKemasan != null) {
+                $namabahanbaku =  $bahanBaku->bahanbakuKemasan->nama_bahan_baku;
+            }
+        }
         session()->put('data', [
             'itemID' => $bahanBaku->id,
             'gambar' => $bahanBaku->gambar,
             'bahan_baku' => $bahanBaku->bahan_baku,
+            'nama_bahan_baku' => $namabahanbaku,
             'satuan' => $bahanBaku->satuan,
             'isi' => $bahanBaku->isi,
-            'jenis'=> $bahanBaku->jenis,
+            'jenis' => $bahanBaku->jenis,
             'harga' => $bahanBaku->harga,
             'jumlah_stock' => $bahanBaku->jumlah_stock,
             'supplier_id' => $bahanBaku->suppliers_id,

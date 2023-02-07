@@ -17,6 +17,7 @@ return new class extends Migration
         Schema::create('pesanans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('bahan_baku_id');
+            $table->string('nama_bahan_baku',100)->nullable();
             $table->string('satuan_id');
             $table->integer('jumlah');
             $table->integer('jenis')->comment('1: produksi, 2: kemasan');

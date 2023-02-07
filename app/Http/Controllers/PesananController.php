@@ -30,6 +30,7 @@ class PesananController extends Controller
             'metode' => ['required', 'string'],
         ]);
         $data = session('data');
+        // dd($data);
         $ext =  $request->bukti->getClientOriginalExtension();
         $namaFile = Str::random(10) . '.' . $ext;
         $iD_transaksi = $this->transaksiKode();
@@ -46,7 +47,8 @@ class PesananController extends Controller
         $transaksi =  Transaksi::create($transaksis);
         // Buat Pesanan
         $pesan = Pesanan::create([
-            "bahan_baku_id" => $data['itemID'],
+            "bahan_baku_id" => $data['bahan_baku'],
+            "nama_bahan_baku" => $data['nama_bahan_baku'],
             "satuan_id" => $data['satuan'],
             "jumlah" => $request->jumlah,
             'jenis'=> $data['jenis'],
