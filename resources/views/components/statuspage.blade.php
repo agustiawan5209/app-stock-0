@@ -23,7 +23,8 @@
                                     @break
                                 @default
                                 Barang Gagal
-                            @endswitch</span>
+                            @endswitch
+                        </span>
                         </div>
                         <p>Ket : {!! $status->ket !!}</p>
                     </div>
