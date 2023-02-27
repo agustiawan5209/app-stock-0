@@ -18,6 +18,7 @@ class CrudFermentasi extends Component
         $tgl_frementasi,
         $itemAdd = false,
         $itemEdit = false,
+        $itemDelete = false,
         $item = null,
         $itemID,
         $loadingState = false,

@@ -31,6 +31,7 @@ class FermentasiController extends Controller
             ]);
             $data[] = $stock->stock - $stock->max * $request->jumlah_stock;
         }
+        dd($stock);
         // dd($data);
         $id = implode(',', $id);
         $max = implode(',', $max);
@@ -69,7 +70,6 @@ class FermentasiController extends Controller
             ]);
         }
 
-        $this->itemAdd = false;
         Alert::info('Info', 'Berhasil Di Simpan');
         return redirect()->route('Admin.Produk-Fermentasi');
         // return $request;

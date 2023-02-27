@@ -20,7 +20,8 @@
             deferRender: true,
             scrollCollapse: true,
             scroller: true,
-            select: true
+            select: true,
+            processing: true,
         });
     });
 </script>

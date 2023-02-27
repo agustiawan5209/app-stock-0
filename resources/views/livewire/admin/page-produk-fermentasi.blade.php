@@ -52,7 +52,7 @@
                     @endforeach
                 @else
                     <x-tr>
-                        <x-td colspan="3">Data Kosong</x-td>
+                        <x-td colspan="5">Data Kosong</x-td>
                     </x-tr>
                 @endif
             </tbody>
