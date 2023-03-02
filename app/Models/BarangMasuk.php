@@ -10,7 +10,7 @@ class BarangMasuk extends Model
     use HasFactory;
     protected $table = 'barang_masuks';
     protected $fillable = [
-        'kode', 'pesanan_id','status', 'supplier_id',
+        'kode', 'pesanan_id','status', 'supplier_id', 'bahan_supplier_id'
     ];
     protected $hidden = ['pesanan_id'];
 

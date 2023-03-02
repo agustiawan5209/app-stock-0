@@ -35,7 +35,7 @@ class DashboardSupplier extends Component
             'total_produksi'=> $stok_produksi == null ? 0 : $stok_produksi->jumlah_produksi,
             'total_penjualan'=> $total_penjualan,
             'pesan'=> $pesanan_terbaru,
-            'sisa_produksi'=> $sisa_produksi,
+            'sisa_produksi'=> $sisa_produksi == null ? 0: $sisa_produksi->jumlah_produksi,
         ])->layoutData(['page'=> 'Dashboard']);
     }
 }

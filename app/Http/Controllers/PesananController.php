@@ -63,6 +63,7 @@ class PesananController extends Controller
             'pesanan_id' => $pesan->id,
             'status' => 1,
             'supplier_id' => $data['supplier_id'],
+            'bahan_supplier_id'=> $data['itemID']
         ]);
         // Buat Status
         $status = Status::create([

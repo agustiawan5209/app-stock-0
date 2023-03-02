@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('pesanan_id')->constrained('pesanans')->onDelete('cascade');
             $table->enum('status', ['1','2','3','4','5'])->comment('Belum DiVerifikasi, 2 = Diverifikasi, 3 = Dalam Pengiriman, 4 = Diterima, 5: diterima admin');
             $table->foreignId('supplier_id');
+            $table->foreignId('bahan_supplier_id');
             $table->timestamps();
         });
     }

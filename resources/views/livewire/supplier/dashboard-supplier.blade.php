@@ -23,7 +23,7 @@
                     Total Produksi Manufactur
                 </p>
                 <p class="text-lg font-semibold text-gray-700 ">
-                    {{$sisa_produksi->jumlah_produksi}}
+                    {{$sisa_produksi}}
                 </p>
             </div>
         </div>
