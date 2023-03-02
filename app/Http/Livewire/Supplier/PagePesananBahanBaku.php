@@ -53,13 +53,13 @@ class PagePesananBahanBaku extends Component
      */
     public function kurangi($id, $status){
         $barangmasuk = BarangMasuk::with(['pesanan'])->find($id);
-        dd($barangmasuk->pesanan->bahanbakuSupplier);
-        if($status == 3){
-            $stock = BahanBakuSupplier::where('id', '=', $barangmasuk->pesanan->bahan_baku_id)->first();
-            dd($stock);
-            BahanBakuSupplier::where('id', $stock->id)->update([
-                'jumlah_stock'=>  $stock->jumlah_stock - $barangmasuk->pesanan->jumlah,
-            ]);
-        }
+        // dd($barangmasuk->pesanan->bahanbakuSupplier);
+        // if($status == 3){
+        //     $stock = BahanBakuSupplier::where('id', '=', $barangmasuk->pesanan->bahan_baku_id)->first();
+        //     dd($stock);
+        //     BahanBakuSupplier::where('id', $stock->id)->update([
+        //         'jumlah_stock'=>  $stock->jumlah_stock - $barangmasuk->pesanan->jumlah,
+        //     ]);
+        // }
     }
 }
