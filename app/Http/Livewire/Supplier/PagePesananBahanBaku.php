@@ -52,7 +52,7 @@ class PagePesananBahanBaku extends Component
      * @return void
      */
     public function kurangi($id, $status){
-        $barangmasuk = BarangMasuk::find($id);
+        $barangmasuk = BarangMasuk::with(['pesanan'])->find($id);
         dd($barangmasuk);
         if($status == 3){
             $stock = BahanBakuSupplier::where('id', '=', $barangmasuk->pesanan->bahan_baku_id)->first();
