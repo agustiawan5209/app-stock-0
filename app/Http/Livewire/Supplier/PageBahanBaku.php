@@ -34,13 +34,13 @@ class PageBahanBaku extends Component
     }
     public function CloseModal()
     {
-        $this->AirItem = false;
+        // $this->AirItem = false;
         $this->PackingItem = false;
         $this->itemDelete = false;
         $this->modal = false;
         $this->gambar = null;
         $this->ItemId = null;
-        $this->kode = null;
+        // $this->kode = null;
         $this->harga = null;
         $this->bahan_baku_id = null;
         $this->bahan_id = null;

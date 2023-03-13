@@ -31,7 +31,6 @@ class FermentasiController extends Controller
             ]);
             $data[] = $stock->stock - $stock->max * $request->jumlah_stock;
         }
-        dd($stock);
         // dd($data);
         $id = implode(',', $id);
         $max = implode(',', $max);
