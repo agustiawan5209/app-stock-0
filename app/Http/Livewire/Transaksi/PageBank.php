@@ -69,7 +69,6 @@ class PageBank extends Component
         $this->itemCreate = true;
     }
     public function create(){
-        // dd('1');
       $validate =  $this->validate([
             'name_card'=> 'required|string',
             'number_rek' => 'required|numeric',
