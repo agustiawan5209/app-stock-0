@@ -12,6 +12,10 @@
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
     <link href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" rel="stylesheet" />
+    <script src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
+    @vite(['resources/js/app.js'])
+
+    @livewireStyles
 </head>
 
 <body >
@@ -85,7 +89,7 @@
     <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
     <script defer src="{{asset('build/assets/app.ab93cf8a.js')}}"></script>
 
-    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}" defer></script>
 </body>
 
 </html>

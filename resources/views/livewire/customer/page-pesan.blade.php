@@ -40,8 +40,8 @@
                         <x-td>{{ $pesanan->jenis->nama_jenis }}</x-td>
                         <x-td>{{ $pesanan->jumlah }}</x-td>
                         <x-td>
-                            <span class="badge-warning px-3 py-1 rounded-lg text-gray-800"
-                                wire:click="statusModal({{ $pesanan->id }})">{{ $pesanan->statusJenis($pesanan->status) }}</span>
+                            <button type="button" class="btn btn-accent"
+                                wire:click="statusModal({{ $pesanan->id }})">{{ $pesanan->statusJenis($pesanan->status) }}</button>
                         </x-td>
                         <x-td>Rp. {{ number_format($pesanan->sub_total, 0, 2) }}</x-td>
                         <x-td>
