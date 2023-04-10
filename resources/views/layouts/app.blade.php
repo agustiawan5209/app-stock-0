@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{ asset('datatables/datatables.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('build/assets/app.4828a3de.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app.18d06d59.css') }}">
     <script src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
     @vite(['resources/js/app.js'])
 
