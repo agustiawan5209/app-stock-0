@@ -39,7 +39,7 @@ class FermentasiController extends Controller
 
         if ($produk->count() > 0) {
             foreach ($produk as $item) {
-                $hasil_hitung = $request->jumlah_stock * 7.5;
+                $hasil_hitung = $request->jumlah_stock * 3.5;
                 $hasil_fer =  $hasil_hitung + $item->jumlah_stock;
 
                 ProdukFermentasi::find($item->id)->update([
