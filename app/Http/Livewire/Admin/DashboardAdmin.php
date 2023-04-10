@@ -16,7 +16,7 @@ class DashboardAdmin extends Component
     public function render()
     {
         $stok =[];
-        $stok['produksi'] = StockBahanBaku::with(['bahanbaku','jenis','satuan'])->where('stock', '>', '50')->get();
+        $stok['produksi'] = StockBahanBaku::with(['bahanbaku','jenis','satuan'])->where('stock', '<', '50')->get();
         $stok['kemasan'] = StockBahanBakuKemasan::with(['bahanbaku','jenis','satuan'])->where('stock', '<', '50')->get();
         // dd($stok);
         $stok_kemasan = StockBahanBakuKemasan::sum('stock');

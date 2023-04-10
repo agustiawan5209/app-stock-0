@@ -39,6 +39,7 @@
 
                             </x-td>
                         </x-tr>
+                        @endforeach
                         <x-tr>
                             <x-td>Jumlah Stock</x-td>
                             <x-td>
@@ -49,7 +50,6 @@
                             <x-td></x-td>
                             <x-td></x-td>
                         </x-tr>
-                    @endforeach
                 @else
                     <x-tr>
                         <x-td colspan="5">Data Kosong</x-td>

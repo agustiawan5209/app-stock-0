@@ -73,6 +73,7 @@ class PageTransaksiPesanan extends Component
     }
     public function createBarang($id, $status){
         $barang = BarangMasuk::find($id);
+        // dd($barang);
         if($status == 5){
             if($barang->pesanan->jenis == 1){
                 $stock = StockBahanBaku::where('bahan_baku_id', '=', $barang->pesanan->bahan_baku_id)->first();
