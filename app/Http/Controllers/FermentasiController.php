@@ -53,7 +53,7 @@ class FermentasiController extends Controller
                 ]);
             }
         } else {
-            $hasil_hitung = $request->jumlah_stock * 7.5;
+            $hasil_hitung = $request->jumlah_stock * 3.5;
             ProdukFermentasi::create([
                 'kode' => $request->kode,
                 'jumlah_stock' => $hasil_hitung,
