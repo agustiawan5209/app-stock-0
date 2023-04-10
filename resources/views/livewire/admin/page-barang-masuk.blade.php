@@ -29,7 +29,7 @@
                             @if ($item->pesanan->bahanbaku == null)
                                 Bahan Baku Hilang
                             @else
-                                {{ $item->pesanan->bahanbaku->bahanbaku->nama_bahan_baku }}
+                                {{ $item->pesanan->bahanbaku->nama_bahan_baku }}
                             @endif
                         @elseif($item->pesanan->jenis == 2)
                             @if ($item->pesanan->bahanbakuKemasan == null)
