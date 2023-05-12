@@ -44,37 +44,37 @@
             </x-tr>
         </thead>
         <tbody>
-            @foreach ($barangmasuk as $barangmasuk)
+            @foreach ($barangmasuk as $item)
                 <x-tr>
                     <x-td>{{ $loop->iteration }}</x-td>
-                    <x-td>{{ $barangmasuk->kode }}</x-td>
+                    <x-td>{{ $item->kode }}</x-td>
                     <x-td>
-                        @if ($barangmasuk->supplier == null)
+                        @if ($item->supplier == null)
                             Supplier Hilang
                         @else
-                            {{ $barangmasuk->supplier->supplier }}
+                        {{ $item->supplier->supplier }}
                         @endif
                     </x-td>
                     <x-td>
-                        @if ($barangmasuk->pesanan->jenis == 1)
-                            @if ($barangmasuk->pesanan->bahanbaku == null)
+                        @if ($item->pesanan->jenis == 1)
+                            @if ($item->pesanan->bahanbaku == null)
                                 Bahan Baku Hilang
                             @else
-                                {{ $barangmasuk->pesanan->bahanbaku->bahanbaku->nama_bahan_baku }}
+                                {{ $item->pesanan->bahanbaku->nama_bahan_baku }}
                             @endif
-                        @elseif($barangmasuk->pesanan->jenis == 2)
-                            @if ($barangmasuk->pesanan->bahanbakuKemasan == null)
+                        @elseif($item->pesanan->jenis == 2)
+                            @if ($item->pesanan->bahanbakuKemasan == null)
                                 Bahan Baku Hilang
                             @else
-                                {{ $barangmasuk->pesanan->bahanbakuKemasan->bahanbakuKemasan->nama_bahan_baku }}
+                                {{ $item->pesanan->bahanbakuKemasan->nama_bahan_baku }}
                             @endif
                         @endif
                     </x-td>
-                    <x-td>{{ $barangmasuk->pesanan->transaksi->tgl_transaksi }}</x-td>
-                    <x-td>{{ $barangmasuk->pesanan->jumlah }}</x-td>
-                    <x-td>Rp. {{ number_format($barangmasuk->pesanan->sub_total, 0, 2) }}</x-td>
+                    <x-td>{{ $item->pesanan->transaksi->tgl_transaksi }}</x-td>
+                    <x-td>{{ $item->pesanan->jumlah }}</x-td>
+                    <x-td>Rp. {{ number_format($item->pesanan->sub_total,0,2) }}</x-td>
                     {{-- <x-td>
-                        @include('items.td-action', ['id' => $barangmasuk->id])
+                        @include('items.td-action', ['id' => $item->id])
                     </x-td> --}}
                 </x-tr>
             @endforeach
