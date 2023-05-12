@@ -104,7 +104,7 @@ class PageBarangKeluar extends Component
     public function create()
     {
         $this->validate([
-            'kode' => 'required',
+            'kode' => 'required|unique:barang_keluars,kode_barang_keluar',
             'jumlah' => 'required',
             'alamat' => 'required',
             'customer' => 'required',
