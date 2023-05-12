@@ -39,10 +39,10 @@ class PageBarangKeluar extends Component
         $jenis = Jenis::find($id);
         foreach ($kemasan as $item => $key) {
             $stock = StockBahanBakuKemasan::where('bahan_baku_id', $key->id)->first();
-
+            dd($stock, $key, $kemasan);
             // Mengurangi Stok Pada Bahan Baku Kemasan
             $perhitungan_stock = $stock->stock - $stock->max * ($this->jumlah * ($jenis->jumlah / 1000));
-            dd($stock, $perhitungan_stock);
+
             $stock->update([
                 'stock' => $perhitungan_stock
             ]);
@@ -136,6 +136,7 @@ class PageBarangKeluar extends Component
                 'jumlah_produksi' => $dataProduksi->jumlah_produksi - ($this->jumlah * ($jenis->jumlah / 1000)),
                 'tgl_permintaan' => $this->tgl_keluar,
             ]);
+            $this->closeModal();
             Alert::success('info', 'Berhasil Di Tambah');
         }
     }
