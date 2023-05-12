@@ -15,7 +15,7 @@ class DashboardSupplier extends Component
     public function render()
     {
         $stok =[];
-        $stok['produksi'] = StockBahanBaku::with(['bahanbaku','jenis','satuan'])->where('stock', '>', '50')->get();
+        $stok['produksi'] = StockBahanBaku::with(['bahanbaku','jenis','satuan'])->where('stock', '<', '50')->orWhere('stock', '<', 50)->get();
         $stok['kemasan'] = StockBahanBakuKemasan::with(['bahanbaku','jenis','satuan'])->where('stock', '<', '50')->get();
         // dd($stok);
         $stok_produksi = StokProduk::latest()->first();
