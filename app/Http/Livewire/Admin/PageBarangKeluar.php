@@ -39,7 +39,10 @@ class PageBarangKeluar extends Component
         $jenis = Jenis::find($id);
         foreach ($kemasan as $item => $key) {
             $stock = StockBahanBakuKemasan::where('bahan_baku_id', $key->id)->first();
+
+            // Mengurangi Stok Pada Bahan Baku Kemasan
             $perhitungan_stock = $stock->stock - $stock->max * ($this->jumlah * ($jenis->jumlah / 1000));
+            dd($stock, $perhitungan_stock);
             $stock->update([
                 'stock' => $perhitungan_stock
             ]);
@@ -115,15 +118,15 @@ class PageBarangKeluar extends Component
             Alert::error('Maaf', 'Jumlah Produk Siap Jual Kurang');
             $this->closeModal();
         } else {
-            $barangkeluar = new BarangKeluar();
-            $barangkeluar->kode_barang_keluar = $this->kode;
-            $barangkeluar->jumlah = $this->jumlah;
-            $barangkeluar->alamat_tujuan = $this->alamat;
-            $barangkeluar->tgl_keluar = $this->tgl_keluar;
-            $barangkeluar->customer = $this->customer;
-            $barangkeluar->sub_total = $this->total_harga;
-            $barangkeluar->jenis_id = $this->jenis_id;
-            $barangkeluar->save();
+            // $barangkeluar = new BarangKeluar();
+            // $barangkeluar->kode_barang_keluar = $this->kode;
+            // $barangkeluar->jumlah = $this->jumlah;
+            // $barangkeluar->alamat_tujuan = $this->alamat;
+            // $barangkeluar->tgl_keluar = $this->tgl_keluar;
+            // $barangkeluar->customer = $this->customer;
+            // $barangkeluar->sub_total = $this->total_harga;
+            // $barangkeluar->jenis_id = $this->jenis_id;
+            // $barangkeluar->save();
             $this->getStokKemasan($this->jenis_id);
             $jenis = Jenis::find($this->jenis_id);
             $dataProduksi = StokProduk::latest()->first();
