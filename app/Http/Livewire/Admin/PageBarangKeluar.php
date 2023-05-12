@@ -39,7 +39,7 @@ class PageBarangKeluar extends Component
         $jenis = Jenis::find($id);
         foreach ($kemasan as $item => $key) {
             $stock = StockBahanBakuKemasan::where('bahan_baku_id', $key->id)->first();
-            dd($stock, $key, $kemasan);
+
             // Mengurangi Stok Pada Bahan Baku Kemasan
             $perhitungan_stock = $stock->stock - $stock->max * ($this->jumlah * ($jenis->jumlah / 1000));
 

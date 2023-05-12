@@ -11,11 +11,11 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class PageStockBahanBakuKemasan extends Component
 {
-    public $bahan_baku_id, $satuan_id, $jenis_id, $stock ,$max;
+    public $bahan_baku_id, $satuan_id, $jenis_id, $stock, $max;
     public $itemAdd = false,
-    $itemEdit = false,
-    $itemDelete = false,
-    $itemID = 0;
+        $itemEdit = false,
+        $itemDelete = false,
+        $itemID = 0;
     public function render()
     {
         $stockbahanbaku = StockBahanBakuKemasan::with(['bahanbaku',  'satuan'])->get();
@@ -23,7 +23,7 @@ class PageStockBahanBakuKemasan extends Component
         $satuan = Satuan::all();
         $bahanbaku = BahanBakuKemasan::all();
         return view('livewire.admin.page-stock-bahan-baku-kemasan', compact('stockbahanbaku', 'bahanbaku', 'satuan'))
-        ->layoutData(['page'=> 'Halaman Bahan Baku Kemasan']);
+            ->layoutData(['page' => 'Halaman Bahan Baku Kemasan']);
     }
 
 
@@ -57,7 +57,6 @@ class PageStockBahanBakuKemasan extends Component
     public function deleteModal($id)
     {
         $this->itemID = $id;
-
         $this->itemDelete = true;
     }
     public function create()
@@ -66,7 +65,7 @@ class PageStockBahanBakuKemasan extends Component
             'bahan_baku_id' => 'required',
             'satuan_id' => 'required',
             'stock' => ['required', 'integer'],
-            'max'=> 'required'
+            'max' => 'required'
         ]);
         Alert::success('Info', 'Berhasil Di Tambah');
         StockBahanBakuKemasan::create($valid);
@@ -77,22 +76,26 @@ class PageStockBahanBakuKemasan extends Component
         $valid = $this->validate([
             'bahan_baku_id' => 'required',
             'satuan_id' => 'required',
-            'max'=> 'required',
+            'max' => 'required',
             'stock' => ['required', 'integer'],
         ]);
         Alert::success('Info', 'Berhasil Di Edit');
         StockBahanBakuKemasan::find($id)->update([
-            'bahan_baku_id'=> $this->bahan_baku_id,
-            'stock'=> $this->stock,
-            'satuan_id'=> $this->satuan_id,
-            'max'=> $this->max,
+            'bahan_baku_id' => $this->bahan_baku_id,
+            'stock' => $this->stock,
+            'satuan_id' => $this->satuan_id,
+            'max' => $this->max,
         ]);
         $this->clear();
     }
     public function delete($id)
     {
         Alert::success('Info', 'Berhasil Di Hapus');
+        $stock = StockBahanBakuKemasan::find($id);
+        // Cari data bahan baku kemasan
+        $bahanbaku = BahanBakuKemasan::find($stock->bahan_baku_id)->delete();
+        // Hapus Data Bahan Baku Kemasan
+        $stock->delete();
         $this->clear();
-        StockBahanBakuKemasan::find($id)->delete();
     }
 }
