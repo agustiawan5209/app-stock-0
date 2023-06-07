@@ -55,7 +55,7 @@
         </main>
 
     </section>
-    <div class="bg-ungumuda w-full">
+    <footer class="bg-ungumuda w-full">
         <div class="w-full">
             <div class="flex flex-col w-full mt-NaN mr-NaN mb-NaN ml-NaN justify-between max-w-screen-2xl">
 
@@ -64,7 +64,7 @@
                         Copyright 2021, All Rights Reserved</a></div>
             </div>
         </div>
-    </div>
+    </footer>
     @stack('modals')
 
     @livewireScripts

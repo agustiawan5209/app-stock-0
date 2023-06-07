@@ -15,7 +15,6 @@ class CrudFermentasi extends Component
     public $kode,
         $jumlah_stock,
         $status = 1,
-        $tgl_frementasi,
         $itemAdd = false,
         $itemEdit = false,
         $itemDelete = false,
@@ -26,10 +25,12 @@ class CrudFermentasi extends Component
         $gagal = false,
         $dataError = [];
 
+    public $tgl_frementasi;
 
     public function mount(Request $request)
     {
         $this->item = $request->all();
+        $this->tgl_frementasi = Carbon::now()->format('Y-m-d');
     }
     public function kode()
     {
@@ -92,6 +93,10 @@ class CrudFermentasi extends Component
     // Crud
     public function create()
     {
+        $this->validate([
+            'kode' => 'required',
+            'jumlah_stock' => 'required|numeric',
+        ]);
         ProdukFermentasi::create([
             'kode' => $this->kode,
             'jumlah_stock' => $this->jumlah_stock,

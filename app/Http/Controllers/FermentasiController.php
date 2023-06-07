@@ -16,7 +16,6 @@ class FermentasiController extends Controller
         $this->validate($request, [
             'kode' => ['required', 'string'],
             'jumlah_stock' => ['required', 'integer'],
-            'tgl_frementasi' => ['required', 'date'],
         ]);
         $id = $request->id;
         $max = $request->max;
@@ -35,8 +34,9 @@ class FermentasiController extends Controller
         $id = implode(',', $id);
         $max = implode(',', $max);
         $stock = implode(',', $data);
-        $produk = ProdukFermentasi::whereDate('tgl_frementasi', Carbon::now()->format('Y-m-d'))->get();
-
+        $tgl_produksi = Carbon::now()->format('Y-m-d');
+        $produk = ProdukFermentasi::whereDate('tgl_frementasi', $tgl_produksi)->get();
+        // dd($produk);
         if ($produk->count() > 0) {
             foreach ($produk as $item) {
                 $hasil_hitung = $request->jumlah_stock * 3.5;
@@ -48,7 +48,7 @@ class FermentasiController extends Controller
                 $stokProduk = StokProduk::latest()->first();
                 $sum_produk = ProdukFermentasi::sum('jumlah_stock');
                 StokProduk::create([
-                    'tgl_permintaan' => $request->tgl_frementasi,
+                    'tgl_permintaan' => $tgl_produksi,
                     'jumlah_produksi' => $stokProduk == null ? $hasil_hitung : $sum_produk,
                 ]);
             }
@@ -58,13 +58,13 @@ class FermentasiController extends Controller
                 'kode' => $request->kode,
                 'jumlah_stock' => $hasil_hitung,
                 'status' => '1',
-                'tgl_frementasi' => $request->tgl_frementasi,
+                'tgl_frementasi' => $tgl_produksi,
                 'data' =>  $stock,
             ]);
             $stokProduk = StokProduk::latest()->first();
             $sum_produk = ProdukFermentasi::sum('jumlah_stock');
             StokProduk::create([
-                'tgl_permintaan' => $request->tgl_frementasi,
+                'tgl_permintaan' => $tgl_produksi,
                 'jumlah_produksi' => $stokProduk == null ? $hasil_hitung : $stokProduk->jumlah_produksi, //Stok Produk Jumlah
             ]);
         }
@@ -80,11 +80,13 @@ class FermentasiController extends Controller
             'jumlah' => ['required', 'numeric'],
             'tgl_frementasi' => ['required', 'date'],
         ]);
-        return [$request->all(), $id];
+        $tgl_produksi = Carbon::now()->format('Y-m-d');
+
         ProdukFermentasi::where('id', $id)->update([
             'kode' => $request->kode,
             'jumlah_stock' => $request->jumlah_stock,
-            'tgl_frementasi' => $request->tgl_frementasi,
+            'tgl_frementasi' => $tgl_produksi,
         ]);
+        return [$request->all(), $id];
     }
 }

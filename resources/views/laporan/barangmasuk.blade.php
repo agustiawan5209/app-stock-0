@@ -31,13 +31,13 @@
                             @if ($item->pesanan->bahanbaku == null)
                                 Bahan Baku Hilang
                             @else
-                                {{ $item->pesanan->bahanbaku->bahanbaku->nama_bahan_baku }}
+                                {{ $item->pesanan->bahanbaku->nama_bahan_baku }}
                             @endif
                         @elseif($item->pesanan->jenis == 2)
                             @if ($item->pesanan->bahanbakuKemasan == null)
                                 Bahan Baku Hilang
                             @else
-                                {{ $item->pesanan->bahanbakuKemasan->bahanbakuKemasan->nama_bahan_baku }}
+                                {{ $item->pesanan->bahanbakuKemasan->nama_bahan_baku }}
                             @endif
                         @endif
                     </x-td>

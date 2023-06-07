@@ -36,7 +36,7 @@
                             for='Password'>Tanggal </label>
                         <input
                             class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
-                            type='date' name='tgl_frementasi' wire:model="tgl_frementasi">
+                            type='date' name='tgl_frementasi' wire:model="tgl_frementasi" @disabled(true)>
                     </div>
                     <div class="flex items-center justify-between w-full mt-2">
                         <div class="w-full md:w-1/3 px-3 pt-4 mx-2 border-t border-gray-400">

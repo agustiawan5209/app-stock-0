@@ -13,35 +13,38 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class PagePesananBahanBaku extends Component
 {
-    public $itemID, $itemStatus= false, $itemEdit = false, $statusItem;
+    public $itemID, $itemStatus = false, $itemEdit = false, $statusItem;
     public $status, $ket;
     public function render()
     {
         $barang = BarangMasuk::with(['pesanan', 'pesanan.transaksi'])->where('supplier_id', Auth::user()->supplier->id)->get();
 
-        return view('livewire.supplier.page-pesanan-bahan-baku', compact('barang'))->layoutData(['page'=> 'Pesanan Bahan Baku']);
+        return view('livewire.supplier.page-pesanan-bahan-baku', compact('barang'))->layoutData(['page' => 'Pesanan Bahan Baku']);
     }
-    public function statusPesanan($id){
+    public function statusPesanan($id)
+    {
         $b = BarangMasuk::find($id);
         $this->itemID = $id;
         $this->itemStatus = true;
         $this->statusItem =  $b->status;
     }
-    public function detailModal($id){
-        return redirect()->route('Detail-Pesanan-Bahan-baku', ['item'=> $id]);
+    public function detailModal($id)
+    {
+        return redirect()->route('Detail-Pesanan-Bahan-baku', ['item' => $id]);
     }
-    public function updateStatus($id){
+    public function updateStatus($id)
+    {
         $this->validate([
-            'ket'=> ['required'],
+            'ket' => ['required'],
         ]);
         $barang = BarangMasuk::find($id);
         // dd($this->status);
-        $this->kurangi($id,$this->status);
-        $barang->update(['status'=> $this->status]);
+        $this->kurangi($id, $this->status);
+        $barang->update(['status' => $this->status]);
         $status = Status::create([
-            'pesanan_id'=> $barang->pesanan->id,
-            'status'=> $this->status,
-            'ket'=> $this->ket,
+            'pesanan_id' => $barang->pesanan->id,
+            'status' => $this->status,
+            'ket' => $this->ket,
         ]);
         Alert::success('Info', 'Berhasil Di Ganti...!!!');
         $this->itemStatus = false;
@@ -54,14 +57,17 @@ class PagePesananBahanBaku extends Component
      * @param  mixed $status
      * @return void
      */
-    public function kurangi($id, $status){
+    public function kurangi($id, $status)
+    {
         $barangmasuk = BarangMasuk::with(['pesanan'])->find($id);
-        // dd($barangmasuk);
-        if($status == 3){
-            $stock = BahanBakuSupplier::where('id', '=', $barangmasuk->bahan_supplier_id)->first();
+        $stock = BahanBakuSupplier::where('id', '=', $barangmasuk->bahan_supplier_id)->first();
+        // dd($status);
+        if ($status == 3) {
             // dd($stock);
-            BahanBakuSupplier::where('id', $barangmasuk->id)->update([
-                'jumlah_stock'=>  $stock->jumlah_stock - $barangmasuk->pesanan->jumlah,
+            $bahanbaku = BahanBakuSupplier::where('id', $barangmasuk->bahan_supplier_id)->first();
+            // dd($bahanbaku);
+            $bahanbaku->update([
+                'jumlah_stock' =>  $stock->jumlah_stock - $barangmasuk->pesanan->jumlah,
             ]);
         }
     }
