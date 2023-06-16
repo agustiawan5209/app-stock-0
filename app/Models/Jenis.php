@@ -14,4 +14,8 @@ class Jenis extends Model
         'harga',
         'jumlah'
     ];
+
+    public function stokproduk(){
+      return  $this->hasOne(StokProduk::class, 'jenis', 'nama_jenis');
+    }
 }

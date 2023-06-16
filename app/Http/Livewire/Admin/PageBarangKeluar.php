@@ -118,26 +118,39 @@ class PageBarangKeluar extends Component
             Alert::error('Maaf', 'Jumlah Produk Siap Jual Kurang');
             $this->closeModal();
         } else {
-            // $barangkeluar = new BarangKeluar();
-            // $barangkeluar->kode_barang_keluar = $this->kode;
-            // $barangkeluar->jumlah = $this->jumlah;
-            // $barangkeluar->alamat_tujuan = $this->alamat;
-            // $barangkeluar->tgl_keluar = $this->tgl_keluar;
-            // $barangkeluar->customer = $this->customer;
-            // $barangkeluar->sub_total = $this->total_harga;
-            // $barangkeluar->jenis_id = $this->jenis_id;
-            // $barangkeluar->save();
-            $this->getStokKemasan($this->jenis_id);
+
             $jenis = Jenis::find($this->jenis_id);
             $dataProduksi = StokProduk::latest()->first();
-            StokProduk::create([
-                'jenis' => "barangKeluar",
-                'jumlah' => $this->jumlah,
-                'jumlah_produksi' => $dataProduksi->jumlah_produksi - ($this->jumlah * ($jenis->jumlah / 1000)),
-                'tgl_permintaan' => $this->tgl_keluar,
-            ]);
-            $this->closeModal();
-            Alert::success('info', 'Berhasil Di Tambah');
+            $stokproduk = StokProduk::where('jenis', $jenis->nama_jenis)->first();
+            if ($stokproduk == null) {
+                Alert::error('Gagal', 'Stok Botol ' . $jenis->nama_jenis . ' Kosong');
+            } else {
+                $jumlah_produksi = $stokproduk->jumlah_produksi;
+                $jumlah_barang = $this->jumlah;
+
+                if ($jumlah_barang > $jumlah_produksi) {
+                    Alert::error('Gagal', 'Stok Botol ' . $jenis->nama_jenis . ' Kurang');
+                }
+                if ($jumlah_barang < $jumlah_produksi) {
+                    $barangkeluar = new BarangKeluar();
+                    $barangkeluar->kode_barang_keluar = $this->kode;
+                    $barangkeluar->jumlah = $this->jumlah;
+                    $barangkeluar->alamat_tujuan = $this->alamat;
+                    $barangkeluar->tgl_keluar = $this->tgl_keluar;
+                    $barangkeluar->customer = $this->customer;
+                    $barangkeluar->sub_total = $this->total_harga;
+                    $barangkeluar->jenis_id = $this->jenis_id;
+                    $barangkeluar->save();
+                    $this->getStokKemasan($this->jenis_id);
+                    $stokproduk->update([
+                        'jumlah' => $this->jumlah,
+                        'jumlah_produksi' => $jumlah_produksi - $jumlah_barang,
+                        'tgl_permintaan' => $this->tgl_keluar,
+                    ]);
+                    $this->closeModal();
+                    Alert::success('info', 'Berhasil Di Tambah');
+                }
+            }
         }
     }
     public function edit($id)

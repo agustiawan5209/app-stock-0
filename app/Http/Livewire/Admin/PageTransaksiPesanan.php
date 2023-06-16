@@ -20,6 +20,7 @@ class PageTransaksiPesanan extends Component
     {
         $pesanan = Pesanan::with(['transaksi', 'bahanbaku'])
         ->orderBy('id', 'desc')->paginate($this->row);
+
         return view('livewire.admin.page-transaksi-pesanan', compact('pesanan'))->layoutData(['page'=> 'Halaman Transaksi Pemesanan']);
     }
     /**

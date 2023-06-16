@@ -11,7 +11,7 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
     @livewireStyles
-    <link rel="stylesheet" href="{{asset('build/assets/app.18d06d59.css')}}">
+    <link rel="stylesheet" href="{{asset('build/assets/app.2b2f47e4.css')}}">
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <link
     rel="stylesheet"
@@ -21,6 +21,8 @@
     <script>
         new WOW().init();
     </script>
+    @vite(['resources/js/app.js'])
+
     <!-- Styles -->
 </head>
 
@@ -71,7 +73,7 @@
 
     <script src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
-    <script defer src="{{asset('build/assets/app.ab93cf8a.js')}}"></script>
+    {{-- <script defer src="{{asset('build/assets/app.ab93cf8a.js')}}"></script> --}}
 
     <script>
         var app = document.getElementById('textTyp');

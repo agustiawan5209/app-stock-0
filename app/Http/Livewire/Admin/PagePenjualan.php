@@ -18,10 +18,10 @@ use RealRashid\SweetAlert\Facades\Alert;
 class PagePenjualan extends Component
 {
     use WithFileUploads;
-    public $itemID , $itemDetail = false;
+    public $itemID, $itemDetail = false;
     // ItemTable
-    public $itemStatus= false, $itemEdit = false, $statusItem,$ket;
-    public $user, $jenis,$jumlah,$sub_total, $status, $detail ;
+    public $itemStatus = false, $itemEdit = false, $statusItem, $ket;
+    public $user, $jenis, $jumlah, $sub_total, $status, $detail;
 
     // Variabel Form Barang Keluar
     public $kode, $alamat, $customer, $tgl_keluar, $jenis_id, $total_harga, $id_transaksi, $bukti_transaksi, $harga_produk = 10;
@@ -45,14 +45,15 @@ class PagePenjualan extends Component
         $customer_id = Customer::all();
         // dd($jenis);
         return view('livewire.admin.page-penjualan', [
-            'pesan'=> $pesanan,
-            'barang_keluar'=> $barangkeluar,
-            'jenisBahan'=> $jenisBahan,
-            'customer_id'=> $customer_id,
+            'pesan' => $pesanan,
+            'barang_keluar' => $barangkeluar,
+            'jenisBahan' => $jenisBahan,
+            'customer_id' => $customer_id,
         ])
-        ->layoutData(['page'=> 'Halaman Penjualan']);
+            ->layoutData(['page' => 'Halaman Penjualan']);
     }
-    public function detailModal($id){
+    public function detailModal($id)
+    {
         $this->itemDetail = true;
         $pesananUser = PesananUser::find($id);
         $this->detail = $pesananUser;
@@ -62,7 +63,8 @@ class PagePenjualan extends Component
         $this->sub_total = $pesananUser->sub_total;
         $this->status = $pesananUser->status;
     }
-    public function statusPesanan($id){
+    public function statusPesanan($id)
+    {
         $b = PesananUser::find($id);
         $this->itemID = $id;
         $this->jenis_id = $b->jenis_id;
@@ -73,14 +75,15 @@ class PagePenjualan extends Component
         $this->itemStatus = true;
         $this->statusItem =  $b->status;
     }
-    public function updateStatus($id){
+    public function updateStatus($id)
+    {
         $pesanan = PesananUser::find($id);
         // dd($this->status);
         $this->validate([
             'status' => 'required',
-                'ket' => 'required',
+            'ket' => 'required',
         ]);
-        if($this->status === 3 || $this->status == "3"){
+        if ($this->status === 3 || $this->status == "3") {
             $this->validate([
                 'kode' => 'required',
                 'jumlah' => 'required',
@@ -92,35 +95,48 @@ class PagePenjualan extends Component
             ]);
             $produk = ProdukFermentasi::sum('jumlah_stock');
             // dd($produk);
-            $barangkeluar = new BarangKeluar();
-            $barangkeluar->kode_barang_keluar = $this->kode;
-            $barangkeluar->jumlah = $this->jumlah;
-            $barangkeluar->alamat_tujuan = $this->alamat;
-            $barangkeluar->tgl_keluar = $this->tgl_keluar;
-            $barangkeluar->customer = $this->customer;
-            $barangkeluar->sub_total = $this->sub_total;
-            $barangkeluar->jenis_id = $this->jenis_id;
-            $barangkeluar->save();
-            $this->getStokKemasan($this->jenis_id);
+
             $jenis = Jenis::find($this->jenis_id);
+            $stokproduk = StokProduk::where('jenis', $jenis->nama_jenis)->first();
             $dataProduksi = StokProduk::latest()->first();
-            StokProduk::create([
-                'jenis' => "barangKeluar",
-                'jumlah' => $this->jumlah,
-                'jumlah_produksi' => $dataProduksi->jumlah_produksi - ($this->jumlah * ($jenis->jumlah / 1000)),
-                'tgl_permintaan' => $this->tgl_keluar,
-            ]);
-            Alert::success('info', 'Berhasil Di Tambah');
+
+            $this->getStokKemasan($this->jenis_id);
+            if ($stokproduk == null) {
+                Alert::error('Gagal', 'Stok Botol ' . $jenis->nama_jenis . ' Kosong');
+            } else {
+                $jumlah_produksi = $stokproduk->jumlah_produksi;
+                $jumlah_barang = $this->jumlah;
+
+                if ($jumlah_barang > $jumlah_produksi) {
+                    Alert::error('Gagal', 'Stok Botol ' . $jenis->nama_jenis . ' Kurang');
+                }
+                if ($jumlah_barang < $jumlah_produksi) {
+                    $barangkeluar = new BarangKeluar();
+                    $barangkeluar->kode_barang_keluar = $this->kode;
+                    $barangkeluar->jumlah = $this->jumlah;
+                    $barangkeluar->alamat_tujuan = $this->alamat;
+                    $barangkeluar->tgl_keluar = $this->tgl_keluar;
+                    $barangkeluar->customer = $this->customer;
+                    $barangkeluar->sub_total = $this->sub_total;
+                    $barangkeluar->jenis_id = $this->jenis_id;
+                    $barangkeluar->save();
+                    $stokproduk->update([
+                        'jumlah' => $this->jumlah,
+                        'jumlah_produksi' => $jumlah_produksi - $jumlah_barang,
+                        'tgl_permintaan' => $this->tgl_keluar,
+                    ]);
+                    $pesanan->update(['status' => $this->status]);
+                    $status = Status::create([
+                        'pesanan_id' => $pesanan->id,
+                        'jenis' => '2',
+                        'status' => $this->status,
+                        'ket' => $this->ket,
+                    ]);
+                    Alert::success('Info', 'Berhasil Di Ganti...!!!');
+                    $this->itemStatus = false;
+                }
+            }
         }
-        $pesanan->update(['status'=> $this->status]);
-        $status = Status::create([
-            'pesanan_id'=> $pesanan->id,
-            'jenis'=> '2',
-            'status'=> $this->status,
-            'ket'=> $this->ket,
-        ]);
-        Alert::success('Info', 'Berhasil Di Ganti...!!!');
-        $this->itemStatus = false;
     }
 
     // Fungsi Form Barang Keluar
