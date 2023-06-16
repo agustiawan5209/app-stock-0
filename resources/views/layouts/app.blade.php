@@ -19,7 +19,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('build/assets/app.18d06d59.css') }}">
     <script src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
-    @vite(['resources/js/app.js'])
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
 
     @livewireStyles
     <style>

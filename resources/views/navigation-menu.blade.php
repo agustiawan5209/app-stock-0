@@ -31,6 +31,16 @@
         </svg>
 
     </a>
+    <a class=" {{ request()->routeIs('Admin.Tahap-Pengemasan') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-primary' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-primary hover:font-semibold ' }} relative  box-content"
+        href="{{ route('Admin.Tahap-Pengemasan') }}" x-on:click="Produk = ! Produk " x-on:click.outside="Produk = false">
+        <svg class="h-5 w-5 {{ request()->routeIs('Admin.Tahap-Pengemasan') ? 'stroke-primary' : 'group-hover:stroke-primary' }}"
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16">
+            </path>
+            <span>Tahap Pengemasan</span>
+        </svg>
+
+    </a>
     <a class=" {{ request()->routeIs('Admin.List-BahanBaku-Kemasan') || request()->routeIs('Admin.List-BahanBaku') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-primary' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-primary hover:font-semibold ' }} relative  box-content"
         href="#" x-on:click="BahanBaku = ! BahanBaku " x-on:click.outside="BahanBaku = false">
         <svg class="h-5 w-5 {{ request()->routeIs('Admin.List-BahanBaku-Kemasan') || request()->routeIs('Admin.List-BahanBaku') ? 'stroke-primary' : 'group-hover:stroke-primary' }}"

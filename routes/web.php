@@ -37,6 +37,7 @@ use App\Http\Livewire\Supplier\DashboardSupplier;
 use App\Http\Livewire\Laporan\LaporanBarangKeluar;
 use App\Http\Livewire\Supplier\PagePesananBahanBaku;
 use App\Http\Livewire\Admin\PageStockBahanBakuKemasan;
+use App\Http\Livewire\Admin\PageTahapPengemasan;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,6 +85,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::get('Customer', PageCustomer::class)->name('Customer');
 
         // Produk
+        Route::get('Tahap-Pengemasan', PageTahapPengemasan::class)->name('Tahap-Pengemasan');
         Route::get('Produk', PageProduk::class)->name('Produk');
         Route::get('Penjualan', PagePenjualan::class)->name('Penjualan');
         Route::get('Produk-SiapJual', PageProdukFermentasi::class)->name('Produk-Fermentasi');

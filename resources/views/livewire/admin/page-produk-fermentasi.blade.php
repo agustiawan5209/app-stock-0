@@ -3,6 +3,18 @@
     <!-- component -->
     {{-- <a href="{{route('Admin.Produk')}}" class="btn btn-warning">Produksi Dalam Botol</a> --}}
     <section>
+        <div class=" w-full sm:max-w-md md:max-w-7xl border mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+
+                    <div class="col-span-1 border px-4 py-2 flex flex-col bg-white rounded-lg">
+
+                        <div class=" flex flex-row justify-start">
+                            <dl class="text-base md:text-xl font-medium tracking-wide">Jumlah Produksi :</dl>
+                            <dt class="text-base md:text-xl font-medium tracking-wide">{{ abs(number_format($jumlah_produk_sisa == null ? 0 : $stokproduk->jumlah_produksi, 0, 2)) }}</dt>
+                        </div>
+                    </div>
+            </div>
+        </div>
         <x-table :tambahItem="true">
             <thead>
                 <x-tr>
@@ -40,16 +52,6 @@
                             </x-td>
                         </x-tr>
                         @endforeach
-                        <x-tr>
-                            <x-td>Jumlah Stock</x-td>
-                            <x-td>
-                                {{ abs(number_format($jumlah_produk_sisa == null ? 0 : $stokproduk->jumlah_produksi, 0, 2)) }}
-
-                            </x-td>
-                            <x-td></x-td>
-                            <x-td></x-td>
-                            <x-td></x-td>
-                        </x-tr>
                 @else
                     <x-tr>
                         <x-td colspan="5">Data Kosong</x-td>
