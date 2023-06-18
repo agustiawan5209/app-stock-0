@@ -18,6 +18,7 @@ class PageTahapPengemasan extends Component
         $stokproduk = StokProduk::latest()->first();
         $data_produk = [];
         $jenis_produk = Jenis::all();
+        $data = [];
         foreach ($jenis_produk as $key => $value) {
             $stok = StokProduk::where('jenis', $value->nama_jenis)->first();
             if($stok !== null){
