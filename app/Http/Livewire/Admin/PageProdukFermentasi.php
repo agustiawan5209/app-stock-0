@@ -58,7 +58,7 @@ class PageProdukFermentasi extends Component
         // dd($this->hitungFermentasi($date->tgl_frementasi));
         $produk = ProdukFermentasi::all();
         $stock = StockBahanBaku::all();
-        $stokproduk = StokProduk::latest()->first();
+        $stokproduk = StokProduk::whereNull('jenis')->latest()->first();
         $jumlah_produk_sisa = ProdukFermentasi::sum('jumlah_stock');
         return view('livewire.admin.page-produk-fermentasi', compact('produk', 'stock', 'stokproduk', 'jumlah_produk_sisa'))->layoutData(['page' => 'Halaman Produk']);
     }

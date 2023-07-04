@@ -106,7 +106,7 @@ class PageTahapPengemasan extends Component
             $stokproduk->update([
                 'jumlah' => $jumlah_liter,
                 'tgl_permintaan' => $this->tgl_pengemasan,
-                'jumlah_produksi' => intval($stokproduk->jumlah_produksi) + intval($this->jumlah),
+                'jumlah_produksi' => $kurangi_stock,
             ]);
         }
         $this->getStokKemasan();
