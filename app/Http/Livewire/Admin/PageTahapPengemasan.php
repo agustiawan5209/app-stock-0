@@ -5,7 +5,9 @@ namespace App\Http\Livewire\Admin;
 use App\Models\Jenis;
 use Livewire\Component;
 use App\Models\StokProduk;
+use App\Models\BahanBakuKemasan;
 use App\Models\PengemasanBarang;
+use App\Models\StockBahanBakuKemasan;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PageTahapPengemasan extends Component
@@ -107,10 +109,24 @@ class PageTahapPengemasan extends Component
                 'jumlah_produksi' => intval($stokproduk->jumlah_produksi) + intval($this->jumlah),
             ]);
         }
+        $this->getStokKemasan();
+
         Alert::success('info', 'Berhasil');
         $this->closeModal();
     }
-
+    public function getStokKemasan()
+    {
+        $kemasan = BahanBakuKemasan::all();
+        $stock = [];
+        foreach ($kemasan as $item => $key) {
+            $stock[] = StockBahanBakuKemasan::where('bahan_baku_id', $key->id)->decrement('stock', $this->jumlah);
+            // $perhitungan_stock = ($this->jumlah);
+            // $stock->update([
+            //     'stock' => $perhitungan_stock
+            // ]);
+        }
+        return $stock;
+    }
     public function editModal($id)
     {
         $pengemasan = PengemasanBarang::find($id);
