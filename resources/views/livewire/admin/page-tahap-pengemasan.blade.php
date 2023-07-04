@@ -34,7 +34,7 @@
                         <x-tr>
                             <x-td>{{ $loop->iteration }}</x-td>
                             <x-td>{{ $item->kode }}</x-td>
-                            <x-td>{{ $item->jenis_produk }}</x-td>
+                            <x-td>{{ $item->produksi->nama_jenis }}</x-td>
                             <x-td>{{ $item->jumlah }} Botol</x-td>
                             <x-td>{{ $item->tgl_pengemasan }}</x-td>
                             <x-td>
