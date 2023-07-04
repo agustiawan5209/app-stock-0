@@ -34,7 +34,11 @@
                         <x-tr>
                             <x-td>{{ $loop->iteration }}</x-td>
                             <x-td>{{ $item->kode }}</x-td>
-                            <x-td>{{ $item->produksi->nama_jenis }}</x-td>
+                           @if ($item->produksi !== null)
+                           <x-td>{{ $item->produksi->nama_jenis }}</x-td>
+                           @else
+                           <x-td>Jenis Kosong</x-td>
+                           @endif
                             <x-td>{{ $item->jumlah }} Botol</x-td>
                             <x-td>{{ $item->tgl_pengemasan }}</x-td>
                             <x-td>
