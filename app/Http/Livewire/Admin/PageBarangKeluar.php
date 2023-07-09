@@ -140,6 +140,7 @@ class PageBarangKeluar extends Component
                     $barangkeluar->customer = $this->customer;
                     $barangkeluar->sub_total = $this->total_harga;
                     $barangkeluar->jenis_id = $this->jenis_id;
+                    $barangkeluar->nama_jenis = $jenis->nama_jenis;
                     $barangkeluar->save();
                     $this->getStokKemasan($this->jenis_id);
                     $stokproduk->update([
@@ -155,6 +156,8 @@ class PageBarangKeluar extends Component
     }
     public function edit($id)
     {
+        $jenis = Jenis::find($this->jenis_id);
+
         $barangkeluar = BarangKeluar::where('id', $id)->update([
             'kode_barang_keluar' => $this->kode,
             'jumlah' => $this->jumlah,
@@ -163,6 +166,7 @@ class PageBarangKeluar extends Component
             'tgl_keluar' => $this->tgl_keluar,
             'sub_total' => $this->total_harga,
             'jenis_id' => $this->jenis_id,
+            'nama_jenis'=> $jenis->nama_jenis,
         ]);
         $this->closeModal();
 

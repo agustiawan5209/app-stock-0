@@ -27,7 +27,7 @@
                     <x-td class=" border-2 border-gray-200 text-xs text-center whitespace-nowrap ">
                         {{ $item->customer }}</x-td>
                     <x-td class=" border-2 border-gray-200 text-xs text-center whitespace-nowrap ">
-                        {{ $item->jenis->nama_jenis }}</x-td>
+                        {{ $item->nama_jenis }}</x-td>
                     <x-td class=" border-2 border-gray-200 text-xs text-center whitespace-nowrap ">{{ $item->jumlah }}
                     </x-td>
                     <x-td class=" border-2 border-gray-200 text-xs text-center whitespace-nowrap ">

@@ -10,7 +10,7 @@ class BarangKeluar extends Model
     use HasFactory;
     protected $table = 'barang_keluars';
     protected $fillable = [
-        'kode', 'jumlah', 'alamat', 'customer','tgl_keluar','sub_total','jenis_id'
+        'kode', 'jumlah', 'alamat', 'customer','tgl_keluar','sub_total','jenis_id','nama_jenis'
     ];
 
     public function transaksi(){
