@@ -25,6 +25,15 @@
         </table>
     </center>
     @yield('content')
+
+    <table class="w-full">
+        <caption>Penanggung Jawab</caption>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr>
+            <td>Drs.H. Idrus Husain</td>
+        </tr>
+    </table>
 </body>
 
 </html>
