@@ -27,6 +27,7 @@ class PageTahapPengemasan extends Component
                 $data[] = StokProduk::where('jenis', $value->nama_jenis)->first();
             }
         }
+        dd($data);
         return view('livewire.admin.page-tahap-pengemasan', [
             'pengemasan' => PengemasanBarang::all(),
             'jenis' => Jenis::all(),
@@ -106,7 +107,7 @@ class PageTahapPengemasan extends Component
             $stokproduk->update([
                 'jumlah' => $jumlah_liter,
                 'tgl_permintaan' => $this->tgl_pengemasan,
-                'jumlah_produksi' => $kurangi_stock,
+                'jumlah_produksi' => $this->jumlah,
             ]);
         }
         $this->getStokKemasan();

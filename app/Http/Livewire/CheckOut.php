@@ -19,10 +19,11 @@ class CheckOut extends Component
     public function render()
     {
         $jenis = Jenis::find($this->item);
+        // dd($jenis);
         $bank = Bank::whereHas('user', function($query){
             return $query->where('role_id', '1');
         })->get();
-        $stockProduk = StokProduk::latest()->first();
+        $stockProduk = StokProduk::where('jenis', $jenis->nama_jenis)->first();
         $jumlah_produk_sisa = ProdukFermentasi::sum('jumlah_stock');
         return view('livewire.check-out' , compact('jenis', 'bank', 'stockProduk' ,'jumlah_produk_sisa'))
         ->layout('components.layout.customer')
