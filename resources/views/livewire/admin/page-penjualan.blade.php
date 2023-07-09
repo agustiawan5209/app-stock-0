@@ -177,7 +177,7 @@
                             <x-td>{{ $item->user->name }}</x-td>
                             <x-td>{{ $item->user->no_telpon }}</x-td>
                         @endif
-                        <x-td>{{ $item->jenis->nama_jenis }}</x-td>
+                        <x-td>{{ $item->nama_jenis }}</x-td>
                         <x-td>{{ $item->transaksi->tgl_transaksi }}</x-td>
                         <x-td>{{ $item->jumlah }}</x-td>
                         <x-td>{{ number_format($item->sub_total, 0, 2) }}</x-td>

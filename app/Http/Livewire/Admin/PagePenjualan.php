@@ -119,6 +119,7 @@ class PagePenjualan extends Component
                     $barangkeluar->customer = $this->customer;
                     $barangkeluar->sub_total = $this->sub_total;
                     $barangkeluar->jenis_id = $this->jenis_id;
+                    $barangkeluar->nama_jenis = $jenis->nama_jenis;
                     $barangkeluar->save();
                     $stokproduk->update([
                         'jumlah' => $this->jumlah,
@@ -176,6 +177,7 @@ class PagePenjualan extends Component
             Alert::error('Maaf', 'Jumlah Produk Siap Jual Kurang');
             $this->closeModal();
         } else {
+            $jenis = Jenis::find($this->jenis_id);
             $barangkeluar = new BarangKeluar();
             $barangkeluar->kode_barang_keluar = $this->kode;
             $barangkeluar->jumlah = $this->jumlah;
@@ -184,6 +186,7 @@ class PagePenjualan extends Component
             $barangkeluar->customer = $this->customer;
             $barangkeluar->sub_total = $this->sub_total;
             $barangkeluar->jenis_id = $this->jenis_id;
+            $barangkeluar->nama_jenis = $jenis->nama_jenis;
             $barangkeluar->save();
             $this->getStokKemasan($this->jenis_id);
             $jenis = Jenis::find($this->jenis_id);
