@@ -24,7 +24,7 @@ class PagePenjualan extends Component
     public $user, $jenis, $jumlah, $sub_total, $status, $detail;
 
     // Variabel Form Barang Keluar
-    public $kode, $alamat, $customer, $tgl_keluar, $jenis_id, $total_harga, $id_transaksi, $bukti_transaksi, $harga_produk = 10;
+    public $kode, $alamat, $customer, $tgl_keluar,$nama_jenis, $jenis_id, $total_harga, $id_transaksi, $bukti_transaksi, $harga_produk = 10;
 
     public $itemAdd = false, $itemDelete = false,  $tambahItem = true;
     public $row = 10, $search = '';
@@ -68,6 +68,7 @@ class PagePenjualan extends Component
         $b = PesananUser::find($id);
         $this->itemID = $id;
         $this->jenis_id = $b->jenis_id;
+        $this->nama_jenis = $b->jenis->nama_jenis;
         $this->jumlah = $b->jumlah;
         $this->sub_total = $b->sub_total;
         $this->customer = $b->user->name;
@@ -90,7 +91,7 @@ class PagePenjualan extends Component
                 'alamat' => 'required',
                 'customer' => 'required',
                 'tgl_keluar' => ['required', 'date'],
-                'jenis_id' => 'required',
+                'nama_jenis' => 'required',
                 'sub_total' => 'required',
             ]);
             $produk = ProdukFermentasi::sum('jumlah_stock');

@@ -31,7 +31,7 @@
                     <div class="w-full md:w-full px-3 mb-6">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                             for='Password'>Jenis</label>
-                            <x-jet-input type="text" wire:model='jenis_id' placeholder='Nama Pelanggan'></x-jet-input>
+                            <x-jet-input type="text" wire:model='nama_jenis' placeholder='Nama Pelanggan'></x-jet-input>
 
                     </div>
                     <div>
