@@ -28,58 +28,60 @@
 
                     {{-- Page Penjualan Form Input Barang Keluar --}}
                     @if ($statusItem == 2)
-                    <div class="w-full md:w-full px-3 mb-6">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                            for='Password'>Jenis</label>
-                            <x-jet-input type="text" wire:model='nama_jenis' placeholder='Nama Pelanggan'></x-jet-input>
+                        <div class="w-full md:w-full px-3 mb-6">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                for='Password'>Jenis</label>
+                            <x-jet-input type="text" wire:model='nama_jenis' placeholder='Nama Pelanggan'>
+                            </x-jet-input>
 
-                    </div>
-                    <div>
-                        <x-jet-label for="" value="{{ __('Customer') }}" />
-                        <x-jet-input type="text" wire:model='customer' placeholder='Nama Pelanggan'></x-jet-input>
-                        @error('customer')
-                            <span class="text-red-500 text-xs italic">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div>
-                        <x-jet-label for="" value="{{ __('Kode-Barang Keluar') }}" />
-                        <div class="flex flex-row justify-start items-center">
-                            <div>
-                                <x-jet-input name='kode' class="block mt-2 w-full" type='text' wire:model='kode'
-                                    readonly />
-                                @error('kode')
-                                    <span class="text-red-500 text-xs italic">{{ $message }}</span>
-                                @enderror
+                        </div>
+                        <div>
+                            <x-jet-label for="" value="{{ __('Customer') }}" />
+                            <x-jet-input type="text" wire:model='customer' placeholder='Nama Pelanggan'>
+                            </x-jet-input>
+                            @error('customer')
+                                <span class="text-red-500 text-xs italic">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div>
+                            <x-jet-label for="" value="{{ __('Kode-Barang Keluar') }}" />
+                            <div class="flex flex-row justify-start items-center">
+                                <div>
+                                    <x-jet-input name='kode' class="block mt-2 w-full" type='text'
+                                        wire:model='kode' readonly />
+                                    @error('kode')
+                                        <span class="text-red-500 text-xs italic">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div>
-                        <x-jet-label for="" value="{{ __('Alamat') }}" />
-                        <x-jet-input name='alamat' class="block mt-2 w-full" type='text' wire:model='alamat' />
-                        @error('alamat')
-                            <span class="text-red-500 text-xs italic">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div>
-                        <x-jet-label for="" value="{{ __('Tanggal Keluar') }}" />
-                        <x-jet-input name='tgl' class="block mt-2 w-full" type='date' wire:model='tgl_keluar' />
-                        @error('tgl')
-                            <span class="text-red-500 text-xs italic">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div>
-                        <x-jet-label for="" value="{{ __('Jumlah Pembelian') }}" />
-                        <x-jet-input name='KBM' class="block mt-2 w-full" wire:model='jumlah'
-                            type='text' />
-                        @error('jumlah')
-                            <span class="text-red-500 text-xs italic">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div>
-                        <x-jet-label for="" value="{{ __('Sub_total') }}" />
-                        <x-jet-input name='KBM' wire:model='sub_total' class="block mt-2 w-full" type='text'
-                            readonly />
-                    </div>
+                        <div>
+                            <x-jet-label for="" value="{{ __('Alamat') }}" />
+                            <x-jet-input name='alamat' class="block mt-2 w-full" type='text' wire:model='alamat' />
+                            @error('alamat')
+                                <span class="text-red-500 text-xs italic">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div>
+                            <x-jet-label for="" value="{{ __('Tanggal Keluar') }}" />
+                            <x-jet-input name='tgl' class="block mt-2 w-full" type='date'
+                                wire:model='tgl_keluar' />
+                            @error('tgl')
+                                <span class="text-red-500 text-xs italic">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div>
+                            <x-jet-label for="" value="{{ __('Jumlah Pembelian') }}" />
+                            <x-jet-input name='KBM' class="block mt-2 w-full" wire:model='jumlah' type='text' />
+                            @error('jumlah')
+                                <span class="text-red-500 text-xs italic">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div>
+                            <x-jet-label for="" value="{{ __('Sub_total') }}" />
+                            <x-jet-input name='KBM' wire:model='sub_total' class="block mt-2 w-full" type='text'
+                                readonly />
+                        </div>
                     @endif
                     {{-- End --}}
                 </form>

@@ -127,18 +127,19 @@ class PagePenjualan extends Component
                         'jumlah_produksi' => $jumlah_produksi - $jumlah_barang,
                         'tgl_permintaan' => $this->tgl_keluar,
                     ]);
-                    $pesanan->update(['status' => $this->status]);
-                    $status = Status::create([
-                        'pesanan_id' => $pesanan->id,
-                        'jenis' => '2',
-                        'status' => $this->status,
-                        'ket' => $this->ket,
-                    ]);
-                    Alert::success('Info', 'Berhasil Di Ganti...!!!');
-                    $this->itemStatus = false;
+
                 }
             }
         }
+        $pesanan->update(['status' => $this->status]);
+        $status = Status::create([
+            'pesanan_id' => $pesanan->id,
+            'jenis' => '2',
+            'status' => $this->status,
+            'ket' => $this->ket,
+        ]);
+        Alert::success('Info', 'Berhasil Di Ganti...!!!');
+        $this->itemStatus = false;
     }
 
     // Fungsi Form Barang Keluar
