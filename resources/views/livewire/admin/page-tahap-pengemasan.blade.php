@@ -83,7 +83,7 @@
                         </select>
                     </div>
                     <div>
-                        <x-jet-label for="" value="{{ __('Kode-Barang Keluar') }}" />
+                        <x-jet-label for="" value="{{ __('Kode-Pengemasan Barang') }}" />
                         <div class="flex flex-row justify-start items-center">
                             <div>
                                 <x-jet-input name='kode' class="block mt-2 w-full" type='text' wire:model='kode'
