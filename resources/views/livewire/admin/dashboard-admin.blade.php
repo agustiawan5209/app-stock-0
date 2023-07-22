@@ -15,7 +15,7 @@
                     Total Produksi
                 </p>
                 <p class="text-lg font-semibold text-white">
-                    {{$total_produksi}}
+                    {{$total_produksi}} Liter
                 </p>
             </div>
         </div>
@@ -109,7 +109,7 @@
                                                     d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                             </svg>
                                             <span class="text-white">{{ $item->bahanbaku->nama_bahan_baku }} : Jumlah
-                                                Stok = {{ $item->stock }}</span>
+                                                Stok = {{ $item->stock.'/'. $item->satuan->nama_satuan }}</span>
 
                                         </div>
                                     </div>
@@ -137,7 +137,7 @@
                                             </svg>
                                             <span class="text-white">{{ $item->bahanbaku->nama_bahan_baku }} : Jumlah
                                                 Stok =
-                                                {{ $item->stock }}</span>
+                                                {{ $item->stock .'/'. $item->satuan->nama_satuan}}</span>
                                         </div>
                                     </div>
                                 </li>
