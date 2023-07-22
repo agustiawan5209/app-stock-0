@@ -111,7 +111,7 @@
                                             </svg>
                                             <span class="text-white">{{ $item->bahanbaku->nama_bahan_baku }} : Jumlah
                                                 Stok =
-                                                {{ $item->stock }}</span>
+                                                {{ $item->stock .'/'. $item->satuan->nama_satuan }}</span>
                                         </div>
                                     </div>
                                 </li>
