@@ -10,7 +10,7 @@ class PesananUser extends Model
     use HasFactory;
     protected $table = 'pesanan_users';
     protected $fillable = [
-        'user_id', 'transaksi_id', 'jenis_id', 'jumlah', 'sub_total', 'status', 'ket'
+    'user_id', 'transaksi_id', 'jenis_id', 'nama_jenis', 'jumlah', 'sub_total', 'status', 'ket'
     ];
     public function transaksi()
     {

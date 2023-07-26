@@ -85,6 +85,7 @@ class ChekoutCartController extends Controller
                 'user_id' => Auth::user()->id,
                 'transaksi_id' => $transaksi->id,
                 'jenis_id' => $value->jenis_id,
+                'nama_jenis' => $jenis->nama_jenis,
                 'jumlah' => $value->jumlah,
                 'sub_total' => $jenis->harga * $value->jumlah,
                 'status' => '1',

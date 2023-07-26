@@ -155,6 +155,7 @@ class PesananController extends Controller
             'user_id'=> Auth::user()->id,
             'transaksi_id' => $transaksi->id,
             'jenis_id' => $request->item,
+            'nama_jenis' => $jenis->nama_jenis,
             'jumlah' => $request->jumlah,
             'sub_total' => $jenis->harga * $request->jumlah,
             'status' => '1',

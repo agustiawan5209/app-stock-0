@@ -37,7 +37,11 @@
                     <x-tr>
                         <x-td>{{ $loop->iteration }}</x-td>
                         <x-td>{{ $pesanan->transaksi->ID_transaksi }}</x-td>
-                        <x-td>{{ $pesanan->jenis->nama_jenis }}</x-td>
+                        @if ($pesanan->jenis !== null)
+                            <x-td>{{ $pesanan->jenis->nama_jenis }}</x-td>
+                        @else
+                            <x-td>{{ $pesanan->nama_jenis }}</x-td>
+                        @endif
                         <x-td>{{ $pesanan->jumlah }}</x-td>
                         <x-td>
                             <button type="button" class="btn btn-accent"
