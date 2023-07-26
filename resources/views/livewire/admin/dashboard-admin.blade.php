@@ -55,41 +55,6 @@
                 </p>
             </div>
         </div>
-        <!-- Card -->
-        <div class="flex items-center p-4  rounded-lg shadow-xs bg-gradient-to-b from-neutral to-ungu wow slideInLeft" data-wow-duration="1000ms" data-wow-delay=800ms>
-            <div class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full   ">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd"
-                        d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </div>
-            <div>
-                <p class="mb-2 text-sm  text-white font-semibold font-mono ">
-                    Stok Bahan Baku Kemasan
-                </p>
-                <p class="text-lg font-semibold text-white">
-                    {{ $stok_kemasan }}
-                </p>
-            </div>
-        </div>
-        <div class="flex items-center p-4  rounded-lg shadow-xs bg-gradient-to-b from-neutral to-ungu wow slideInRight" data-wow-duration="1000ms" data-wow-delay=900ms>
-            <div class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full   ">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd"
-                        d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </div>
-            <div>
-                <p class="mb-2 text-sm  text-white font-semibold font-mono ">
-                    Stok Bahan Baku Produksi
-                </p>
-                <p class="text-lg font-semibold text-white">
-                    {{ $stok_markisa }}
-                </p>
-            </div>
-        </div>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 container mx-auto">
         @if ($stok['kemasan']->count() > 0 || $stok['produksi']->count() > 0)
