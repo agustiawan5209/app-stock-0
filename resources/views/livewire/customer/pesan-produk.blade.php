@@ -1,5 +1,21 @@
 <div>
+    @include('sweetalert::alert')
     <div class="w-full  flex justify-center container overflow-x-auto mx-auto">
+        <x-jet-dialog-modal wire:model='modalCart'>
+            <x-slot name="title">
+                Tambah Keranjang
+            </x-slot>
+            <x-slot name="content">
+                <h3>Masukkan Jumlah</h3>
+                <x-jet-button wire:click='countCartMinus' type="button">-</x-jet-button>
+                <input type="text" class="w-18" wire:model='countCart' />
+                <x-jet-button wire:click='countCartPlus' type="button">+</x-jet-button>
+            </x-slot>
+            <x-slot name="footer">
+                <x-jet-button type="button" wire:click="closeModal" class="text-lg text-white">Tutup</x-jet-button>
+                <x-jet-button type="button" wire:click="Keranjang({{ $itemCart }})" class="text-lg text-white bg-info">Masukkan Ke Keranjang</x-jet-button>
+            </x-slot>
+        </x-jet-dialog-modal>
         <x-table :tambahItem='false' class=" table table-normal w-full">
             <thead>
                 <x-tr>
@@ -27,9 +43,15 @@
                                 <button class="p-1 text-white  bg-info  rounded cursor-not-allowed opacity-70">
                                     Pesan
                                 </button>
+                                <button  class="p-1 text-white  bg-info  rounded">
+                                    Keranjang
+                                </button>
                             @else
                                 <button wire:click='Pesan({{ $item->id }})' class="p-1 text-white  bg-info  rounded">
                                     Pesan
+                                </button>
+                                <button wire:click='openCart({{ $item->id }},{{ $item->stokproduk->jumlah_produksi }})' class="p-1 text-white  bg-info  rounded">
+                                    Keranjang
                                 </button>
                             @endif
                         </x-td>

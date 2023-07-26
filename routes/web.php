@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChekoutCartController;
 use App\Http\Livewire\CheckOut;
 use App\Http\Livewire\DetailPesanan;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,7 @@ use App\Http\Livewire\Laporan\LaporanBarangKeluar;
 use App\Http\Livewire\Supplier\PagePesananBahanBaku;
 use App\Http\Livewire\Admin\PageStockBahanBakuKemasan;
 use App\Http\Livewire\Admin\PageTahapPengemasan;
+use App\Http\Livewire\Customer\Keranjang;
 
 /*
 |--------------------------------------------------------------------------
@@ -122,6 +124,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::get('Pesanan', PagePesan::class)->name('Pesan-Customer');
         Route::get('Pesan/Produk', PesanProduk::class)->name('Pesan-Produk');
         Route::get('CekOut/{item}', CheckOut::class)->name('Cekout');
+        Route::get('keranjang', Keranjang::class)->name('keranjang');
+        Route::post('post/keranjang', [ChekoutCartController::class, 'receiveUser'])->name('keranjang.post');
         Route::post('receive', [PesananController::class, 'receiveUser'])->name('Simpan-Pesanan');
     });
     Route::get('Tabel-Bank', PageBank::class)->name('Page-Bank');
