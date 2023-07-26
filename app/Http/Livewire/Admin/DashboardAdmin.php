@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Models\BarangKeluar;
 use App\Models\BarangMasuk;
 use App\Models\Pesanan;
+use App\Models\PesananUser;
 use App\Models\StockBahanBaku;
 use App\Models\StockBahanBakuKemasan;
 use App\Models\StokProduk;
@@ -26,6 +27,7 @@ class DashboardAdmin extends Component
         $total_pembelian = Pesanan::whereHas('barangmasuk', function($query){
             return $query->where('status', '=', '5');
         })->sum('sub_total');
+        $total_penjualan_user = PesananUser::where('status', '5')->sum('sub_total');
         return view('livewire.admin.dashboard-admin', [
             'stok'=> $stok,
             'total_produksi'=> $total_produk !== null ? $total_produk->jumlah_produksi : 0,
@@ -33,6 +35,7 @@ class DashboardAdmin extends Component
             'stok_markisa'=> $stok_markisa,
             'total_penjualan'=> $total_penjualan,
             'total_pembelian'=> $total_pembelian,
+            'total_penjualan_user'=> $total_penjualan_user,
         ])->layoutData(['page'=> 'Dashboard']);
     }
 }

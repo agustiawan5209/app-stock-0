@@ -27,6 +27,10 @@
                             </x-td>
                         </x-tr>
                     @endforeach
+                    <tr>
+                        <td colspan="4">Total bayar :</td>
+                        <td colspan="4">Rp. {{ number_format($total,0,2) }}</td>
+                    </tr>
                 </tbody>
             </table>
             <div class="container grid grid-cols-12 md:pr-10">
