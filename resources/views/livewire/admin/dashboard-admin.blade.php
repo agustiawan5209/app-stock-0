@@ -1,6 +1,6 @@
 <section class=" container mt-10">
 
-    <div class="grid gap-6 mb-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
+    <div class="grid gap-6 mb-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         <!-- Card -->
         <div class="flex items-center p-4  rounded-lg shadow-xs bg-gradient-to-b from-neutral to-ungu wow slideInDown" data-wow-duration="1000ms" data-wow-delay=500ms>
             <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full ">
