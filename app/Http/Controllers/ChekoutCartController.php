@@ -63,7 +63,7 @@ class ChekoutCartController extends Controller
         // Detail Transaksi Pesanan USer
         foreach ($cart as $key => $value) {
             $jenis = Jenis::find($value->jenis_id);
-            dd($jenis,$cart);
+            // dd($jenis,$cart);
             $stokProduk = StokProduk::latest()->first();
             $sum_produk = ProdukFermentasi::sum('jumlah_stock');
 
