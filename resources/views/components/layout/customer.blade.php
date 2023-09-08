@@ -56,6 +56,7 @@
               </ul>
             </li>
             <li><a href="{{route('Customer.Pesan-Produk')}}">Produk</a></li>
+            <li><a href="{{route('Customer.keranjang')}}">Keranjang</a></li>
           </ul>
         </div>
         <div class="navbar-end">

@@ -34,11 +34,7 @@
                         <x-tr>
                             <x-td>{{ $loop->iteration }}</x-td>
                             <x-td>{{ $item->kode }}</x-td>
-                           @if ($item->produksi !== null)
-                           <x-td>{{ $item->produksi->nama_jenis }}</x-td>
-                           @else
-                           <x-td>Jenis Kosong</x-td>
-                           @endif
+                                <x-td>{{ $item->nama_jenis }}</x-td>
                             <x-td>{{ $item->jumlah }} Botol</x-td>
                             <x-td>{{ $item->tgl_pengemasan }}</x-td>
                             <x-td>
@@ -74,11 +70,12 @@
                             for='Password'>Jenis</label>
                         <select
                             class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
-                            wire:model='jenis_produk' required >
+                            wire:model='jenis_produk' required>
                             <option value="">----</option>
                             @foreach ($jenis as $item)
-                            <option value="{{$item->id}}">{{$item->nama_jenis . '/ Rp'.number_format(
-                                $item->harga,0,2)}}</option>
+                                <option value="{{ $item->id }}">
+                                    {{ $item->nama_jenis . '/ Rp' . number_format($item->harga, 0, 2) }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -89,7 +86,7 @@
                                 <x-jet-input name='kode' class="block mt-2 w-full" type='text' wire:model='kode'
                                     readonly />
                                 @error('kode')
-                                <span class="text-red-500 text-xs italic">{{ $message }}</span>
+                                    <span class="text-red-500 text-xs italic">{{ $message }}</span>
                                 @enderror
                             </div>
                             <x-jet-button type='button' class="block h-8" wire:click='generateKode'>
@@ -99,16 +96,17 @@
                     </div>
                     <div>
                         <x-jet-label for="" value="{{ __('tgl pengemasan') }}" />
-                        <x-jet-input name='tgl_pengemasan' class="block mt-2 w-full" type='date' wire:model='tgl_pengemasan' />
+                        <x-jet-input name='tgl_pengemasan' class="block mt-2 w-full" type='date'
+                            wire:model='tgl_pengemasan' />
                         @error('tgl_pengemasan')
-                        <span class="text-red-500 text-xs italic">{{ $message }}</span>
+                            <span class="text-red-500 text-xs italic">{{ $message }}</span>
                         @enderror
                     </div>
                     <div>
                         <x-jet-label for="" value="{{ __('jumlah') }}" />
                         <x-jet-input name='jumlah' class="block mt-2 w-full" type='number' wire:model='jumlah' />
                         @error('jumlah')
-                        <span class="text-red-500 text-xs italic">{{ $message }}</span>
+                            <span class="text-red-500 text-xs italic">{{ $message }}</span>
                         @enderror
                     </div>
                 </x-slot>
@@ -118,13 +116,13 @@
                         {{ __('Cancel') }}
                     </x-jet-danger-button>
                     @if ($itemEdit == false)
-                    <x-jet-button type="button" wire:click.prevent='create'>
-                        {{ __('Tambah Data') }}
-                    </x-jet-button>
+                        <x-jet-button type="button" wire:click.prevent='create'>
+                            {{ __('Tambah Data') }}
+                        </x-jet-button>
                     @else
-                    <x-jet-button type="button" wire:click.prevent='edit({{$itemID}})'>
-                        {{ __('Edit Data') }}
-                    </x-jet-button>
+                        <x-jet-button type="button" wire:click.prevent='edit({{ $itemID }})'>
+                            {{ __('Edit Data') }}
+                        </x-jet-button>
                     @endif
                 </x-slot>
             </form>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\Cart;
 use App\Models\Jenis;
 use Livewire\Component;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -68,6 +69,7 @@ class PageJenis extends Component
     }
     public function delete($id){
         Jenis::find($id)->delete();
+        $cart = Cart::where('jenis_id', $id)->delete();
         $this->itemDelete = false;
         Alert::warning('Pesan', 'Berhasil Dihapus');
 
