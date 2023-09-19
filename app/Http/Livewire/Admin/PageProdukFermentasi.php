@@ -56,10 +56,11 @@ class PageProdukFermentasi extends Component
         $this->SelesaiFermentasi();
         $date = ProdukFermentasi::latest()->first();
         // dd($this->hitungFermentasi($date->tgl_frementasi));
-        $produk = ProdukFermentasi::all();
+        $produk = ProdukFermentasi::orderBy('id','desc')->get();
         $stock = StockBahanBaku::all();
         $stokproduk = StokProduk::whereNull('jenis')->latest()->first();
         $jumlah_produk_sisa = ProdukFermentasi::sum('jumlah_stock');
+        // dd($jumlah_produk_sisa);
         return view('livewire.admin.page-produk-fermentasi', compact('produk', 'stock', 'stokproduk', 'jumlah_produk_sisa'))->layoutData(['page' => 'Halaman Produk']);
     }
     public function addModal()

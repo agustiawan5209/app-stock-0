@@ -23,14 +23,14 @@ class PageTahapPengemasan extends Component
         $data = [];
         foreach ($jenis_produk as $key => $value) {
             $stok = StokProduk::where('jenis', $value->nama_jenis)->first();
-            if($stok !== null){
+            if ($stok !== null) {
                 $data[] = StokProduk::where('jenis', $value->nama_jenis)->first();
             }
         }
         return view('livewire.admin.page-tahap-pengemasan', [
             'pengemasan' => PengemasanBarang::all(),
             'jenis' => Jenis::all(),
-            'data_produksi'=> $data,
+            'data_produksi' => $data,
         ])->layoutData(['page' => 'Halaman Tahap Pengemasan']);
     }
 
@@ -57,7 +57,28 @@ class PageTahapPengemasan extends Component
     }
     public function addModal()
     {
-        $this->itemCreate = true;
+        $dataBahanBaku = StockBahanBakuKemasan::all();
+        $result = [];
+        $bahanbaku = [];
+        foreach ($dataBahanBaku as $item => $value) {
+            if ($value->stok < 20) {
+                $result[$item] = false;
+                $bahanbaku[$item] = $value->bahanbaku->nama_bahan_baku;
+            } else {
+                $result[$item] = true;
+            }
+        }
+
+        if (in_array(false, $result)) {
+            $txt = '<ul>';
+            for ($i = 0; $i < count($bahanbaku); $i++) {
+                $txt .= '<li>' . $bahanbaku[$i] . '</li>';
+            }
+            $txt .= '</ul>';
+            alert()->html('<i>Gagal</i> <u>Bahan Baku Kurang!!</u>', $txt, 'error');
+        } else {
+            $this->itemCreate = true;
+        }
     }
     public function create()
     {
@@ -119,11 +140,8 @@ class PageTahapPengemasan extends Component
         $kemasan = BahanBakuKemasan::all();
         $stock = [];
         foreach ($kemasan as $item => $key) {
+            // Kurangi Stok Kemasan Bahan Baku
             $stock[] = StockBahanBakuKemasan::where('bahan_baku_id', $key->id)->decrement('stock', $this->jumlah);
-            // $perhitungan_stock = ($this->jumlah);
-            // $stock->update([
-            //     'stock' => $perhitungan_stock
-            // ]);
         }
         return $stock;
     }
