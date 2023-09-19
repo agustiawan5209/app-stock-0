@@ -29,8 +29,8 @@ class CreateNewUser implements CreatesNewUsers
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
-            'alamat'=> ['required','string'],
-            'no_telpon'=> ['required', 'numeric'],
+            'alamat' => ['required', 'string'],
+            'no_telpon' => ['required', 'numeric', 'max:13'],
         ])->validate();
 
         return DB::transaction(function () use ($input) {
@@ -38,17 +38,17 @@ class CreateNewUser implements CreatesNewUsers
                 'name' => $input['name'],
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
-                'role_id'=> $input['role_id'],
-                'alamat'=> $input['alamat'],
-                'no_telpon'=> $input['no_telpon'],
+                'role_id' => $input['role_id'],
+                'alamat' => $input['alamat'],
+                'no_telpon' => $input['no_telpon'],
             ]), function (User $user) {
                 $this->createTeam($user);
-                if($user->role_id == 2 ){
+                if ($user->role_id == 2) {
                     Supplier::create([
                         'supplier' => $user->name,
                         'user_id' => $user->id,
                     ]);
-                }elseif($user->role_id == 3){
+                } elseif ($user->role_id == 3) {
                     Customer::create([
                         'customer' => $user->name,
                         'user_id' => $user->id,
@@ -68,7 +68,7 @@ class CreateNewUser implements CreatesNewUsers
     {
         $user->ownedTeams()->save(Team::forceCreate([
             'user_id' => $user->id,
-            'name' => explode(' ', $user->name, 2)[0]."'s Team",
+            'name' => explode(' ', $user->name, 2)[0] . "'s Team",
             'personal_team' => true,
         ]));
     }

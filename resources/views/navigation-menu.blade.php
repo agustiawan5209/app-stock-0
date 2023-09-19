@@ -19,7 +19,7 @@
             </path>
 
         </svg>
-        <span>Jenis Produk</span>
+        <span>Ukuran Produk</span>
     </a>
     <a class=" {{ request()->routeIs('Admin.Produk-Fermentasi') ? 'flex items-center space-x-2 py-1  font-semibold  border-r-2 border-r-primary' : 'flex items-center space-x-2 py-1  group hover:border-r-2 hover:border-r-primary hover:font-semibold ' }} relative  box-content"
         href="{{ route('Admin.Produk-Fermentasi') }}" x-on:click="Produk = ! Produk " x-on:click.outside="Produk = false">

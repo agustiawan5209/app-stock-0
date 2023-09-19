@@ -22,7 +22,7 @@
                 <x-tr>
                     <x-th>NO</x-th>
                     <x-th>Kode</x-th>
-                    <x-th>Jenis Produksi</x-th>
+                    <x-th>Ukuran Produksi</x-th>
                     <x-th>jumlah</x-th>
                     <x-th>Tanggal Pengemasan</x-th>
                     <x-th>Aksi</x-th>

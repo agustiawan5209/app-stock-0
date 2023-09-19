@@ -25,7 +25,7 @@
                 <x-tr>
                     <x-th>No.</x-th>
                     <x-th>ID Pesanan</x-th>
-                    <x-th>Jenis Produk</x-th>
+                    <x-th>Ukuran Produk</x-th>
                     <x-th>Jumlah</x-th>
                     <x-th>Status</x-th>
                     <x-th>Total</x-th>

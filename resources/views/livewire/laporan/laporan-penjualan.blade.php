@@ -37,7 +37,7 @@
                 <x-th>No</x-th>
                 <x-th>Nama Pembeli</x-th>
                 <x-th>No. Telpon</x-th>
-                <x-th>Jenis Produk</x-th>
+                <x-th>Ukuran Produk</x-th>
                 <x-th>Tanggal</x-th>
                 <x-th>Jumlah</x-th>
                 <x-th>Sub Total</x-th>

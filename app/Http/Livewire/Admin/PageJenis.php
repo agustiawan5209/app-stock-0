@@ -13,7 +13,7 @@ class PageJenis extends Component
     public function render()
     {
         $jenis = Jenis::all();
-        return view('livewire.admin.page-jenis', compact('jenis'))->layoutData(['page'=> 'Halaman Jenis Produk']);
+        return view('livewire.admin.page-jenis', compact('jenis'))->layoutData(['page'=> 'Halaman Ukuran Produk']);
     }
 
     // Modal

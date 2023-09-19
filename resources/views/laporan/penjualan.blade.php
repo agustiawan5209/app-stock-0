@@ -7,7 +7,7 @@
                 <x-th class="border border-gray-800">No</x-th>
                 <x-th class="border border-gray-800">Nama Pembeli</x-th>
                 <x-th class="border border-gray-800">No. Telpon</x-th>
-                <x-th class="border border-gray-800">Jenis Produk</x-th>
+                <x-th class="border border-gray-800">Ukuran Produk</x-th>
                 <x-th class="border border-gray-800">Tanggal</x-th>
                 <x-th class="border border-gray-800">Jumlah</x-th>
                 <x-th class="border border-gray-800">Sub Total</x-th>
