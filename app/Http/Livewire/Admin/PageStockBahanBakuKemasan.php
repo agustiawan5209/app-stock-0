@@ -92,10 +92,11 @@ class PageStockBahanBakuKemasan extends Component
     {
         Alert::success('Info', 'Berhasil Di Hapus');
         $stock = StockBahanBakuKemasan::find($id);
-        // Cari data bahan baku kemasan
-        $bahanbaku = BahanBakuKemasan::find($stock->bahan_baku_id)->delete();
+        $bahan_id = $stock->bahan_baku_id;
         // Hapus Data Bahan Baku Kemasan
         $stock->delete();
+        // Cari data bahan baku kemasan
+        $bahanbaku = BahanBakuKemasan::find($bahan_id)->delete();
         $this->clear();
     }
 }
