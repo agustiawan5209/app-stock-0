@@ -61,7 +61,7 @@ class PageTahapPengemasan extends Component
         $result = [];
         $bahanbaku = [];
         foreach ($dataBahanBaku as $item => $value) {
-            if ($value->stok < 20) {
+            if ($value->stock < 20) {
                 $result[$item] = false;
                 $bahanbaku[$item] = $value->bahanbaku->nama_bahan_baku;
             } else {
