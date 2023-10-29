@@ -14,7 +14,11 @@ class Keranjang extends Component
     public function render()
     {
         $cart = Cart::where('user_id', Auth::user()->id)->get();
-        $total = Cart::where('user_id', Auth::user()->id)->sum('harga');
+        $total = 0;
+
+        foreach ($cart as $item) {
+            $total += $item->qty * $item->harga;
+        }
         // dd($jenis);
         $bank = Bank::whereHas('user', function($query){
             return $query->where('role_id', '1');
