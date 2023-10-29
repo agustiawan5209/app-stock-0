@@ -142,7 +142,7 @@ class PageTahapPengemasan extends Component
         $stock = [];
         foreach ($kemasan as $item => $key) {
             // Kurangi Stok Kemasan Bahan Baku
-            $stock[] = StockBahanBakuKemasan::where('bahan_baku_id', $key->id)->decrement('stock', $this->jumlah);
+            $stock[] = StockBahanBakuKemasan::where('bahan_baku_id', $key->id)->decrement('stock', abs($this->jumlah));
         }
         return $stock;
     }
