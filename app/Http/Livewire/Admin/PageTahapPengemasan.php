@@ -60,18 +60,20 @@ class PageTahapPengemasan extends Component
         $dataBahanBaku = StockBahanBakuKemasan::all();
         $result = [];
         $bahanbaku = [];
-        foreach ($dataBahanBaku as $item => $value) {
+        foreach ($dataBahanBaku as $index => $value) {
             if ($value->stock < 20) {
-                $result[$item] = false;
-                $bahanbaku[$item] = $value->bahanbaku->nama_bahan_baku;
+                $result[$index] = false;
+                $bahanbaku[$index] = $value->bahanbaku->nama_bahan_baku;
             } else {
-                $result[$item] = true;
+                $result[$index] = true;
             }
         }
         if (in_array(false, $result)) {
             $txt = '<ul>';
-            for ($i = 0; $i < count($bahanbaku); $i++) {
-                $txt .= '<li>' . $bahanbaku[$i] . '</li>';
+            foreach ($bahanbaku as $bahan) {
+                if ($bahan != null) {
+                    $txt .= '<li>' . $bahan . '</li>';
+                }
             }
             $txt .= '</ul>';
             alert()->html('<i>Gagal</i> <u>Bahan Baku Kurang!!</u>', $txt, 'error');
