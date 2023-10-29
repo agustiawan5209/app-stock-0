@@ -17,7 +17,7 @@ class Keranjang extends Component
         $total = 0;
 
         foreach ($cart as $item) {
-            $total += $item->qty * $item->harga;
+            $total += $item->jumlah * $item->harga;
         }
         // dd($jenis);
         $bank = Bank::whereHas('user', function($query){
