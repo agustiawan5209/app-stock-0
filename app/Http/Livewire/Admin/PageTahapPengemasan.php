@@ -81,6 +81,34 @@ class PageTahapPengemasan extends Component
             $this->itemCreate = true;
         }
     }
+
+    public function cekStock()
+    {
+        $dataBahanBaku = StockBahanBakuKemasan::all();
+        $result = [];
+        $bahanbaku = [];
+        foreach ($dataBahanBaku as $index => $value) {
+            if ($value->stock < 20) {
+                $result[$index] = false;
+                $bahanbaku[$index] = $value->bahanbaku->nama_bahan_baku;
+            } else {
+                $result[$index] = true;
+            }
+        }
+        if (in_array(false, $result)) {
+            $txt = '<ul>';
+            foreach ($bahanbaku as $bahan) {
+                if ($bahan != null) {
+                    $txt .= '<li>' . $bahan . '</li>';
+                }
+            }
+            $txt .= '</ul>';
+            alert()->html('<i>Gagal</i> <u>Bahan Baku Kurang!!</u>', $txt, 'error');
+            return false;
+        } else {
+            return true;
+        }
+    }
     public function create()
     {
         $this->validate([
@@ -89,52 +117,54 @@ class PageTahapPengemasan extends Component
             'jumlah' => 'required|numeric',
             'jenis_produk' => 'required|numeric',
         ]);
+        if ($this->cekStock()) {
 
-        $jenis_produk_table = Jenis::find($this->jenis_produk);
-        $pengemasan = PengemasanBarang::create([
-            'kode' => $this->kode,
-            'jenis_produk' => $this->jenis_produk,
-            'nama_jenis' => $jenis_produk_table->nama_jenis,
-            'tgl_pengemasan' => $this->tgl_pengemasan,
-            'jumlah' => $this->jumlah,
-        ]);
-
-        // Dapatkan Stok Produk Berdasarkan Nama Jenis
-        $stokproduk = StokProduk::where('jenis', $jenis_produk_table->nama_jenis)->first();
-
-        // Dapatkan Jumlah Terakhir Produksi
-        $stok_produksi = StokProduk::whereNull('jenis')->latest()->first();
-
-        // Hitung Jumlah Liter
-        $jumlah_liter = ($this->jumlah * intval($jenis_produk_table->jumlah)) / 1000;
-
-        // Kurangi Stok Produk Pada Jumlah Produksi
-        $kurangi_stock = $stok_produksi->jumlah_produksi - $jumlah_liter;
-
-        StokProduk::create([
-            'jenis' => null,
-            'jumlah' => $jumlah_liter,
-            'tgl_permintaan' => $this->tgl_pengemasan,
-            'jumlah_produksi' => $kurangi_stock,
-        ]);
-        if ($stokproduk == null) {
-            StokProduk::create([
-                'jenis' => $jenis_produk_table->nama_jenis,
+            $jenis_produk_table = Jenis::find($this->jenis_produk);
+            $pengemasan = PengemasanBarang::create([
+                'kode' => $this->kode,
+                'jenis_produk' => $this->jenis_produk,
+                'nama_jenis' => $jenis_produk_table->nama_jenis,
+                'tgl_pengemasan' => $this->tgl_pengemasan,
                 'jumlah' => $this->jumlah,
-                'tgl_permintaan' => $this->tgl_pengemasan,
-                'jumlah_produksi' => $this->jumlah,
             ]);
-        } else {
-            $stokproduk->update([
+
+            // Dapatkan Stok Produk Berdasarkan Nama Jenis
+            $stokproduk = StokProduk::where('jenis', $jenis_produk_table->nama_jenis)->first();
+
+            // Dapatkan Jumlah Terakhir Produksi
+            $stok_produksi = StokProduk::whereNull('jenis')->latest()->first();
+
+            // Hitung Jumlah Liter
+            $jumlah_liter = ($this->jumlah * intval($jenis_produk_table->jumlah)) / 1000;
+
+            // Kurangi Stok Produk Pada Jumlah Produksi
+            $kurangi_stock = $stok_produksi->jumlah_produksi - $jumlah_liter;
+
+            StokProduk::create([
+                'jenis' => null,
                 'jumlah' => $jumlah_liter,
                 'tgl_permintaan' => $this->tgl_pengemasan,
-                'jumlah_produksi' => $this->jumlah + $stokproduk->jumlah_produksi,
+                'jumlah_produksi' => $kurangi_stock,
             ]);
-        }
-        $this->getStokKemasan();
+            if ($stokproduk == null) {
+                StokProduk::create([
+                    'jenis' => $jenis_produk_table->nama_jenis,
+                    'jumlah' => $this->jumlah,
+                    'tgl_permintaan' => $this->tgl_pengemasan,
+                    'jumlah_produksi' => $this->jumlah,
+                ]);
+            } else {
+                $stokproduk->update([
+                    'jumlah' => $jumlah_liter,
+                    'tgl_permintaan' => $this->tgl_pengemasan,
+                    'jumlah_produksi' => $this->jumlah + $stokproduk->jumlah_produksi,
+                ]);
+            }
+            $this->getStokKemasan();
 
-        Alert::success('info', 'Berhasil');
-        $this->closeModal();
+            Alert::success('info', 'Berhasil');
+            $this->closeModal();
+        }
     }
     public function getStokKemasan()
     {
