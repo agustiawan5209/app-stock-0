@@ -68,7 +68,7 @@ class PageTahapPengemasan extends Component
                 $result[$item] = true;
             }
         }
-
+        dd($result);
         if (in_array(false, $result)) {
             $txt = '<ul>';
             for ($i = 0; $i < count($bahanbaku); $i++) {
