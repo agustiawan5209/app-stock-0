@@ -61,11 +61,11 @@ class FermentasiController extends Controller
                 'tgl_frementasi' => $tgl_produksi,
                 'data' =>  $stock,
             ]);
-            $stokProduk = StokProduk::latest()->first();
+            $stokProduk = StokProduk::whereNull('jenis')->whereNull('jumlah')->latest()->first();
             $sum_produk = ProdukFermentasi::sum('jumlah_stock');
             StokProduk::create([
                 'tgl_permintaan' => $tgl_produksi,
-                'jumlah_produksi' => $stokProduk == null ? abs($hasil_hitung) : abs($stokProduk->jumlah_produksi), //Stok Produk Jumlah
+                'jumlah_produksi' => $stokProduk == null ? abs($hasil_hitung) : abs($sum_produk), //Stok Produk Jumlah
             ]);
         }
 
