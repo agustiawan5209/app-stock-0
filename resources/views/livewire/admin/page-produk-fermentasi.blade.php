@@ -10,7 +10,7 @@
 
                         <div class=" flex flex-row justify-start">
                             <dl class="text-base md:text-xl font-medium tracking-wide">Jumlah Produksi :</dl>
-                            <dt class="text-base md:text-xl font-medium tracking-wide">{{ number_format($jumlah_produk_sisa == null ? 1 : $stokproduk->jumlah_produksi, 0, 2) }}</dt>
+                            <dt class="text-base md:text-xl font-medium tracking-wide">{{ $stokproduk->jumlah_produksi }}</dt>
                         </div>
                     </div>
             </div>

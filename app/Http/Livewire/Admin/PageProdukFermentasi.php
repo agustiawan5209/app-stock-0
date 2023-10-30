@@ -79,4 +79,19 @@ class PageProdukFermentasi extends Component
         $this->itemEdit = true;
         return redirect()->route('Admin.Crud-Fermentasi', ['id' => $satuan->id, 'kode' => $this->kode]);
     }
+
+    public function deleteModal($id)
+    {
+        $satuan = ProdukFermentasi::find($id);
+        $this->itemID = $satuan->id;
+        $this->itemDelete = true;
+    }
+    public function delete($id)
+    {
+        $p = ProdukFermentasi::find($id);
+        StokProduk::whereNull('jenis')->decrement('jumlah_produksi', $p->jumlah_stock);
+        $p->delete();
+        $this->itemDelete = false;
+        Alert::warning('Pesan', 'Berhasil Dihapus');
+    }
 }

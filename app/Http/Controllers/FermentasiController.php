@@ -65,7 +65,7 @@ class FermentasiController extends Controller
             $sum_produk = ProdukFermentasi::sum('jumlah_stock');
             StokProduk::create([
                 'tgl_permintaan' => $tgl_produksi,
-                'jumlah_produksi' => $stokProduk == null ? round($hasil_hitung) : round($sum_produk), //Stok Produk Jumlah
+                'jumlah_produksi' => $stokProduk == null ? $hasil_hitung : $sum_produk, //Stok Produk Jumlah
             ]);
         }
 
