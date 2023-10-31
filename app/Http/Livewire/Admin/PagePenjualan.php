@@ -79,12 +79,11 @@ class PagePenjualan extends Component
     public function updateStatus($id)
     {
         $pesanan = PesananUser::find($id);
-        // dd($this->status);
         $this->validate([
             'status' => 'required',
             'ket' => 'required',
         ]);
-        if ($this->status === 3 || $this->status == "3") {
+        if ($this->status === 3 || $this->status === "3") {
             $this->validate([
                 'kode' => 'required',
                 'jumlah' => 'required',
@@ -155,6 +154,8 @@ class PagePenjualan extends Component
             ]);
             $data[$key->id] = $perhitungan_stock;
         }
+        $stokProduk = StokProduk::where('jenis', '=' , $jenis->jumlah)->latest()->first();
+        $stokProduk->decrement('jumlah_produksi', $jenis->jumlah);
         return $data;
     }
     public function BuatHarga()
