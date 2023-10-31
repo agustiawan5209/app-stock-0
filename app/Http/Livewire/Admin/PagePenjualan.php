@@ -145,18 +145,18 @@ class PagePenjualan extends Component
     public function getStokKemasan($id)
     {
         $kemasan = BahanBakuKemasan::all();
-        $jenis = Jenis::find($id);
-        foreach ($kemasan as $item => $key) {
-            $stock = StockBahanBakuKemasan::where('bahan_baku_id', $key->id)->first();
-            $perhitungan_stock = $stock->stock - $stock->max * ($this->jumlah * ($jenis->jumlah / 1000));
-            $stock->update([
-                'stock' => $perhitungan_stock
-            ]);
-            $data[$key->id] = $perhitungan_stock;
-        }
+        // $jenis = Jenis::find($id);
+        // foreach ($kemasan as $item => $key) {
+        //     $stock = StockBahanBakuKemasan::where('bahan_baku_id', $key->id)->first();
+        //     $perhitungan_stock = $stock->stock - $stock->max * ($this->jumlah * ($jenis->jumlah / 1000));
+        //     $stock->update([
+        //         'stock' => $perhitungan_stock
+        //     ]);
+        //     $data[$key->id] = $perhitungan_stock;
+        // }
         // $stokProduk = StokProduk::where('jenis', '=' , $jenis->jumlah)->latest()->first();
         // $stokProduk->decrement('jumlah_produksi', $jenis->jumlah);
-        return $data;
+        // return $data;
     }
     public function BuatHarga()
     {
