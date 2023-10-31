@@ -30,7 +30,7 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
             'alamat' => ['required', 'string'],
-            'no_telpon' => ['required', 'numeric', 'min:13'],
+            'no_telpon' => ['required', 'numeric', 'digits:12'],
         ])->validate();
 
         return DB::transaction(function () use ($input) {
