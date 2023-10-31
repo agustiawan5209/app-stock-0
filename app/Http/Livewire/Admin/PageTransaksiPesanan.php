@@ -74,15 +74,15 @@ class PageTransaksiPesanan extends Component
     }
     public function createBarang($id, $status){
         $barang = BarangMasuk::find($id);
-        // dd($barang);
-        if($status == 5){
+        // dd($barang, $status);
+        if($status === 5 || $status === '5'){
+            // dd($barang->pesanan->jumlah, $barang->pesanan);
             if($barang->pesanan->jenis == 1){
                 $stock = StockBahanBaku::where('bahan_baku_id', '=', $barang->pesanan->bahan_baku_id)->first();
             }
             if($barang->pesanan->jenis == 2){
                 $stock = StockBahanBakuKemasan::where('bahan_baku_id', '=', $barang->pesanan->bahan_baku_id)->first();
             }
-            // dd($stock);
             $stock->update([
                 'stock'=> $barang->pesanan->jumlah + $stock->stock,
             ]);
