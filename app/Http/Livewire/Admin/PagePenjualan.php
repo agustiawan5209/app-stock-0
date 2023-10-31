@@ -154,8 +154,8 @@ class PagePenjualan extends Component
             ]);
             $data[$key->id] = $perhitungan_stock;
         }
-        $stokProduk = StokProduk::where('jenis', '=' , $jenis->jumlah)->latest()->first();
-        $stokProduk->decrement('jumlah_produksi', $jenis->jumlah);
+        // $stokProduk = StokProduk::where('jenis', '=' , $jenis->jumlah)->latest()->first();
+        // $stokProduk->decrement('jumlah_produksi', $jenis->jumlah);
         return $data;
     }
     public function BuatHarga()

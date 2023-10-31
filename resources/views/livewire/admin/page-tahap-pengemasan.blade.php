@@ -11,7 +11,7 @@
                         </div>
                         <div class=" flex flex-row justify-start">
                             <dl class="text-base md:text-xl font-medium tracking-wide">Jumlah Produksi :</dl>
-                            <dt class="text-base md:text-xl font-medium tracking-wide">{{ $item->jumlah_produksi }}</dt>
+                            <dt class="text-base md:text-xl font-medium tracking-wide">{{ isset($brg_keluar[$item->jenis]) ? $item->jumlah_produksi - $brg_keluar[$item->jenis]: $item->jumlah_produksi }}</dt>
                         </div>
                     </div>
                 @endforeach

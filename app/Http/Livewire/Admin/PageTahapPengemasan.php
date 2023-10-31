@@ -6,6 +6,7 @@ use App\Models\Jenis;
 use Livewire\Component;
 use App\Models\StokProduk;
 use App\Models\BahanBakuKemasan;
+use App\Models\BarangKeluar;
 use App\Models\PengemasanBarang;
 use App\Models\StockBahanBakuKemasan;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -27,9 +28,16 @@ class PageTahapPengemasan extends Component
                 $data[] = StokProduk::where('jenis', $value->nama_jenis)->first();
             }
         }
+        $barang_keluar = [];
+
+        foreach($jenis_produk as $key => $value) {
+            $barang_keluar[$value->nama_jenis] = BarangKeluar::where('jenis_id', $value->id)->sum('jumlah');
+        }
+
         return view('livewire.admin.page-tahap-pengemasan', [
             'pengemasan' => PengemasanBarang::all(),
             'jenis' => Jenis::all(),
+            'brg_keluar' => $barang_keluar,
             'data_produksi' => $data,
         ])->layoutData(['page' => 'Halaman Tahap Pengemasan']);
     }
